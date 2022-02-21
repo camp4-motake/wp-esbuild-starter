@@ -59,12 +59,31 @@ add_action(
       false,
       null
     );
+
     // main
-    wp_enqueue_style('main', ASSETS_DIR_URI . 'main.css', false, null);
-    wp_enqueue_script('main', ASSETS_DIR_URI . 'main.js', null, null, true);
+    wp_enqueue_style('main', asset_hash('main.css'), false, null);
+    wp_enqueue_script('main', asset_hash('main.js'), null, null, true);
   },
   100
 );
+
+/**
+ * ビルドファイル用のキャッシュバスター
+ */
+function asset_hash($path = '')
+{
+  if (!$path) {
+    return '';
+  }
+
+  $asset_path = ASSETS_DIR_PATH . $path;
+  $asset_uri = ASSETS_DIR_URI . $path;
+  $hash_id = file_exists($asset_path)
+    ? '?id=' . hash_file('fnv132', $asset_path)
+    : '';
+
+  return $asset_uri . $hash_id;
+}
 
 /**
  * Register sidebars
