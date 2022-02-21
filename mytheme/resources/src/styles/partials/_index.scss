@@ -1,6 +1,2 @@
-@import "breadcrumbs";
-@import "footer";
-@import "header";
-@import "loadingCircle";
-@import "navPrimary";
-@import "noLongerSupport";
+@use "footer";
+@use "header";

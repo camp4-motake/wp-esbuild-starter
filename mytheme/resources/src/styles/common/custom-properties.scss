@@ -2,35 +2,40 @@
  * css custom properties
  */
 
+@use "~sass-rem/rem" as *;
+@use "~sass-mq/mq" as *;
+@use "../config/variables";
+
 :root {
   // -----------------
   // color basic
   // -----------------
 
   --color-base: #fff;
-  --color-text: #222;
-  --color-primary: #002978;
-  --color-secondary: #f2f5fa;
+  --color-text: #000;
+  --color-bg-light: #f7f7f7;
+  --color-bg-light-dark: #e7e7e7;
+  --color-bg-dark: #35302e;
+  --color-bg-menu: #e9edee;
+  --color-primary: #0e3266;
+  --color-secondary: #ffe433;
+  --color-coming-soon-type: #c9c8c8;
 
   // other util
-  --color-light: #fff;
-  --color-dark: #000;
-  --color-border: #e0e0e0;
-  --color-bg-no-image: var(--color-secondary);
   --color-warning: #f8c61e;
   --color-danger: #dd4d4d;
-  --color-link: var(--color-primary);
+  --color-link: var(--color-text);
   --color-link-hover: var(--color-primary);
-  --color-link-visited: var(--color-primary);
+  --color-link-visited: var(--color-text);
 
   // -----------------
   // color SNS
   // -----------------
 
-  --color-twitter: #00aced;
-  --color-facebook: #1877f2;
-  --color-line: #00c300;
-  --color-instagram: #d7464f;
+  // --color-twitter: #00aced;
+  // --color-facebook: #1877f2;
+  // --color-line: #00c300;
+  // --color-instagram: #d7464f;
 
   // font family
   --font-sans-serif-ja: "Noto Sans JP", -apple-system, blinkmacsystemfont,
@@ -38,24 +43,28 @@
     meiryo, sans-serif;
   --font-sans-serif-en: "SF Pro Text", "SF Pro Icons", "Helvetica Neue",
     "Helvetica", "Arial", sans-serif;
-  --font-serif-en: serif;
+  --font-icons: "icons";
   --font-family-base: var(--font-sans-serif-ja);
-  --font-family-icons: "icons";
-  --font-google-sanserif: "Source Sans Pro", sans-serif;
 
   // font size
   --font-tracking: 0.06em;
-  --line-height-base: var(--leading-lg);
+  --line-height-base: 1.875;
   --base-font-size: 16px;
   --font-size: 1rem;
+
+  // font size util
   --font-size-xxl: calc(var(--font-size) * 2); // 32px
   --font-size-xl: calc(var(--font-size) * 1.5); // 24px
-  --font-size-lg: calc(var(--font-size) * 1.25); // 18px
-  --font-size-md: calc(var(--font-size)); // 16px
+  --font-size-lg: calc(var(--font-size) * 1.25); // 20px
+  --font-size-md: calc(var(--font-size) * 1.125); // 18px
   --font-size-sm: calc(var(--font-size) * 0.875); // 14px
   --font-size-xs: calc(var(--font-size) * 0.75); // 12px
   --font-size-xxs: calc(var(--font-size) * 0.5);
-  --font-p-size: 1em; // 16px
+  --font-p-size: var(--font-size-sm); // 16px
+
+  @include mq($from: lg) {
+    --font-p-size: var(--font-size); // 16px
+  }
 
   // font weight
   --font-weight-regular: 400;
@@ -90,9 +99,15 @@
   --font-display-8: calc(var(--font-size) * 1.125); // 18px
 
   // display extra size
-  --font-display-ex-1: calc(var(--font-size) * 6.25); // 100px
+  --font-display-ex-1: calc(var(--font-size) * 6.875); // 110px
   --font-display-ex-2: calc(var(--font-size) * 4); // 64px
-  --font-display-ex-3: calc(var(--font-size) * 3.125); // 50px
+  --font-display-ex-3: calc(var(--font-size) * 3.375); // 54px
+  --font-display-ex-4: calc(var(--font-size) * 3.125); // 50px
+
+  // letter spacing
+  --letter-spacing-heading: 0.06em;
+  --letter-spacing-cursive: 0.06em;
+  --letter-spacing-sans-serif: 0.1em;
 
   // spacer
   --spacer-unit: 1rem;
@@ -106,7 +121,7 @@
   --spacer-xxl: calc(5.25 * var(--spacer-unit));
 
   // section gutter
-  --gutter-sm: #{rem(10px)};
+  --gutter-sm: #{rem(15px)};
   --gutter-md: #{rem(30px)};
   --gutter-lg: #{rem(40px)};
   --gutter-xl: #{rem(60px)};
@@ -114,43 +129,37 @@
   --gutter-xxxl: #{rem(120px)};
 
   // z order
-  --z-header: 6000;
-  --z-nav-primary: 4000;
-  --z-nav-hamburger: calc(var(--z-nav-primary) + 500);
-  --z-overlay: 3999;
-  --z-sticky-banner: 3000;
-  --z-blind: 5000;
-  --z-share-links: 2000;
-  --z-modal: 7000;
-  --z-modal-overlay: 6500;
-  --z-loading-screen: 9999;
+  --z-sticky: 700;
+  --z-header: 600;
+  --z-nav-menu: 550;
   --z-go-btn: 500;
+  --z-number-badge: 100;
 
   // border
-  --border-width-base: #{rem(2px)};
+  --border-width-base: #{rem(3px)};
 
   // radius
-  --border-radius-base: #{rem(6px)};
+  --border-radius-base: #{rem(10px)};
   --border-radius-xs: #{rem(4px)};
   --border-radius-sm: #{rem(6px)};
   --border-radius-md: #{rem(20px)};
   --border-radius-lg: #{rem(40px)};
-  --corner-radius: var(--border-radius-md);
+  --corner-radius: var(--border-radius-base);
 
   // header
-  --header-height: #{rem(58px)};
-
-  // hamburger
-  --hamburger-toggle-size: #{rem(42px)};
-  --hamburger-toggle-icon-size: #{rem(22px)};
+  --header-height: #{rem(60px)};
+  @include mq($from: lg) {
+    --header-height: #{rem(90px)};
+  }
 
   // container width
   --container-fluid-max-width: #{rem(2208px)};
+  --container-canvas-max-width: #{rem(1400px)};
   --container-max-width: auto;
   --container-max-width-entry: #{rem(798px)};
 
   // generate container breakpoint max width
-  @each $breakpoint, $width in $container-max-width {
+  @each $breakpoint, $width in variables.$container-max-width {
     /* stylelint-disable-next-line custom-property-pattern */
     --container-max-width-#{$breakpoint}: #{rem($width)};
 
@@ -158,9 +167,6 @@
       --container-max-width: #{rem($width)};
     }
   }
-
-  // wp admin bar height(overwrite js)
-  --wp-admin-bar-height: 0.01px;
 
   // view inner height(overwrite js)
   --vh: 1vh;
@@ -208,29 +214,9 @@
   --ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   // swiper theme variable
-  --swiper-theme-color: var(--color-text);
-  --swiper-pagination-color: var(--color-text);
+  --swiper-theme-color: var(--color-primary);
+  --swiper-pagination-color: var(--color-primary);
 
   // Golden ratio
   --golden-ratio: 1.6180339887;
-
-  // animation
-  --loading-thumbnail-animation: loading-thumbnail 600ms infinite;
-
-  // ------------------------ breakpoints md
-  @include mq($from: md) {
-    --header-height: #{rem(80px)};
-  }
-
-  // ------------------------ breakpoints lg
-  @include mq($from: lg) {
-    --hamburger-toggle-size: #{rem(54px)};
-    --hamburger-position-center: #{rem(9px)};
-    --hamburger-border-width: 4px;
-    --border-width-base: 3px;
-  }
-
-  // ------------------------ breakpoints xl
-  // @include mq($from: xl) {
-  // }
 }

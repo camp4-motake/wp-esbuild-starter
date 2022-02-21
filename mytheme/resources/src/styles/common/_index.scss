@@ -1,9 +1,7 @@
-@import "entry-style";
-@import "global";
-@import "icons";
-@import "loading";
-@import "modules";
-@import "reset";
-@import "scrollTop";
-@import "transition";
-@import "typography";
+/**
+ * Common
+ */
+@use "custom-properties";
+@use "icons";
+@use "reset";
+@use "global";

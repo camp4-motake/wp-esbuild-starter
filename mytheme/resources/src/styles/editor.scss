@@ -2,26 +2,25 @@
  * Editor
  */
 
-@import "config";
+@use "config/mq-setting";
+@use "common/custom-properties";
+@use "editor/adminFix";
 
-// .editor-styles-wrapper {
-//   font-family: var(--font-family-base);
-//   font-weight: var(--font-weight-regular);
-//   font-feature-settings: "pkna";
-//   line-height: var(--line-height-base);
-//   color: var(--color-text);
-//   background-color: var(--color-base);
-//   font-synthesis: none;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-// }
+.editor-styles-wrapper {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-feature-settings: "pkna";
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-base);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 // .editor-styles-wrapper > * {
 //   /* stylelint-disable-next-line no-invalid-position-at-import-rule */
-//   @import "common";
+//   @use "common";
 //   /* stylelint-disable-next-line no-invalid-position-at-import-rule */
-//   @import "components";
+//   @use "components";
 // }
-
-// /* stylelint-disable-next-line no-invalid-position-at-import-rule */
-// @import "editor/adminFix";

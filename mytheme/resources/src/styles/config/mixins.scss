@@ -1,25 +1,18 @@
+@use "sass:map";
+@use "~sass-rem/rem" as *;
+@use "variables";
+
 /**
 * Mixins
 */
 
 /* stylelint-disable */
 
-@use "sass:math";
-
-// Sass rem
-// https://github.com/pierreburel/sass-rem
-@import "rem";
-
-// Sass MQ
-// https://github.com/sass-mq/sass-mq
-// https://sass-mq.github.io/sass-mq/#undefined-mixin-mq
-@import "mq";
-
 // container
 @mixin container-breakpoint() {
   width: 100%;
 
-  @each $breakpoint, $width in $container-max-width {
+  @each $breakpoint, $width in variables.$container-max-width {
     @include mq($from: $breakpoint) {
       max-width: $width;
     }
@@ -88,7 +81,7 @@
   content: "";
   border: $size solid transparent;
 
-  border-#{map-get($opposite, $direction)}-color: $color;
+  border-#{map.get($opposite, $direction)}-color: $color;
   margin-#{$direction}: math.div(-$size, 2);
 }
 
@@ -228,15 +221,15 @@
 
 // screen reader only
 @mixin sr-only() {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  width: 1px;
-  height: 1px;
-  margin: -1px; // Fix for https://github.com/twbs/bootstrap/issues/25686
-  padding: 0;
-  white-space: nowrap;
-  border: 0;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important; // Fix for https://github.com/twbs/bootstrap/issues/25686
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 @mixin sr-only-focusable() {
@@ -248,68 +241,5 @@
     width: auto;
     height: auto;
     white-space: normal;
-  }
-}
-
-@mixin link-underline(
-  $color: currentColor,
-  $el: span,
-  $reverse: false,
-  $ease: var(--ease-in-out-circ)
-) {
-  &:hover {
-    text-decoration: none;
-  }
-
-  &[href="#0"] {
-    cursor: initial;
-  }
-
-  > #{$el} {
-    position: relative;
-    display: inline-block;
-  }
-
-  // underline
-  > #{$el}::before {
-    position: absolute;
-    top: rem(0.1em);
-    left: 0;
-    z-index: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    margin: auto auto 0 auto;
-    content: "";
-    background-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent calc(100% - #{rem(1px)}),
-      $color calc(100% - #{rem(1px)}),
-      $color 100%
-    );
-    transition: transform 0.3s $ease;
-    transform: scaleX(0);
-    transform-origin: center right;
-    will-change: transform;
-  }
-
-  @if $reverse {
-    > #{$el}::before {
-      transform: scaleX(1);
-      transform-origin: center left;
-    }
-
-    &:not([href="#0"]).is-current #{$el}::before,
-    &:not([href="#0"]):hover #{$el}::before {
-      transform: scaleX(0);
-      transform-origin: center right;
-    }
-  } @else {
-    &:not([href="#0"]).is-current #{$el}::before,
-    &:not([href="#0"]):hover #{$el}::before {
-      transform: scaleX(1);
-      transform-origin: center left;
-    }
   }
 }

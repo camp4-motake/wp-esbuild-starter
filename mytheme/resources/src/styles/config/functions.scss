@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "variables";
 
 // get vw font size
 @function get-vw($size, $viewport: 350) {
@@ -40,11 +41,11 @@ $_precision: 10;
 }
 
 @function _to_unitless_rad($angle) {
-  @if unit($angle) == "deg" {
-    $angle: math.div($angle, 180deg) * $pi;
+  @if math.unit($angle) == "deg" {
+    $angle: math.div($angle, 180deg) * variables.$pi;
   }
 
-  @if unit($angle) == "rad" {
+  @if math.unit($angle) == "rad" {
     $angle: math.div($angle, 1rad);
   }
 
