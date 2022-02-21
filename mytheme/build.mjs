@@ -71,7 +71,6 @@ const build = async () => {
         async transform(source) {
           const { css } = await postcss(postcssPlugins).process(source, {
             from: undefined,
-            map: false,
           });
           return css;
         },
