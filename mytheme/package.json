@@ -1,9 +1,10 @@
 {
   "author": "CAMP4 inc.",
   "scripts": {
-    "dev": "concurrently --raw \"NODE_ENV=development node ./build.mjs\" \"npm run sync\"",
+    "dev": "npm run clean && concurrently --raw \"NODE_ENV=development node ./build.mjs\" \"npm run sync\"",
     "sync": "browser-sync start --config bs-config.js",
-    "build": "NODE_ENV=production node ./build.mjs",
+    "build": "npm run clean && NODE_ENV=production node ./build.mjs",
+    "clean": "rimraf dist",
     "prettier": "prettier --write \"**/*.{vue,js,jsx,ts,tsx,css,sass,scss,less,php,twig}\"",
     "iconfont": "fantasticon && prettier --write \"resources/src/styles/common/icons.scss\""
   },
@@ -15,7 +16,6 @@
     "chokidar": "^3.5.2",
     "concurrently": "^7.0.0",
     "cwebp-bin": "7.0.1",
-    "del": "^6.0.0",
     "dotenv": "^10.0.0",
     "esbuild": "^0.14.21",
     "esbuild-sass-plugin": "^2.2.3",
@@ -30,6 +30,7 @@
     "prettier": "^2.4.1",
     "prettier-plugin-twig-melody": "^0.4.6",
     "purgecss-with-wordpress": "^4.0.3",
+    "rimraf": "^3.0.2",
     "sass-mq": "^6.0.0",
     "sass-rem": "^3.0.0",
     "svg-sprite": "^1.5.3",
