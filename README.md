@@ -62,4 +62,6 @@ docker-compose run --rm cli bash -c "cd /home && export RUBYOPT=-EUTF-8 && {word
 
 ## その他
 
-画像が反映されない場合は、ルートの `.cache/` ディレクトリを削除してから再ビルドしてください。
+- 画像が反映されない場合は、ルートの `.cache/` ディレクトリを削除してから再ビルドしてください。
+- [workspace](https://docs.npmjs.com/cli/v7/using-npm/workspaces) を使用しているので、テーマディレクトリ以下
+  に npm install でモジュールを追加する場合は `-w {テーマディレクトリ名}`をつけて実行してください。
