@@ -1,0 +1,3 @@
+<Files ~ “\.(php|twig|mjs|hbs)$”>
+Deny from all
+</Files>

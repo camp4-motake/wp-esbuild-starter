@@ -1,0 +1,236 @@
+/**
+ * css custom properties
+ */
+
+:root {
+  // -----------------
+  // color basic
+  // -----------------
+
+  --color-base: #fff;
+  --color-text: #222;
+  --color-primary: #002978;
+  --color-secondary: #f2f5fa;
+
+  // other util
+  --color-light: #fff;
+  --color-dark: #000;
+  --color-border: #e0e0e0;
+  --color-bg-no-image: var(--color-secondary);
+  --color-warning: #f8c61e;
+  --color-danger: #dd4d4d;
+  --color-link: var(--color-primary);
+  --color-link-hover: var(--color-primary);
+  --color-link-visited: var(--color-primary);
+
+  // -----------------
+  // color SNS
+  // -----------------
+
+  --color-twitter: #00aced;
+  --color-facebook: #1877f2;
+  --color-line: #00c300;
+  --color-instagram: #d7464f;
+
+  // font family
+  --font-sans-serif-ja: "Noto Sans JP", -apple-system, blinkmacsystemfont,
+    "Hiragino Sans", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", "メイリオ",
+    meiryo, sans-serif;
+  --font-sans-serif-en: "SF Pro Text", "SF Pro Icons", "Helvetica Neue",
+    "Helvetica", "Arial", sans-serif;
+  --font-serif-en: serif;
+  --font-family-base: var(--font-sans-serif-ja);
+  --font-family-icons: "icons";
+  --font-google-sanserif: "Source Sans Pro", sans-serif;
+
+  // font size
+  --font-tracking: 0.06em;
+  --line-height-base: var(--leading-lg);
+  --base-font-size: 16px;
+  --font-size: 1rem;
+  --font-size-xxl: calc(var(--font-size) * 2); // 32px
+  --font-size-xl: calc(var(--font-size) * 1.5); // 24px
+  --font-size-lg: calc(var(--font-size) * 1.25); // 18px
+  --font-size-md: calc(var(--font-size)); // 16px
+  --font-size-sm: calc(var(--font-size) * 0.875); // 14px
+  --font-size-xs: calc(var(--font-size) * 0.75); // 12px
+  --font-size-xxs: calc(var(--font-size) * 0.5);
+  --font-p-size: 1em; // 16px
+
+  // font weight
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  // line hight
+  --leading-none: 1;
+  --leading-xs: 1.25;
+  --leading-sm: 1.275;
+  --leading-md: 1.5;
+  --leading-lg: 1.625;
+  --leading-xl: 2;
+
+  // heading
+  --h1-font-size: calc(var(--font-size) * 2);
+  --h2-font-size: calc(var(--font-size) * 1.75);
+  --h3-font-size: calc(var(--font-size) * 1.5);
+  --h4-font-size: calc(var(--font-size) * 1.25);
+  --h5-font-size: calc(var(--font-size) * 1.125);
+  --h6-font-size: var(--font-size);
+
+  // display
+  --font-display-1: calc(var(--font-size) * 2.875); // 46px
+  --font-display-2: calc(var(--font-size) * 2.5); // 40px
+  --font-display-3: calc(var(--font-size) * 2.25); // 36px
+  --font-display-4: calc(var(--font-size) * 1.875); // 30px
+  --font-display-5: calc(var(--font-size) * 1.625); // 26px
+  --font-display-6: calc(var(--font-size) * 1.375); // 22px
+  --font-display-7: calc(var(--font-size) * 1.25); // 20px
+  --font-display-8: calc(var(--font-size) * 1.125); // 18px
+
+  // display extra size
+  --font-display-ex-1: calc(var(--font-size) * 6.25); // 100px
+  --font-display-ex-2: calc(var(--font-size) * 4); // 64px
+  --font-display-ex-3: calc(var(--font-size) * 3.125); // 50px
+
+  // spacer
+  --spacer-unit: 1rem;
+  --spacer: var(--spacer-unit);
+  --spacer-xxs: calc(0.25 * var(--spacer-unit));
+  --spacer-xs: calc(0.5 * var(--spacer-unit));
+  --spacer-sm: calc(0.75 * var(--spacer-unit));
+  --spacer-md: calc(1.25 * var(--spacer-unit));
+  --spacer-lg: calc(2 * var(--spacer-unit));
+  --spacer-xl: calc(3.25 * var(--spacer-unit));
+  --spacer-xxl: calc(5.25 * var(--spacer-unit));
+
+  // section gutter
+  --gutter-sm: #{rem(10px)};
+  --gutter-md: #{rem(30px)};
+  --gutter-lg: #{rem(40px)};
+  --gutter-xl: #{rem(60px)};
+  --gutter-xxl: #{rem(80px)};
+  --gutter-xxxl: #{rem(120px)};
+
+  // z order
+  --z-header: 6000;
+  --z-nav-primary: 4000;
+  --z-nav-hamburger: calc(var(--z-nav-primary) + 500);
+  --z-overlay: 3999;
+  --z-sticky-banner: 3000;
+  --z-blind: 5000;
+  --z-share-links: 2000;
+  --z-modal: 7000;
+  --z-modal-overlay: 6500;
+  --z-loading-screen: 9999;
+  --z-go-btn: 500;
+
+  // border
+  --border-width-base: #{rem(2px)};
+
+  // radius
+  --border-radius-base: #{rem(6px)};
+  --border-radius-xs: #{rem(4px)};
+  --border-radius-sm: #{rem(6px)};
+  --border-radius-md: #{rem(20px)};
+  --border-radius-lg: #{rem(40px)};
+  --corner-radius: var(--border-radius-md);
+
+  // header
+  --header-height: #{rem(58px)};
+
+  // hamburger
+  --hamburger-toggle-size: #{rem(42px)};
+  --hamburger-toggle-icon-size: #{rem(22px)};
+
+  // container width
+  --container-fluid-max-width: #{rem(2208px)};
+  --container-max-width: auto;
+  --container-max-width-entry: #{rem(798px)};
+
+  // generate container breakpoint max width
+  @each $breakpoint, $width in $container-max-width {
+    /* stylelint-disable-next-line custom-property-pattern */
+    --container-max-width-#{$breakpoint}: #{rem($width)};
+
+    @include mq($from: $breakpoint) {
+      --container-max-width: #{rem($width)};
+    }
+  }
+
+  // wp admin bar height(overwrite js)
+  --wp-admin-bar-height: 0.01px;
+
+  // view inner height(overwrite js)
+  --vh: 1vh;
+  --fill-height: 100vh;
+  --vh-100: calc(var(--vh, 1vh) * 100);
+
+  // cubic
+  --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  // circ
+  --ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  --ease-out-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
+  --ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+  // expo
+  --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+
+  // quad
+  --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+  // quart
+  --ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+
+  // quint
+  --ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+
+  // sine
+  --ease-in-sine: cubic-bezier(0.47, 0, 0.745, 0.715);
+  --ease-out-sine: cubic-bezier(0.39, 0.575, 0.565, 1);
+  --ease-in-out-sine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+  // back
+  --ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  --ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  // swiper theme variable
+  --swiper-theme-color: var(--color-text);
+  --swiper-pagination-color: var(--color-text);
+
+  // Golden ratio
+  --golden-ratio: 1.6180339887;
+
+  // animation
+  --loading-thumbnail-animation: loading-thumbnail 600ms infinite;
+
+  // ------------------------ breakpoints md
+  @include mq($from: md) {
+    --header-height: #{rem(80px)};
+  }
+
+  // ------------------------ breakpoints lg
+  @include mq($from: lg) {
+    --hamburger-toggle-size: #{rem(54px)};
+    --hamburger-position-center: #{rem(9px)};
+    --hamburger-border-width: 4px;
+    --border-width-base: 3px;
+  }
+
+  // ------------------------ breakpoints xl
+  // @include mq($from: xl) {
+  // }
+}

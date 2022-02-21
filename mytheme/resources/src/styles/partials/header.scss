@@ -1,0 +1,131 @@
+@use "sass:math";
+
+.header {
+  position: fixed;
+  top: calc(0 + var(--wp-admin-bar-height));
+  z-index: var(--z-header);
+  width: 100%;
+  background-color: var(--color-base);
+  box-shadow: 0 rem(1px) rem(1px) rgba($color: #002978, $alpha: 0.04),
+    0 rem(1px) rem(8px) rgba($color: #002978, $alpha: 0.16);
+  transition: box-shadow 0.6s ease, background-color 0.6s ease;
+
+  @include mq($from: lg) {
+    background-color: transparent;
+    box-shadow: initial;
+  }
+}
+
+.js-header-scroll-out .header {
+  background-color: var(--color-base);
+  box-shadow: 0 rem(6px) rem(30px) rgba(0, 41, 120, 0.08),
+    0 rem(1px) rem(2px) rgba(0, 41, 120, 0.01);
+}
+
+[data-header-trigger] {
+  position: relative;
+  height: var(--header-height);
+}
+
+.js-is-menu-open .header {
+  box-shadow: 0 rem(1px) rem(1px) rgba($color: #002978, $alpha: 0.06);
+}
+
+.header__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding-right: var(--spacer);
+  padding-left: var(--spacer);
+  margin-right: auto;
+  margin-left: auto;
+
+  @include mq($from: md) {
+    max-width: var(--container-max-width);
+  }
+}
+
+.header__brand {
+  flex: 0 0 70%;
+
+  @include mq($from: sm) {
+    flex: 0 0 54%;
+  }
+
+  @include mq($from: md) {
+    flex: 0 0 36%;
+  }
+
+  @include mq($from: lg) {
+    flex: 0 0 percentage(math.div(318, 1244));
+  }
+
+  @include mq($from: xl) {
+    flex: 0 0 rem(318px);
+  }
+}
+
+.header__nav {
+  display: none;
+  flex: 1;
+
+  @include mq($from: lg) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: var(--spacer);
+  }
+}
+
+.header__nav__menu {
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+
+  li {
+    display: block;
+    margin-bottom: 0;
+    margin-left: var(--spacer);
+
+    @include mq($from: xl) {
+      margin-left: calc(var(--spacer) * 1.25);
+    }
+  }
+
+  a {
+    @include link-underline;
+
+    position: relative;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+
+    &,
+    &:active,
+    &:visited {
+      color: var(--color-primary);
+    }
+
+    > span {
+      min-height: 1.5em;
+    }
+  }
+}
+
+.header__nav__btnInquiry {
+  @extend .btn;
+
+  min-width: initial;
+  min-height: initial;
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-radius-xs);
+
+  @include mq($from: lg) {
+    min-width: initial;
+    min-height: initial;
+    margin-left: var(--spacer);
+    font-size: var(--font-size-sm);
+  }
+}

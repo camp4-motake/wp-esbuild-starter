@@ -1,0 +1,31 @@
+# Include your project-specific ignores in this file
+# Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
+.DS_store
+.cache-loader
+.idea
+.log
+.map
+.vs
+.env
+.cache
+vendor
+dist
+node_modules
+npm-debug.log
+yarn-error.log
+.fontcache.json
+*.code-workspace
+*.sql
+*.zip
+*.tar
+*.tar.gz
+
+/.db
+/.uploads
+/docker/conf
+/docker/wordpress/mu-plugins/*
+!/docker/wordpress/mu-plugins/mailcatcher.php
+/uploads
+Movefile.yml
+docker-compose.override.yml
+movefile.yml

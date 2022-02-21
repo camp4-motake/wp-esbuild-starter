@@ -1,0 +1,27 @@
+{{!--
+
+アイコンフォント用カスタムプロパティスタイル生成テンプレート (.hbs -> .scss)
+
+ex:
+https://github.com/tancredi/fantasticon/blob/master/templates/scss.hbs
+
+--}}
+/**
+* [!]編集禁止
+*
+* Generated with `npm run iconfont`
+*/
+@font-face {
+font-family: "{{ name }}";
+src: url(../fonts/_inline/{{ name }}.woff) format("woff");
+}
+
+:root {
+{{# each codepoints }}
+{{# if ../selector }}
+--{{ ../selector }}{{ ../prefix }}-{{ @key }}: "\\{{ codepoint this }}";
+{{ else }}
+--{{ tag }}{{ ../prefix }}-{{ @key }}: "\\{{ codepoint this }}";
+{{/ if }}
+{{/ each }}
+}

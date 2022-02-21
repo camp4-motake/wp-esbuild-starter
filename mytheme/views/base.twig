@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html {{ site.language_attributes }}>
+  {{ include('partials/head.twig') }}
+
+  <body class="{{ body_class }}">
+    {{ function('do_action', 'get_header') }}
+    {{ include('partials/header.twig') }}
+
+    <main class="contents">
+      {% block content %}
+
+      {% endblock %}
+    </main>
+    <!-- /.main -->
+
+    {{ function('do_action', 'get_footer') }}
+    {{ include('partials/footer.twig') }}
+    {{ function('wp_footer') }}
+  </body>
+</html>

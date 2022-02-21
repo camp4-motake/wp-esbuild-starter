@@ -1,0 +1,15 @@
+/**
+ * iOSの縦リサイズつぶし
+ */
+.js-is-scrollTop [data-touch-scroll-container] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: -0.1px;
+  left: 0;
+  overflow-y: auto;
+}
+
+.js-is-scrollTop [data-touch-scroll] {
+  margin-bottom: 0.1px;
+}

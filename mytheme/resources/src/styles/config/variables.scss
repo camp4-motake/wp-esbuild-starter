@@ -1,0 +1,65 @@
+@use "sass:math";
+
+/**
+ * Scss Variables
+ */
+
+// Breakpoints
+$mq-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px,
+) !default;
+
+// container max width
+$container-max-width: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1400px,
+) !default;
+
+$container-fluid-max-width: 2200px;
+
+// embed responsive ratio
+$embed-responsive-aspect-ratios: () !default;
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$embed-responsive-aspect-ratios: join(
+  ((21 9), (16 9), (4 3), (1 1)),
+  $embed-responsive-aspect-ratios
+);
+
+// direction
+$direction: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right,
+);
+
+$spacer-array: (
+  0: 0,
+  xxs: var(--spacer-xxs),
+  xs: var(--spacer-xs),
+  sm: var(--spacer-sm),
+  md: var(--spacer-md),
+  lg: var(--spacer-lg),
+  xl: var(--spacer-xl),
+  xxl: var(--spacer-xxl),
+  xxxl: var(--spacer-xxxl),
+);
+
+$grid-columns: 12 !default;
+
+// -----------------
+// Utility: pi
+// -----------------
+
+// pi
+$pi: 3.14159265359;
+$deg2radians: math.div($pi * 2, 360);
