@@ -1,55 +1,38 @@
 {
-  "version": 1,
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
   "settings": {
     "color": {
-      "link": true,
       "palette": [
         {
-          "slug": "text",
-          "color": "#222222",
-          "name": "Text"
-        },
-        {
-          "slug": "base",
-          "color": "#FFFFFF",
-          "name": "Base"
-        },
-        {
           "slug": "primary",
-          "color": "#002978",
+          "color": "#525ddc",
           "name": "Primary"
-        },
-        {
-          "slug": "secondary",
-          "color": "#f2f5fa",
-          "name": "Secondary"
-        },
-        {
-          "slug": "border",
-          "color": "#e0e0e0",
-          "name": "Border"
-        },
-        {
-          "slug": "warning",
-          "color": "#f8c61e",
-          "name": "Warning"
-        },
-        {
-          "slug": "danger",
-          "color": "#dd4d4d",
-          "name": "Danger"
         }
+      ],
+      "custom": false,
+      "customGradient": false
+    },
+    "custom": {
+      "spacing": {},
+      "typography": {
+        "font-size": {},
+        "line-height": {}
+      }
+    },
+    "spacing": {
+      "padding": true,
+      "units": [
+        "px",
+        "%",
+        "em",
+        "rem",
+        "vw",
+        "vh"
       ]
     },
-    "layout": {
-      "contentSize": "960px",
-      "wideSize": "1200px"
-    }
-  },
-  "styles": {
-    "color": {
-      "background": "var(--wp--preset--color--base)",
-      "text": "var(--wp--preset--color--text)"
+    "typography": {
+      "customFontSize": false
     }
   }
 }
