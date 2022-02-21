@@ -11,7 +11,9 @@
         }
       ],
       "custom": false,
-      "customGradient": false
+      "customDuotone": false,
+      "customGradient": false,
+      "duotone": null
     },
     "custom": {
       "spacing": {},
