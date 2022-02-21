@@ -61,8 +61,8 @@ add_action(
     );
 
     // main
-    wp_enqueue_style('main', asset_hash('main.css'), false, null);
-    wp_enqueue_script('main', asset_hash('main.js'), null, null, true);
+    wp_enqueue_style('main', asset_cache_buster('main.css'), false, null);
+    wp_enqueue_script('main', asset_cache_buster('main.js'), null, null, true);
   },
   100
 );
@@ -70,7 +70,7 @@ add_action(
 /**
  * ビルドファイル用のキャッシュバスター
  */
-function asset_hash($path = '')
+function asset_cache_buster($path = '')
 {
   if (!$path) {
     return '';
