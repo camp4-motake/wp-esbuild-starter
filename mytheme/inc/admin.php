@@ -214,7 +214,10 @@ add_action('admin_print_styles', function () {
   .yoast-notification.notice.notice-warning.is-dismissible { display: none !important; }';
 
   // 管理バー左上タイトルにローカルホスト・開発サーバー識別文字を追加
-  if (strpos($_SERVER['HTTP_HOST'], TEST_SERVER_DOMAIN) !== false) {
+  if (
+    TEST_SERVER_DOMAIN &&
+    strpos($_SERVER['HTTP_HOST'], TEST_SERVER_DOMAIN) !== false
+  ) {
     $style .=
       '#wp-admin-bar-site-name .ab-item:after { content:"（開発サーバー）"; }';
   } elseif (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
