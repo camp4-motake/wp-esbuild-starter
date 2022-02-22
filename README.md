@@ -94,6 +94,7 @@ wp cli の実行
 npm run wp-env cli {wp-cliコマンド}
 ```
 
+<!--
 ### セットアップ
 
 次のコマンドを実行すると、自動的に WordPress の初期設定が行われます:
@@ -120,6 +121,7 @@ bin/wp-export.mjs
 npm run wp-env start
 bin/wp-import.mjs
 ```
+-->
 
 ### ダッシュボードへのアクセス
 
