@@ -13,7 +13,8 @@
     "dev": "npm run dev --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
     "prettier": "npm run prettier --workspaces --if-present",
-    "wp-env": "wp-env"
+    "wp-env": "wp-env",
+    "//postinstall": "bin/install-acf-pro.mjs"
   },
   "devDependencies": {
     "@wordpress/env": "^4.2.1",
