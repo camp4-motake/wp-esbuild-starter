@@ -9,7 +9,7 @@ const wpPort = process.env.LOCAL_SERVER_PORT || 5000;
  */
 module.exports = {
   ui: false,
-  files: ['assets', '**/*.{php,twig}'],
+  files: ['resources/src', '**/*.{php,twig}'],
   ignore: ['node_modules'],
   proxy: `http://localhost:${wpPort}`,
   ghostMode: false,
