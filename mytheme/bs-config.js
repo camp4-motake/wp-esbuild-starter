@@ -1,8 +1,3 @@
-const path = require('path');
-const envFile = path.resolve(process.cwd(), '../.env');
-require('dotenv').config({ path: envFile || null });
-const wpPort = process.env.LOCAL_SERVER_PORT || 5000;
-
 /**
  * Browsersync options
  * https://browsersync.io/docs/options
@@ -11,7 +6,7 @@ module.exports = {
   ui: false,
   files: ['resources/src', '**/*.{php,twig}'],
   ignore: ['node_modules'],
-  proxy: `http://localhost:${wpPort}`,
+  proxy: `http://localhost:${process.env.WP_ENV_PORT || 8888}`,
   ghostMode: false,
   open: false,
   notify: false,

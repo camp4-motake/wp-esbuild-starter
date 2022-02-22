@@ -51,21 +51,6 @@ npm run build
 
 ### wp 関連
 
-wp-cli
-
-```sh
-docker-compose run --rm cli bash -c "{wp-cliコマンド}"
-```
-
-wordmove
-
-```sh
-docker-compose run --rm cli bash -c "cd /home && export RUBYOPT=-EUTF-8 && {wordmoveコマンド}"
-```
-
-> 設定済みの movefile を docker/conf/movefile.yml に配置しておく必要があります。<br />
-> ssh 接続の場合は、ホストの ~/.ssh の秘密鍵を参照します。
-
 ## その他
 
 - 画像が反映されない場合は、ルートの `.cache/` ディレクトリを削除してから再ビルドしてください。
@@ -76,3 +61,4 @@ docker-compose run --rm cli bash -c "cd /home && export RUBYOPT=-EUTF-8 && {word
 
 - [Timber](https://github.com/timber/timber) | [doc](https://timber.github.io/docs/)
 - [esbuild](https://github.com/evanw/esbuild) | [doc](https://esbuild.github.io/)
+- [@wordpress/env](https://github.com/WordPress/gutenberg/tree/trunk/packages/env)|[doc](https://ja.wordpress.org/team/handbook/block-editor/reference-guides/packages/packages-env/)
