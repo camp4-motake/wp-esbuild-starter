@@ -1,8 +1,0 @@
-custom-post-type-permalinks
-duplicate-post
-taxonomy-terms-order
-timber-library
-webp-converter-for-media
-wordpress-seo
-wp-multibyte-patch
-yoast-test-helper

@@ -15,6 +15,10 @@
     "prettier": "npm run prettier --workspaces --if-present",
     "wp-setup": "docker-compose up -d && sleep 7 && docker-compose run --rm --user root cli /html/setup.sh"
   },
+  "devDependencies": {
+    "@wordpress/env": "^4.2.1",
+    "zx": "^5.1.0"
+  },
   "workspaces": [
     "mytheme"
   ]
