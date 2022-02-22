@@ -138,7 +138,7 @@ wp-env の起動後に次の URL を開いてください。
 
 ## リソース
 
-- [@wordpress/env](https://github.com/WordPress/gutenberg/tree/trunk/packages/env)|[doc](https://ja.wordpress.org/team/handbook/block-editor/reference-guides/packages/packages-env/)
+- [@wordpress/env](https://github.com/WordPress/gutenberg/tree/trunk/packages/env) | [doc](https://ja.wordpress.org/team/handbook/block-editor/reference-guides/packages/packages-env/)
 - [esbuild](https://github.com/evanw/esbuild) | [doc](https://esbuild.github.io/)
 - [Timber](https://github.com/timber/timber) | [doc](https://timber.github.io/docs/)
 - [Twig](https://twig.symfony.com/doc/2.x/index.html) | [Timber Twig Cookbook](https://timber.github.io/docs/guides/cookbook-twig/)
