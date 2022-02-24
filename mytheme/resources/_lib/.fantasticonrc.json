@@ -1,0 +1,16 @@
+{
+  "inputDir": "./resource/fonts/_svg",
+  "outputDir": "./resource/fonts/_inline",
+  "fontTypes": [
+    "woff"
+  ],
+  "assetTypes": [
+    "scss"
+  ],
+  "templates": {
+    "scss": "./_lib/generators/fonts/icons.hbs"
+  },
+  "pathOptions": {
+    "scss": "./resource/styles/common/icons.scss"
+  }
+}

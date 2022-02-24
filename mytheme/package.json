@@ -6,7 +6,7 @@
     "build": "npm run clean && NODE_ENV=production node ./build.mjs",
     "clean": "rimraf dist",
     "prettier": "prettier --write \"**/*.{vue,js,jsx,ts,tsx,css,sass,scss,less,php,twig}\"",
-    "iconfont": "fantasticon && prettier --write \"resources/src/styles/common/icons.scss\""
+    "iconfont": "fantasticon && prettier --write \"resources/styles/common/icons.scss\""
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.1.3",

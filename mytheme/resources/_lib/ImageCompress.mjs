@@ -121,7 +121,7 @@ class ImageCompress {
   }
 
   _optimizeSvg(from, to) {
-    const base = ['--config', './lib/svgo.config.js', '-i', from, '-o', to];
+    const base = ['--config', './_lib/svgo.config.js', '-i', from, '-o', to];
     const command = this.data.command?.svg?.length
       ? this.data.command.svg.concat(base)
       : base;

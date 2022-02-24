@@ -7,7 +7,7 @@ import postcssUrl from 'postcss-url';
 import postcssSortMediaQueries from 'postcss-sort-media-queries';
 import postcssPurgeCss from '@fullhuman/postcss-purgecss';
 import purgeCssWordpress from 'purgecss-with-wordpress';
-import ImageCompress from './resources/lib/ImageCompress.mjs';
+import ImageCompress from './resources/_lib/ImageCompress.mjs';
 
 const inProd = process.env.NODE_ENV === 'production';
 const inDev = process.env.NODE_ENV === 'development';
@@ -38,10 +38,10 @@ const build = async () => {
    * compress image & webp generate & copy
    */
   new ImageCompress({
-    src: ['./resources/src/**/*.{jpg,jpeg,png,svg}', '!**/_*/**'],
+    src: ['./resources/**/*.{jpg,jpeg,png,svg}', '!**/_*/**'],
     dest: './dist',
     option: {
-      base: './resources/src',
+      base: './resources',
       cacheDir: '../.cache/images',
     },
   });
@@ -52,7 +52,7 @@ const build = async () => {
    * @link https://esbuild.github.io/api/
    */
   esbuild.build({
-    entryPoints: ['./resources/src/main.js', './resources/src/editor.js'],
+    entryPoints: ['./resources/main.js', './resources/editor.js'],
     outdir: './dist',
     bundle: true,
     loader: { '.woff': 'dataurl' },
