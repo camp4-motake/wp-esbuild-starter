@@ -31,13 +31,13 @@ WordPress のローカルサーバーを自動セットアップ
 npm run wp-setup
 ```
 
-完了後は <http://localhost:{}/>
+完了後は <http://localhost:{LOCAL_SERVER_PORT}/> で WP が表示できます（{LOCAL_SERVER_PORT} は `.env` で設定された値）
 
 ## コマンド
 
 ### フロントエンド
 
-ウォッチ -> <http://localhost:3000/>
+ウォッチを起動 -> <http://localhost:3000/> で作業用のブラウザープレビューを表示します。
 
 ```sh
 npm run dev
