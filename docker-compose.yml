@@ -38,7 +38,6 @@ services:
         define('WP_DEBUG', true );
         define('DISALLOW_FILE_EDIT', false );
         define('WPCF7_AUTOP', false );
-
     working_dir: "/var/www/html${WP_CORE_DIR}/"
 
   cli:
