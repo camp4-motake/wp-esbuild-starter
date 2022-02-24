@@ -1,4 +1,4 @@
-# WP esbuild starter
+# wp theme build starter
 
 WP ローカル開発環境（docker-compose）、Twig による WP テンプレート記述、 esbuid での高速ビルド対応の WP テーマ開発用ボイラープレート
 
@@ -9,7 +9,7 @@ WP ローカル開発環境（docker-compose）、Twig による WP テンプレ
 
 ### 必要プラグイン
 
-- [Timber](https://ja.wordpress.org/plugins/timber-library/)（必須）
+- [Timber](https://ja.wordpress.org/plugins/timber-library/)（Twig テンプレートの表示には必須）
 
 ## 初期設定
 
