@@ -1,6 +1,6 @@
 # WP esbuild starter
 
-wp-env の開発環境、Twig による WP テンプレート記述、 esbuid での高速ビルド対応のテーマ開発用ボイラープレート
+WP ローカル開発環境（docker-compose）、Twig による WP テンプレート記述、 esbuid での高速ビルド対応の WP テーマ開発用ボイラープレート
 
 ## 必要環境
 
@@ -28,7 +28,7 @@ npm install
 WordPress のローカルサーバーを自動セットアップ
 
 ```sh
-npm run wp-env start
+npm run wp-setup
 ```
 
 完了後は <http://localhost:{}/>
