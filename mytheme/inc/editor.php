@@ -60,7 +60,7 @@ add_action(
     echo "\n<script>{$js_values}</script>\n";
     echo "<script src='" .
       get_template_directory_uri() .
-      '/editor/editor.js' .
+      '/dist/editor.js' .
       "' id='modules/custom-editor-script-js'></script>\n";
   },
   100
@@ -73,7 +73,7 @@ add_action(
   'admin_print_styles',
   function () {
     $theme_uri = get_template_directory_uri();
-    echo "\n<link rel='stylesheet' id='custom-editor-css' href='{$theme_uri}'/editor/editor.css' media='all' />\n";
+    echo "\n<link rel='stylesheet' id='custom-editor-css' href='{$theme_uri}'/dist/editor.css' media='all' />\n";
   },
   200
 );
