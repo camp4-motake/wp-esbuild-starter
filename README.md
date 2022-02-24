@@ -53,7 +53,7 @@ npm run build
 
 ローカルサーバー起動後に次の URL を開いてください。
 
-<http://localhost:8888/wp-admin/>
+<http://localhost:{LOCAL_SERVER_PORT}/wp-admin/>
 
 - user: `admin`
 - password: `admin`
