@@ -94,35 +94,6 @@ wp cli の実行
 npm run wp-env cli {wp-cliコマンド}
 ```
 
-<!--
-### セットアップ
-
-次のコマンドを実行すると、自動的に WordPress の初期設定が行われます:
-
-```bash
-npm run wp-env start
-bin/wp-setup.mjs
-```
-
-### データベースおよびメディアファイルのエクスポート
-
-WordPress ローカル環境のデータベースとメディアファイルの状態を `bin/snapshot` ディレクトリに出力できます。これを Git リポジトリにコミットすることで、別のローカル環境でも同様の状態を再現できるようになります。
-
-```bash
-npm run wp-env start
-bin/wp-export.mjs
-```
-
-### データベースおよびメディアファイルのインポート
-
-`bin/snapshot` ディレクトリに前回の状態が保存されていれば、データベースとメディアファイルを復元できます。
-
-```bash
-npm run wp-env start
-bin/wp-import.mjs
-```
--->
-
 ### ダッシュボードへのアクセス
 
 wp-env の起動後に次の URL を開いてください。

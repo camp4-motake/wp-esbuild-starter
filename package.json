@@ -13,11 +13,9 @@
     "dev": "npm run dev --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
     "prettier": "npm run prettier --workspaces --if-present",
-    "wp-env": "wp-env",
-    "//postinstall": "bin/install-acf-pro.mjs"
+    "wp-setup": "docker-compose up -d && sleep 7 && docker-compose run --rm --user root cli /html/setup.sh"
   },
   "devDependencies": {
-    "@wordpress/env": "^4.2.1",
     "zx": "^5.1.0"
   },
   "workspaces": [
