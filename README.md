@@ -13,64 +13,31 @@ wp-env の開発環境、Twig による WP テンプレート記述、 esbuid �
 
 ## 初期設定
 
-依存パッケージのインストール
+環境変数ファイルを作成
+
+```sh
+cp ./docker/.env-example ./.env
+```
+
+依存 node_module パッケージをインストール
 
 ```sh
 npm install
 ```
 
-ローカルサーバーで WordPress を起動（wp-env）
+WordPress のローカルサーバーを自動セットアップ
 
 ```sh
 npm run wp-env start
 ```
 
-<!--
-### [ACF Pro](https://www.advancedcustomfields.com/pro/) の設定
-
-ACF Pro を使用する場合は、ソースコードを次のように変更してください。
-
-`.wp-env.override.json`:
-
-```diff
-+{
-+	"config": {
-+		"ACF_PRO_LICENSE": "SET_YOUR_KEY"
-+	}
-+}
-```
-
-`package.json`:
-
-```diff
--	"//postinstall": "bin/install-acf-pro.mjs"
-+	"postinstall": "bin/install-acf-pro.mjs"
-```
-
-`.wp-env.json`:
-
-```diff
-{
-	"plugins": [
-+		"./plugins/advanced-custom-fields-pro",
-		"..."
-	],
-	...
-}
-```
-
-設定後に次のコマンドを実行します。
-
-```bash
-npm install
-```
--->
+完了後は <http://localhost:{}/>
 
 ## コマンド
 
 ### フロントエンド
 
-ウォッチ
+ウォッチ -> <http://localhost:3000/>
 
 ```sh
 npm run dev
@@ -82,26 +49,16 @@ npm run dev
 npm run build
 ```
 
-> ビルド後にテーマディレクトリのみ納品、またはデプロイします。
+## ダッシュボードへのアクセス
 
-### wp-env
-
-wp-env の詳細は[公式の document](https://ja.wordpress.org/team/handbook/block-editor/reference-guides/packages/packages-env/)を参照してください。
-
-wp cli の実行
-
-```sh
-npm run wp-env cli {wp-cliコマンド}
-```
-
-### ダッシュボードへのアクセス
-
-wp-env の起動後に次の URL を開いてください。
+ローカルサーバー起動後に次の URL を開いてください。
 
 <http://localhost:8888/wp-admin/>
 
 - user: `admin`
-- password: `password`
+- password: `admin`
+
+> 別途データベースをインポートしている場合は、そのデータに登録されているユーザーアカウントでログインしてください。
 
 ## その他
 
@@ -111,7 +68,6 @@ wp-env の起動後に次の URL を開いてください。
 
 ## リソース
 
-- [@wordpress/env](https://github.com/WordPress/gutenberg/tree/trunk/packages/env) | [doc](https://ja.wordpress.org/team/handbook/block-editor/reference-guides/packages/packages-env/)
 - [esbuild](https://github.com/evanw/esbuild) | [doc](https://esbuild.github.io/)
 - [Timber](https://github.com/timber/timber) | [doc](https://timber.github.io/docs/)
 - [Twig](https://twig.symfony.com/doc/2.x/index.html) | [Timber Twig Cookbook](https://timber.github.io/docs/guides/cookbook-twig/)
