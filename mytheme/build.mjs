@@ -22,7 +22,7 @@ const purgeCssConfig = {
     ],
     greedy: [/^(js|is|has|wf|wp|u)[A-Z-_]\w+$/],
   },
-  content: [`*.+(php|html|twig|ts|tsx|js|jsx|vue)`],
+  content: [`**/*.+(php|html|twig|ts|tsx|js|jsx|vue)`],
   // variables: true,
 };
 
