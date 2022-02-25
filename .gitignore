@@ -133,3 +133,9 @@ dist
 /plugins/advanced-custom-fields-pro/
 .wp-env.override.json
 docker-compose.override.yml
+
+# movefile
+movefile.rb
+movefile.yaml
+movefile.yml
+Movefile
