@@ -31,7 +31,9 @@ WordPress のローカルサーバーを自動セットアップ
 npm run wp-setup
 ```
 
-完了後は <http://localhost:{LOCAL_SERVER_PORT}/> で WP が表示できます（{LOCAL_SERVER_PORT} は `.env` で設定された値）
+完了後は <http://localhost:8888/> で WP が表示できます。
+
+> 注: ポート番号　は環境変数 `.env` で設定されている `LOCAL_SERVER_PORT`値になります。
 
 ## コマンド
 
@@ -53,7 +55,7 @@ npm run build
 
 ローカルサーバー起動後に次の URL を開いてください。
 
-<http://localhost:{LOCAL_SERVER_PORT}/wp-admin/>
+<http://localhost:8888/wp-admin/>
 
 - user: `admin`
 - password: `admin`
