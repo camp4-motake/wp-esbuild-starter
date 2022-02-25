@@ -69,5 +69,5 @@ npm run build
 ## リソース
 
 - [esbuild](https://github.com/evanw/esbuild) | [doc](https://esbuild.github.io/)
-- [Timber](https://github.com/timber/timber) | [doc](https://timber.github.io/docs/)
+- [Timber](https://github.com/timber/timber) | [doc](https://timber.github.io/docs/) | [cheetsheet](https://timber.github.io/docs/guides/cheatsheet/)
 - [Twig](https://twig.symfony.com/doc/2.x/index.html) | [Timber Twig Cookbook](https://timber.github.io/docs/guides/cookbook-twig/)
