@@ -139,3 +139,6 @@ movefile.rb
 movefile.yaml
 movefile.yml
 Movefile
+
+# dump directory
+.dump/
