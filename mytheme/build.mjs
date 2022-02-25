@@ -7,6 +7,7 @@ import postcssUrl from 'postcss-url';
 import postcssSortMediaQueries from 'postcss-sort-media-queries';
 import postcssPurgeCss from '@fullhuman/postcss-purgecss';
 import purgeCssWordpress from 'purgecss-with-wordpress';
+import { svgSprite } from './resources/_lib/svgSprite.mjs';
 import ImageCompress from './resources/_lib/ImageCompress.mjs';
 
 const inProd = process.env.NODE_ENV === 'production';
@@ -34,6 +35,11 @@ const postcssPlugins = [
 ];
 
 const build = async () => {
+  /**
+   * svg sprite
+   */
+  svgSprite('./resources/images/_sprite/*.svg', `./dist/images`);
+
   /**
    * compress image & webp generate & copy
    */
