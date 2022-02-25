@@ -46,8 +46,19 @@ add_action(
       null
     );
     // main
-    wp_enqueue_style('main', cache_buster('/dist/main.css'), false, null);
-    wp_enqueue_script('main', cache_buster('/dist/main.js'), null, null, true);
+    wp_enqueue_style(
+      'styles/main',
+      cache_buster('/dist/main.css'),
+      false,
+      null
+    );
+    wp_enqueue_script(
+      'module/main',
+      cache_buster('/dist/main.js'),
+      null,
+      null,
+      true
+    );
   },
   100
 );
