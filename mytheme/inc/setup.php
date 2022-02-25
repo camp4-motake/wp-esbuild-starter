@@ -249,3 +249,33 @@ add_filter(
   10,
   2
 );
+
+/**
+ * script loader tag に module　属性を追加
+ */
+add_filter(
+  'script_loader_tag',
+  function ($tag /* , $handle */) {
+    if (is_admin()) {
+      return $tag;
+    }
+
+    $replace = $tag;
+
+    if (
+      preg_match('/module\//', $replace) &&
+      preg_match('/text\/javascript/', $replace)
+    ) {
+      return str_replace('text/javascript', 'module', $replace);
+    }
+
+    if (preg_match('/nomodule\//', $replace)) {
+      // $replace = str_replace('<script ', '<script nomodule ', $replace);
+      $replace = str_replace("type='text/javascript'", 'nomodule', $replace);
+    }
+
+    return $replace;
+  },
+  10,
+  2
+);
