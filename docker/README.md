@@ -17,17 +17,20 @@ docker/
 
 ## ショートカットコマンド
 
-wp-cli
+### wp-cli
 
 ```sh
 npm run wp-cli {wp-cli_command}
 ```
 
-wordmove
+### Wordmove
 
 ```sh
 npm run wp-wordmove {wordmove_command}
 ```
+
+- 事前に docker/conf/movefile.yml を配置する必要があります。
+- ssh 時の秘密鍵や ssh config はホスト OS の ~/.ssh を参照します。
 
 ## docker-compose を拡張
 
