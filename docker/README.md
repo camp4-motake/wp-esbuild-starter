@@ -39,7 +39,7 @@ npm run wp-wordmove {wordmove_command}
 ```yaml
 # 例） mailhog を追加する場合
 
-version: "3.1"
+version: "3.8"
 
 services:
   mailhog:
