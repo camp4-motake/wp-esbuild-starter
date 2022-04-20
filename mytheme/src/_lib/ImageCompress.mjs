@@ -79,12 +79,12 @@ class ImageCompress {
     }
 
     // cache copy
-    console.log('COPY:', copyTo);
+    // console.log('COPY:', copyTo);
     this._copyFiles(cacheTo, copyTo);
 
     // cache webp copy
     if (['.jpeg', '.jpg', '.png'].includes(extname)) {
-      console.log('COPY:', this._replaceExt(copyTo));
+      // console.log('COPY:', this._replaceExt(copyTo));
       this._copyFiles(this._replaceExt(cacheTo), this._replaceExt(copyTo));
     }
   }
