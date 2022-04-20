@@ -27,5 +27,11 @@ define('MQ_PORTRAIT', '(orientation: portrait)');
 // Google Tag Manager テンプレートを有効化
 define('IS_ENABLE_GOOGLE_TAG_MANAGER', true);
 
-// Google Webフォント使用時に preconnect を有効化
+// Google Webフォント読み込みを有効化
 define('IS_ENABLE_GOOGLE_FONTS', true);
+
+//　Google Webフォント
+define('GOOGLE_FONTS', [
+  'google-fonts' =>
+    'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap',
+]);
