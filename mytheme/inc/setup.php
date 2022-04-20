@@ -38,27 +38,14 @@ add_action(
       wp_dequeue_style('wp-block-library');
     }
 
+    if (!IS_ENABLE_GOOGLE_FONTS || count(GOOGLE_FONTS) <= 0) {
+      return;
+    }
+
     // web fonts
-    wp_enqueue_style(
-      'google-fonts',
-      'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap',
-      false,
-      null
-    );
-    // main
-    wp_enqueue_style(
-      'styles/main',
-      cache_buster('/dist/main.css'),
-      false,
-      null
-    );
-    wp_enqueue_script(
-      'module/main',
-      cache_buster('/dist/main.js'),
-      null,
-      null,
-      true
-    );
+    foreach (GOOGLE_FONTS as $queue => $src) {
+      wp_enqueue_style($queue, $src, false, null);
+    }
   },
   100
 );
