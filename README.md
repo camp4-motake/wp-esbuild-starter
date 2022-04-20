@@ -1,6 +1,6 @@
 # wp theme build starter
 
-WP ローカル開発環境（docker-compose）、Twig による WP テンプレート記述、 esbuid での高速ビルド対応の WP テーマ開発用ボイラープレート
+WP ローカル開発環境（docker-compose）、Twig による WP テンプレート記述、 Vite での高速ビルドが可能な WP テーマ開発用ボイラープレート
 
 ## 必要環境
 
@@ -76,6 +76,6 @@ npm run build
 
 ## リソース
 
-- [esbuild](https://github.com/evanw/esbuild) | [doc](https://esbuild.github.io/)
+- [Vite](https://github.com/vitejs/vite) | [doc](https://vitejs.dev/)
 - [Timber](https://github.com/timber/timber) | [doc](https://timber.github.io/docs/) | [cheetsheet](https://timber.github.io/docs/guides/cheatsheet/)
 - [Twig](https://twig.symfony.com/doc/2.x/index.html) | [Timber Twig Cookbook](https://timber.github.io/docs/guides/cookbook-twig/)
