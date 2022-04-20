@@ -9,7 +9,7 @@ WP ローカル開発環境（docker-compose）、Twig による WP テンプレ
 
 ### 必要プラグイン
 
-- [Timber](https://ja.wordpress.org/plugins/timber-library/)（Twig テンプレートの表示には必須）
+- [Timber](https://ja.wordpress.org/plugins/timber-library/)（Twig テンプレートの表示に必須）
 
 ## 初期設定
 
@@ -17,6 +17,12 @@ WP ローカル開発環境（docker-compose）、Twig による WP テンプレ
 
 ```sh
 cp ./docker/.env-example ./.env
+```
+
+ACF Pro のライセンスキーがある場合は、`.env`にライセンスキーを追記（任意）
+
+```diff
++ ACF_PRO_KEY='{key}'
 ```
 
 依存 node_module パッケージをインストール

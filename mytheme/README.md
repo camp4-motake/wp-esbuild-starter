@@ -1,6 +1,6 @@
 # WordPress Theme
 
-- WordPress >= 5.9
+- WordPress >= 5.9.3
 - PHP >= 7.4 (with php-mbstring enabled)
 
 **_注意。_**
