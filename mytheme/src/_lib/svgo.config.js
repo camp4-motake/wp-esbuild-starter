@@ -2,7 +2,7 @@
 module.exports = {
   plugins: [
     'preset-default',
-    'prefixIds',
+    // 'prefixIds',
     {
       name: 'sortAttrs',
       params: {

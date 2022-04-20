@@ -25,6 +25,7 @@ export const svgSprite = (
     '-s',
     `--symbol-dest ${outPath}`,
     '--symbol-sprite svg-sprite.svg',
+    '--svg-xmldecl false',
     `${srcPath}`,
     `${config}`,
     '--shape-transform svgo',
