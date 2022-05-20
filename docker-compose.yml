@@ -41,7 +41,7 @@ services:
     working_dir: "/var/www/html${WP_CORE_DIR}/"
 
   cli:
-    image: welaika/wordmove:latest
+    image: welaika/wordmove:php7
     tty: true
     depends_on:
       - database
