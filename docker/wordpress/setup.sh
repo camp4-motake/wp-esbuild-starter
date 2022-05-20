@@ -42,31 +42,31 @@ fi
 
 # remove official theme
 if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentysixteen ]; then
-  wp theme delete twentysixteen --allow-root &
+  wp theme delete twentysixteen --allow-root
 fi
 
 if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentyseventeen ]; then
-  wp theme delete twentyseventeen --allow-root &
+  wp theme delete twentyseventeen --allow-root
 fi
 
 if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentyeighteen ]; then
-  wp theme delete twentyeighteen --allow-root &
+  wp theme delete twentyeighteen --allow-root
 fi
 
 if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentynineteen ]; then
-  wp theme delete twentynineteen --allow-root &
+  wp theme delete twentynineteen --allow-root
 fi
 
 if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentytwenty ]; then
-  wp theme delete twentytwenty --allow-root &
+  wp theme delete twentytwenty --allow-root
 fi
 
 if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentytwentyone ]; then
-  wp theme delete twentytwentyone --allow-root &
+  wp theme delete twentytwentyone --allow-root
 fi
 
 if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentytwentytwo ]; then
-  wp theme delete twentytwentytwo --allow-root &
+  wp theme delete twentytwentytwo --allow-root
 fi
 
 # remove default plugin
@@ -75,7 +75,7 @@ wp plugin delete hello.php akismet --allow-root
 # install plugin
 while read line
 do
-  wp plugin install --allow-root $line &
+  wp plugin install --allow-root $line
 done < /html/plugin.txt
 wait
 
