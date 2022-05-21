@@ -1,8 +1,8 @@
-@custom-media --viewport-sm (width <= 36em);
-@custom-media --viewport-md (width <= 48em);
-@custom-media --viewport-lg (width <= 62em);
-@custom-media --viewport-xl (width <= 75em);
-@custom-media --viewport-xxl (width <= 100em);
+@custom-media --viewport-sm (width >= 36em);
+@custom-media --viewport-md (width >= 48em);
+@custom-media --viewport-lg (width >= 62em);
+@custom-media --viewport-xl (width >= 75em);
+@custom-media --viewport-xxl (width >= 100em);
 @custom-media --viewport-landscape (orientation: landscape);
 @custom-media --viewport-portrait (orientation: portrait);
 @custom-media --viewport-4by3 (min-aspect-ratio: 4/3);
