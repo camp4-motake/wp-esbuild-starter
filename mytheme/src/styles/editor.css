@@ -1,10 +1,7 @@
 /**
- * Editor
- */
+ * Editor */
 
-@use "config/mq-setting";
-@use "common/custom-properties";
-@use "editor/adminFix";
+@import "./editor/admin.css";
 
 .editor-styles-wrapper {
   font-family: var(--font-family-base);
@@ -17,10 +14,3 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-// .editor-styles-wrapper > * {
-//   /* stylelint-disable-next-line no-invalid-position-at-import-rule */
-//   @import "common";
-//   /* stylelint-disable-next-line no-invalid-position-at-import-rule */
-//   @import "components";
-// }

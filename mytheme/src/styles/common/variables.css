@@ -1,0 +1,15 @@
+@custom-media --viewport-sm (width <= 36em);
+@custom-media --viewport-md (width <= 48em);
+@custom-media --viewport-lg (width <= 62em);
+@custom-media --viewport-xl (width <= 75em);
+@custom-media --viewport-xxl (width <= 100em);
+@custom-media --viewport-landscape (orientation: landscape);
+@custom-media --viewport-portrait (orientation: portrait);
+@custom-media --viewport-4by3 (min-aspect-ratio: 4/3);
+@custom-media --viewport-16by9 (min-aspect-ratio: 16/9);
+@custom-media --viewport-21by9 (min-aspect-ratio: 21/9);
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+:root {
+  --color-primary: rgb(18 52 86 / 47.1%);
+}
