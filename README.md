@@ -1,6 +1,11 @@
 # wp theme build starter
 
-WP ローカル開発環境（docker-compose）、Twig による WP テンプレート記述、 Vite での高速ビルドが可能な WP テーマ開発用ボイラープレート
+WP テーマ開発用ボイラープレート
+
+## Feature
+
+- WP : Local Dev WP (docker-compose) | Twig Template (Timber)
+- Frontend : [Vite](https://vitejs.dev/config/) | [Postcss](https://preset-env.cssdb.org/features/) | [TypeScript](https://www.typescriptlang.org/docs/)
 
 ## 必要環境
 
@@ -84,5 +89,5 @@ npm run build
 ## リソース
 
 - [Vite](https://github.com/vitejs/vite) | [doc](https://vitejs.dev/)
-- [Timber](https://github.com/timber/timber) | [doc](https://timber.github.io/docs/) | [cheetsheet](https://timber.github.io/docs/guides/cheatsheet/)
+- [Timber](https://github.com/timber/timber) | [doc](https://timber.github.io/docs/) | [CheatSheet](https://timber.github.io/docs/guides/cheatsheet/)
 - [Twig](https://twig.symfony.com/doc/2.x/index.html) | [Timber Twig Cookbook](https://timber.github.io/docs/guides/cookbook-twig/)
