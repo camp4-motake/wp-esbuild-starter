@@ -96,9 +96,11 @@ export default () => {
     });
 
     // embedの許可ブロック以外を解除
-    wp?.blocks?.getBlockVariations('core/embed').forEach((valiation) => {
-      if (allowedEmbedVariation.indexOf(valiation.name) !== -1) return;
-      wp?.blocks?.unregisterBlockVariation('core/embed', valiation.name);
-    });
+    wp?.blocks
+      ?.getBlockVariations('core/embed')
+      .forEach((valiation: { name: string }) => {
+        if (allowedEmbedVariation.indexOf(valiation.name) !== -1) return;
+        wp?.blocks?.unregisterBlockVariation('core/embed', valiation.name);
+      });
   });
 };

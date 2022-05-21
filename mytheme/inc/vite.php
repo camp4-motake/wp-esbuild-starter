@@ -2,12 +2,13 @@
 
 namespace Lib\Vite;
 
+define('ENTRY_POINT_PATH', 'src/main.ts');
 define('VITE_ASSETS_DIR', ASSETS_DIR_URI);
 
 add_action(
   'wp_head',
   function () {
-    echo vite('src/main.js');
+    echo vite(ENTRY_POINT_PATH);
   },
   8
 );
@@ -15,7 +16,7 @@ add_action(
 add_action(
   'wp_enqueue_scripts',
   function () {
-    cssEnqueue('src/main.js');
+    cssEnqueue(ENTRY_POINT_PATH);
   },
   100
 );

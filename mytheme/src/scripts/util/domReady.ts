@@ -1,4 +1,9 @@
-export default function domReady(callback) {
+/**
+ * Execute a function when the DOM is fully loaded.
+ *
+ * @param {function} callback
+ */
+export const domReady = (callback: (event?: Event) => void) => {
   if (typeof document === 'undefined') {
     return;
   }
@@ -12,4 +17,6 @@ export default function domReady(callback) {
 
   // DOMContentLoaded has not fired yet, delay callback until then.
   document.addEventListener('DOMContentLoaded', callback);
-}
+
+  return;
+};

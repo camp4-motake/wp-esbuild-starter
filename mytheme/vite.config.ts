@@ -21,8 +21,8 @@ export default defineConfig({
     assetsDir: '.',
     rollupOptions: {
       input: {
-        main: 'src/main.js',
-        editor: 'src/editor.js',
+        main: 'src/main.ts',
+        editor: 'src/editor.ts',
       },
     },
   },

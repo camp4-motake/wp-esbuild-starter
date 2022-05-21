@@ -35,7 +35,7 @@ const validateSlug = () => {
 };
 
 export default () => {
-  if (!window.wp || !window.CUSTOM_THEME_SLUG_STRING_CHECK) {
+  if (!wp || !window.CUSTOM_THEME_SLUG_STRING_CHECK) {
     return;
   }
   wp.data.subscribe(validateSlug);
