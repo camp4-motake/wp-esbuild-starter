@@ -9,7 +9,7 @@ body {
 }
 
 @media (--viewport-md) {
-  a {
-    font-size: rem(20px);
+  body {
+    font-size: 18px;
   }
 }
