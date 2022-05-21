@@ -5,7 +5,11 @@
   "scss.validate": false,
   "stylelint.validate": [
     "css",
-    "scss"
+    "scss",
+    "postcss",
+  ],
+  "eslint.workingDirectories": [
+    "./mytheme"
   ],
   "cSpell.words": [],
   "[php]": {

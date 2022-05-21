@@ -24,7 +24,7 @@ module.exports = {
   ui: false,
   proxy: {
     // proxy wp server
-    target: process.env.PROXY_URL ||`http://localhost:${port.wp}`,
+    target: process.env.PROXY_URL || `http://localhost:${port.wp}`,
 
     // proxy vite dev server assets
     middleware: ['/src', '/@vite', '/@fs'].map((route) => ({

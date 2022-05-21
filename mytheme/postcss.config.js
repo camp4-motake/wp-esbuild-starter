@@ -6,14 +6,23 @@ const purgeCssConfig = {
     ],
     greedy: [/^(js|is|has|wf|wp|u)[A-Z-_]\w+$/],
   },
-  content: ['./**/*.+(html|php|twig|ts|tsx|js|jsx|vue)'],
+  content: ['./src/**/*.+(html|php|twig|ts|tsx|js|jsx|vue)'],
+  variables: true,
+  keyframes: true,
 };
 
-module.exports = {
-  plugins: [
-    require('autoprefixer'),
-    require('postcss-url')({ filter: '**/_inline/*', url: 'inline' }),
-    require('postcss-sort-media-queries'),
-    require('@fullhuman/postcss-purgecss')(purgeCssConfig),
-  ],
+module.exports = (ctx) => {
+  const inProduction = ctx.env === 'production';
+  return {
+    plugins: {
+      'postcss-import': {},
+      'postcss-preset-env': { stage: 1, autoprefixer: { grid: 'autoplace' } },
+      'postcss-url': { filter: '**/_inline/*', url: 'inline' },
+      'postcss-rem': {},
+      'postcss-sort-media-queries': {},
+      ...(inProduction
+        ? { '@fullhuman/postcss-purgecss': purgeCssConfig }
+        : {}),
+    },
+  };
 };
