@@ -44,8 +44,7 @@
   "dependencies": {
     "@alpinejs/intersect": "^3.10.2",
     "alpinejs": "^3.10.2",
-    "ress": "^5.0.2",
-    "vanilla-cookieconsent": "^2.8.0"
+    "ress": "^5.0.2"
   },
   "optionalDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.27.1",
