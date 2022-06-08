@@ -9,26 +9,26 @@
  *
  */
 
-type InView = {
+type Props = {
   shown: boolean;
-  once: boolean;
+  isRepeat: boolean;
 };
 
-export const inView = (once = true) => ({
+export const inView = (...args: unknown[]) => ({
   shown: false,
-  once,
+  isRepeat: args[0],
 
   // x-bind
   trigger: {
-    ['x-intersect:enter'](this: InView): void {
+    ['x-intersect:enter'](this: Props): void {
       this.shown = true;
     },
 
-    ['x-intersect:leave'](this: InView): void {
-      if (!once) this.shown = false;
+    ['x-intersect:leave'](this: Props): void {
+      if (this.isRepeat) this.shown = false;
     },
 
-    [':data-scroll'](this: InView): string {
+    [':data-scroll'](this: Props): string {
       return this.shown ? 'in' : 'out';
     },
   },

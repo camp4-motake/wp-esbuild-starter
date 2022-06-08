@@ -1,13 +1,6 @@
 {% extends 'base.twig' %}
 
 {% block content %}
-  <h1>
-    This is my archive
-  </h1>
-
-  <ol>
-    {% for post in posts %}
-      <li><a href="{{ post.link }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ol>
+  {{ include('components/page-header.twig', { lead: lead_title, sub: sub_title }) }}
+  {{ include('components/basic-loop.twig', { posts: posts }) }}
 {% endblock %}

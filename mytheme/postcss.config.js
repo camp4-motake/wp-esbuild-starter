@@ -6,20 +6,24 @@ const purgeCssConfig = {
     ],
     greedy: [/^(js|is|has|wf|wp|u)[A-Z-_]\w+$/],
   },
-  content: ['./src/**/*.+(html|php|twig|ts|tsx|js|jsx|vue)'],
+  content: ['./**/*.+(html|php|twig|ts|tsx|js|jsx|vue)'],
   variables: true,
   keyframes: true,
 };
 
-module.exports = (ctx) => {
-  const inProduction = ctx.env === 'production';
+module.exports = ({ env }) => {
+  const inProduction = env === 'production';
   return {
     plugins: {
-      'postcss-import': {},
-      'postcss-preset-env': { stage: 1, autoprefixer: { grid: 'autoplace' } },
+      'postcss-preset-env': {
+        stage: 2,
+        autoprefixer: { grid: 'autoplace' },
+        features: { 'custom-properties': false },
+      },
       'postcss-url': { filter: '**/_inline/*', url: 'inline' },
-      'postcss-rem': {},
       'postcss-sort-media-queries': {},
+
+      // production only
       ...(inProduction
         ? { '@fullhuman/postcss-purgecss': purgeCssConfig }
         : {}),

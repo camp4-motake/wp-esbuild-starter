@@ -1,0 +1,19 @@
+{% set image = post.thumbnail.src %}
+{% set imgClass = image ? ' content__link--thumbnail' : '' %}
+<article class="content">
+  <a href="{{ post.link|e('esc_url') }}" class="content__link{{ imgClass }}">
+    <div class="content__thumbnailColumn">
+      <figure class="content__thumbnail">
+        {{ function('get_the_post_thumbnail', post.id, 'large') }}
+      </figure>
+    </div>
+    <div class="content__body">
+      <div class="content__meta">
+        {{ include('components/entry-meta.twig') }}
+      </div>
+      <h3 class="content__heading">
+        <span>{{ post.title|e('esc_html') }}</span>
+      </h3>
+    </div>
+  </a>
+</article>

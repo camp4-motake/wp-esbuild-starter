@@ -8,16 +8,16 @@
  */
 
 import childProcess from 'child_process';
-import chokidar from 'chokidar';
 import util from 'util';
+// import chokidar from 'chokidar';
 
 const exec = util.promisify(childProcess.exec);
 
 export const svgSprite = (
   srcPath = '',
   outPath = '',
-  configPath = '',
-  isWatch = false
+  configPath = ''
+  // isWatch = false
 ) => {
   const config = configPath ? ` -c ${configPath}` : '';
   const command = [
@@ -33,9 +33,9 @@ export const svgSprite = (
 
   execCommand(command);
 
-  if (isWatch) {
-    watch(srcPath, command);
-  }
+  // if (isWatch) {
+  //   watch(srcPath, command);
+  // }
 };
 
 /**
@@ -44,18 +44,18 @@ export const svgSprite = (
  * @param {string} srcPath
  * @param {string} command
  */
-function watch(srcPath, command) {
-  const watchOption = {
-    usePolling: false,
-    persistent: true,
-    ignoreInitial: true,
-  };
-  chokidar
-    .watch(srcPath, watchOption)
-    .on('change', () => execCommand(command))
-    .on('add', () => execCommand(command))
-    .on('unlink', () => execCommand(command));
-}
+// function watch(srcPath, command) {
+//   const watchOption = {
+//     usePolling: false,
+//     persistent: true,
+//     ignoreInitial: true,
+//   };
+//   chokidar
+//     .watch(srcPath, watchOption)
+//     .on('change', () => execCommand(command))
+//     .on('add', () => execCommand(command))
+//     .on('unlink', () => execCommand(command));
+// }
 
 /**
  * exec cli command

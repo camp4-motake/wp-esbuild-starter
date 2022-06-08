@@ -1,11 +1,16 @@
 /**
- * Editor */
+ * Editor
+ */
 
-@import "./editor/admin.css";
+/* purgecss start ignore */
+
+@use "sass:meta";
+@use "common/custom-properties";
+@use "editor/adminFix";
 
 .editor-styles-wrapper {
+  padding: var(--spacer) 2.5vw;
   font-family: var(--font-family-base);
-  font-weight: var(--font-weight-regular);
   font-feature-settings: "pkna";
   line-height: var(--line-height-base);
   color: var(--color-text);
@@ -14,3 +19,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.editor-styles-wrapper > * {
+  @include meta.load-css("components");
+}
+
+/* purgecss end ignore */

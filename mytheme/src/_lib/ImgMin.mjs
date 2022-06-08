@@ -3,35 +3,29 @@ import path from 'path';
 import util from 'util';
 import { execFile } from 'node:child_process';
 import { globbySync } from 'globby';
-import cwebp from 'cwebp-bin';
-import mozjpeg from 'mozjpeg';
-import pngquant from 'pngquant-bin';
+import sharp from 'sharp';
 
 const execFilePromise = util.promisify(execFile);
 // const cwd = process.cwd();
 
-class ImageCompress {
-  constructor(data) {
-    this.data = data;
-    this.data.option = Object.assign(
+class ImgMin {
+  constructor(data = {}) {
+    this.data = deepMerge(
       {
-        base: undefined,
-        cacheDir: './node_modules/.cache/images',
-        isWebp: true,
+        option: {
+          base: undefined,
+          cacheDir: path.resolve(process.cwd(), './node_modules/.cache/images'),
+          isWebp: true,
+          webpExt: ['.jpeg', '.jpg', '.png', '.gif'],
+          png: { quality: 80 },
+          jpg: { quality: 80 },
+          webp: { quality: 80, smartSubsample: true },
+          svg: ['--config', path.resolve(process.cwd(), 'svgo.config.js')],
+        },
+        custom: {},
       },
-      this.data.option
+      data
     );
-    this.data.command = Object.assign(
-      {
-        png: ['--ordered', '--quality=50-100'],
-        jpg: ['-quality', '80'],
-        lossy: ['-q', '75', '-metadata', 'icc', '-sharp_yuv'],
-        lossless: ['-q', '75', '-lossless', '-exact', '-metadata', 'icc'],
-        svg: [],
-      },
-      this.data.command
-    );
-    this.run(this.data.src);
   }
 
   async run() {
@@ -44,6 +38,11 @@ class ImageCompress {
     const from = file;
     const cacheTo = path.join(this.data.option.cacheDir, from);
     const copyTo = this._createDestinationFilePath(file);
+    const isWebp = this.data.option?.isWebp || this.default.option?.isWebp;
+
+    if (!['.png', '.jpeg', '.jpg', '.svg', '.gif'].includes(extname)) {
+      return this._copyFiles(from, copyTo);
+    }
 
     if (!this._isCacheExits(from, cacheTo)) {
       return await fs.promises
@@ -66,7 +65,7 @@ class ImageCompress {
             );
           }
           // webp
-          if (['.jpeg', '.jpg', '.png'].includes(extname)) {
+          if (isWebp && this.data.option?.webpExt?.includes(extname)) {
             console.log('WEBP:', this._replaceExt(copyTo));
             this._optimizeWebp(from, cacheTo).then(() =>
               this._copyFiles(
@@ -83,7 +82,7 @@ class ImageCompress {
     this._copyFiles(cacheTo, copyTo);
 
     // cache webp copy
-    if (['.jpeg', '.jpg', '.png'].includes(extname)) {
+    if (isWebp && this.data.option?.webpExt?.includes(extname)) {
       // console.log('COPY:', this._replaceExt(copyTo));
       this._copyFiles(this._replaceExt(cacheTo), this._replaceExt(copyTo));
     }
@@ -104,43 +103,39 @@ class ImageCompress {
     }
   }
 
-  _optimizeJpg(from, to) {
-    const base = ['-outfile', to, from];
-    const command = this.data.command?.jpg?.length
-      ? this.data.command.jpg.concat(base)
-      : base;
-    return execFilePromise(mozjpeg, command);
-  }
-
-  _optimizePng(from, to) {
-    const base = ['--force', '-o', to, from];
-    const command = this.data.command?.png?.length
-      ? this.data.command.png.concat(base)
-      : base;
-    return execFilePromise(pngquant, command);
-  }
-
-  _optimizeSvg(from, to) {
-    const base = ['--config', './_lib/svgo.config.js', '-i', from, '-o', to];
-    const command = this.data.command?.svg?.length
-      ? this.data.command.svg.concat(base)
-      : base;
-    return execFilePromise('svgo', command);
-  }
-
-  _optimizeWebp(from, to) {
-    const extname = path.extname(from);
-    const mode = ['.png'].includes(extname) ? 'lossless' : 'lossy';
-    const base = [from, '-o', this._replaceExt(to, '.webp')];
-    const command = {
-      lossy: this.data.command?.lossy?.length
-        ? this.data.command.lossy.concat(base)
-        : base,
-      lossless: this.data.command?.lossless?.length
-        ? this.data.command.lossless.concat(base)
-        : base,
+  async _optimizeJpg(from, to) {
+    const option = {
+      ...this.data.option.jpg,
+      ...(this.data?.custom[from]?.jpg || {}),
     };
-    return execFilePromise(cwebp, command[mode]);
+    return await sharp(from).jpeg(option).toFile(to);
+  }
+
+  async _optimizePng(from, to) {
+    const option = {
+      ...this.data.option.png,
+      ...(this.data?.custom[from]?.png || {}),
+    };
+    return await sharp(from).png(option).toFile(to);
+  }
+
+  async _optimizeWebp(from, to) {
+    const extname = path.extname(from);
+    const out = this._replaceExt(to, '.webp');
+    const option = {
+      ...this.data.option.webp,
+      ...{ lossless: ['.png'].includes(extname) },
+      ...(this.data?.custom[from]?.webp || {}),
+    };
+    return await sharp(from).webp(option).toFile(out);
+  }
+
+  async _optimizeSvg(from, to) {
+    const base = ['-i', from, '-o', to];
+    const command = this.data.option.svg?.length
+      ? this.data.option.svg.concat(base)
+      : base;
+    return await execFilePromise('svgo', command);
   }
 
   _createDestinationFilePath(from) {
@@ -174,5 +169,31 @@ class ImageCompress {
     return path != null ? path[0] : false;
   }
 }
+export default ImgMin;
 
-export default ImageCompress;
+/**
+ * easy deep merge
+ */
+function deepMerge(target, source, opts) {
+  const isObject = (obj) =>
+    obj && typeof obj === 'object' && !Array.isArray(obj);
+  const isConcatArray = opts && opts.concatArray;
+  let result = Object.assign({}, target);
+  if (isObject(target) && isObject(source)) {
+    for (const [sourceKey, sourceValue] of Object.entries(source)) {
+      const targetValue = target[sourceKey];
+      if (
+        isConcatArray &&
+        Array.isArray(sourceValue) &&
+        Array.isArray(targetValue)
+      ) {
+        result[sourceKey] = targetValue.concat(...sourceValue);
+      } else if (isObject(sourceValue) && target.hasOwnProperty(sourceKey)) {
+        result[sourceKey] = deepMerge(targetValue, sourceValue, opts);
+      } else {
+        Object.assign(result, { [sourceKey]: sourceValue });
+      }
+    }
+  }
+  return result;
+}

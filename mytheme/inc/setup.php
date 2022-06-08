@@ -8,6 +8,7 @@ namespace Lib\Setup;
 add_action('after_setup_theme', function () {
   add_theme_support('title-tag');
   add_theme_support('post-thumbnails');
+  add_theme_support('align-wide');
   add_theme_support('html5', [
     'caption',
     'comment-form',
@@ -43,8 +44,10 @@ add_action(
     }
 
     // web fonts
-    foreach (GOOGLE_FONTS as $queue => $src) {
-      wp_enqueue_style($queue, $src, false, null);
+    if (count(GOOGLE_FONTS) > 0) {
+      foreach (GOOGLE_FONTS as $queue => $src) {
+        wp_enqueue_style($queue, $src, false, null);
+      }
     }
   },
   100

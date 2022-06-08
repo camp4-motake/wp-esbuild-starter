@@ -73,7 +73,6 @@ add_filter('excerpt_more', function ($more) {
 /**
  * トラッキングタグテンプレート出力
  */
-
 add_action(
   'wp_footer',
   function () {
@@ -85,6 +84,7 @@ add_action(
 /**
  * 投稿コンテンツ内の img/iframe/video タグに loading="lazy"がない場合に属性を追加
  */
+/*
 add_filter('the_content', function ($content) {
   $content = preg_replace(
     '/<img((?![^>]*loading=)[^>]*)>/i',
@@ -103,11 +103,12 @@ add_filter('the_content', function ($content) {
   );
   return $content;
 });
+*/
 
 /**
  * 検索クエリを無効化しホームにリダイレクト
  */
-
+/*
 add_action('init', function ($query) {
   if (is_admin() || is_user_logged_in()) {
     return;
@@ -120,3 +121,4 @@ add_action('init', function ($query) {
     exit();
   }
 });
+ */

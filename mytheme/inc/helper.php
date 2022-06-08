@@ -2,6 +2,28 @@
 
 namespace Lib\Helper;
 
+// add Twig function
+if (class_exists('Timber')) {
+  add_filter('timber/twig', function ($twig) {
+    $twig->addFunction(
+      new \Timber\Twig_Function('svg_sprite', __NAMESPACE__ . '\\svg_sprite')
+    );
+    $twig->addFunction(
+      new \Timber\Twig_Function(
+        'picture_webp',
+        __NAMESPACE__ . '\\picture_webp'
+      )
+    );
+    $twig->addFunction(
+      new \Timber\Twig_Function(
+        'custom_pagination',
+        __NAMESPACE__ . '\\custom_pagination'
+      )
+    );
+    return $twig;
+  });
+}
+
 /**
  * 開発環境判定
  *

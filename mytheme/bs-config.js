@@ -23,7 +23,6 @@ module.exports = {
   port: 8080,
   ui: false,
   proxy: {
-    // proxy wp server
     target: process.env.PROXY_URL || `http://localhost:${port.wp}`,
 
     // proxy vite dev server assets

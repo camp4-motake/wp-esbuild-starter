@@ -1,0 +1,18 @@
+/**
+* [!]編集禁止
+*
+* Generated with `npm run iconfont`
+*/
+@font-face {
+  font-family: "icons";
+  src: url(../fonts/_inline/icons.woff) format("woff");
+}
+
+:root {
+  --icon-arrow-right: "\f101";
+  --icon-error-outline: "\f102";
+  --icon-external: "\f103";
+  --icon-map-pin: "\f104";
+  --icon-symbol-minus: "\f105";
+  --icon-symbol-plus: "\f106";
+}

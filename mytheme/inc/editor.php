@@ -2,6 +2,8 @@
 
 namespace Lib\Editor;
 
+use Lib\Vite;
+
 /**
  * パーマリンクの2バイト検証
  *
@@ -58,10 +60,11 @@ add_action(
     $js_values = "window.CUSTOM_THEME_SLUG_STRING_CHECK = {$js_values};";
 
     echo "\n<script>{$js_values}</script>\n";
-    echo "<script src='" .
-      get_template_directory_uri() .
-      '/dist/editor.js' .
-      "' id='modules/custom-editor-script-js'></script>\n";
+    // vite asset
+    echo "\n" .
+      VIte\jsTag('src/editor.ts') .
+      "\n" .
+      VIte\jsPreloadImports('src/editor.ts');
   },
   100
 );
@@ -72,8 +75,13 @@ add_action(
 add_action(
   'admin_print_styles',
   function () {
-    $theme_uri = get_template_directory_uri();
-    echo "\n<link rel='stylesheet' id='custom-editor-css' href='{$theme_uri}'/dist/editor.css' media='all' />\n";
+    // google font
+    if (IS_ENABLE_GOOGLE_FONTS) {
+      $font_url = GOOGLE_FONTS;
+      echo "\n<link rel='stylesheet' id='custom-google-font-css' href='{$font_url}' media='all' />\n";
+    }
+    // vite asset css
+    echo VIte\cssTag('src/editor.ts');
   },
   200
 );

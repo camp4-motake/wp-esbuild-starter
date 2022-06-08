@@ -1,30 +1,28 @@
-# wp theme build starter
-
-WP テーマ開発用ボイラープレート
+# wp starter
 
 ## Feature
 
-- WP : Local Dev WP (docker-compose) | Twig Template (Timber)
-- Frontend : [Vite](https://vitejs.dev/config/) | [Postcss](https://preset-env.cssdb.org/features/) | [TypeScript](https://www.typescriptlang.org/docs/)
+- docker-compose | wp-cli | wordmove | Twig Template (use Timber)
+- [Vite](https://vitejs.dev/config/) | [Postcss Prest Env](https://preset-env.cssdb.org/features/) | Scss | [TypeScript](https://www.typescriptlang.org/docs/)
 
 ## 必要環境
 
 - Node.js >=16
-- [docker クライアント](https://www.docker.com/get-started)
+- [docker クライアント](https://www.docker.com/get-started)（watch モード作業時必須）
 
 ### 必要プラグイン
 
-- [Timber](https://ja.wordpress.org/plugins/timber-library/)（Twig テンプレートの表示に必須）
+- [Timber](https://ja.wordpress.org/plugins/timber-library/)（Twig テンプレート利用時必須）
 
 ## 初期設定
 
-環境変数ファイルを作成
+サンプルの雛形から環境変数ファイルを作成
 
 ```sh
 cp ./docker/.env-example ./.env
 ```
 
-ACF Pro のライセンスキーがある場合は、`.env`にライセンスキーを追記（任意）
+[ACF Pro 利用時のみ] `.env`に ACFPro のライセンスキーを追記（任意）
 
 ```diff
 + ACF_PRO_KEY='{key}'
@@ -33,7 +31,7 @@ ACF Pro のライセンスキーがある場合は、`.env`にライセンスキ
 依存 node_module パッケージをインストール
 
 ```sh
-npm install
+npm ci
 ```
 
 WordPress のローカルサーバーを自動セットアップ
@@ -42,15 +40,13 @@ WordPress のローカルサーバーを自動セットアップ
 npm run wp-setup
 ```
 
-完了後は <http://localhost:8888/> で WP が表示できます。
+完了後は <http://localhost:{LOCAL_SERVER_PORT}/> で WP が表示できます。
 
-> 注: ポート番号　は環境変数 `.env` で設定されている `LOCAL_SERVER_PORT`値になります。
+> 注: `LOCAL_SERVER_PORT`は、`.env` で設定されている環境変数になります。
 
 ## コマンド
 
-### フロントエンド
-
-ウォッチを起動 -> <http://localhost:3000/> で作業用のブラウザープレビューを表示します。
+watch モードを起動 -> <http://localhost:3000/> で作業用のブラウザープレビューを表示します。
 
 ```sh
 npm run dev
@@ -62,18 +58,16 @@ npm run dev
 npm run build
 ```
 
-### デプロイ
+デプロイ時はビルド後にテーマディレクトリをアップしてください。
 
-ビルド後にテーマディレクトリをアップしてください。
-
-- 注 1: `npm run dev`実行時はアセットファイルが空になるので、公開時はかならずビルドしてください。
-- 注 2: セキュリティ上の理由から、`node_modules`ディレクトリは、公開サーバーにはアップしないでください。
+> 注 1: `npm run dev`実行時はアセットファイルが空になるので、公開時はかならず事前にビルドしてください。
+> 注 2: `node_modules`ディレクトリは、公開サーバーにはアップしないでください。
 
 ## ダッシュボードへのアクセス
 
 ローカルサーバー起動後に次の URL を開いてください。
 
-<http://localhost:8888/wp-admin/>
+<http://localhost:{LOCAL_SERVER_PORT}/wp-admin/>
 
 - user: `admin`
 - password: `admin`
@@ -82,12 +76,9 @@ npm run build
 
 ## その他
 
-- ビルド時などに画像が反映されない場合は、ルートの `.cache/` ディレクトリを削除してから再ビルドしてください。
-- [workspace](https://docs.npmjs.com/cli/v7/using-npm/workspaces) を使用しているので、テーマディレクトリ以下
-  に npm install でモジュールを追加する場合は `-w {テーマディレクトリ名}`をつけて実行してください。
+- git のチェックアウト後や、画像が正しく反映されない場合などは、ルートの `.cache/` ディレクトリを削除してから再ビルドしてください。
+- [workspace](https://docs.npmjs.com/cli/v7/using-npm/workspaces) を使用しています。テーマディレクトリ内にモジュールを追加する場合は `npm i {module_name} -w {theme_dir_name}`のように、workspace を指定して実行してください。
 
 ## リソース
 
-- [Vite](https://github.com/vitejs/vite) | [doc](https://vitejs.dev/)
-- [Timber](https://github.com/timber/timber) | [doc](https://timber.github.io/docs/) | [CheatSheet](https://timber.github.io/docs/guides/cheatsheet/)
-- [Twig](https://twig.symfony.com/doc/2.x/index.html) | [Timber Twig Cookbook](https://timber.github.io/docs/guides/cookbook-twig/)
+- [Timber](https://github.com/timber/timber) | [doc](https://timber.github.io/docs/) | [CheatSheet](https://timber.github.io/docs/guides/cheatsheet/) | [Twig](https://twig.symfony.com/doc/2.x/index.html)

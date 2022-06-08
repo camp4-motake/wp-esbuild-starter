@@ -1,0 +1,72 @@
+@use "sass:list";
+@use "sass:math";
+@use "../config/variables" as *;
+
+/**
+* 向別の幅調整クラス指定。
+* 組み合わせは以下の通りですで調整クラス
+*
+* m: margin
+* p: padding
+*
+* t: top
+* b: bottom
+* l: left
+* r: right
+*/
+
+@each $dir-key, $dir-val in $direction {
+  @each $space-key, $space-val in $spacer-array {
+    .m#{$dir-key}-#{$space-key} {
+      margin-#{$dir-val}: #{$space-val} !important;
+    }
+    .p#{$dir-key}-#{$space-key} {
+      padding-#{$dir-val}: #{$space-val} !important;
+    }
+
+    @each $bp-key, $bp-val in $mq-breakpoints {
+      @if $bp-key != xs {
+        .m#{$dir-key}-#{$bp-key}-#{$space-key} {
+          @media (--viewport-$bp-key) {
+            margin-#{$dir-val}: #{$space-val} !important;
+          }
+        }
+        .p#{$dir-key}-#{$bp-key}-#{$space-key} {
+          @media (--viewport-$bp-key) {
+            padding-#{$dir-val}: #{$space-val} !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@each $dir-key, $dir-val in $direction {
+  .m#{$dir-key}-0 {
+    margin-#{$dir-val}: 0 !important;
+  }
+  .p#{$dir-key}-0 {
+    padding-#{$dir-val}: 0 !important;
+  }
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.p-auto {
+  padding: auto;
+}
+
+.m-center {
+  margin-right: auto;
+  margin-left: auto;
+}

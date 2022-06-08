@@ -1,7 +1,7 @@
 import { globbySync } from 'globby';
 import path from 'path';
 import fs from 'fs-extra';
-import chokidar from 'chokidar';
+// import chokidar from 'chokidar';
 
 const Log = {
   colors: { default: '\x1b[0m', green: '\x1b[32m', red: '\x1b[31m' },
@@ -13,9 +13,9 @@ const Log = {
 export const copy = async (from, to, options = {}) => {
   const task = new CopyFilesTask({ from, to, options });
   await task.run();
-  if (options.isWatch === true) {
-    task.watch();
-  }
+  // if (options.isWatch === true) {
+  //   task.watch();
+  // }
 };
 /**
  * copy watch class
@@ -52,20 +52,20 @@ class CopyFilesTask {
     }
   }
 
-  watch(usePolling = false) {
-    if (this.isBeingWatched) return;
+  // watch(usePolling = false) {
+  //   if (this.isBeingWatched) return;
 
-    const options = { usePolling, persistent: true, ignoreInitial: true };
-    if (!this.data.options.dot) options.ignored = /(^|[\/\\])\../;
-    chokidar
-      .watch(this.data.from, options)
-      .on('change', this._copyFile.bind(this))
-      .on('add', this._copyFile.bind(this))
-      .on('addDir', this._copyDir.bind(this))
-      .on('unlink', this._removeFile.bind(this))
-      .on('unlinkDir', this._removeDir.bind(this));
-    this.isBeingWatched = true;
-  }
+  //   const options = { usePolling, persistent: true, ignoreInitial: true };
+  //   if (!this.data.options.dot) options.ignored = /(^|[\/\\])\../;
+  //   chokidar
+  //     .watch(this.data.from, options)
+  //     .on('change', this._copyFile.bind(this))
+  //     .on('add', this._copyFile.bind(this))
+  //     .on('addDir', this._copyDir.bind(this))
+  //     .on('unlink', this._removeFile.bind(this))
+  //     .on('unlinkDir', this._removeDir.bind(this));
+  //   this.isBeingWatched = true;
+  // }
 
   _copyFile(fromRelative) {
     const toRelative = this._createDestinationFilePath(fromRelative);

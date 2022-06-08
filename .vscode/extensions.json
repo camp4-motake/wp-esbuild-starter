@@ -1,9 +1,9 @@
 {
   "recommendations": [
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "stylelint.vscode-stylelint",
     "editorconfig.editorconfig",
-    "nadim-vscode.symfony-code-snippets"
+    "esbenp.prettier-vscode",
+    "nadim-vscode.symfony-code-snippets",
+    "stylelint.vscode-stylelint"
   ]
 }

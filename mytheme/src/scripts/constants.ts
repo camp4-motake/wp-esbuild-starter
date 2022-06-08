@@ -6,10 +6,3 @@ export const MQ = {
   xl: '(min-width:75em)', // 1200px
   xxl: '(min-width:100em)', // 1600px
 };
-
-// exclude link
-export const EXCLUDE_LINK_SELECTOR = [
-  '[href=""]',
-  '[href="#0"]',
-  '[href="#todo"]',
-].join(',');

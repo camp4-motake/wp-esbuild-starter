@@ -1,6 +1,5 @@
 custom-post-type-permalinks
 duplicate-post
-taxonomy-terms-order
 timber-library
 wordpress-seo
 wp-multibyte-patch

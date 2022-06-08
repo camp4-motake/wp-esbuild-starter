@@ -57,7 +57,7 @@ export default () => {
     'core/tag-cloud', // タグクラウド
     'core/search', // 検索
 
-    // WP5.8~
+    // WP5.8~ テーマ/FSE系ブロック
     'core/page-list',
     'core/text-columns',
     'core/site-logo',
@@ -76,6 +76,17 @@ export default () => {
     'core/post-excerpt',
     'core/post-featured-image',
     'core/post-terms',
+    'core/navigation',
+    'core/post-author',
+    'core/post-navigation-link',
+    'core/post-comments',
+    'core/loginout',
+    'core/term-description',
+    'core/read-more',
+    'core/avatar',
+    'core/comments-query-loop',
+    'core/post-comments-form',
+    'core/post-author-biography',
 
     // Yoast SEO
     'yoast-seo/breadcrumbs',
@@ -89,18 +100,16 @@ export default () => {
   // embedで許可するブロック
   const allowedEmbedVariation = ['twitter', 'youtube', 'vimeo', 'wordpress'];
 
-  wp.domReady(() => {
-    // 不許可デフォルトブロックを解除
-    disallowedBlock.forEach((block) => {
-      wp?.blocks?.unregisterBlockType(block);
-    });
-
-    // embedの許可ブロック以外を解除
-    wp?.blocks
-      ?.getBlockVariations('core/embed')
-      .forEach((valiation: { name: string }) => {
-        if (allowedEmbedVariation.indexOf(valiation.name) !== -1) return;
-        wp?.blocks?.unregisterBlockVariation('core/embed', valiation.name);
-      });
+  // 不許可デフォルトブロックを解除
+  disallowedBlock.forEach((block) => {
+    wp?.blocks?.unregisterBlockType(block);
   });
+
+  // embedの許可ブロック以外を解除
+  wp?.blocks
+    ?.getBlockVariations('core/embed')
+    ?.forEach((valiation: { name: string }) => {
+      if (allowedEmbedVariation.indexOf(valiation.name) !== -1) return;
+      wp?.blocks?.unregisterBlockVariation('core/embed', valiation.name);
+    });
 };

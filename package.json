@@ -1,6 +1,6 @@
 {
-  "name": "wp-theme-starter",
-  "version": "0.5.0",
+  "name": "mytheme-wp",
+  "version": "0.1.0",
   "description": "Website - WordPress Theme",
   "repository": "",
   "author": "CAMP4 inc.",
@@ -13,7 +13,7 @@
     "dev": "npm run dev --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
     "prettier": "npm run prettier --workspaces --if-present",
-    "wp-setup": "docker-compose up -d && sleep 10 && docker-compose run --rm --user root cli /html/setup.sh",
+    "wp-setup": "docker-compose up -d && sleep 10 && docker-compose run --rm --user root cli bash -c /html/setup.sh",
     "wp-cli": "zx ./docker/bin/wp-cli.mjs",
     "wp-wordmove": "zx ./docker/bin/wp-wordmove.mjs"
   },

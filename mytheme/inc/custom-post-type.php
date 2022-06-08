@@ -54,7 +54,7 @@ function custom_menu_order($menu_ord)
     'index.php', // ダッシュボード
     'separator1',
     'edit.php?post_type=page', // 固定ページ
-    'edit.php?post_type=blog', // ブログ
+    'edit.php?post_type=news',
     'separator2',
   ];
 }

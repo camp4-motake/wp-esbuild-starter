@@ -1,0 +1,134 @@
+@use "sass:math";
+@use "../config/mixins" as *;
+
+.btn,
+.wp-block-button__link {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: calc(180 / var(--rem));
+  min-height: calc(40 / var(--rem));
+  padding: 0.25em 2em;
+  overflow: hidden;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  text-decoration: none;
+  background-color: var(--color-base);
+  border: 1px solid var(--color-text);
+  transition: color 0.2s ease, background-color 0.2s ease;
+
+  &::before {
+    @include full-fit;
+
+    content: "";
+    background-color: var(--color-text);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover {
+    color: var(--color-base);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.btn--primaryGrad {
+  background: var(--grad-primary-light);
+  border-width: 0;
+
+  &:hover {
+    color: var(--color-base);
+  }
+}
+
+.btn--serif {
+  font-family: var(--font-sans-serif-en);
+}
+
+.btn--arrowRight,
+.btn--arrowDown {
+  &::after {
+    position: absolute;
+    right: 1em;
+    display: inline-block;
+    font-family: var(--font-icons);
+    font-size: var(--font-size);
+    content: var(--icon-arrow-right);
+  }
+}
+
+.btn--arrowDown::after {
+  transform: rotate(90deg);
+}
+
+.btn--long {
+  @media (--viewport-lg) {
+    min-width: calc(430 / var(--rem));
+  }
+}
+
+.btn--block {
+  display: flex;
+}
+
+.btn__label {
+  position: relative;
+  display: block;
+  min-width: max-content;
+}
+
+.btnWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--spacer);
+  padding-bottom: var(--spacer);
+}
+
+.btnWrapper--centerToRight {
+  @media (--viewport-lg) {
+    justify-content: flex-end;
+  }
+}
+
+.btnWrapper--row .btn {
+  width: calc(50% - calc(var(--spacer-xs) * 2));
+  min-width: initial;
+  margin-right: var(--spacer-xs);
+  margin-bottom: var(--spacer-sm);
+  margin-left: var(--spacer-xs);
+
+  @media (--viewport-lg) {
+    width: calc(33.33% - calc(var(--spacer-xs) * 2));
+  }
+}
+
+.wp-block-button .wp-block-button__link {
+  color: var(--color-base);
+  background-color: var(--color-text);
+
+  &::before {
+    content: none;
+  }
+
+  &:hover {
+    color: var(--color-text);
+    background-color: var(--color-base);
+  }
+}
+
+.wp-block-button.is-style-outline .wp-block-button__link {
+  color: var(--color-text);
+  background-color: var(--color-base);
+
+  &:hover {
+    color: var(--color-base);
+    background-color: var(--color-text);
+  }
+}

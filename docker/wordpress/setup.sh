@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DOCUMENT_ROOT=/html
+
 # wp core force update
 wp core install --url='http://localhost:'$LOCAL_SERVER_PORT \
                 --title=$WORDPRESS_SITE_TITLE \
@@ -14,10 +16,10 @@ wp core language install ja --activate --allow-root
 wp site switch-language ja --allow-root
 
 # copy root index.php | .htaccess
-if [ -e /html${WP_CORE_DIR}/index.php ] && [ -e /html${WP_CORE_DIR}/.htaccess ] && [ ! -e /html/index.php ] && [ ! -e /html/.htaccess ]; then
- cp /html${WP_CORE_DIR}/.htaccess /html/.htaccess
- cp /html${WP_CORE_DIR}/index.php /html/index.php
- sed -i -e 's/\/wp-blog-header\.php/\'$WP_CORE_DIR'\/wp-blog-header.php/g' /html/index.php
+if [ -e ${DOCUMENT_ROOT}${WP_CORE_DIR}/index.php ] && [ -e ${DOCUMENT_ROOT}${WP_CORE_DIR}/.htaccess ] && [ ! -e ${DOCUMENT_ROOT}/index.php ] && [ ! -e ${DOCUMENT_ROOT}/.htaccess ]; then
+ cp ${DOCUMENT_ROOT}${WP_CORE_DIR}/.htaccess ${DOCUMENT_ROOT}/.htaccess
+ cp ${DOCUMENT_ROOT}${WP_CORE_DIR}/index.php ${DOCUMENT_ROOT}/index.php
+ sed -i -e 's/\/wp-blog-header\.php/\'$WP_CORE_DIR'\/wp-blog-header.php/g' ${DOCUMENT_ROOT}/index.php
 fi
 
 # update option
@@ -36,36 +38,36 @@ wp post delete --allow-root $(wp post list --allow-root --name=hello-world --pos
 wp post delete --allow-root $(wp post list --allow-root --name=sample-page --post_type=page --format=ids)
 
 # activate theme
-if [ -e /html${WP_CORE_DIR}/wp-content/themes/$WP_THEME_NAME ]; then
+if [ -e ${DOCUMENT_ROOT}${WP_CORE_DIR}/wp-content/themes/$WP_THEME_NAME ]; then
   wp theme activate $WP_THEME_NAME --allow-root
 fi
 
 # remove official theme
-if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentysixteen ]; then
+if [ -e ${DOCUMENT_ROOT}${WP_CORE_DIR}/wp-content/themes/twentysixteen ]; then
   wp theme delete twentysixteen --allow-root
 fi
 
-if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentyseventeen ]; then
+if [ -e ${DOCUMENT_ROOT}${WP_CORE_DIR}/wp-content/themes/twentyseventeen ]; then
   wp theme delete twentyseventeen --allow-root
 fi
 
-if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentyeighteen ]; then
+if [ -e ${DOCUMENT_ROOT}${WP_CORE_DIR}/wp-content/themes/twentyeighteen ]; then
   wp theme delete twentyeighteen --allow-root
 fi
 
-if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentynineteen ]; then
+if [ -e ${DOCUMENT_ROOT}${WP_CORE_DIR}/wp-content/themes/twentynineteen ]; then
   wp theme delete twentynineteen --allow-root
 fi
 
-if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentytwenty ]; then
+if [ -e ${DOCUMENT_ROOT}${WP_CORE_DIR}/wp-content/themes/twentytwenty ]; then
   wp theme delete twentytwenty --allow-root
 fi
 
-if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentytwentyone ]; then
+if [ -e ${DOCUMENT_ROOT}${WP_CORE_DIR}/wp-content/themes/twentytwentyone ]; then
   wp theme delete twentytwentyone --allow-root
 fi
 
-if [ -e /html${WP_CORE_DIR}/wp-content/themes/twentytwentytwo ]; then
+if [ -e ${DOCUMENT_ROOT}${WP_CORE_DIR}/wp-content/themes/twentytwentytwo ]; then
   wp theme delete twentytwentytwo --allow-root
 fi
 
@@ -76,7 +78,7 @@ wp plugin delete hello.php akismet --allow-root
 while read line
 do
   wp plugin install --allow-root $line
-done < /html/plugin.txt
+done < ${DOCUMENT_ROOT}/plugin.txt
 wait
 
 # install ACF Pro - require license key
@@ -90,13 +92,13 @@ fi
 wp language plugin install --all ja --allow-root
 
 # import db
-if [ -e /html/.dump/import.sql ]; then
+if [ -e ${DOCUMENT_ROOT}/.dump/import.sql ]; then
   wp db reset --yes --allow-root
-  wp db import /html/.dump/import.sql --allow-root
+  wp db import ${DOCUMENT_ROOT}/.dump/import.sql --allow-root
 fi
 
 # fixed permission -> www-data
-chown -R www-data:www-data /html
+chown -R www-data:www-data ${DOCUMENT_ROOT}
 
 echo 'WP Setup Complete'
 

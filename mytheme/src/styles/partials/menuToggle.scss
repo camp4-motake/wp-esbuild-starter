@@ -1,0 +1,72 @@
+@use "sass:math";
+@use "../config/mixins" as *;
+
+.menuToggleSpacer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: calc(var(--z-header) + 10);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: var(--container-max-width);
+  height: var(--header-height);
+  margin: 0 auto;
+  pointer-events: none;
+
+  @media (--viewport-lg) {
+    display: none;
+  }
+}
+
+.menuToggle {
+  position: relative;
+  display: block;
+  width: math.percentage(math.div(36, 374));
+  max-width: calc(25 / var(--rem));
+  margin-right: calc(var(--spacer) + var(--safe-area-r));
+  pointer-events: initial;
+  background-color: transparent;
+  border: none;
+  transition: transform 0.2s var(--ease-out-circ);
+  appearance: none;
+  will-change: transform;
+
+  &::before {
+    display: block;
+    padding-top: 100%;
+    content: "";
+  }
+}
+
+.menuToggle__btnImage {
+  @include full-fit;
+  @include svgRatio(100%);
+
+  z-index: 1;
+  display: block;
+}
+
+.menuToggle__btnImage--close {
+  display: none;
+}
+
+.menuToggle__btnImage--open {
+  display: block;
+}
+
+.js-isMenuOpen {
+  .menuToggle {
+    transform: rotate(-90deg);
+  }
+
+  .menuToggle__btnImage--close {
+    display: block;
+  }
+
+  .menuToggle__btnImage--open {
+    display: none;
+  }
+}

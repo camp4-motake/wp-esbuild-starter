@@ -10,5 +10,5 @@ require_once 'inc/hooks.php';
 require_once 'inc/plugin-timber.php';
 require_once 'inc/plugin-yoast-seo.php';
 require_once 'inc/setup.php';
-require_once 'inc/shortcode.php';
+require_once 'inc/timber-global-data.php';
 require_once 'inc/vite.php';

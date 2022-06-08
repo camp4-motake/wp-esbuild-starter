@@ -1,0 +1,70 @@
+@use "sass:list";
+@use "sass:math";
+
+/**
+ * Scss Variables
+ */
+
+// Breakpoints
+$mq-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  2xl: 1600px,
+) !default;
+
+// Breakpoints util
+$mq-landscape: "(orientation: landscape)";
+$mq-portrait: "(orientation: portrait) ";
+$mq-4by3: "(min-aspect-ratio: 4/3)";
+$mq-16by9: "(min-aspect-ratio: 16/9)";
+$mq-21by9: "(min-aspect-ratio: 21/9)";
+
+// container max width
+$container-max-width: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  2xl: 1400px,
+) !default;
+$container-fluid-max-width: 2200px;
+
+// embed responsive ratio
+$embed-responsive-aspect-ratios: () !default;
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$embed-responsive-aspect-ratios: list.join(
+  ((21 9), (16 9), (4 3), (1 1)),
+  $embed-responsive-aspect-ratios
+);
+
+// direction
+$direction: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right,
+);
+$spacer-array: (
+  0: 0,
+  2xs: var(--spacer-2xs),
+  xs: var(--spacer-xs),
+  sm: var(--spacer-sm),
+  md: var(--spacer-md),
+  lg: var(--spacer-lg),
+  xl: var(--spacer-xl),
+  2xl: var(--spacer-2xl),
+  x2xl: var(--spacer-x2xl),
+);
+$grid-columns: 12 !default;
+
+// -----------------
+// Utility: pi
+// -----------------
+
+// pi
+$pi: 3.14159265359;
+$deg2radians: math.div($pi * 2, 360);

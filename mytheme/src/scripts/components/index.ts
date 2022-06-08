@@ -1,7 +1,6 @@
-/**
- * alpine.js components
- * @link https://alpinejs.dev/start-here
- */
+import Alpine from 'alpinejs';
+import { inView } from './inView';
+
 export const components = () => {
-  if (!document.querySelector('[x-data]')) return;
+  Alpine.data('inView', inView);
 };
