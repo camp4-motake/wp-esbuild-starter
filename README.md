@@ -34,7 +34,7 @@ cp ./docker/.env-example ./.env
 npm ci
 ```
 
-WordPress のローカルサーバーを自動セットアップ
+WordPress のローカルサーバーを自動セットアップ（Docker 利用時）
 
 ```sh
 npm run wp-setup
@@ -46,7 +46,7 @@ npm run wp-setup
 
 ## コマンド
 
-watch モードを起動 -> <http://localhost:3000/> で作業用のブラウザープレビューを表示します。
+watch モードを起動 -> <http://localhost:3000/> で作業用のブラウザープレビューを表示します（DockerなどのローカルWPが起動時のみ）
 
 ```sh
 npm run dev
