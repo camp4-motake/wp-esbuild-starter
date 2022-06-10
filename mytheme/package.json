@@ -71,6 +71,7 @@
     "plugins": [
       "@typescript-eslint"
     ],
+    "parser": "@typescript-eslint/parser",
     "globals": {
       "wp": true
     },
@@ -123,9 +124,17 @@
         "options": {
           "singleQuote": false
         }
+      },
+      {
+        "files": [
+          "**/*.twig"
+        ],
+        "options": {
+          "parser": "melody",
+          "twigAlwaysBreakObjects": false,
+          "twigPrintWidth": 100
+        }
       }
-    ],
-    "twigAlwaysBreakObjects": false,
-    "twigPrintWidth": 100
+    ]
   }
 }
