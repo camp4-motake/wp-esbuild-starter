@@ -1,12 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import util from 'util';
+import * as url from 'url';
 import { execFile } from 'node:child_process';
 import { globbySync } from 'globby';
 import sharp from 'sharp';
 
 const execFilePromise = util.promisify(execFile);
-// const cwd = process.cwd();
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 class ImgMin {
   constructor(data = {}) {
@@ -20,7 +21,7 @@ class ImgMin {
           png: { quality: 80 },
           jpg: { quality: 80 },
           webp: { quality: 80, smartSubsample: true },
-          svg: ['--config', path.resolve(process.cwd(), 'svgo.config.js')],
+          svg: ['--config', path.resolve(__dirname, 'svgo.config.js')],
         },
         custom: {},
       },
