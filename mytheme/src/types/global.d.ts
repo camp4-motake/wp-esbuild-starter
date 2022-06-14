@@ -2,8 +2,7 @@
 import { Alpine as AlpineType } from 'alpinejs';
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const wp: any;
+  const wp;
 
   interface Window {
     Alpine: AlpineType;
