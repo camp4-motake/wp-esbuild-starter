@@ -1,9 +1,9 @@
 
 # ヘルパーコマンド
 
-## wp-　setup
+## 自動セットアップ
 
-自動セットアップを実行します (要docker クライアント)
+wordpress コンテナの自動セットアップを実行します (要docker クライアント)
 
 ```sh
 npm run wp-setup
