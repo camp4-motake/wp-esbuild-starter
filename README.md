@@ -78,7 +78,7 @@ npm run build
 ## その他
 
 - git のチェックアウト後や、画像が正しく反映されない場合などは、ルートの `.cache/` ディレクトリを削除してから再ビルドしてください。
-- [workspace](https://docs.npmjs.com/cli/v7/using-npm/workspaces) を使用しています。テーマディレクトリ内にモジュールを追加する場合は `npm i {module_name} -w {theme_dir_name}`のように、workspace を指定して実行してください。
+- [workspace](https://docs.npmjs.com/cli/v7/using-npm/workspaces) を使用しています。テーマディレクトリ内にモジュールを追加する場合は `npm i {module_name} -w themes/{WP_THEME_NAME}`のように、workspace ディレクトリ名を指定して実行してください。
 
 ## リソース
 
