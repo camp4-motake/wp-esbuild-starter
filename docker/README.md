@@ -15,23 +15,6 @@ docker/
     └── wp-cli.yml     # wp-cli 設定
 ```
 
-## ショートカットコマンド
-
-### wp-cli
-
-```sh
-npm run wp-cli {wp-cli_command}
-```
-
-### Wordmove
-
-```sh
-npm run wp-wordmove {wordmove_command}
-```
-
-- 事前に docker/conf/movefile.yml を配置する必要があります。
-- ssh 時の秘密鍵や ssh config はホスト OS の ~/.ssh を参照します。
-
 ## docker-compose を拡張
 
 `docker-compose.override.yml` を追加し必要に応じて設定を拡張できます。
