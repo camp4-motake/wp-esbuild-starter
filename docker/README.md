@@ -38,4 +38,4 @@ services:
 
 [公式ドキュメント](https://docs.docker.jp/config/pruning.html)参照
 
-> 注: docker の volume を削除すると、WPの DB やメデイアなども削除されます。
+> 注: docker の volume を削除すると、WP の DB やメデイアなども削除されます。
