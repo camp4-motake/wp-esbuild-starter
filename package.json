@@ -13,9 +13,9 @@
     "dev": "npm run dev --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
     "prettier": "npm run prettier --workspaces --if-present",
-    "wp-setup": "docker-compose up -d && sleep 10 && docker-compose run --rm --user root cli bash -c /html/setup.sh",
-    "wp-cli": "zx ./docker/bin/wp-cli.mjs",
-    "wp-wordmove": "zx ./docker/bin/wp-wordmove.mjs"
+    "wp-setup": "zx ./bin/wp-setup.mjs",
+    "wp-cli": "zx ./bin/wp-cli.mjs",
+    "wp-wordmove": "zx ./bin/wp-wordmove.mjs"
   },
   "devDependencies": {
     "zx": "^7.0.7"
