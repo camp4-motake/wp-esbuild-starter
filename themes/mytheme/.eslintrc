@@ -17,5 +17,8 @@
     "node": true,
     "jquery": true
   },
-  "rules": {}
+  "rules": {},
+  "ignorePatterns": [
+    "bs-config.js"
+  ]
 }

@@ -6,7 +6,7 @@ const path = require('path');
 const httpProxy = require('http-proxy');
 const dotenv = require('dotenv');
 const proxy = httpProxy.createProxyServer();
-const envFile = path.resolve(process.cwd(), '../.env');
+const envFile = path.resolve(process.cwd(), '../../.env');
 dotenv.config({ path: envFile || null });
 
 const port = {
