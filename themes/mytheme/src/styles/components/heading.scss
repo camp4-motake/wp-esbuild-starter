@@ -1,0 +1,8 @@
+.heading {
+  font-size: var(--font-size-28);
+  font-weight: var(--font-weight-bold);
+
+  @media (--viewport-lg) {
+    font-size: var(--font-size-36);
+  }
+}

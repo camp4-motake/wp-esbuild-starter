@@ -1,0 +1,48 @@
+<div class="heroSlider" x-data="heroSlider">
+  {#
+
+  image slider
+
+  #}
+  <div class="swiper heroImageSlider" x-bind="heroImageSliderAttr">
+    <div class="swiper-wrapper">
+      {% for article in slide_articles %}
+        <div class="heroImageSlider__slide swiper-slide">
+          <a href="{{ function('get_permalink', article.ID) }}"
+            class="heroImageSlider__slide__link">
+            {% if function('get_field', 'is_pickup', article.ID) %}
+              <span class="pickupLabel pickupLabel--lg">Pickup</span>
+            {% endif %}
+            <figure class="heroImageSlider__slide__thumbnail" data-swiper-parallax-x="20%">
+              {{
+                function('get_the_post_thumbnail', article.ID, null, { title: article.post_title })
+              }}
+            </figure>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+  <div class="heroSlider__footer">
+    <div class="swiper-pagination" data-hero-pagination></div>
+    {#
+
+    title slider
+
+    #}
+    <div class="swiper heroTitleSlider" x-bind="heroTitleSliderAttr">
+      <div class="swiper-wrapper">
+        {% for article in slide_articles %}
+          <a href="{{ function('get_permalink', article.ID) }}"
+            class="heroTitleSlider__slide swiper-slide">
+            <div class="heroTitleSlider__heading line-clamp">
+              {{ article.post_title }}
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

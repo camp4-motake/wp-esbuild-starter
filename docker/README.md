@@ -50,3 +50,9 @@ services:
 ```
 
 [参考](https://docs.docker.jp/compose/extends.html)
+
+## Docker オブジェクトの削除
+
+[公式ドキュメント](https://docs.docker.jp/config/pruning.html)参照
+
+> 注: docker の volume を削除すると、WPの DB やメデイアなども削除されます。

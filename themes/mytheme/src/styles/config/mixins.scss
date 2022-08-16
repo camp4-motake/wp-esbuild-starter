@@ -1,0 +1,241 @@
+@use "sass:map";
+@use "functions" as *;
+
+/**
+* Mixins
+*/
+
+/* stylelint-disable */
+
+// container
+@mixin container-breakpoint() {
+  width: 100%;
+
+  @each $breakpoint, $width in $container-max-width {
+    @media (--viewport-$breakpoint) {
+      max-width: calc(#{strip-unit($width)} / var(--rem));
+    }
+  }
+}
+
+// width height 100%
+@mixin full-fit($position: absolute) {
+  position: $position;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// centering method
+@mixin center-method($position: absolute) {
+  position: $position;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+// flexbox centering
+@mixin center-flex() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// css3 force 3D
+@mixin force3D() {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+// get vw font size
+@function get-vw($size, $viewport: 350) {
+  $rate: math.div(100, $viewport);
+
+  @return $rate * $size * 1vw;
+}
+
+// font size view width
+@mixin font-vw($font_size: 16px) {
+  font-size: $font_size * 1;
+  font-size: get-vw($font_size);
+}
+
+// generate border triangle
+@mixin triangle($direction: right, $color: currentcolor, $size: 1em) {
+  $size: math.div($size, 2);
+  $transparent: transparent;
+  $opposite: (
+    top: bottom,
+    right: left,
+    left: right,
+    bottom: top,
+  );
+
+  display: inline-block;
+  width: 0;
+  height: 0;
+  content: "";
+  border: $size solid transparent;
+
+  border-#{map.get($opposite, $direction)}-color: $color;
+  margin-#{$direction}: math.div(-$size, 2);
+}
+
+// generate border arrow icon
+@mixin icon-arrow(
+  $size: 6px,
+  $color: currentColor,
+  $direction: right,
+  $position: absolute
+) {
+  position: $position;
+  top: 50%;
+  width: rem($size);
+  height: rem($size);
+  content: "";
+  border-top: 2px solid $color;
+
+  @if ($direction == right) {
+    transform: translate(0, -50%) rotate(45deg);
+    border-right: 2px solid $color;
+  }
+
+  @if ($direction == left) {
+    transform: translate(0, -50%) rotate(-45deg);
+    border-left: 2px solid $color;
+  }
+
+  @if ($direction == down) {
+    transform: translate(0, -50%) rotate(135deg);
+    border-right: 2px solid $color;
+  }
+
+  @if ($direction == top) {
+    transform: translate(0, -50%) rotate(-90deg);
+    border-left: 2px solid $color;
+  }
+}
+
+// set IE fallback inline Svg style
+@mixin svgRatio($ratio, $el: "& > svg, & > img", $size: 100%) {
+  &::before {
+    display: block;
+    padding-top: $ratio;
+    content: "";
+  }
+
+  #{$el} {
+    @include center-method;
+
+    width: $size;
+    height: $size;
+  }
+}
+
+// set flex-wrap row
+@mixin set-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// set flex-wrap column
+@mixin set-col($width: 100%) {
+  flex: 0 0 $width;
+  width: 100%;
+  max-width: $width;
+}
+
+// bg cover thumbnail
+@mixin bg-thumbnail($percentage: 100%, $size: cover, $display: block) {
+  display: $display;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: $size;
+
+  &::before {
+    display: block;
+    padding-top: $percentage;
+    content: "";
+  }
+}
+
+@mixin thumbnail-obj-fit(
+  $percentage: 100%,
+  $fit: cover,
+  $position: center,
+  $bg-color: transparent
+) {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background-color: $bg-color;
+
+  &::before {
+    display: block;
+    padding-top: $percentage;
+    content: "";
+  }
+
+  & picture {
+    @include center-method;
+  }
+  & img {
+    @include center-method;
+
+    display: block;
+    width: 100%;
+    height: auto;
+
+    @supports (object-fit: $fit) {
+      position: absolute;
+      object-fit: $fit;
+      height: 100%;
+      object-position: center;
+    }
+  }
+}
+
+@mixin truncate($line-clamp: 3) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  margin-bottom: 0;
+
+  -webkit-line-clamp: $line-clamp;
+}
+
+// screen reader only
+@mixin sr-only() {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important; // Fix for https://github.com/twbs/bootstrap/issues/25686
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@mixin sr-only-focusable() {
+  &:active,
+  &:focus {
+    position: static;
+    overflow: visible;
+    clip: auto;
+    width: auto;
+    height: auto;
+    white-space: normal;
+  }
+}
+
+@mixin clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}

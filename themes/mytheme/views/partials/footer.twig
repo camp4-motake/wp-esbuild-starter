@@ -1,0 +1,19 @@
+<footer class="footer">
+  <div class="footer__container container">
+    <nav class="footer__nav">
+      {% for item in footer_navigation.items %}
+        <a href="{{ item.link }}"
+          class="{{ item.classes|join(' ') }}"
+          target="{{ item.target }}"
+          rel="noopener">
+          <span class="customMenuLink">{{ item.title|e('esc_html') }}</span>
+        </a>
+      {% endfor %}
+    </nav>
+    <div class="footer__bottom">
+      <p class="copyright">
+        <small>&copy; mytheme All Rights Reserved.</small>
+      </p>
+    </div>
+  </div>
+</footer>

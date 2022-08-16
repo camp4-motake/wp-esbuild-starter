@@ -1,0 +1,21 @@
+/**
+ * Editor
+ */
+
+/* purgecss start ignore */
+
+@use "sass:meta";
+@use "common/custom-properties";
+@use "editor/adminFix";
+
+.editor-styles-wrapper {
+  padding: 0 var(--spacer) var(--spacer);
+}
+
+.editor-styles-wrapper > * {
+  @include meta.load-css("components");
+  @include meta.load-css("modules/typography");
+  @include meta.load-css("common/entry-style");
+}
+
+/* purgecss end ignore */

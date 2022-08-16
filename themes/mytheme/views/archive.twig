@@ -1,0 +1,11 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+  {{ include('components/page-header.twig', { lead: lead_title, sub: sub_title }) }}
+  <section class="section container container--max-xl">
+    {{ include('components/loop.twig', { posts: posts }) }}
+  </section>
+  <div class="section pt-0">
+    {{ custom_pagination }}
+  </div>
+{% endblock %}

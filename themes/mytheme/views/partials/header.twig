@@ -1,0 +1,58 @@
+{#
+
+Header
+
+Custom menu -> Timber Menus
+@see https://timber.github.io/docs/guides/menus/
+
+#}
+<header class="header">
+  <div class="header__container">
+    <a href="{{ function('home_url') }}" class="header__brand">
+      <span class="sr-only">{{ site.name }}</span>
+      <i class="header__brand__logo" role="presentation">
+        {{ include('dist/images/logo-brand.svg', ignore_missing = true) }}
+      </i>
+    </a>
+    <nav class="header__nav">
+      {% for item in primary_navigation.items %}
+        <a href="{{ item.link }}"
+          class="{{ item.classes|join(' ') }}"
+          target="{{ item.target }}"
+          rel="{{ item.target == '_blank' ? 'noreferrer' : '' }}">
+          <span class="customMenuLink">{{ item.title|e('esc_html') }}</span>
+        </a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>
+<div data-header-trigger></div>
+
+<div class="menuToggleSpacer" data-menu-container>
+  <button type="button" class="menuToggle" title="Menu Open" x-data="menuToggle" x-bind="toggle">
+    <span class="menuToggle__rotation">
+      <i class="menuToggle__btnImage menuToggle__btnImage--open" role="presentation">
+        {{ include('dist/images/menu-toggle.svg', ignore_missing = true) }}
+      </i>
+      <i class="menuToggle__btnImage menuToggle__btnImage--close" role="presentation">
+        {{ include('dist/images/menu-close.svg', ignore_missing = true) }}
+      </i>
+    </span>
+  </button>
+</div>
+
+<div data-modal-overlay></div>
+<nav class="navMenu">
+  <div class="navMenu__body">
+    <div class="navMenu__links">
+      {% for item in primary_navigation.items %}
+        <a href="{{ item.link }}"
+          class="{{ item.classes|join(' ') }}"
+          target="{{ item.target }}"
+          rel="{{ item.target == '_blank' ? 'noreferrer' : '' }}">
+          <span class="customMenuLink">{{ item.title|e('esc_html') }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</nav>

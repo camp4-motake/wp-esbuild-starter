@@ -1,0 +1,68 @@
+.section {
+  // default lg-xl
+  --section-gutter: var(--gutter-lg);
+
+  @media (--viewport-lg) {
+    --section-gutter: var(--gutter-xl);
+  }
+
+  position: relative;
+  padding-top: var(--section-gutter);
+  padding-bottom: var(--section-gutter);
+
+  & > .container,
+  & > .containerFluid {
+    position: relative;
+  }
+}
+
+.section--gutter-sm {
+  --section-gutter: var(--gutter-sm);
+}
+
+.section--gutter-sm-md {
+  --section-gutter: var(--gutter-sm);
+
+  @media (--viewport-lg) {
+    --section-gutter: var(--gutter-md);
+  }
+}
+
+.section--gutter-md-lg {
+  --section-gutter: var(--gutter-md);
+
+  @media (--viewport-lg) {
+    --section-gutter: var(--gutter-lg);
+  }
+}
+
+.section--gutter-lg-xl {
+  --section-gutter: var(--gutter-ld);
+
+  @media (--viewport-lg) {
+    --section-gutter: var(--gutter-xl);
+  }
+}
+
+.section--gutter-xl-2xl {
+  --section-gutter: var(--gutter-xl);
+
+  @media (--viewport-lg) {
+    --section-gutter: var(--gutter-2xl);
+  }
+}
+
+.section--fullHeight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  @supports (-webkit-touch-callout: none) {
+    min-height: stretch;
+  }
+
+  // @media (--viewport-xl) {
+  //   min-height: calc(1000 / var(--rem));
+  // }
+}

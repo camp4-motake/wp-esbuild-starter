@@ -1,0 +1,66 @@
+{
+  "name": "wp-theme",
+  "author": "CAMP4 inc.",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": "16 || 18"
+  },
+  "scripts": {
+    "dev": "npm run clean && concurrently --raw \"vite\" \"npm:image\" \"npm:sync\"",
+    "build": "npm run clean && tsc && concurrently --raw  \"vite build\" \"npm:image\"",
+    "sync": "browser-sync start --config bs-config.js",
+    "image": "node image.mjs",
+    "clean": "rimraf dist",
+    "prettier": "prettier --write \"**/*.{vue,js,jsx,ts,tsx,css,sass,scss,less,php,twig}\""
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.1.3",
+    "@prettier/plugin-php": "^0.18.9",
+    "@types/alpinejs": "^3.7.0",
+    "@types/node": "^18.7.5",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "browser-sync": "^2.27.10",
+    "concurrently": "^7.3.0",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "fs-extra": "^10.1.0",
+    "globby": "^13.1.2",
+    "http-proxy": "^1.18.1",
+    "postcss": "^8.4.16",
+    "postcss-preset-env": "^7.7.2",
+    "postcss-scss": "^4.0.4",
+    "postcss-sort-media-queries": "^4.2.1",
+    "postcss-url": "^10.1.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-twig-melody": "^0.4.6",
+    "purgecss-with-wordpress": "^4.1.0",
+    "rimraf": "^3.0.2",
+    "sass": "^1.54.4",
+    "sharp": "^0.30.7",
+    "stylelint": "^14.10.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard-scss": "^5.0.0",
+    "svgo": "2.8.0",
+    "typescript": "^4.7.4",
+    "vite": "^3.0.7"
+  },
+  "dependencies": {
+    "alpinejs": "^3.10.3",
+    "ress": "^5.0.2"
+  },
+  "optionalDependencies": {},
+  "browserslist": [
+    "last 1 Chrome major versions",
+    "last 2 Firefox major versions",
+    "last 2 Safari major versions",
+    "last 2 Edge major versions",
+    "last 3 Android major versions",
+    "last 3 ChromeAndroid major versions",
+    "last 2 iOS major version",
+    "not IE 11"
+  ]
+}

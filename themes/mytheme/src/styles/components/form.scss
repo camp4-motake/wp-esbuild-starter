@@ -1,0 +1,56 @@
+.formGroup {
+  display: flex;
+  align-items: center;
+
+  input[type="checkbox"] {
+    appearance: none;
+
+    & + label {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      padding-left: 1.25em;
+      cursor: pointer;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        width: 1em;
+        height: 100%;
+        content: "";
+        background-image: var(--icon-bg-checkbox-disable-light);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 0.85em;
+      }
+    }
+
+    &:checked + label::before {
+      background-image: var(--icon-bg-checkbox-enable-light);
+    }
+  }
+}
+
+.formGroupSelect {
+  position: relative;
+  background-color: var(--color-base);
+  border: 1px solid var(--color-text);
+  border-radius: 0.25em;
+
+  &::after {
+    position: absolute;
+    right: 0;
+    width: 1.5em;
+    height: 100%;
+    content: "";
+    background-color: var(--color-text);
+    mask-image: var(--icon-bg-arrow-down);
+    mask-repeat: no-repeat;
+    mask-size: 0.65em;
+    mask-position: center;
+  }
+
+  select {
+    padding: 0.25em 2.25em 0.25em 1em;
+  }
+}

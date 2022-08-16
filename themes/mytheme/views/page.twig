@@ -1,0 +1,12 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+  <h1 class="heading text-center container container--max-entry">
+    {{ post.title }}
+  </h1>
+  <section class="section">
+    <div class="container container--max-entry entry-content">
+      {{ post.content }}
+    </div>
+  </section>
+{% endblock %}
