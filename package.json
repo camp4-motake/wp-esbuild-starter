@@ -18,9 +18,9 @@
     "wp-wordmove": "zx ./docker/bin/wp-wordmove.mjs"
   },
   "devDependencies": {
-    "zx": "^5.1.0"
+    "zx": "^7.0.7"
   },
   "workspaces": [
-    "mytheme"
+    "themes/mytheme"
   ]
 }
