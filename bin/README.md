@@ -1,5 +1,5 @@
 
-# ヘルパーコマンド
+# ヘルパー
 
 ## 自動セットアップ
 
@@ -11,7 +11,7 @@ npm run wp-setup
 
 ## wp-cli
 
-dockerコンテナ内で [wp-cli コマンド](https://developer.wordpress.org/cli/commands/)を実行します。
+dockerコンテナ内で [wp-cli コマンド](https://developer.wordpress.org/cli/commands/)を実行するためのショートカット
 
 ```sh
 npm run wp-cli '{wp-cli_command}'
@@ -19,7 +19,7 @@ npm run wp-cli '{wp-cli_command}'
 
 ## Wordmove
 
-コンテナから [wordmove コマンド](https://github.com/welaika/wordmove#usage)を実行します
+コンテナから [wordmove コマンド](https://github.com/welaika/wordmove#usage)を実行するためのショートカット
 
 ```sh
 npm run wp-wordmove '{wordmove_command}'
