@@ -12,7 +12,7 @@
     "sync": "browser-sync start --config bs-config.js",
     "image": "node image.mjs",
     "clean": "rimraf dist",
-    "prettier": "prettier --write \"**/*.{vue,js,jsx,ts,tsx,css,sass,scss,less,php,twig}\""
+    "prettier": "prettier --write --list-different ."
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.1.3",
