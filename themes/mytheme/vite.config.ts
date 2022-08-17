@@ -2,7 +2,7 @@ import { existsSync } from 'fs';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
-const root = existsSync('../../node_modules') ? '../../' : './';
+const root = existsSync('../../package.json') ? '../../' : './';
 const nodeModules = resolve(__dirname, root, 'node_modules');
 
 export default defineConfig({
