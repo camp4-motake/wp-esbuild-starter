@@ -63,19 +63,17 @@
       background-color: var(--color-base);
     }
 
-    &:not(.dots):hover {
-      color: var(--color-base);
-      background-color: var(--color-text);
-    }
-
-    // border: 2px solid var(--color-primary);
-
-    &:not(.current):not(.prev):not(.next) {
+    &:not(.current, .prev, .next) {
       display: none;
 
       @media (--viewport-md) {
         display: flex;
       }
+    }
+
+    &:not(.dots):hover {
+      color: var(--color-base);
+      background-color: var(--color-text);
     }
   }
 

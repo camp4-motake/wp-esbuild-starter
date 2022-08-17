@@ -15,9 +15,10 @@
 @custom-media --viewport-until-md (width <= 48em);
 @custom-media --viewport-landscape (orientation: landscape);
 @custom-media --viewport-portrait (orientation: portrait);
-@custom-media --viewport-4by3 (min-aspect-ratio: 4/3);
-@custom-media --viewport-16by9 (min-aspect-ratio: 16/9);
-@custom-media --viewport-21by9 (min-aspect-ratio: 21/9);
+
+// @custom-media --viewport-4by3 (min-aspect-ratio: 4/3);
+// @custom-media --viewport-16by9 (min-aspect-ratio: 16/9);
+// @custom-media --viewport-21by9 (min-aspect-ratio: 21/9);
 
 :root {
   // basic
@@ -160,7 +161,6 @@
 
   // generate container breakpoint max width
   @each $breakpoint, $width in $container-max-width {
-    /* stylelint-disable-next-line custom-property-pattern */
     --container-max-width-#{$breakpoint}: calc(
       #{strip-unit($width)} / var(--rem)
     );
@@ -215,7 +215,7 @@
   --swiper-pagination-color: var(--color-text);
 
   // Golden ratio
-  --golden-ratio: 1.6180339887;
+  --golden-ratio: 1.618;
 
   // ios safe area
   --safe-area-t: env(safe-area-inset-top, 0);
