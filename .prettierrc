@@ -1,0 +1,19 @@
+{
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": ["**/*.css", "**/*.scss", "**/*.html"],
+      "options": {
+        "singleQuote": false
+      }
+    },
+    {
+      "files": ["**/*.twig"],
+      "options": {
+        "parser": "melody",
+        "twigAlwaysBreakObjects": false,
+        "twigPrintWidth": 100
+      }
+    }
+  ]
+}
