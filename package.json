@@ -6,6 +6,7 @@
   "author": "CAMP4 inc.",
   "license": "UNLICENSED",
   "private": true,
+  "type": "module",
   "engines": {
     "node": "16 || 18"
   },

@@ -21,7 +21,7 @@ class ImgMin {
           png: { quality: 80 },
           jpg: { quality: 80 },
           webp: { quality: 80, smartSubsample: true },
-          svg: ["--config", path.resolve(__dirname, "svgo.config.js")],
+          svg: ["--config", path.resolve(__dirname, "svgo.config.cjs")],
         },
         custom: {},
       },
