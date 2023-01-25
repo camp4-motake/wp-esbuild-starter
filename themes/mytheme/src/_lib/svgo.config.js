@@ -1,12 +1,12 @@
 // https://github.com/svg/svgo
 module.exports = {
   plugins: [
-    'preset-default',
+    "preset-default",
     // 'prefixIds',
     {
-      name: 'sortAttrs',
+      name: "sortAttrs",
       params: {
-        xmlnsOrder: 'alphabetical',
+        xmlnsOrder: "alphabetical",
       },
     },
   ],

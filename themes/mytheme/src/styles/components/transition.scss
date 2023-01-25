@@ -1,8 +1,8 @@
 .transition-bottomIn {
+  transform: translateY(1rem);
   opacity: 0;
   transition: transform 1s var(--ease-out-circ), opacity 1s;
   transition-delay: 0.1s, 0.1s;
-  transform: translateY(1rem);
   will-change: opacity, transform;
 
   &.isDelayDouble {
@@ -15,8 +15,8 @@
 }
 
 .js-isPageActive [data-scroll="in"].transition-bottomIn {
-  opacity: 1;
   transform: translateY(0);
+  opacity: 1;
 }
 
 .transition-stagger .transition-bottomIn {
@@ -40,7 +40,7 @@
 
 .js-isPageActive [data-scroll="in"].transition-staggerWrapper {
   .transition-staggerBottomIn {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
   }
 }

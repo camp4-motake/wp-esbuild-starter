@@ -9,10 +9,10 @@ use Lib\Vite;
  *
  * @return void
  */
-add_action('admin_notices', function () {
+add_action("admin_notices", function () {
   global $current_page;
 
-  if ($current_page !== 'post.php') {
+  if ($current_page !== "post.php") {
     return;
   }
 
@@ -30,41 +30,41 @@ add_action('admin_notices', function () {
  * @return void
  */
 add_action(
-  'admin_print_scripts',
+  "admin_print_scripts",
   function () {
     global $post_type;
 
     $is_enable_custom_post_type_permalinks = is_plugin_active(
-      'custom-post-type-permalinks/custom-post-type-permalinks.php'
+      "custom-post-type-permalinks/custom-post-type-permalinks.php"
     );
-    $structure = get_option($post_type . '_structure');
+    $structure = get_option($post_type . "_structure");
 
-    if (!$is_enable_custom_post_type_permalinks || $post_type === 'post') {
-      $structure = get_option('permalink_structure');
+    if (!$is_enable_custom_post_type_permalinks || $post_type === "post") {
+      $structure = get_option("permalink_structure");
     }
 
-    $is_enable = strpos($structure, '%postname%') !== false;
+    $is_enable = strpos($structure, "%postname%") !== false;
 
-    if ($post_type === 'page') {
+    if ($post_type === "page") {
       $is_enable = true;
     }
 
-    $post_types_list = get_post_types(['public' => false]);
+    $post_types_list = get_post_types(["public" => false]);
 
     if (in_array($post_type, $post_types_list, true)) {
       $is_enable = false;
     }
     // if ($structure !== false && "/%postname%/" !== $structure) return;
 
-    $js_values = $is_enable ? 'true' : 'false';
+    $js_values = $is_enable ? "true" : "false";
     $js_values = "window.CUSTOM_THEME_SLUG_STRING_CHECK = {$js_values};";
 
     echo "\n<script>{$js_values}</script>\n";
     // vite asset
     echo "\n" .
-      VIte\jsTag('src/editor.ts') .
+      VIte\jsTag("src/editor.ts") .
       "\n" .
-      VIte\jsPreloadImports('src/editor.ts');
+      VIte\jsPreloadImports("src/editor.ts");
   },
   100
 );
@@ -73,7 +73,7 @@ add_action(
  *  ブロックエディター用カスタムスタイル
  */
 add_action(
-  'admin_print_styles',
+  "admin_print_styles",
   function () {
     // google font
     if (IS_ENABLE_GOOGLE_FONTS && count(GOOGLE_FONTS)) {
@@ -82,7 +82,7 @@ add_action(
       }
     }
     // vite asset css
-    echo VIte\cssTag('src/editor.ts');
+    echo VIte\cssTag("src/editor.ts");
   },
   200
 );

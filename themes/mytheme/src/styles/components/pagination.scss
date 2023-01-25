@@ -4,15 +4,15 @@
 /* purgecss start ignore */
 
 .pagination {
-  position: relative;
   display: flex;
+  position: relative;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   max-width: 100%;
+  margin-bottom: 0;
   padding-top: var(--spacer-lg);
   padding-left: 0;
-  margin-bottom: 0;
   list-style: none;
 
   @media (--viewport-md) {
@@ -26,9 +26,9 @@
   @media (--viewport-lg) {
     --pagination-link-width: calc(50 / var(--rem));
   }
+  display: block;
 
   position: relative;
-  display: block;
   height: 100%;
   margin-right: 0.25em;
   margin-bottom: 0;
@@ -40,8 +40,8 @@
   }
 
   .page-numbers {
-    position: relative;
     display: flex;
+    position: relative;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -49,14 +49,14 @@
     height: var(--pagination-link-width);
     padding: 0.2em;
     overflow: hidden;
-    font-family: var(--font-sans-serif-en);
-    font-weight: bold;
-    line-height: 1;
-    color: var(--color-text);
-    text-decoration: none;
-    background-color: transparent;
     border: 1px solid currentcolor;
     border-radius: 50%;
+    background-color: transparent;
+    color: var(--color-text);
+    font-weight: bold;
+    line-height: 1;
+    font-family: var(--font-sans-serif-en);
+    text-decoration: none;
     transition: 0.4s ease;
 
     [class*="bg-"] & {
@@ -72,15 +72,15 @@
     }
 
     &:not(.dots):hover {
-      color: var(--color-base);
       background-color: var(--color-text);
+      color: var(--color-base);
     }
   }
 
   .page-numbers.current {
+    background-color: var(--color-text);
     color: var(--color-base);
     pointer-events: none;
-    background-color: var(--color-text);
   }
 
   .page-numbers.dots {
@@ -97,12 +97,12 @@
 
     &::after {
       @include full-fit;
+      background-color: currentcolor;
 
       content: "";
+      mask-position: center;
       mask-repeat: no-repeat;
       mask-size: 0.3em;
-      mask-position: center;
-      background-color: currentcolor;
     }
 
     &.is-disable {
@@ -138,8 +138,8 @@
 
 .pageNum {
   padding-top: var(--spacer);
-  font-size: calc(11 / var(--rem));
   font-weight: var(--font-weight-bold);
+  font-size: calc(11 / var(--rem));
   text-align: center;
 
   @media (--viewport-md) {

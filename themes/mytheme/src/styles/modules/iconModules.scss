@@ -1,8 +1,8 @@
 [class*="icon-"]::before,
 [class*="icon-"]::after {
   display: inline-block;
-  font-family: var(--font-icons);
   font-size: 1em;
+  font-family: var(--font-icons);
 }
 
 .icon-external::after {

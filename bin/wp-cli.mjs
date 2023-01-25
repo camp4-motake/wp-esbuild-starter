@@ -3,7 +3,7 @@
 /**
  * wp-cli shortcut
  */
-import { $, argv } from 'zx';
+import { $, argv } from "zx";
 
 const [command] = argv._;
 

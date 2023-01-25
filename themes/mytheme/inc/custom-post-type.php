@@ -42,8 +42,8 @@ namespace Lib\CustomPostType;
  * @param [type] $menu_ord
  * @return void
  */
-add_filter('custom_menu_order', __NAMESPACE__ . '\\custom_menu_order');
-add_filter('menu_order', __NAMESPACE__ . '\\custom_menu_order');
+add_filter("custom_menu_order", __NAMESPACE__ . "\\custom_menu_order");
+add_filter("menu_order", __NAMESPACE__ . "\\custom_menu_order");
 function custom_menu_order($menu_ord)
 {
   if (!$menu_ord) {
@@ -51,11 +51,11 @@ function custom_menu_order($menu_ord)
   }
 
   return [
-    'index.php', // ダッシュボード
-    'separator1',
-    'edit.php?post_type=page', // 固定ページ
-    'edit.php?post_type=events', // イベント
-    'edit.php?post_type=news', // ニュース/レビュー
-    'separator2',
+    "index.php", // ダッシュボード
+    "separator1",
+    "edit.php?post_type=page", // 固定ページ
+    "edit.php?post_type=events", // イベント
+    "edit.php?post_type=news", // ニュース/レビュー
+    "separator2",
   ];
 }

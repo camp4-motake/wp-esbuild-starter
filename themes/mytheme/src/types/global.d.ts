@@ -1,5 +1,5 @@
 /* eslint-disable no-var */
-import { Alpine as AlpineType } from 'alpinejs';
+import { Alpine as AlpineType } from "alpinejs";
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

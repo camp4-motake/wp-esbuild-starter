@@ -191,8 +191,8 @@ h6,
 }
 
 .text-extra-lead {
-  font-size: calc(17 / var(--rem));
   font-weight: var(--font-weight-medium);
+  font-size: calc(17 / var(--rem));
   line-height: 1.765;
 
   @media (--viewport-lg) {
@@ -251,8 +251,8 @@ h6,
 }
 
 .text-hide {
-  font-size: 0;
   color: transparent;
+  font-size: 0;
 }
 
 .text-block {
@@ -360,10 +360,10 @@ h6,
 
 @for $i from 2 to 5 {
   .line-crump-#{$i} {
+    -webkit-box-orient: vertical;
     /* stylelint-disable-next-line value-no-vendor-prefix */
     display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
     -webkit-line-clamp: $i;
+    overflow: hidden;
   }
 }

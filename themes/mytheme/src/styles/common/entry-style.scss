@@ -20,8 +20,17 @@
 }
 
 .entry-content {
-  width: 100%;
   -webkit-overflow-scrolling: touch;
+  -ms-word-break: break-all;
+  word-wrap: break-word;
+  width: 100%;
+
+  // ex
+  // https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+  hyphens: auto;
+  word-break: break-all;
+  word-break: break-word;
+  overflow-wrap: break-word;
 
   // overflow: auto;
 
@@ -29,15 +38,6 @@
   img {
     max-width: 100%;
   }
-
-  // ex
-  // https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
-  hyphens: auto;
-  -ms-word-break: break-all;
-  word-break: break-all;
-  word-break: break-word;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
 .wp-block-separator {
@@ -76,19 +76,19 @@
 
 .wp-block-quote {
   position: relative;
-  padding: var(--spacer-md);
   margin-top: 2rem;
   margin-bottom: var(--spacer-lg);
-  background-color: var(--color-bg);
+  padding: var(--spacer-md);
   border-left: none;
+  background-color: var(--color-bg);
 
   cite,
   footer {
     position: relative;
     margin-top: 1em;
-    font-size: 0.8125em;
-    font-style: normal;
     color: currentcolor;
+    font-style: normal;
+    font-size: 0.8125em;
   }
 
   &.has-text-align-right {
@@ -179,8 +179,8 @@
 }
 
 .wp-block-audio figcaption {
-  font-size: var(--font-size-sm);
   color: var(--color-text-code);
+  font-size: var(--font-size-sm);
   text-align: center;
 }
 
@@ -189,16 +189,16 @@
 }
 
 .wp-block-code {
-  padding: 0.8em 1em;
   margin-bottom: var(--spacer-lg);
-  font-family: Menlo, Consolas, monaco, monospace;
+  padding: 0.8em 1em;
   border: 1px solid var(--color-border-base);
   border-radius: var(--border-radius-sm);
+  font-family: Menlo, Consolas, monaco, monospace;
 }
 
 .wp-block-embed figcaption {
-  font-size: var(--font-size-sm);
   color: var(--color-text-code);
+  font-size: var(--font-size-sm);
   text-align: center;
 }
 
@@ -207,8 +207,8 @@
 }
 
 .blocks-gallery-caption {
-  font-size: var(--font-size-sm);
   color: var(--color-text-code);
+  font-size: var(--font-size-sm);
   text-align: center;
 }
 
@@ -247,12 +247,12 @@
   /* purgecss ignore current */
 
   display: block;
-  padding: 0.25em;
   margin-top: 0;
-  font-size: var(--font-size-xs);
-  color: var(--color-text-code);
-  text-align: center;
+  padding: 0.25em;
   background-color: transparent;
+  color: var(--color-text-code);
+  font-size: var(--font-size-xs);
+  text-align: center;
 }
 
 .is-dark-theme .wp-block-image figcaption {
@@ -261,15 +261,15 @@
 
 .wp-block-pullquote {
   margin-bottom: 1.75em;
-  color: currentcolor;
   border-top: 4px solid;
   border-bottom: 4px solid;
+  color: currentcolor;
 
   cite,
   footer {
-    font-size: 0.8125em;
-    font-style: normal;
     color: currentcolor;
+    font-style: normal;
+    font-size: 0.8125em;
     text-transform: uppercase;
   }
 
@@ -283,9 +283,9 @@
 }
 
 .wp-block-pullquote__citation {
-  font-size: 0.8125em;
-  font-style: normal;
   color: currentcolor;
+  font-style: normal;
+  font-size: 0.8125em;
   text-transform: uppercase;
 }
 
@@ -304,9 +304,9 @@
 .wp-block-quote__citation {
   position: relative;
   margin-top: 1em;
-  font-size: 0.8125em;
-  font-style: normal;
   color: currentcolor;
+  font-style: normal;
+  font-size: 0.8125em;
 }
 
 .wp-block-search .wp-block-search__label {
@@ -315,9 +315,9 @@
 
 .wp-block-group {
   @include clearfix;
+  margin-bottom: var(--spacer-lg);
 
   padding: var(--spacer);
-  margin-bottom: var(--spacer-lg);
   border: 1px solid var(--color-text);
   border-radius: 0.25rem;
 
@@ -362,9 +362,9 @@
   th {
     min-width: 10em;
     padding: 0.5em;
-    word-break: normal;
-    vertical-align: middle;
     border: 1px solid var(--color-text);
+    vertical-align: middle;
+    word-break: normal;
 
     &:not([class*="has"]) {
       text-align: center;
@@ -376,8 +376,8 @@
   }
 
   figcaption {
-    font-size: var(--font-size-sm);
     color: var(--color-text-light);
+    font-size: var(--font-size-sm);
     text-align: center;
   }
 
@@ -388,8 +388,8 @@
 
 .wp-block-table:not(.is-style-stripes) {
   thead th {
-    color: var(--color-text);
     background-color: var(--color-bg);
+    color: var(--color-text);
   }
 }
 
@@ -429,8 +429,8 @@
 }
 
 .wp-block-video figcaption {
-  font-size: var(--font-size-sm);
   color: var(--color-text-code);
+  font-size: var(--font-size-sm);
   text-align: center;
 }
 
@@ -439,9 +439,9 @@
 }
 
 .wp-block-template-part.has-background {
-  padding: 1.25em 2.375em;
   margin-top: 0;
   margin-bottom: 0;
+  padding: 1.25em 2.375em;
 }
 
 .wp-block-embed {
@@ -513,10 +513,10 @@
   h4,
   h5,
   h6 {
+    font-weight: var(--font-weight-bold);
     /* purgecss ignore current */
 
     font-family: var(--font-sans-serif-en);
-    font-weight: var(--font-weight-bold);
   }
 }
 

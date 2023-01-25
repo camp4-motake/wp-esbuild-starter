@@ -17,20 +17,20 @@ html {
 }
 
 body {
-  position: relative;
-  overflow-y: scroll;
-  font-family: var(--font-family-base);
-  font-weight: var(--font-weight-medium);
   font-feature-settings: "pkna";
-  line-height: var(--line-height-base);
-  color: var(--color-text);
-  letter-spacing: var(--letter-spacing-sans-serif);
-  overflow-wrap: break-word;
-  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-size-adjust: 100%;
+  position: relative;
+  overflow-y: scroll;
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  font-family: var(--font-family-base);
+  font-synthesis: none;
+  letter-spacing: var(--letter-spacing-sans-serif);
   line-break: strict;
+  overflow-wrap: break-word;
 }
 
 img {

@@ -9,31 +9,31 @@ namespace Lib\CustomPostType\News;
 /**
  * カスタム投稿タイプ登録
  */
-add_action('init', function () {
-  register_post_type('news', [
-    'labels' => [
-      'name' => 'お知らせ',
-      'menu_name' => 'お知らせ',
-      'singular_name' => 'お知らせ',
-      'add_new' => 'お知らせを追加',
-      'add_new_item' => 'お知らせを新規追加',
-      'edit_item' => 'お知らせを編集する',
-      'new_item' => '新規お知らせ',
-      'all_items' => 'お知らせ一覧',
-      'view_item' => '投稿を見る',
-      'search_items' => '検索する',
-      'not_found' => 'お知らせが見つかりませんでした。',
-      'not_found_in_trash' => 'ゴミ箱内にお知らせが見つかりませんでした。',
+add_action("init", function () {
+  register_post_type("news", [
+    "labels" => [
+      "name" => "お知らせ",
+      "menu_name" => "お知らせ",
+      "singular_name" => "お知らせ",
+      "add_new" => "お知らせを追加",
+      "add_new_item" => "お知らせを新規追加",
+      "edit_item" => "お知らせを編集する",
+      "new_item" => "新規お知らせ",
+      "all_items" => "お知らせ一覧",
+      "view_item" => "投稿を見る",
+      "search_items" => "検索する",
+      "not_found" => "お知らせが見つかりませんでした。",
+      "not_found_in_trash" => "ゴミ箱内にお知らせが見つかりませんでした。",
     ],
-    'public' => true,
-    'has_archive' => true,
-    'show_in_rest' => true,
-    'show_ui' => true,
-    'show_in_menu' => true,
-    'supports' => ['title', 'author', 'editor', 'thumbnail'],
-    'rewrite' => ['slug' => 'news'],
-    'menu_position' => 4,
-    'menu_icon' => 'dashicons-edit-large',
+    "public" => true,
+    "has_archive" => true,
+    "show_in_rest" => true,
+    "show_ui" => true,
+    "show_in_menu" => true,
+    "supports" => ["title", "author", "editor", "thumbnail"],
+    "rewrite" => ["slug" => "news"],
+    "menu_position" => 4,
+    "menu_icon" => "dashicons-edit-large",
   ]);
 });
 

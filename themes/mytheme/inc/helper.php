@@ -3,27 +3,27 @@
 namespace Lib\Helper;
 
 // add Twig function
-if (class_exists('Timber')) {
-  add_filter('timber/twig', function ($twig) {
+if (class_exists("Timber")) {
+  add_filter("timber/twig", function ($twig) {
     $twig->addFunction(
-      new \Timber\Twig_Function('svg_sprite', __NAMESPACE__ . '\\svg_sprite')
+      new \Timber\Twig_Function("svg_sprite", __NAMESPACE__ . "\\svg_sprite")
     );
     $twig->addFunction(
       new \Timber\Twig_Function(
-        'picture_webp',
-        __NAMESPACE__ . '\\picture_webp'
+        "picture_webp",
+        __NAMESPACE__ . "\\picture_webp"
       )
     );
     $twig->addFunction(
       new \Timber\Twig_Function(
-        'custom_pagination',
-        __NAMESPACE__ . '\\custom_pagination'
+        "custom_pagination",
+        __NAMESPACE__ . "\\custom_pagination"
       )
     );
     $twig->addFunction(
       new \Timber\Twig_Function(
-        'get_yoast_seo_breadcrumb',
-        __NAMESPACE__ . '\\get_yoast_seo_breadcrumb'
+        "get_yoast_seo_breadcrumb",
+        __NAMESPACE__ . "\\get_yoast_seo_breadcrumb"
       )
     );
     return $twig;
@@ -37,9 +37,9 @@ if (class_exists('Timber')) {
  */
 function is_dev()
 {
-  $host = $_SERVER['HTTP_HOST'];
+  $host = $_SERVER["HTTP_HOST"];
   return WP_DEBUG &&
-    (strpos($host, 'dev.') !== false || strpos($host, 'localhost') !== false);
+    (strpos($host, "dev.") !== false || strpos($host, "localhost") !== false);
 }
 
 /**
@@ -48,7 +48,7 @@ function is_dev()
  * @param string $filepath アセットファイルパス
  * @return string パス
  */
-function assets_uri($filepath = '')
+function assets_uri($filepath = "")
 {
   return ASSETS_DIR_URI . $filepath;
 }
@@ -60,7 +60,7 @@ function assets_uri($filepath = '')
  * @param String $title titleタグ置換用テキスト
  * @return String インライン SVG
  */
-function inline_svg(string $filepath = '', string $title = '')
+function inline_svg(string $filepath = "", string $title = "")
 {
   $svg_asset_path = ASSETS_DIR_PATH . $filepath;
 
@@ -72,8 +72,8 @@ function inline_svg(string $filepath = '', string $title = '')
   $svg_source = file_get_contents($svg_asset_path);
 
   // titleタグ置換
-  if ($title && $title !== '') {
-    $pattern = '/<title>.*?<\/title>/u';
+  if ($title && $title !== "") {
+    $pattern = "/<title>.*?<\/title>/u";
     $replace = "<title>{$title}</title>";
     $svg_source = preg_replace($pattern, $replace, $svg_source);
   }
@@ -89,28 +89,28 @@ function inline_svg(string $filepath = '', string $title = '')
  * @return string
  */
 function svg_sprite(
-  $xlink = '',
-  $title = '',
-  $class = '',
+  $xlink = "",
+  $title = "",
+  $class = "",
   $attr = [],
-  $role = 'img'
+  $role = "img"
 ): string {
   $attr = array_merge(
     [
       // 'xmlns:xlink' => 'http://www.w3.org/1999/xlink',
-      'xlink:href' => '#src--images--_sprite--' . esc_attr($xlink),
+      "xlink:href" => "#src--images--_sprite--" . esc_attr($xlink),
     ],
     $attr
   );
 
   $use_attr = array_to_attr_string($attr);
-  $class_name = $class ? 'class="' . esc_attr($class) . '" ' : '';
+  $class_name = $class ? 'class="' . esc_attr($class) . '" ' : "";
 
-  $xml = '<svg ' . $class_name . 'role="' . esc_attr($role) . '">';
+  $xml = "<svg " . $class_name . 'role="' . esc_attr($role) . '">';
   if (!empty($title)) {
-    $xml .= '<title>' . esc_attr($title) . '</title>';
+    $xml .= "<title>" . esc_attr($title) . "</title>";
   }
-  $xml .= '<use ' . $use_attr . '></use></svg>';
+  $xml .= "<use " . $use_attr . "></use></svg>";
 
   return $xml;
 }
@@ -121,17 +121,17 @@ function svg_sprite(
 function title()
 {
   if (is_home()) {
-    if (get_option('page_for_posts', true)) {
-      return get_the_title(get_option('page_for_posts', true));
+    if (get_option("page_for_posts", true)) {
+      return get_the_title(get_option("page_for_posts", true));
     } else {
-      return __('Latest Posts', 'sage');
+      return __("Latest Posts", "sage");
     }
   } elseif (is_archive()) {
     return get_the_archive_title();
   } elseif (is_search()) {
-    return sprintf(__('Search Results for %s', 'sage'), get_search_query());
+    return sprintf(__("Search Results for %s", "sage"), get_search_query());
   } elseif (is_404()) {
-    return __('Not Found', 'sage');
+    return __("Not Found", "sage");
   } else {
     return get_the_title();
   }
@@ -163,25 +163,25 @@ function title()
  * @return string
  */
 function picture_webp(
-  $src_path = '' || [],
+  $src_path = "" || [],
   $img_attrs = [],
   $picture_attrs = []
 ): string {
   $sources = false;
 
-  if (is_array($src_path) && isset($src_path['img'])) {
-    $path = $src_path['img'];
-    if (isset($src_path['source']) && count($src_path['source'])) {
-      $sources = $src_path['source'];
+  if (is_array($src_path) && isset($src_path["img"])) {
+    $path = $src_path["img"];
+    if (isset($src_path["source"]) && count($src_path["source"])) {
+      $sources = $src_path["source"];
     }
   } elseif (is_string($src_path)) {
     $path = $src_path;
   } else {
-    return '';
+    return "";
   }
 
   $img_tag = make_img_tag($path, $img_attrs);
-  $webp_path = preg_replace('/\.[^.]+$/', '.webp', $path);
+  $webp_path = preg_replace('/\.[^.]+$/', ".webp", $path);
 
   if (!$sources) {
     if (!file_exists(ASSETS_DIR_PATH . $webp_path)) {
@@ -191,29 +191,29 @@ function picture_webp(
   }
 
   $n = "\n";
-  $html = '<picture' . array_to_attr_string($picture_attrs) . '>' . $n;
+  $html = "<picture" . array_to_attr_string($picture_attrs) . ">" . $n;
 
   if ($sources) {
     foreach ($sources as $source) {
-      if (!isset($source['src']) || !isset($source['media'])) {
+      if (!isset($source["src"]) || !isset($source["media"])) {
         continue;
       }
-      $webp_path = preg_replace('/\.[^.]+$/', '.webp', $source['src']);
-      $html .= make_source_tag($webp_path, 'image/webp', $source['media']);
+      $webp_path = preg_replace('/\.[^.]+$/', ".webp", $source["src"]);
+      $html .= make_source_tag($webp_path, "image/webp", $source["media"]);
     }
     foreach ($sources as $source) {
-      if (!isset($source['src']) || !isset($source['media'])) {
+      if (!isset($source["src"]) || !isset($source["media"])) {
         continue;
       }
-      $html .= make_source_tag($source['src'], null, $source['media']);
+      $html .= make_source_tag($source["src"], null, $source["media"]);
     }
   } else {
     $html .=
-      '' . make_source_tag($webp_path, 'image/webp') . make_source_tag($path);
+      "" . make_source_tag($webp_path, "image/webp") . make_source_tag($path);
   }
 
   $html .= $img_tag;
-  $html .= '</picture>' . $n;
+  $html .= "</picture>" . $n;
 
   return $html;
 }
@@ -225,22 +225,22 @@ function picture_webp(
  * @param array $img_attrs
  * @return string
  */
-function make_img_tag($path = '', $img_attrs = [])
+function make_img_tag($path = "", $img_attrs = [])
 {
   $file_path = ASSETS_DIR_PATH . $path;
 
   if (!file_exists($file_path)) {
-    return '';
+    return "";
   }
 
   $file_size = getimagesize($file_path);
-  $img_attrs = array_merge(['alt' => ''], $img_attrs);
+  $img_attrs = array_merge(["alt" => ""], $img_attrs);
 
   if (
-    !array_key_exists('loading', $img_attrs) &&
-    !array_key_exists('decoding', $img_attrs)
+    !array_key_exists("loading", $img_attrs) &&
+    !array_key_exists("decoding", $img_attrs)
   ) {
-    $img_attrs = array_merge(['loading' => 'lazy'], $img_attrs);
+    $img_attrs = array_merge(["loading" => "lazy"], $img_attrs);
   }
 
   $img_tag =
@@ -248,9 +248,9 @@ function make_img_tag($path = '', $img_attrs = [])
     esc_url(assets_uri($path)) .
     '"' .
     array_to_attr_string($img_attrs) .
-    ' ' .
+    " " .
     $file_size[3] .
-    '/>' .
+    "/>" .
     "\n";
 
   return $img_tag;
@@ -264,23 +264,23 @@ function make_img_tag($path = '', $img_attrs = [])
  * @param string $media
  * @return string
  */
-function make_source_tag($path = '', $file_type = null, $media = null)
+function make_source_tag($path = "", $file_type = null, $media = null)
 {
   $file_path = ASSETS_DIR_PATH . $path;
 
   if (!file_exists($file_path)) {
-    return '';
+    return "";
   }
 
   $file_type = !empty($file_type) ? $file_type : mime_content_type($file_path);
-  $media_attr = !empty($media) ? ' media="' . esc_attr($media) . '"' : '';
-  return '<source ' .
+  $media_attr = !empty($media) ? ' media="' . esc_attr($media) . '"' : "";
+  return "<source " .
     get_srcset_attr($path) .
     ' type="' .
     esc_attr($file_type) .
     '"' .
     $media_attr .
-    '>' .
+    ">" .
     "\n";
 }
 
@@ -293,16 +293,16 @@ function make_source_tag($path = '', $file_type = null, $media = null)
  * @return string
  */
 function get_srcset_attr(
-  $filename = '',
+  $filename = "",
   $resolution = [],
   $non_1x = false
 ): string {
-  $resolution = array_merge(['1x' => '', '2x' => '@2x'], $resolution);
+  $resolution = array_merge(["1x" => "", "2x" => "@2x"], $resolution);
   $srcset = [];
-  $srcset_string = '';
+  $srcset_string = "";
 
   foreach ($resolution as $key => $res) {
-    if ($key === '1x' && $non_1x === true) {
+    if ($key === "1x" && $non_1x === true) {
       continue;
     }
     $high_res_name = preg_replace('/\.[^.]+$/', $res . '$0', $filename);
@@ -315,12 +315,12 @@ function get_srcset_attr(
   $srcset_string_arr = [];
 
   foreach ($srcset as $key => $url) {
-    $srcset_string_arr[] = $url . ' ' . $key;
+    $srcset_string_arr[] = $url . " " . $key;
   }
 
-  $srcset_string = implode(',', $srcset_string_arr);
+  $srcset_string = implode(",", $srcset_string_arr);
 
-  return $srcset_string ? 'srcset="' . $srcset_string . '"' : '';
+  return $srcset_string ? 'srcset="' . $srcset_string . '"' : "";
 }
 
 /**
@@ -332,39 +332,39 @@ function get_srcset_attr(
  * @param array $attrs
  * @return string
  */
-function array_to_attr_string($attrs = [], $spacer = ' '): string
+function array_to_attr_string($attrs = [], $spacer = " "): string
 {
-  $attr_string = '';
+  $attr_string = "";
   foreach ($attrs as $key => $attr) {
     $attr_string .= esc_attr($key) . '="' . esc_attr($attr) . '"';
     if ($attr !== end($attrs)) {
-      $attr_string .= ' ';
+      $attr_string .= " ";
     }
   }
-  return $attr_string ? $spacer . $attr_string : '';
+  return $attr_string ? $spacer . $attr_string : "";
 }
 
 /**
  * wp_kses_allowed_html にpictureなどのタグを追加
  */
-function kses_post_extend($context = 'post')
+function kses_post_extend($context = "post")
 {
   $wp_allowed_html = wp_kses_allowed_html($context);
 
   return array_merge($wp_allowed_html, [
-    'source' => [
-      'media' => true,
-      'sizes' => true,
-      'src' => true,
-      'srcset' => true,
-      'type' => true,
+    "source" => [
+      "media" => true,
+      "sizes" => true,
+      "src" => true,
+      "srcset" => true,
+      "type" => true,
     ],
-    'picture' => [
-      'class' => true,
-      'id' => true,
-      'media' => true,
-      'srcset' => true,
-      'type' => true,
+    "picture" => [
+      "class" => true,
+      "id" => true,
+      "media" => true,
+      "srcset" => true,
+      "type" => true,
     ],
   ]);
 }
@@ -379,14 +379,14 @@ function get_barba_namespace($post)
 {
   // フロントページ
   if (is_front_page()) {
-    return 'home';
+    return "home";
   }
   if (is_page()) {
     global $post;
-    return $post->post_name ?: '';
+    return $post->post_name ?: "";
   }
   // その他（投稿タイプ名）
-  return esc_html(get_post_type($post)) ?: 'other';
+  return esc_html(get_post_type($post)) ?: "other";
 }
 
 /**
@@ -404,14 +404,14 @@ function custom_pagination($echo = true, $custom_query = null)
   $big = 999999999; // need an unlikely integer
 
   $pages = paginate_links([
-    'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-    'format' => '?paged=%#%',
-    'current' => max(1, get_query_var('paged')),
-    'total' => $query->max_num_pages,
-    'type' => 'array',
-    'prev_next' => true,
-    'prev_text' => '<span>' . __('前へ') . '</span>',
-    'next_text' => '<span>' . __('次へ') . '</span>',
+    "base" => str_replace($big, "%#%", esc_url(get_pagenum_link($big))),
+    "format" => "?paged=%#%",
+    "current" => max(1, get_query_var("paged")),
+    "total" => $query->max_num_pages,
+    "type" => "array",
+    "prev_next" => true,
+    "prev_text" => "<span>" . __("前へ") . "</span>",
+    "next_text" => "<span>" . __("次へ") . "</span>",
   ]);
 
   if (is_array($pages)) {
@@ -421,25 +421,25 @@ function custom_pagination($echo = true, $custom_query = null)
     $pagination = '<ul class="pagination">';
 
     foreach ($pages as $page) {
-      $link_class = '';
+      $link_class = "";
       if (
-        strpos($page, 'current') === false &&
-        strpos($page, 'next') === false &&
-        strpos($page, 'prev') === false
+        strpos($page, "current") === false &&
+        strpos($page, "next") === false &&
+        strpos($page, "prev") === false
       ) {
-        $link_class = ' is-rwd';
+        $link_class = " is-rwd";
       }
       $pagination .=
-        '<li class="pagination__item' . $link_class . '">' . $page . '</li>';
+        '<li class="pagination__item' . $link_class . '">' . $page . "</li>";
     }
 
-    $pagination .= '</ul>' . "\n";
+    $pagination .= "</ul>" . "\n";
     $pagination .=
       '<p class="pageNum"><small>' .
       $page_num .
-      '/' .
+      "/" .
       $max_page_num .
-      '</small></p>';
+      "</small></p>";
 
     if ($echo) {
       echo $pagination;
@@ -454,7 +454,7 @@ function custom_pagination($echo = true, $custom_query = null)
  */
 function get_paged_number($custom_query = null)
 {
-  $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+  $paged = get_query_var("paged") ? get_query_var("paged") : 1;
 
   return $paged;
 }
@@ -481,8 +481,8 @@ function display_current_article_result_count()
 {
   global $wp_query;
 
-  $paged = get_query_var('paged') - 1;
-  $ppp = get_query_var('posts_per_page');
+  $paged = get_query_var("paged") - 1;
+  $ppp = get_query_var("posts_per_page");
   $count = $total = $wp_query->post_count;
   $from = 0;
   if (0 < $ppp) {
@@ -491,14 +491,14 @@ function display_current_article_result_count()
       $from = $paged * $ppp;
     }
   }
-  $count_from = 1 < $count ? $from + 1 . '〜' : '';
+  $count_from = 1 < $count ? $from + 1 . "〜" : "";
   $count_to = $from + $count;
-  return '<strong>' .
+  return "<strong>" .
     $total .
-    '</strong> <small>件中</small> <strong>' .
+    "</strong> <small>件中</small> <strong>" .
     $count_from .
     $count_to .
-    '</strong><small> 件目を表示</small>';
+    "</strong><small> 件目を表示</small>";
 }
 
 /**
@@ -511,14 +511,14 @@ function display_page_num()
   $max_show_page_number = max_show_page_number();
 
   return $page_number && $max_show_page_number
-    ? $page_number . ' / ' . $max_show_page_number
+    ? $page_number . " / " . $max_show_page_number
     : false;
 }
 
 function show_page_number()
 {
   global $wp_query;
-  $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+  $paged = get_query_var("paged") ? get_query_var("paged") : 1;
   $max_page = $wp_query->max_num_pages;
   echo $paged;
 }
@@ -529,29 +529,29 @@ function show_page_number()
 function back_button($args = [])
 {
   $default = [
-    'icon' => false,
-    'label' => '戻る',
-    'link' => '',
-    'class' => '',
+    "icon" => false,
+    "label" => "戻る",
+    "link" => "",
+    "class" => "",
   ];
   $cfg = array_merge([], $default, $args);
 
   // ボタンクラス生成
-  $size_class = 'button';
-  if ($cfg['class']) {
-    $size_class .= ' ' . $cfg['class'];
+  $size_class = "button";
+  if ($cfg["class"]) {
+    $size_class .= " " . $cfg["class"];
   }
 
   // ボタンHTML生成
   $html = false;
-  $html = '<a class="' . $size_class . '" href="' . $cfg['link'] . '">';
-  if ($cfg['icon']) {
+  $html = '<a class="' . $size_class . '" href="' . $cfg["link"] . '">';
+  if ($cfg["icon"]) {
     $html .= '<span class="button__icon">';
-    $html .= inline_svg($cfg['icon']);
-    $html .= '</span>';
+    $html .= inline_svg($cfg["icon"]);
+    $html .= "</span>";
   }
-  $html .= '<span>' . $cfg['label'] . '</span>';
-  $html .= '</a>';
+  $html .= "<span>" . $cfg["label"] . "</span>";
+  $html .= "</a>";
 
   return $html;
 }
@@ -565,7 +565,7 @@ function back_button($args = [])
 function bg_uri($uri = null)
 {
   if (!$uri) {
-    return '';
+    return "";
   }
 
   return 'style="background-image:url(' . esc_url($uri) . ')"';
@@ -579,7 +579,7 @@ function bg_uri($uri = null)
 function bg_lazy($uri = null)
 {
   if (!$uri) {
-    return '';
+    return "";
   }
 
   return 'data-bg="url(' . esc_url($uri) . ')"';
@@ -614,10 +614,10 @@ function is_page_child($slug = null)
  */
 function new_badge_display($badge_html = '<span class="badge-new">New</span>')
 {
-  $days = get_option('news_badge_display_date', '') ?: 15;
+  $days = get_option("news_badge_display_date", "") ?: 15;
   $days_int = ($days - 1) * 86400;
-  $dayago = time() - get_the_time('U');
-  $badge = $dayago < $days_int ? $badge_html : '';
+  $dayago = time() - get_the_time("U");
+  $badge = $dayago < $days_int ? $badge_html : "";
 
   return $badge;
 }
@@ -633,8 +633,8 @@ function get_external_attr($url)
   if (!is_string($url)) {
     return false;
   }
-  $host = $_SERVER['HTTP_HOST'];
-  $target = '';
+  $host = $_SERVER["HTTP_HOST"];
+  $target = "";
   if (intval(strpos(home_url(), $host)) && !intval(strpos($url, $host))) {
     $target = ' target="_blank" rel="noopener noreferrer"';
   }
@@ -662,7 +662,7 @@ function get_parent_slug()
  * @param string $slug 固定ページスラッグ
  * @return boolean
  */
-function is_child_of($slug = '')
+function is_child_of($slug = "")
 {
   $get_page_id = get_page_by_path($slug);
 
@@ -683,20 +683,20 @@ function get_share_links()
 
   return [
     [
-      'prefix' => 'twitter',
-      'link' => "http://twitter.com/share?url={$current_url}&text={$title}",
+      "prefix" => "twitter",
+      "link" => "http://twitter.com/share?url={$current_url}&text={$title}",
     ],
     [
-      'prefix' => 'facebook',
-      'link' => "https://www.facebook.com/sharer/sharer.php?u={$current_url}",
+      "prefix" => "facebook",
+      "link" => "https://www.facebook.com/sharer/sharer.php?u={$current_url}",
     ],
     [
-      'prefix' => 'hatena',
-      'link' => "http://b.hatena.ne.jp/add?mode=confirm&url={$current_url}&title={$title}",
+      "prefix" => "hatena",
+      "link" => "http://b.hatena.ne.jp/add?mode=confirm&url={$current_url}&title={$title}",
     ],
     [
-      'prefix' => 'line',
-      'link' => "http://line.me/R/msg/text/?{$current_url}",
+      "prefix" => "line",
+      "link" => "http://line.me/R/msg/text/?{$current_url}",
     ],
   ];
 }
@@ -737,23 +737,23 @@ function set_check($parm = null, $alt = false)
  * @param string $attr 追加属性
  * @return string
  */
-function make_acf_link($link, $class = '', $alt = '', $attr = '')
+function make_acf_link($link, $class = "", $alt = "", $attr = "")
 {
-  if (empty($link) || !isset($link['url'])) {
+  if (empty($link) || !isset($link["url"])) {
     return false;
   }
-  $link_target = isset($link['target']) ? $link['target'] : '_self';
+  $link_target = isset($link["target"]) ? $link["target"] : "_self";
   $link_title =
-    isset($link['title']) && !empty($link['title']) ? $link['title'] : $alt;
-  $link_rel = $link_target === '_blank' ? ' rel="noopener"' : '';
+    isset($link["title"]) && !empty($link["title"]) ? $link["title"] : $alt;
+  $link_rel = $link_target === "_blank" ? ' rel="noopener"' : "";
   $link_title = esc_html($link_title);
-  $link_href = esc_url($link['url']);
+  $link_href = esc_url($link["url"]);
   $link_attr = esc_attr($attr);
   $class = esc_attr($class);
 
   $html = "<a href=\"{$link_href}\" class=\"{$class}\" target=\"{$link_target}\"{$link_rel} {$link_attr}>";
   $html .= "<span>{$link_title}</span>";
-  $html .= '</a>';
+  $html .= "</a>";
 
   return $html;
 }
@@ -766,7 +766,7 @@ function make_acf_link($link, $class = '', $alt = '', $attr = '')
  * @param string $link_title
  * @return string
  */
-function url2link($body = '', $link_title = null)
+function url2link($body = "", $link_title = null)
 {
   $pattern = '/(?<!href=")https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+/';
   $body = preg_replace_callback(
@@ -774,10 +774,10 @@ function url2link($body = '', $link_title = null)
     function ($matches) use ($link_title) {
       $link_title = $link_title ?: $matches[0];
       $link = esc_url($matches[0]);
-      $target = '';
+      $target = "";
       if (
-        isset($_SERVER['HTTP_HOST']) &&
-        strpos($matches[0], $_SERVER['HTTP_HOST']) === false
+        isset($_SERVER["HTTP_HOST"]) &&
+        strpos($matches[0], $_SERVER["HTTP_HOST"]) === false
       ) {
         $target = ' target="_blank" rel="noopener"';
       }
@@ -795,7 +795,7 @@ function url2link($body = '', $link_title = null)
  * @param string $html 対象のiframeタグ
  * @return array preg_match
  */
-function extract_src_url($html = '')
+function extract_src_url($html = "")
 {
   $matches = false;
   if ($html) {
@@ -812,17 +812,17 @@ function extract_src_url($html = '')
  * @return string html
  */
 function get_dropdown_taxonomy(
-  $tax = 'news_category',
-  $label = 'カテゴリーを選択'
+  $tax = "news_category",
+  $label = "カテゴリーを選択"
 ) {
-  $html = '';
+  $html = "";
   $terms = get_terms($tax);
 
   if (!empty($terms)) {
     $html .=
       '<select onChange="window.location.href=this.options[this.selectedIndex].value;">' .
       "\n";
-    $html .= '<option disabled selected>- ' . $label . ' -</option>' . "\n";
+    $html .= "<option disabled selected>- " . $label . " -</option>" . "\n";
 
     foreach ($terms as $term) {
       // if ($term->parent === 0) {
@@ -835,7 +835,7 @@ function get_dropdown_taxonomy(
       );
     }
 
-    $html .= '</select>';
+    $html .= "</select>";
   }
 
   return $html;
@@ -844,23 +844,23 @@ function get_dropdown_taxonomy(
 /**
  *  月別アーカイブ
  */
-function get_dropdown_yearly($post_type = 'news', $type = 'yearly')
+function get_dropdown_yearly($post_type = "news", $type = "yearly")
 {
   $option = wp_get_archives([
-    'echo' => false,
-    'format' => 'option',
-    'post_type' => $post_type,
-    'type' => $type,
+    "echo" => false,
+    "format" => "option",
+    "post_type" => $post_type,
+    "type" => $type,
   ]);
-  $html = '';
+  $html = "";
 
   if ($option) {
     $html .=
       '<select onChange="document.location.href=this.options[this.selectedIndex].value;">';
     $html .=
-      '<option value="">- ' . esc_attr(__('Select Year')) . ' -</option>';
+      '<option value="">- ' . esc_attr(__("Select Year")) . " -</option>";
     $html .= $option;
-    $html .= '</select>';
+    $html .= "</select>";
   }
 
   return $html;
@@ -881,7 +881,7 @@ function is_exist_page($slug)
 /**
  * ランダムテキスト
  */
-function random_text(string $string = '', int $min = 0, int $max = 10): string
+function random_text(string $string = "", int $min = 0, int $max = 10): string
 {
   $text = $string;
   $length = rand($min, $max);
@@ -914,7 +914,7 @@ function get_main_term($term_list, $post = null)
 
   foreach ($term_list as $term) {
     if (
-      get_post_meta($post->ID, '_yoast_wpseo_primary_category', true) ===
+      get_post_meta($post->ID, "_yoast_wpseo_primary_category", true) ===
       $term->term_id
     ) {
       $main_term = $term;
@@ -934,10 +934,10 @@ function get_main_term($term_list, $post = null)
  * @param [type] $url
  * @return void
  */
-function get_youtube_id_from_url($url = '')
+function get_youtube_id_from_url($url = "")
 {
   preg_match(
-    '/(http(s|):|)\/\/(www\.|)yout(.*?)\/(embed\/|watch.*?v=|)([a-z_A-Z0-9\-]{11})/i',
+    "/(http(s|):|)\/\/(www\.|)yout(.*?)\/(embed\/|watch.*?v=|)([a-z_A-Z0-9\-]{11})/i",
     $url,
     $results
   );
@@ -950,22 +950,22 @@ function get_youtube_id_from_url($url = '')
  */
 function get_yoast_seo_breadcrumb()
 {
-  if (!function_exists('yoast_breadcrumb')) {
-    return '';
+  if (!function_exists("yoast_breadcrumb")) {
+    return "";
   }
 
   /**
    * パンくずの矢印用タグ置換
    * 置換するには、Yoast SEO のパンくず設定で、パンくずリストの間の区切りをに %arrow を指定してください
    */
-  $arrow_html = '>';
+  $arrow_html = ">";
 
   ob_start();
-  yoast_breadcrumb('<div class="breadcrumb">', '</div>' . "\n");
+  yoast_breadcrumb('<div class="breadcrumb">', "</div>" . "\n");
   $breadcrumb = ob_get_contents();
   ob_end_clean();
 
-  $breadcrumb = str_replace('%arrow', $arrow_html, $breadcrumb);
+  $breadcrumb = str_replace("%arrow", $arrow_html, $breadcrumb);
 
   return $breadcrumb;
 }

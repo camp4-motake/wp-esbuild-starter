@@ -1,11 +1,11 @@
-import { globbySync } from 'globby';
-import path from 'path';
-import fs from 'fs-extra';
+import { globbySync } from "globby";
+import path from "path";
+import fs from "fs-extra";
 // import chokidar from 'chokidar';
 
 const Log = {
-  colors: { default: '\x1b[0m', green: '\x1b[32m', red: '\x1b[31m' },
-  feedback(message, color = 'green') {
+  colors: { default: "\x1b[0m", green: "\x1b[32m", red: "\x1b[31m" },
+  feedback(message, color = "green") {
     // console.log(Log.colors[color], message);
   },
 };
@@ -30,12 +30,12 @@ class CopyFilesTask {
   run() {
     this.data.options = Object.assign(
       {
-        base: '',
+        base: "",
         dot: false,
       },
       this.data.options
     );
-    this.data.options.base = this.data.options.base.endsWith('/')
+    this.data.options.base = this.data.options.base.endsWith("/")
       ? this.data.options.base.slice(0, -1)
       : this.data.options.base;
     this.data.options.dot = !!this.data.options.dot;
@@ -48,7 +48,7 @@ class CopyFilesTask {
     for (let fromRelative of globbySync(this.data.from, options)) {
       const fromAbsolute = path.resolve(fromRelative);
       const stats = fs.statSync(fromAbsolute);
-      this[stats.isFile() ? '_copyFile' : '_copyDir'](fromRelative);
+      this[stats.isFile() ? "_copyFile" : "_copyDir"](fromRelative);
     }
   }
 
@@ -115,21 +115,21 @@ class CopyFilesTask {
   }
 
   _createDestinationFilePath(from) {
-    let to = '';
-    if (path.extname(from) || path.basename(from).startsWith('.')) {
-      if (!this.data.to.endsWith('/') && path.extname(this.data.to)) {
+    let to = "";
+    if (path.extname(from) || path.basename(from).startsWith(".")) {
+      if (!this.data.to.endsWith("/") && path.extname(this.data.to)) {
         to = this.data.to;
       } else {
         if (this.data.options.base) {
           let popped = from.split(this.data.options.base).pop();
-          popped = popped.startsWith('/') ? popped.slice(1) : popped;
+          popped = popped.startsWith("/") ? popped.slice(1) : popped;
           to = path.join(this.data.to, popped);
         } else {
           to = path.join(this.data.to, path.basename(from));
         }
       }
     } else {
-      to = this.data.to.endsWith('/')
+      to = this.data.to.endsWith("/")
         ? this.data.to.slice(0, -1)
         : this.data.to;
     }
@@ -137,19 +137,19 @@ class CopyFilesTask {
   }
 
   _createDestinationDirPath(from) {
-    let to = '';
-    const fromSlashless = from.endsWith('/') ? from.slice(0, -1) : from;
-    const toSlashless = this.data.to.endsWith('/')
+    let to = "";
+    const fromSlashless = from.endsWith("/") ? from.slice(0, -1) : from;
+    const toSlashless = this.data.to.endsWith("/")
       ? this.data.to.slice(0, -1)
       : this.data.to;
     if (this.data.options.base) {
       let popped = from.split(this.data.options.base).pop();
-      popped = popped.startsWith('/') ? popped.slice(1) : popped;
+      popped = popped.startsWith("/") ? popped.slice(1) : popped;
       to = path.join(this.data.to, popped);
     } else {
       const f = fromSlashless;
       if (
-        (path.extname(f) || path.basename(f).startsWith('.')) &&
+        (path.extname(f) || path.basename(f).startsWith(".")) &&
         !path.extname(toSlashless)
       ) {
         to = path.join(this.data.to, path.basename(from));

@@ -7,12 +7,12 @@ use Lib\Helper;
 /**
  * 管理画面の不要メニューを管理者権限以外は非表示
  */
-add_action('admin_menu', function () {
+add_action("admin_menu", function () {
   global $menu;
   unset($menu[5]); // 投稿
   unset($menu[25]); // コメント
 
-  if (!current_user_can('administrator')) {
+  if (!current_user_can("administrator")) {
     // unset($menu[2]);  // ダッシュボード
     // unset($menu[4]);  // メニューの線1
     // unset($menu[5]);  // 投稿
@@ -28,8 +28,8 @@ add_action('admin_menu', function () {
     // unset($menu[80]); // 設定
     // unset($menu[90]); // メニューの線3
 
-    remove_menu_page('wpcf7');
-    remove_menu_page('edit.php?post_type=mw-wp-form');
+    remove_menu_page("wpcf7");
+    remove_menu_page("edit.php?post_type=mw-wp-form");
   }
 });
 
@@ -37,7 +37,7 @@ add_action('admin_menu', function () {
  * 不要なメニューを削除
  */
 add_action(
-  'admin_bar_menu',
+  "admin_bar_menu",
   function ($wp_admin_bar) {
     //WordPressアイコン
     // $wp_admin_bar->remove_menu( 'wp-logo' );
@@ -69,7 +69,7 @@ add_action(
     // $wp_admin_bar->remove_menu( 'customize' );
 
     //コメント
-    $wp_admin_bar->remove_menu('comments');
+    $wp_admin_bar->remove_menu("comments");
 
     // //新規
     // $wp_admin_bar->remove_menu( 'new-content' );
@@ -103,8 +103,8 @@ add_action(
 /**
  *  ログインページのロゴ変更.
  */
-add_action('login_enqueue_scripts', function () {
-  $logo = 'images/logo-brand.svg';
+add_action("login_enqueue_scripts", function () {
+  $logo = "images/logo-brand.svg";
 
   if (!file_exists(ASSETS_DIR_PATH . $logo)) {
     return;
@@ -128,35 +128,35 @@ EOF;
 /**
  * ログインページロゴのリンク先を指定.
  */
-add_filter('login_headerurl', function () {
-  return get_bloginfo('url');
+add_filter("login_headerurl", function () {
+  return get_bloginfo("url");
 });
 
 /**
  * ログインページロゴのtitle変更.
  */
-add_filter('login_headertext', function () {
-  return get_option('blogname');
+add_filter("login_headertext", function () {
+  return get_option("blogname");
 });
 
 /**
  * 不要なダッシュボードウィジットを削除
  */
-add_action('wp_dashboard_setup', function () {
+add_action("wp_dashboard_setup", function () {
   // remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' ); // 概要
   // remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' ); // アクティビティ
-  remove_meta_box('dashboard_quick_press', 'dashboard', 'side'); // クイックドラフト
-  remove_meta_box('dashboard_primary', 'dashboard', 'side'); // WordPressニュース
+  remove_meta_box("dashboard_quick_press", "dashboard", "side"); // クイックドラフト
+  remove_meta_box("dashboard_primary", "dashboard", "side"); // WordPressニュース
 });
 
 /**
  * 固定ページ一覧にスラッグ表示用カラムを追加
  */
-add_filter('manage_pages_columns', __NAMESPACE__ . '\\add_page_column_title');
+add_filter("manage_pages_columns", __NAMESPACE__ . "\\add_page_column_title");
 // add_filter('manage_[post_type]_posts_columns', __NAMESPACE__ . '\\add_page_column_title');
 function add_page_column_title($columns)
 {
-  $columns['slug'] = 'スラッグ';
+  $columns["slug"] = "スラッグ";
   return $columns;
 }
 
@@ -164,21 +164,21 @@ function add_page_column_title($columns)
  * 固定ページ一覧にスラッグを表示
  */
 add_action(
-  'manage_pages_custom_column',
-  __NAMESPACE__ . '\\add_page_column',
+  "manage_pages_custom_column",
+  __NAMESPACE__ . "\\add_page_column",
   10,
   2
 );
 // add_action('manage_[post_type]_posts_custom_column', __NAMESPACE__ . '\\add_page_column', 10, 2);
 function add_page_column($column_name, $post_id)
 {
-  if ($column_name == 'slug') {
+  if ($column_name == "slug") {
     $post = get_post($post_id);
     $uri = get_permalink($post_id);
     $slug = $post->post_name;
 
-    $error = '';
-    if (strpos(esc_attr($slug), '%') !== false) {
+    $error = "";
+    if (strpos(esc_attr($slug), "%") !== false) {
       $error =
         '<strong class="error" style="color:red;">【!】パーマリンクのURLスラッグを半角英数字のみに修正してから公開してください。</strong>';
     }
@@ -188,22 +188,22 @@ function add_page_column($column_name, $post_id)
       esc_url($uri) .
       '" target="_blank" rel="noopener">' .
       esc_attr($slug) .
-      ' </a>';
+      " </a>";
   }
 }
 
 /**
  * ページリストの投稿表示数を変更
  */
-add_filter('edit_posts_per_page', function ($posts_per_page) {
+add_filter("edit_posts_per_page", function ($posts_per_page) {
   return 100;
 });
 
 /**
  * 管理画面カスタマイズ用追加インラインCSS
  */
-add_action('admin_print_styles', function () {
-  $style = '<style>';
+add_action("admin_print_styles", function () {
+  $style = "<style>";
 
   // プラグインの広告を隠す
   // - Yorst SEO の右サイド広告
@@ -216,16 +216,16 @@ add_action('admin_print_styles', function () {
   // 管理バー左上タイトルにローカルホスト・開発サーバー識別文字を追加
   if (
     TEST_SERVER_DOMAIN &&
-    strpos($_SERVER['HTTP_HOST'], TEST_SERVER_DOMAIN) !== false
+    strpos($_SERVER["HTTP_HOST"], TEST_SERVER_DOMAIN) !== false
   ) {
     $style .=
       '#wp-admin-bar-site-name .ab-item:after { content:"（開発サーバー）"; }';
-  } elseif (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
+  } elseif (strpos($_SERVER["HTTP_HOST"], "localhost") !== false) {
     $style .=
       '#wp-admin-bar-site-name .ab-item:after { content:"（ローカル）"; }';
   }
 
-  $style .= '</style>';
+  $style .= "</style>";
 
   echo $style;
 });

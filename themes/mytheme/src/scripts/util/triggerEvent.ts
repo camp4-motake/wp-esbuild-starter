@@ -12,7 +12,7 @@ export const triggerEvent = (
     event = new CustomEvent(eventName, { detail });
   } catch (e) {
     // IE用fallback
-    event = document.createEvent('CustomEvent');
+    event = document.createEvent("CustomEvent");
     event.initCustomEvent(eventName, false, false, detail);
   }
 

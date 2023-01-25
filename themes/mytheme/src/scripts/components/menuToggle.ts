@@ -1,4 +1,4 @@
-import { MQ } from '../constants';
+import { MQ } from "../constants";
 
 interface State {
   shown: boolean;
@@ -9,7 +9,7 @@ interface State {
   toggleClass: () => void;
 }
 
-const activeClass = 'js-isMenuOpen';
+const activeClass = "js-isMenuOpen";
 const classList = document.documentElement.classList;
 
 /**
@@ -27,16 +27,16 @@ export const menuToggle = () => ({
   },
 
   addMatchMediaEvent(this: State) {
-    window.matchMedia(MQ.lg).addEventListener('change', () => {
-      this.$dispatch('menu:close');
+    window.matchMedia(MQ.lg).addEventListener("change", () => {
+      this.$dispatch("menu:close");
     });
   },
 
   addOuterClickEvent() {
-    document.addEventListener('click', (event: Event) => {
+    document.addEventListener("click", (event: Event) => {
       const { target } = event;
       if (!(target instanceof Element)) return;
-      if (target?.closest('.header,.navMenu,.menuToggle')) return;
+      if (target?.closest(".header,.navMenu,.menuToggle")) return;
       this.close();
     });
   },
@@ -53,20 +53,20 @@ export const menuToggle = () => ({
 
   // x-bind
   toggle: {
-    ['@click'](this: State) {
+    ["@click"](this: State) {
       this.shown = !this.shown;
       this.toggleClass();
     },
 
-    [':data-menu-toggle'](this: State) {
-      return this.shown ? 'shown' : 'close';
+    [":data-menu-toggle"](this: State) {
+      return this.shown ? "shown" : "close";
     },
 
-    [':title'](this: State) {
-      return this.shown ? 'Menu Close' : 'Menu Open';
+    [":title"](this: State) {
+      return this.shown ? "Menu Close" : "Menu Open";
     },
 
-    ['@menu:close.window'](this: State) {
+    ["@menu:close.window"](this: State) {
       this.close();
     },
   },
@@ -81,8 +81,8 @@ export const menuToggle = () => ({
 export const menuClose = () => ({
   // x-bind
   close: {
-    ['@click'](this: State) {
-      this.$dispatch('menu:close');
+    ["@click"](this: State) {
+      this.$dispatch("menu:close");
       classList.remove(activeClass);
     },
   },

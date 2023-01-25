@@ -3,7 +3,7 @@
 /**
  * wp-cli setup shortcut
  */
-import { $, argv } from 'zx';
+import { $, argv } from "zx";
 
 const sleep = argv.sleep || 10;
 

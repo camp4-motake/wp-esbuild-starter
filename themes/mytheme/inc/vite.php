@@ -2,12 +2,12 @@
 
 namespace Lib\Vite;
 
-define('ENTRY_POINT_PATH', 'src/main.ts');
-define('VITE_ASSETS_DIR', ASSETS_DIR_URI);
-define('VITE_SERVER', '/');
+define("ENTRY_POINT_PATH", "src/main.ts");
+define("VITE_ASSETS_DIR", ASSETS_DIR_URI);
+define("VITE_SERVER", "/");
 
 add_action(
-  'wp_head',
+  "wp_head",
   function () {
     echo vite(ENTRY_POINT_PATH);
   },
@@ -15,7 +15,7 @@ add_action(
 );
 
 add_action(
-  'wp_enqueue_scripts',
+  "wp_enqueue_scripts",
   function () {
     cssEnqueue(ENTRY_POINT_PATH);
   },
@@ -32,7 +32,7 @@ function vite(string $entry): string
 // Some dev/prod mechanism would exist in your project
 function isDev(): bool
 {
-  return !file_exists(ASSETS_DIR_PATH . 'manifest.json');
+  return !file_exists(ASSETS_DIR_PATH . "manifest.json");
 }
 
 // Helpers to print tags
@@ -42,15 +42,15 @@ function jsTag(string $entry): string
 
   return $url
     ? "<script type=\"module\" crossorigin src=\"{$url}\"></script>"
-    : '';
+    : "";
 }
 
 function jsPreloadImports(string $entry): string
 {
   if (isDev()) {
-    return '';
+    return "";
   }
-  $res = '';
+  $res = "";
   foreach (importsUrls($entry) as $url) {
     $res .= '<link rel="modulepreload" href="' . $url . '">';
   }
@@ -64,8 +64,8 @@ function cssEnqueue(string $entry): void
     return;
   }
   foreach (cssUrls($entry) as $index => $url) {
-    $num = $index ? '-' . ($index + 1) : '';
-    $id = str_replace('.', '-', $entry . $num);
+    $num = $index ? "-" . ($index + 1) : "";
+    $id = str_replace(".", "-", $entry . $num);
     wp_enqueue_style($id, $url, false, null);
   }
 }
@@ -74,10 +74,10 @@ function cssTag(string $entry): string
 {
   // not needed on dev, it's inject by Vite
   if (isDev()) {
-    return '';
+    return "";
   }
 
-  $tags = '';
+  $tags = "";
   foreach (cssUrls($entry) as $url) {
     $tags .= '<link rel="stylesheet" href="' . $url . '">';
   }
@@ -88,10 +88,10 @@ function cssPreloadTag(string $entry): string
 {
   // not needed on dev, it's inject by Vite
   if (isDev()) {
-    return '';
+    return "";
   }
 
-  $tags = '';
+  $tags = "";
   foreach (cssUrls($entry) as $url) {
     $tags .= '<link rel="preload" as="style" href="' . $url . '">';
   }
@@ -102,7 +102,7 @@ function cssPreloadTag(string $entry): string
 
 function getManifest(): array
 {
-  $manifest = ASSETS_DIR_PATH . 'manifest.json';
+  $manifest = ASSETS_DIR_PATH . "manifest.json";
 
   if (!file_exists($manifest)) {
     return [];
@@ -118,8 +118,8 @@ function assetUrl(string $entry): string
   $manifest = getManifest();
 
   return isset($manifest[$entry])
-    ? VITE_ASSETS_DIR . $manifest[$entry]['file']
-    : '';
+    ? VITE_ASSETS_DIR . $manifest[$entry]["file"]
+    : "";
 }
 
 function importsUrls(string $entry): array
@@ -127,9 +127,9 @@ function importsUrls(string $entry): array
   $urls = [];
   $manifest = getManifest();
 
-  if (!empty($manifest[$entry]['imports'])) {
-    foreach ($manifest[$entry]['imports'] as $imports) {
-      $urls[] = VITE_ASSETS_DIR . $manifest[$imports]['file'];
+  if (!empty($manifest[$entry]["imports"])) {
+    foreach ($manifest[$entry]["imports"] as $imports) {
+      $urls[] = VITE_ASSETS_DIR . $manifest[$imports]["file"];
     }
   }
   return $urls;
@@ -140,8 +140,8 @@ function cssUrls(string $entry): array
   $urls = [];
   $manifest = getManifest();
 
-  if (!empty($manifest[$entry]['css'])) {
-    foreach ($manifest[$entry]['css'] as $file) {
+  if (!empty($manifest[$entry]["css"])) {
+    foreach ($manifest[$entry]["css"] as $file) {
       $urls[] = VITE_ASSETS_DIR . $file;
     }
   }

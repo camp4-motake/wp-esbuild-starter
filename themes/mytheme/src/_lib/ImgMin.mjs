@@ -1,13 +1,13 @@
-import fs from 'fs';
-import path from 'path';
-import util from 'util';
-import * as url from 'url';
-import { execFile } from 'node:child_process';
-import { globbySync } from 'globby';
-import sharp from 'sharp';
+import fs from "fs";
+import path from "path";
+import util from "util";
+import * as url from "url";
+import { execFile } from "node:child_process";
+import { globbySync } from "globby";
+import sharp from "sharp";
 
 const execFilePromise = util.promisify(execFile);
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 class ImgMin {
   constructor(data = {}) {
@@ -15,13 +15,13 @@ class ImgMin {
       {
         option: {
           base: undefined,
-          cacheDir: path.resolve(process.cwd(), './node_modules/.cache/images'),
+          cacheDir: path.resolve(process.cwd(), "./node_modules/.cache/images"),
           isWebp: true,
-          webpExt: ['.jpeg', '.jpg', '.png', '.gif'],
+          webpExt: [".jpeg", ".jpg", ".png", ".gif"],
           png: { quality: 80 },
           jpg: { quality: 80 },
           webp: { quality: 80, smartSubsample: true },
-          svg: ['--config', path.resolve(__dirname, 'svgo.config.js')],
+          svg: ["--config", path.resolve(__dirname, "svgo.config.js")],
         },
         custom: {},
       },
@@ -41,7 +41,7 @@ class ImgMin {
     const copyTo = this._createDestinationFilePath(file);
     const isWebp = this.data.option?.isWebp || this.default.option?.isWebp;
 
-    if (!['.png', '.jpeg', '.jpg', '.svg', '.gif'].includes(extname)) {
+    if (![".png", ".jpeg", ".jpg", ".svg", ".gif"].includes(extname)) {
       return this._copyFiles(from, copyTo);
     }
 
@@ -49,25 +49,25 @@ class ImgMin {
       return await fs.promises
         .mkdir(path.dirname(cacheTo), { recursive: true })
         .then(() => {
-          console.log('COMPRESS:', copyTo);
-          if (['.svg'].includes(extname)) {
+          console.log("COMPRESS:", copyTo);
+          if ([".svg"].includes(extname)) {
             this._optimizeSvg(from, cacheTo).then(() =>
               this._copyFiles(cacheTo, copyTo)
             );
           }
-          if (['.jpeg', '.jpg'].includes(extname)) {
+          if ([".jpeg", ".jpg"].includes(extname)) {
             this._optimizeJpg(from, cacheTo).then(() =>
               this._copyFiles(cacheTo, copyTo)
             );
           }
-          if (['.png'].includes(extname)) {
+          if ([".png"].includes(extname)) {
             this._optimizePng(from, cacheTo).then(() =>
               this._copyFiles(cacheTo, copyTo)
             );
           }
           // webp
           if (isWebp && this.data.option?.webpExt?.includes(extname)) {
-            console.log('WEBP:', this._replaceExt(copyTo));
+            console.log("WEBP:", this._replaceExt(copyTo));
             this._optimizeWebp(from, cacheTo).then(() =>
               this._copyFiles(
                 this._replaceExt(cacheTo),
@@ -122,46 +122,46 @@ class ImgMin {
 
   async _optimizeWebp(from, to) {
     const extname = path.extname(from);
-    const out = this._replaceExt(to, '.webp');
+    const out = this._replaceExt(to, ".webp");
     const option = {
       ...this.data.option.webp,
-      ...{ lossless: ['.png'].includes(extname) },
+      ...{ lossless: [".png"].includes(extname) },
       ...(this.data?.custom[from]?.webp || {}),
     };
     return await sharp(from).webp(option).toFile(out);
   }
 
   async _optimizeSvg(from, to) {
-    const base = ['-i', from, '-o', to];
+    const base = ["-i", from, "-o", to];
     const command = this.data.option.svg?.length
       ? this.data.option.svg.concat(base)
       : base;
-    return await execFilePromise('svgo', command);
+    return await execFilePromise("svgo", command);
   }
 
   _createDestinationFilePath(from) {
-    let to = '';
-    if (path.extname(from) || path.basename(from).startsWith('.')) {
-      if (!this.data.dest.endsWith('/') && path.extname(this.data.dest)) {
+    let to = "";
+    if (path.extname(from) || path.basename(from).startsWith(".")) {
+      if (!this.data.dest.endsWith("/") && path.extname(this.data.dest)) {
         to = this.data.dest;
       } else {
         if (this.data.option.base) {
           let popped = from.split(this.data.option.base).pop();
-          popped = popped.startsWith('/') ? popped.slice(1) : popped;
+          popped = popped.startsWith("/") ? popped.slice(1) : popped;
           to = path.join(this.data.dest, popped);
         } else {
           to = path.join(this.data.dest, path.basename(from));
         }
       }
     } else {
-      to = this.data.dest.endsWith('/')
+      to = this.data.dest.endsWith("/")
         ? this.data.dest.slice(0, -1)
         : this.data.dest;
     }
     return to;
   }
 
-  _replaceExt(filePath = '', ext = '.webp') {
+  _replaceExt(filePath = "", ext = ".webp") {
     return filePath.replace(/\.[^.]+$/, ext);
   }
 
@@ -177,7 +177,7 @@ export default ImgMin;
  */
 function deepMerge(target, source, opts) {
   const isObject = (obj) =>
-    obj && typeof obj === 'object' && !Array.isArray(obj);
+    obj && typeof obj === "object" && !Array.isArray(obj);
   const isConcatArray = opts && opts.concatArray;
   let result = Object.assign({}, target);
   if (isObject(target) && isObject(source)) {

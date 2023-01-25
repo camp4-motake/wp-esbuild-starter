@@ -1,32 +1,32 @@
-import { existsSync } from 'fs';
-import { resolve } from 'path';
-import { defineConfig } from 'vite';
+import { existsSync } from "fs";
+import { resolve } from "path";
+import { defineConfig } from "vite";
 
-const root = existsSync('../../package.json') ? '../../' : './';
-const nodeModules = resolve(__dirname, root, 'node_modules');
+const root = existsSync("../../package.json") ? "../../" : "./";
+const nodeModules = resolve(__dirname, root, "node_modules");
 
 export default defineConfig({
   // logLevel: 'warn',
   server: {
-    host: '0.0.0.0',
+    host: "0.0.0.0",
     strictPort: true,
   },
-  base: './',
+  base: "./",
   publicDir: false,
-  cacheDir: resolve(nodeModules, './.vite'),
+  cacheDir: resolve(nodeModules, "./.vite"),
   build: {
     emptyOutDir: false,
     manifest: true,
-    outDir: 'dist',
-    assetsDir: '.',
+    outDir: "dist",
+    assetsDir: ".",
     rollupOptions: {
       input: {
-        main: 'src/main.ts',
-        editor: 'src/editor.ts',
+        main: "src/main.ts",
+        editor: "src/editor.ts",
       },
     },
   },
   resolve: {
-    alias: [{ find: /~(.+)/, replacement: resolve(nodeModules, './$1') }],
+    alias: [{ find: /~(.+)/, replacement: resolve(nodeModules, "./$1") }],
   },
 });

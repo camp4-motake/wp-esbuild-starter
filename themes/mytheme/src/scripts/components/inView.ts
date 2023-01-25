@@ -20,16 +20,16 @@ export const inView = (...args: unknown[]) => ({
 
   // x-bind
   trigger: {
-    ['x-intersect:enter'](this: Props): void {
+    ["x-intersect:enter"](this: Props): void {
       this.shown = true;
     },
 
-    ['x-intersect:leave'](this: Props): void {
+    ["x-intersect:leave"](this: Props): void {
       if (this.isRepeat) this.shown = false;
     },
 
-    [':data-scroll'](this: Props): string {
-      return this.shown ? 'in' : 'out';
+    [":data-scroll"](this: Props): string {
+      return this.shown ? "in" : "out";
     },
   },
 });
