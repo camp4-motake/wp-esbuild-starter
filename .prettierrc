@@ -1,12 +1,7 @@
 {
-  "singleQuote": true,
+  "order": "smacss",
+  "keepOverrides": false,
   "overrides": [
-    {
-      "files": ["**/*.css", "**/*.scss", "**/*.html"],
-      "options": {
-        "singleQuote": false
-      }
-    },
     {
       "files": ["**/*.twig"],
       "options": {
