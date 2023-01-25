@@ -4,7 +4,7 @@ namespace Lib\Vite;
 
 define("ENTRY_POINT_PATH", "src/main.ts");
 define("VITE_ASSETS_DIR", ASSETS_DIR_URI);
-define("VITE_SERVER", "/");
+define("VITE_SERVER", "http://localhost:5173/");
 
 add_action(
   "wp_head",
