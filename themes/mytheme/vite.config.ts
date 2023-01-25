@@ -10,10 +10,7 @@ const nodeModules = resolve(__dirname, root, "node_modules");
 export default defineConfig({
   plugins: [FullReload(["**/*.{php,twig}", "theme.json"])],
   // logLevel: "warn",
-  server: {
-    host: "0.0.0.0",
-    strictPort: true,
-  },
+  server: { strictPort: true },
   base: "./",
   publicDir: false,
   cacheDir: resolve(nodeModules, "./.vite"),
