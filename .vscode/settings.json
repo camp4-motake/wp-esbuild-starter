@@ -3,22 +3,15 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "css.validate": false,
   "scss.validate": false,
-  "stylelint.validate": [
-    "css",
-    "scss",
-    "postcss",
-  ],
-  "eslint.workingDirectories": [
-    "./mytheme"
-  ],
-  "cSpell.words": [],
+  "stylelint.validate": ["css", "scss", "postcss"],
+  "eslint.workingDirectories": ["./mytheme"],
   "[php]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[twig]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[handlebars]": {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": false
   }
 }

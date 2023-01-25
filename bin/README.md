@@ -1,9 +1,8 @@
-
 # ヘルパー
 
 ## 自動セットアップ
 
-wordpress コンテナの自動セットアップを実行します (要docker クライアント)
+wordpress コンテナの自動セットアップを実行します (要 docker クライアント)
 
 ```sh
 npm run wp-setup
@@ -11,7 +10,7 @@ npm run wp-setup
 
 ## wp-cli
 
-dockerコンテナ内で [wp-cli コマンド](https://developer.wordpress.org/cli/commands/)を実行するためのショートカット
+docker コンテナ内で [wp-cli コマンド](https://developer.wordpress.org/cli/commands/)を実行するためのショートカット
 
 ```sh
 npm run wp-cli '{wp-cli_command}'

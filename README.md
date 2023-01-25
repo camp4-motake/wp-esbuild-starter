@@ -8,7 +8,7 @@
 ## 必要環境
 
 - Node.js 16 || 18
-- [docker クライアント](https://www.docker.com/get-started)（watch モード作業時必須）
+- [docker クライアント](https://www.docker.com/get-started)（`npm run dev`での作業時のみ必須）
 
 ### 必要プラグイン
 
@@ -19,7 +19,7 @@
 サンプルの雛形から環境変数ファイルを作成
 
 ```sh
-CP ./DOCKER/.ENV-EXAMPLE ./.ENV
+cp ./docker/.env-example ./.env
 ```
 
 [ACF Pro 利用時のみ] `.env`に ACFPro のライセンスキーを追記（任意）
@@ -46,7 +46,7 @@ npm run wp-setup
 
 ## コマンド
 
-watch モードを起動 -> <http://localhost:3000/> で作業用のブラウザープレビューを表示します（DockerなどのローカルWPが起動時のみ）
+watch モードを起動 -> <http://localhost:3000/> で作業用のブラウザープレビューを表示します（Docker などのローカル WP が起動時のみ）
 
 ```sh
 npm run dev
@@ -59,7 +59,7 @@ npm run build
 ```
 
 デプロイ時はビルド後にテーマディレクトリをアップしてください。
-アップ後に表示が崩れたりCSSが反映されない場合は、WP管理画面でキャッシュプラグインのキャッシュを削除してください。
+アップ後に表示が崩れたり CSS が反映されない場合は、WP 管理画面でキャッシュプラグインのキャッシュを削除してください。
 
 > 注 1: `npm run dev`実行時はアセットファイルが空になるので、公開時はかならず事前にビルドしてください。
 > 注 2: `node_modules`ディレクトリは、公開サーバーにはアップしないでください。

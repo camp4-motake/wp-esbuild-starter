@@ -22,7 +22,7 @@ docker/
 ```yaml
 # 例） mailhog を追加する場合
 
-version: "3.8"
+version: '3.8'
 
 services:
   mailhog:
