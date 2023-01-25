@@ -12,12 +12,15 @@
   "scripts": {
     "dev": "npm run dev --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
-    "prettier": "npm run prettier --workspaces --if-present",
+    "prettier": "prettier --write --list-different .",
     "wp-setup": "zx ./bin/wp-setup.mjs",
     "wp-cli": "zx ./bin/wp-cli.mjs",
     "wp-wordmove": "zx ./bin/wp-wordmove.mjs"
   },
   "devDependencies": {
+    "@prettier/plugin-php": "^0.18.9",
+    "prettier": "^2.7.1",
+    "prettier-plugin-twig-melody": "^0.4.6",
     "zx": "^7.0.7"
   },
   "workspaces": [
