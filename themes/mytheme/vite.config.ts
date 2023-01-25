@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 const root = existsSync("../../package.json") ? "../../" : "./";
 const nodeModules = resolve(__dirname, root, "node_modules");
 const envFile = resolve(process.cwd(), "../../.env");
-const port = { wp: process.env.LOCAL_SERVER_PORT || 8888 };
+// const port = { wp: process.env.LOCAL_SERVER_PORT || 8888 };
 
 dotenv.config({ path: envFile || undefined });
 
