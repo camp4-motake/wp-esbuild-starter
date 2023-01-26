@@ -1,7 +1,4 @@
-/**
- * Common
- */
-@use "~ress/ress";
-@use "custom-properties";
+@use "custom-media";
+@use "custom-property";
 @use "global";
-@use "entry-style";
+@use "typography";

@@ -17,7 +17,7 @@
   }
 }
 
-@each $key, $size in $container-max-width {
+@each $key, $size in $mq-breakpoints {
   .container--max-#{$key} {
     @media (--viewport-#{$key}) {
       max-width: var(--container-max-width-#{$key}) !important;

@@ -1,15 +1,13 @@
 .section {
-  // default lg-xl
   --section-gutter: var(--gutter-lg);
-
-  @media (--viewport-lg) {
-    --section-gutter: var(--gutter-xl);
-  }
-
+  // default lg-xl
   position: relative;
   padding-top: var(--section-gutter);
   padding-bottom: var(--section-gutter);
 
+  @media (--viewport-lg) {
+    --section-gutter: var(--gutter-xl);
+  }
   & > .container,
   & > .containerFluid {
     position: relative;

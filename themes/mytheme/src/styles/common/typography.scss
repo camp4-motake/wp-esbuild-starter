@@ -1,0 +1,87 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-feature-settings: "palt";
+  margin-bottom: var(--spacer);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-base-hd);
+
+  ruby {
+    display: inline-block;
+    margin-left: 0.25em;
+    font-size: 50%;
+  }
+
+  & + .hr {
+    margin-top: -0.5em;
+  }
+}
+h1,
+.h1 {
+  margin-bottom: var(--spacer-md);
+  font-size: var(--font-size-h1);
+
+  * + &:not(:first-child) {
+    margin-top: var(--spacer-xl);
+  }
+}
+h2,
+.h2 {
+  margin-bottom: var(--spacer-md);
+  font-size: var(--font-size-h2);
+
+  * + &:not(:first-child) {
+    margin-top: var(--spacer-xl);
+  }
+}
+h3,
+.h3 {
+  margin-bottom: var(--spacer-md);
+  font-size: var(--font-size-h3);
+
+  * + &:not(:first-child) {
+    margin-top: var(--spacer-lg);
+  }
+}
+h4,
+.h4 {
+  font-size: var(--font-size-h4);
+
+  * + &:not(:first-child) {
+    margin-top: var(--spacer-lg);
+  }
+}
+h5,
+.h5 {
+  font-size: var(--font-size-18);
+
+  * + &:not(:first-child) {
+    margin-top: var(--spacer-lg);
+  }
+}
+h6,
+.h6 {
+  font-size: var(--font-size-16);
+
+  * + &:not(:first-child) {
+    margin-top: var(--spacer-md);
+  }
+}
+
+p {
+  margin-bottom: 1em;
+  font-size: var(--font-size-15);
+
+  // &:last-child {
+  //   margin-bottom: 0;
+  // }
+}

@@ -1,5 +1,6 @@
 @use "sass:math";
 @use "../config/mixins" as *;
+@use "../utils/screenreader" as *;
 
 /* purgecss start ignore */
 
@@ -96,9 +97,12 @@
     background-color: transparent;
 
     &::after {
-      @include full-fit;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-color: currentcolor;
-
       content: "";
       mask-position: center;
       mask-repeat: no-repeat;
@@ -110,8 +114,7 @@
     }
 
     > span {
-      @include sr-only;
-      @include sr-only-focusable;
+      @extend .sr-only;
     }
   }
 

@@ -1,3 +1,5 @@
+@use "ress";
+
 * {
   box-sizing: border-box;
 }
@@ -5,32 +7,51 @@
 html,
 body {
   min-height: 100vh;
-  background-color: var(--color-base);
-  scroll-padding-top: var(--header-height);
 }
 
 html {
+  background-color: var(--color-bg);
   font-size: var(--root-font-size);
-
-  // hide scrollbar
-  scrollbar-width: none !important;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
 }
 
 body {
-  font-feature-settings: "pkna";
+  font-feature-settings: "palt";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-size-adjust: 100%;
-  position: relative;
   overflow-y: scroll;
   color: var(--color-text);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-base);
   font-family: var(--font-family-base);
   font-synthesis: none;
-  letter-spacing: var(--letter-spacing-sans-serif);
+  letter-spacing: var(--letter-space-base);
   line-break: strict;
   overflow-wrap: break-word;
+}
+
+a {
+  color: var(--color-text);
+
+  &:hover {
+    text-decoration: none;
+  }
+  &[target="_blank"] {
+    &::after {
+      display: inline-block;
+      width: 1em;
+      height: 0.85em;
+      margin-left: 0.1em;
+      background-color: currentColor;
+      content: "";
+      mask-image: var(--mask-icon-external);
+      mask-position: center;
+      mask-repeat: no-repeat no-repeat;
+      mask-size: contain;
+    }
+  }
 }
 
 img {
@@ -38,54 +59,76 @@ img {
   height: auto;
 }
 
-main {
-  display: block;
-  overflow: hidden;
-}
-
-a {
-  color: var(--color-link);
-  text-decoration: underline;
-
-  &:hover {
-    color: var(--color-link-hover);
-    text-decoration: none;
-  }
-}
-
-p {
-  margin-bottom: 1em;
-  font-size: var(--font-p-size);
+hr {
+  margin-top: var(--spacer);
+  margin-bottom: var(--spacer);
+  border-bottom-width: 1px;
+  border-color: transparent;
+  border-bottom-color: var(--color-border);
 }
 
 ul,
 ol {
-  padding-left: calc(var(--spacer) * 1.5);
+  padding-left: var(--spacer-lg);
+}
+
+ul,
+ol,
+dl {
+  margin-bottom: var(--spacer-lg);
+}
+
+input,
+select,
+textarea,
+button {
+  appearance: none;
+
+  &::placeholder {
+    color: var(--color-text-light);
+    font-weight: var(--font-weight-medium);
+  }
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
+
+input,
+textarea {
+  position: relative;
+  padding: 0.5em;
+  background-color: var(--color-base);
+  color: var(--color-text);
+  font-size: max(16px, 1rem);
+}
+
+fieldset,
+legend {
+  appearance: none;
+}
+
+fieldset {
+  display: block;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 hr {
-  position: relative;
-  margin-right: auto;
-  margin-left: auto;
-  border: none;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.hr {
-  display: block;
   width: 100%;
-  max-width: calc(100% - calc(var(--spacer) * 2));
-  margin-right: auto;
-  margin-left: auto;
-
-  @media (--viewport-md) {
-    max-width: calc(var(--container-max-width) - calc(var(--spacer) * 2));
-  }
-  @media (--viewport-lg) {
-    max-width: calc(var(--container-max-width-lg) - calc(var(--spacer) * 2));
-  }
+  height: 1px;
+  border: none;
+  background-color: var(--color-border);
 }
 
-.updated {
-  color: var(--color-date-time);
+svg {
+  width: 100%;
+  height: auto;
+}
+
+// x-cloak
+// https://alpinejs.dev/directives/cloak
+[x-cloak] {
+  display: none !important;
 }
