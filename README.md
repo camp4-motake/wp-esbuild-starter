@@ -34,7 +34,7 @@ cp ./docker/.env-example ./.env
 npm ci
 ```
 
-WordPress のローカルサーバーを自動セットアップ（Docker 利用時）
+WordPress のローカルサーバーを自動セットアップ（Docker Compose 利用時）
 
 ```sh
 npm run wp-setup
@@ -43,6 +43,7 @@ npm run wp-setup
 完了後は <http://localhost:{LOCAL_SERVER_PORT}/> で WP が表示できます。
 
 > 注: `LOCAL_SERVER_PORT`は、`.env` で設定されている環境変数になります。
+> もし wp-env などの他のWP環境を使用する場合はこの手順は不要です。
 
 ## コマンド
 
@@ -54,7 +55,7 @@ Docker などでローカル WP 起動している場合、その WP の URL (<h
 npm run dev
 ```
 
-> CLI に Vite サーバーの URL （localhost:5173）などが表示される場合がありますが、そちらは無視してください。
+> CLI に Vite サーバーの URL （localhost:5173 など）が表示されることがありますが無視してください。
 
 ### ビルド
 
