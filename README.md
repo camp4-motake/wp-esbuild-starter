@@ -43,7 +43,7 @@ npm run wp-setup
 完了後は <http://localhost:{LOCAL_SERVER_PORT}/> で WP が表示できます。
 
 > 注: `LOCAL_SERVER_PORT`は、`.env` で設定されている環境変数になります。
-> もし wp-env などの他のWP環境を使用する場合はこの手順は不要です。
+> もし wp-env などの他の WP 環境を使用する場合はこの手順は不要です。
 
 ## コマンド
 
