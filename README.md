@@ -34,7 +34,7 @@ cp ./docker/.env-example ./.env
 npm ci
 ```
 
-WordPress のローカルサーバーを自動セットアップ（Docker Compose 利用時）
+Docker Compose で WordPress のローカルサーバーを起動し自動セットアップ
 
 ```sh
 npm run wp-setup
@@ -43,7 +43,7 @@ npm run wp-setup
 完了後は <http://localhost:{LOCAL_SERVER_PORT}/> で WP が表示できます。
 
 > 注: `LOCAL_SERVER_PORT`は、`.env` で設定されている環境変数になります。
-> もし wp-env などの他の WP 環境を使用する場合はこの手順は不要です。
+> もし wp-env などの他の WP 環境を使用する場合は、自動セットアップは不要です。
 
 ## コマンド
 
