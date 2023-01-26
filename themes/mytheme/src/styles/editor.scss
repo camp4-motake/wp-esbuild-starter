@@ -5,7 +5,8 @@
 /* purgecss start ignore */
 
 @use "sass:meta";
-@use "common/custom-properties";
+@use "common/custom-media";
+@use "common/custom-property";
 @use "editor/adminFix";
 
 .editor-styles-wrapper {
@@ -14,8 +15,8 @@
 
 .editor-styles-wrapper > * {
   @include meta.load-css("components");
-  @include meta.load-css("modules/typography");
-  @include meta.load-css("common/entry-style");
+  @include meta.load-css("common/typography");
+  @include meta.load-css("utils");
 }
 
 /* purgecss end ignore */
