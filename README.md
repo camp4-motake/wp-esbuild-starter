@@ -83,9 +83,9 @@ npm run build
 
 ## その他
 
-- git のチェックアウト後や、画像が正しく反映されない場合などは、ルートの `.cache/` ディレクトリを削除してから再ビルドしてください。
-- [workspace](https://docs.npmjs.com/cli/v7/using-npm/workspaces) を使用しています。テーマディレクトリ内にモジュールを追加する場合は `npm i {module_name} -w themes/{WP_THEME_NAME}`のように、workspace ディレクトリ名を指定して実行してください。
+- [workspace](https://docs.npmjs.com/cli/v7/using-npm/workspaces) を使用しているため、テーマディレクトリ内にモジュールを追加する場合は `npm i {module_name} -w themes/{WP_THEME_NAME}`のように、workspace の対象ディレクトリ名を指定して実行してください。
+- 画像が正しく反映されない場合は、ルートの `.cache/` ディレクトリを削除してから再ビルドしてください。
 
-## リソース
+## 関連リソース
 
 - [Timber](https://github.com/timber/timber) | [doc](https://timber.github.io/docs/) | [CheatSheet](https://timber.github.io/docs/guides/cheatsheet/) | [Twig](https://twig.symfony.com/doc/2.x/index.html)
