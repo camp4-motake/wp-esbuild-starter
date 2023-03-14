@@ -49,7 +49,7 @@ npm run wp-setup
 
 ### dev
 
-Docker などでローカル WP 起動している場合、その WP の URL (<http://localhost:{LOCAL_SERVER_PORT}/>)で、vite でライブリロードや自動コンパイルを実行します。
+Docker などでローカル WP 起動している場合のみ、その WP の URL (<http://localhost:{LOCAL_SERVER_PORT}/>)で開発サーバーを起動します。viteでライブリロードや自動コンパイルを実行します。
 
 ```sh
 npm run dev
@@ -59,7 +59,7 @@ npm run dev
 
 ### ビルド
 
-納品要にビルドします。デプロイ時はビルド後にテーマディレクトリをアップしてください。
+デプロイまたは納品用にアセットをビルドします。デプロイ時はビルド後にテーマディレクトリをアップしてください。
 
 ```sh
 npm run build
