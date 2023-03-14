@@ -86,3 +86,24 @@ add_action(
   },
   200
 );
+
+/**
+ * 投稿の初回保存時にページIDを設定（記事の日本語タイトルがそのままスラッグになるのを防ぐ）
+ *
+ * @ex https://liginc.co.jp/576942
+ */
+add_filter("wp_unique_post_slug", __NAMESPACE__ . "\\slug_auto_setting", 10, 4);
+function slug_auto_setting($slug, $post_ID, $post_status, $post_type)
+{
+  $post = get_post($post_ID);
+  $is_slug_invalid = preg_match("/(%[0-9a-f]{2})+/", $slug);
+
+  if ($is_slug_invalid && $post->post_date_gmt == "0000-00-00 00:00:00") {
+    return $post_ID;
+  }
+  if ($is_slug_invalid) {
+    return $post_ID;
+  }
+
+  return $slug;
+}

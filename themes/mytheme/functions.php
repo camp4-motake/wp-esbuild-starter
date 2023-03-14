@@ -1,5 +1,6 @@
 <?php
 
+require_once "inc/acf.php";
 require_once "inc/admin.php";
 require_once "inc/block-patterns.php";
 require_once "inc/builtin-posts.php";
