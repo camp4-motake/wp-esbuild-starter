@@ -2,6 +2,8 @@
   "recommendations": [
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
-    "nadim-vscode.symfony-code-snippets"
+    "nadim-vscode.symfony-code-snippets",
+    "vunguyentuan.vscode-postcss",
+    "pcbowers.alpine-intellisense"
   ]
 }

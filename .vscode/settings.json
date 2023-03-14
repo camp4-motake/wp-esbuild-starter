@@ -3,8 +3,14 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "css.validate": false,
   "scss.validate": false,
-  "stylelint.validate": ["css", "scss", "postcss"],
-  "eslint.workingDirectories": ["./mytheme"],
+  "postcss.validate": false,
+  "emmet.includeLanguages": {
+    "postcss": "css"
+  },
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "alpine-intellisense.settings.languageScopes": "html,php,twig",
   "[php]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
