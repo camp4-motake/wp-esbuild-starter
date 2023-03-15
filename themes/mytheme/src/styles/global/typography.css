@@ -1,0 +1,92 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-feature-settings: "palt";
+  margin-bottom: var(--spacer);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-base-hd);
+  letter-spacing: var(--letter-spacing-heading);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+
+  & ruby > rt {
+    display: block;
+    font-size: 42%;
+    text-align: start;
+  }
+
+  & + .hr {
+    margin-top: -0.5em;
+  }
+}
+:where(h1, .h1) {
+  margin-bottom: var(--spacer-md);
+  font-size: var(--font-size-h1);
+}
+* + :where(h1, .h1):not(:first-child) {
+  margin-top: var(--spacer-xl);
+}
+
+:where(h2, .h2) {
+  margin-bottom: var(--spacer-md);
+  font-size: var(--font-size-h2);
+}
+* + :where(h2, .h2):not(:first-child) {
+  margin-top: var(--spacer-xl);
+}
+
+:where(h3, .h3) {
+  margin-bottom: var(--spacer-md);
+  font-size: var(--font-size-h3);
+}
+* + :where(h3, .h3):not(:first-child) {
+  margin-top: var(--spacer-lg);
+}
+
+:where(h4, .h4) {
+  font-size: var(--font-size-h4);
+}
+* + :where(h4, .h4):not(:first-child) {
+  margin-top: var(--spacer-lg);
+}
+
+:where(h5, .h5) {
+  font-size: var(--font-size-18);
+}
+* + :where(h5, .h5):not(:first-child) {
+  margin-top: var(--spacer-lg);
+}
+
+:where(h6, .h6) {
+  font-size: var(--font-size-16);
+}
+* + :where(h6, .h6):not(:first-child) {
+  margin-top: var(--spacer-md);
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+* + p {
+  margin-top: 1em;
+}
+
+.featuredLine {
+  font-size: var(--font-size-18);
+  line-height: var(--leading-2xl);
+  letter-spacing: 0.3em;
+
+  & + & {
+    margin-top: 2em;
+  }
+}

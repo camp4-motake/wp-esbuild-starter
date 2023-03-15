@@ -1,0 +1,14 @@
+/**
+ * Editor
+ */
+@import "config/custom-media";
+@import "config/custom-property";
+@import "editor/adminFix";
+@import "components";
+@import "utils";
+@import "blocks";
+@import "common/entry-content";
+
+.editor-styles-wrapper {
+  padding: 0 5% var(--spacer-2xl) !important;
+}

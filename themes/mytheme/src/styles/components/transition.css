@@ -1,0 +1,46 @@
+.transition-bottomIn {
+  transform: translateY(1rem);
+  opacity: 0;
+  transition: transform 1s var(--ease-out-circ), opacity 1s;
+  transition-delay: 0.1s, 0.1s;
+  will-change: opacity, transform;
+
+  &.isDelayDouble {
+    transition-delay: 0.4s, 0.4s;
+  }
+
+  &.isDelayLong {
+    transition-delay: 1s, 1s;
+  }
+}
+
+.isPageActive [data-scroll="in"].transition-bottomIn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.transition-stagger .transition-bottomIn {
+  --delay: calc(var(--list-index) * 0.1s);
+
+  &.isStagger {
+    transition-delay: var(--delay), var(--delay);
+  }
+
+  @media (--viewport-md) {
+    &.isStagger-md {
+      transition-delay: var(--delay), var(--delay);
+    }
+  }
+  @media (--viewport-lg) {
+    &.isStagger-lg {
+      transition-delay: var(--delay), var(--delay);
+    }
+  }
+}
+
+.isPageActive
+  [data-scroll="in"].transition-staggerWrapper
+  .transition-staggerBottomIn {
+  transform: translateY(0);
+  opacity: 1;
+}

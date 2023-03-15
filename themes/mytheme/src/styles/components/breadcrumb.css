@@ -1,0 +1,36 @@
+.breadcrumb {
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  display: block;
+  max-width: var(--container-max-width);
+  margin: 0 auto var(--spacer);
+  padding-right: var(--spacer);
+  padding-left: var(--spacer);
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (--viewport-xl) {
+    max-width: var(--container-max-width-xl);
+  }
+
+  & a,
+  & span {
+    display: inline-block;
+    font-size: var(--font-size-12);
+    white-space: nowrap;
+  }
+  & a {
+    &,
+    &:visited {
+      color: var(--color-text);
+    }
+
+    &:hover {
+      color: var(--color-link-hover);
+    }
+  }
+}

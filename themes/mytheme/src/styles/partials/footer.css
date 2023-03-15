@@ -1,0 +1,38 @@
+.footer {
+  position: sticky;
+  top: 100vh;
+  padding-top: var(--spacer-xl);
+  background-color: var(--color-primary);
+  color: var(--color-base);
+  transition: opacity 0.4s ease;
+
+  & :where(a) {
+    color: var(--color-base);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-secondary);
+    }
+    &[target="_blank"]::after {
+      content: none;
+    }
+  }
+  & :where(.tel) {
+    display: block;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-22);
+    line-height: var(--leading-md);
+    font-family: var(--font-sans-serif-en);
+    letter-spacing: 0.2em;
+
+    &:hover {
+      color: var(--color-base);
+    }
+  }
+  & :where(.copyright) {
+    margin-bottom: 0;
+    font-size: var(--font-size-12);
+    text-align: center;
+  }
+}

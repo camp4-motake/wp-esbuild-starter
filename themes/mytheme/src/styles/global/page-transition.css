@@ -1,0 +1,19 @@
+/* @see https://swup.js.org/getting-started/example */
+
+.transition-fade {
+  opacity: 1;
+  transition: 0.4s;
+}
+
+html.is-animating .transition-fade {
+  opacity: 0;
+}
+
+/**
+ * progress bar
+ * https://swup.js.org/plugins/progress-plugin
+ */
+.swup-progress-bar {
+  height: 4px;
+  background-color: var(--color-primary);
+}

@@ -1,0 +1,32 @@
+.embedResponsive {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--color-placeholder);
+
+  & > video,
+  & > iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  &.is4by3 {
+    aspect-ratio: 4/3;
+  }
+  &.is16by9 {
+    aspect-ratio: 16/9;
+  }
+  &.is21by9 {
+    aspect-ratio: 21/9;
+  }
+  &.isMaxEntry {
+    max-width: var(--container-max-width-entry);
+    margin-inline: auto;
+  }
+}

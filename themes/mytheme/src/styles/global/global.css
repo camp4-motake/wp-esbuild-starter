@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+html {
+  background-color: var(--color-bg);
+  font-size: var(--root-font-size);
+  scroll-padding-top: var(--header-height);
+
+  &:not(.is-animating) {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+  overflow-y: scroll;
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  font-family: var(--font-family-base);
+  font-synthesis: none;
+  letter-spacing: var(--letter-space-base);
+  line-break: strict;
+  overflow-wrap: break-word;
+}
+
+a {
+  color: var(--color-text);
+
+  &:hover {
+    text-decoration: none;
+  }
+  &[target="_blank"] {
+    &::after {
+      display: inline-block;
+      width: 1em;
+      height: 0.85em;
+      margin-left: 0.1em;
+      background-color: currentColor;
+      content: "";
+      mask-image: var(--mask-icon-external);
+      mask-position: center;
+      mask-repeat: no-repeat no-repeat;
+      mask-size: contain;
+    }
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  margin-top: var(--spacer);
+  margin-bottom: var(--spacer);
+  border-bottom-width: 1px;
+  border-color: transparent;
+  border-bottom-color: var(--color-border);
+}
+
+ul,
+ol {
+  padding-left: var(--spacer-lg);
+}
+
+ul,
+ol,
+dl {
+  margin-bottom: var(--spacer-lg);
+}
+
+ul {
+  &.list-iroha {
+    list-style-type: katakana-iroha;
+  }
+  &.list-circled-decimal {
+    list-style-type: circled-decimal;
+  }
+  &.list-parenthesized-decimal {
+    list-style-type: parenthesized-decimal;
+  }
+}
+
+input,
+select,
+textarea,
+button {
+  appearance: none;
+
+  &::placeholder {
+    color: var(--color-text-light);
+    font-weight: var(--font-weight-medium);
+  }
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
+
+input,
+textarea {
+  position: relative;
+  padding: 0.5em;
+  background-color: var(--color-base);
+  color: var(--color-text);
+  font-size: max(16px, 1rem);
+}
+
+fieldset,
+legend {
+  appearance: none;
+}
+
+fieldset {
+  display: block;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  border: none;
+  background-color: var(--color-border);
+}
+
+svg {
+  width: 100%;
+  height: auto;
+}
+
+.updated {
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-sans-serif-en);
+}
+
+.wbr {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/**
+ * x-cloak
+ * https://alpinejs.dev/directives/cloak
+ */
+[x-cloak] {
+  display: none !important;
+}
