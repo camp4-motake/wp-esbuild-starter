@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 
 const root = existsSync("../../package.json") ? "../../" : "./";
 const nodeModules = resolve(__dirname, root, "node_modules");
-const envFile = resolve(process.cwd(), "../../.env");
+const envFile = resolve(process.cwd(), `${root}.env`);
 dotenv.config({ path: envFile || undefined });
 
 const { LOCAL_URL, LOCAL_SERVER_PORT, IS_OPEN } = process.env;
