@@ -7,7 +7,7 @@
 @import "components";
 @import "utils";
 @import "blocks";
-@import "common/entry-content";
+@import "global/entry-content";
 
 .editor-styles-wrapper {
   padding: 0 5% var(--spacer-2xl) !important;
