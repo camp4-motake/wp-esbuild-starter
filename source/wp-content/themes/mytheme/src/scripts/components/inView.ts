@@ -8,27 +8,33 @@
  * @see https://alpinejs.dev/plugins/intersect
  *
  */
-
-import { AlpineComponent } from "alpinejs";
+import type { AlpineComponent } from "alpinejs";
 
 export interface State {
-  shown: boolean;
-  isRepeat: unknown;
+  isRepeat: boolean;
+  isReverse: () => boolean;
 }
 
 export const inView = (...args: unknown[]): AlpineComponent<State> => ({
-  shown: false,
-  isRepeat: args[0],
+  isRepeat: args[0] === true,
 
   trigger: {
+    ["x-init"](): void {
+      this.$el.dataset.scroll = "out";
+    },
+
     ["x-intersect:enter"](): void {
-      this.shown = true;
+      this.$el.dataset.scroll = "in";
     },
+
     ["x-intersect:leave"](): void {
-      if (this.isRepeat) this.shown = false;
+      if (!this.isRepeat) return;
+      if (!this.isReverse()) return;
+      this.$el.dataset.scroll = "out";
     },
-    [":data-scroll"](): string {
-      return this.shown ? "in" : "out";
-    },
+  },
+
+  isReverse() {
+    return Math.sign(this.$el.getBoundingClientRect().top) === 1;
   },
 });
