@@ -1,9 +1,0 @@
-{% if (posts|length) >= 1 %}
-  <div>
-    {% for post in posts %}
-      {{ include('components/content.twig', { ignore_missing: true }) }}
-    {% endfor %}
-  </div>
-{% else %}
-  {{ include('components/no-posts.twig', { no_post_label: __('No matches found', 'mytheme') }) }}
-{% endif %}

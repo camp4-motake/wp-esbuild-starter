@@ -1,14 +1,1 @@
-{
-  "order": "smacss",
-  "keepOverrides": false,
-  "overrides": [
-    {
-      "files": ["**/*.twig"],
-      "options": {
-        "parser": "melody",
-        "twigAlwaysBreakObjects": false,
-        "twigPrintWidth": 100
-      }
-    }
-  ]
-}
+{}

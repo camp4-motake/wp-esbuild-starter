@@ -1,9 +1,10 @@
 {
   "recommendations": [
+    "bmewburn.vscode-intelephense-client",
+    "dbaeumer.vscode-eslint",
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
-    "nadim-vscode.symfony-code-snippets",
-    "vunguyentuan.vscode-postcss",
-    "pcbowers.alpine-intellisense"
+    "stylelint.vscode-stylelint",
+    "vunguyentuan.vscode-postcss"
   ]
 }

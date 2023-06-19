@@ -1,5 +1,0 @@
-duplicate-post
-timber-library
-wordpress-seo
-wp-multibyte-patch
-yoast-test-helper

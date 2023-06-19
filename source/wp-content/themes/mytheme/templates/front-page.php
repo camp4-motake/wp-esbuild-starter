@@ -1,0 +1,5 @@
+<?php
+
+/**
+ * front-page
+ */

@@ -1,0 +1,19 @@
+.error404__heading {
+  font-family: var(--font-sans-serif-en);
+  line-height: var(--leading-sm);
+}
+
+.error404__heading__status {
+  display: block;
+  font-size: var(--font-size-70);
+  font-weight: var(--font-weight-black);
+}
+
+.error404__heading__label {
+  display: block;
+  font-size: var(--font-size-24);
+}
+
+.error404__description {
+  font-size: var(--font-size-14);
+}

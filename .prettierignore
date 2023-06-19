@@ -91,3 +91,8 @@ sw.*
 *.hbs
 */acf-json/*.json
 .htaccess
+composer.lock
+source/wp-content/languages/
+source/wp-content/plugins/
+source/wp-content/themes/twenty*/
+vendor/

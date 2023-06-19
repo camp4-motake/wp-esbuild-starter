@@ -1,0 +1,21 @@
+:where(.entry-content, .editor-styles-wrapper) {
+  & .wp-block-separator {
+    margin-top: var(--spacer-lg);
+    margin-bottom: var(--spacer-lg);
+    border-color: var(--color-text);
+    border-width: 1px;
+
+    @media (--viewport-md) {
+      margin-top: var(--spacer-xl);
+      margin-bottom: var(--spacer-xl);
+    }
+
+    &:not(.is-style-wide, .is-style-dots) {
+      max-width: 100px;
+    }
+
+    &.is-style-dots {
+      color: var(--color-primary);
+    }
+  }
+}

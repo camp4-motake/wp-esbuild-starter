@@ -140,5 +140,20 @@ movefile.yaml
 movefile.yml
 Movefile
 
-# dump directory
-.dump/
+# php-cs-fixer
+.php-cs-fixer.cache
+
+# workspace
+# /source/wp-content/*
+/source/wp-content/languages
+/source/wp-content/plugins
+/source/wp-content/themes/*
+!/source/wp-content/themes/mytheme
+.tmp/
+vendor/
+auth.json
+.zip/
+*.zip
+
+# workaround
+__*.*

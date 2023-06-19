@@ -1,0 +1,57 @@
+:where(.entry-content, .editor-styles-wrapper) {
+  & .wp-block-quote {
+    position: relative;
+    padding: var(--spacer-md);
+    margin-top: 2rem;
+    margin-bottom: var(--spacer-lg);
+    background-color: var(--color-bg);
+    border-left: none;
+
+    @media (--viewport-lg) {
+      padding: var(--spacer-lg) var(--spacer-xl);
+    }
+
+    & cite,
+    & footer {
+      position: relative;
+      margin-top: 1em;
+      font-size: 0.8125em;
+      font-style: normal;
+      color: currentcolor;
+    }
+
+    &.has-text-align-right {
+      padding-right: 1em;
+      padding-left: 0;
+      border-right: none;
+      border-left: none;
+    }
+
+    &.has-text-align-center {
+      padding-left: 0;
+      border: none;
+    }
+
+    &.is-large,
+    &.is-style-large {
+      border: none;
+    }
+
+    & p:last-child {
+      margin-bottom: 0;
+    }
+
+    & a {
+      &,
+      &:hover,
+      &:visited,
+      &:active {
+        text-decoration: underline;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
