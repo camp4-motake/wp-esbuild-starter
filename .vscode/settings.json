@@ -6,17 +6,17 @@
     "source/wp-content/languages": true,
     "source/wp-content/plugins": true
   },
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "alpine-intellisense.settings.languageScopes": "html,php",
   "css.validate": false,
   "postcss.validate": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
   "emmet.includeLanguages": {
     "postcss": "css"
   },
   "files.associations": {
     "*.css": "postcss"
   },
-  "alpine-intellisense.settings.languageScopes": "html,php",
   "intelephense.environment.includePaths": [
     "wp/wp-content/plugins"
   ],
