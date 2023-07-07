@@ -20,7 +20,7 @@
     "esbuild": "esbuild src/*.ts --bundle --outdir=dist --platform=browser --target=es2020,chrome58",
     "postcss": "postcss src/styles/*.css -d dist",
     "images": "node image.config.mjs",
-    "reset": "rimraf dist"
+    "reset": "rimraf dist/*"
   },
   "devDependencies": {
     "@types/alpinejs": "^3.7.2",
