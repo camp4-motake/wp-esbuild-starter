@@ -22,7 +22,7 @@ add_action("wp_head", function () {
 
   // main assets
   echo '<link rel="stylesheet" href="' . Path\cache_buster('/dist/main.css') . '" />' . "\n";
-  echo '<script defer src="' . Path\cache_buster('/dist/main.js') . '"></script>' . "\n";
+  echo '<script type="module" src="' . Path\cache_buster('/dist/main.js') . '"></script>' . "\n";
 });
 
 
