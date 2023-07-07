@@ -17,8 +17,8 @@
     "build:scripts": "tsc && npm run esbuild -- --minify",
     "build:styles": "NODE_ENV=production npm run postcss",
     "build:images": "npm run images",
-    "esbuild": "esbuild src/*.ts --bundle --outdir=dist --platform=browser --target=es2020,chrome58",
-    "postcss": "postcss src/styles/*.css -d dist",
+    "esbuild": "esbuild src/{main,editor}.ts --bundle --outdir=dist --platform=browser --format=esm",
+    "postcss": "postcss src/styles/{main,editor}.css -d dist",
     "images": "node image.config.mjs",
     "reset": "rimraf dist/*"
   },
