@@ -1,4 +1,11 @@
 {
+  "files.exclude": {
+    ".cache": true,
+    "package-lock.json": true,
+    "composer.lock": true,
+    "source/wp-content/languages": true,
+    "source/wp-content/plugins": true
+  },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "css.validate": false,
@@ -11,8 +18,7 @@
   },
   "alpine-intellisense.settings.languageScopes": "html,php",
   "intelephense.environment.includePaths": [
-    "source/wp-content/plugins/advanced-custom-fields-pro/acf.php",
-    "source/wp-content/plugins/bogo/bogo.php"
+    "wp/wp-content/plugins"
   ],
   "[typescript]": {
     "editor.codeActionsOnSave": {
