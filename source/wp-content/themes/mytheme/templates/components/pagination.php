@@ -1,10 +1,10 @@
 <?php
 
-use Lib\Helper;
+use Lib\Helper\Paging;
 
 ?>
 <div class="paginationScroller">
-  <?= Helper\custom_pagination(); ?>
+  <?= Paging\custom_pagination(); ?>
 </div>
 
 <?php

@@ -4,7 +4,7 @@
  * ビルトインの「投稿」の各メニューを非表示
  */
 
-namespace Lib\BuiltinPosts;
+namespace Lib\Cleanup\BuiltinPosts;
 
 // Remove side menu
 add_action("admin_menu", function () {

@@ -11,10 +11,10 @@ define("THEME_DOMAIN", "mytheme");
 define("THEME_NAME", "mytheme");
 
 // テーマアセットのフルパスURL
-define("ASSETS_DIR_URI", get_template_directory_uri() . "/dist/");
+define("ASSETS_DIR_URI", get_theme_file_uri("/dist/"));
 
 // テーマアセットディレクトのリフルパス
-define("ASSETS_DIR_PATH", get_template_directory() . "/dist/");
+define("ASSETS_DIR_PATH", get_theme_file_path("/dist/"));
 
 // テストサーバードメイン
 define("TEST_SERVER_DOMAIN", "");
@@ -35,5 +35,4 @@ define("IS_ENABLE_GOOGLE_TAG_MANAGER", false);
 define("IS_ENABLE_GOOGLE_FONTS", true);
 
 //　Google Webフォント URL
-define("GOOGLE_FONTS", "");
-define("GOOGLE_FONTS_EN", "");
+define("GOOGLE_FONTS", []);

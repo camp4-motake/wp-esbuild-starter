@@ -1,6 +1,6 @@
 <?php
 
-use Lib\Helper;
+use Lib\Helper\Image;
 
 ?>
-<div style="display:none"><?= Helper\inline_svg('images/svg-sprite.svg'); ?></div>
+<div style="display:none"><?= Image\inline_svg('images/svg-sprite.svg'); ?></div>

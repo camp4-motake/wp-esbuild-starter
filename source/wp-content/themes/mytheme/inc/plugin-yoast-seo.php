@@ -27,3 +27,38 @@ add_filter("wpseo_debug_markers", "__return_false");
 add_filter("wpseo_locale", function ($locale) {
   return get_locale();
 });
+
+/**
+ *  Yoast SEO の右サイド広告を非表示
+ */
+add_action("admin_print_styles", function () {
+  echo ''
+    . "<style>"
+    . ' #sidebar.yoast-sidebar,.yoast-notification.notice.notice-warning.is-dismissible { display: none !important;'
+    . "</style>";
+});
+
+
+/**
+ * Helper: yoast seo breadcrumb 出力 + パンくずの矢印をHTMLタグに置換
+ * ※置換するには、管理画面パンくず設定で区切り文字に %arrow を指定
+ *
+ * https://yoast.com/help/implement-wordpress-seo-breadcrumbs/
+ */
+function get_yoast_seo_breadcrumb()
+{
+  if (!function_exists("yoast_breadcrumb")) {
+    return "";
+  }
+
+  $arrow_html = ">";
+
+  ob_start();
+  yoast_breadcrumb('<div class="breadcrumb">', "</div>" . "\n");
+  $breadcrumb = ob_get_contents();
+  ob_end_clean();
+
+  $breadcrumb = str_replace("%arrow", $arrow_html, $breadcrumb);
+
+  return $breadcrumb;
+}

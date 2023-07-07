@@ -67,13 +67,6 @@ add_filter("excerpt_more", function ($more) {
 });
 
 /**
- * トラッキングタグテンプレート出力
- */
-add_action("wp_footer", function () {
-  get_template_part("templates/tracking-body-bottom-tag");
-}, 100);
-
-/**
  * 検索クエリを無効化しホームにリダイレクト
  */
 /*
