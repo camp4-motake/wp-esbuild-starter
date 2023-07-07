@@ -1,6 +1,5 @@
 {
   "require-dev": {
-    "cweagans/composer-patches": "^1.7",
     "koodimonni-language/core-ja": "*",
     "wpackagist-plugin/duplicate-post": "*",
     "wpackagist-plugin/safe-svg": "*",
