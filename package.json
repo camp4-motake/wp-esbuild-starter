@@ -9,14 +9,14 @@
     "node": ">=18"
   },
   "scripts": {
-    "dev": "concurrently --raw \"npm run dev --workspaces --if-present\"",
+    "dev": "npm run dev --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
     "composer": "docker run --rm --interactive --tty --volume $PWD:/app composer",
     "wp-cli": "docker compose run --rm cli bash -c",
     "setup:tools": "npm ci && npm run composer install",
     "setup:wp": "npm run wp-cli './env/setup.sh'",
     "lintFix": "prettier --write --list-different . && concurrently --raw npm:lintFix:*",
-    "lintFix:styles": "stylelint \"source/wp-content/themes/*/src/**/*.css\" --fix",
+    "lintFix:styles": "stylelint \"source/wp-content/themes/mytheme/src/**/*.css\" --fix",
     "lintFix:scripts": "eslint --ignore-path .prettierignore --ext .js,.jsx,.cjs,.mjs,.ts,.tsx . --fix",
     "i18n:pot": "npm run wp-cli \"wp i18n make-pot wp-content/themes/mytheme wp-content/themes/mytheme/lang/mytheme.pot --skip-theme-json\"",
     "i18n:compile": "npm run wp-cli \"wp i18n make-mo wp-content/themes/mytheme/lang wp-content/themes/mytheme/lang\"",
