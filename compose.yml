@@ -20,7 +20,7 @@ services:
     volumes:
       - "wp_data:/var/www/html"
       - "./docker/wp/php-xdebug.ini:/usr/local/etc/php/conf.d/php-xdebug.ini:cached"
-      - "./env:/var/www/html/env"
+      - "./docker/env:/var/www/html/env"
       - "./source/wp-content/languages:/var/www/html/wp-content/languages"
       - "./source/wp-content/plugins:/var/www/html/wp-content/plugins"
       - "./source/wp-content/themes/$WP_THEME_NAME:/var/www/html/wp-content/themes/$WP_THEME_NAME"
@@ -37,7 +37,7 @@ services:
     image: wordpress:cli-php8.1
     volumes:
       - "wp_data:/var/www/html"
-      - "./env:/var/www/html/env"
+      - "./docker/env:/var/www/html/env"
       - "./docker/cli/wp-cli.local.yml:/var/www/html/wp-cli.local.yml:cached"
       - "./source/wp-content/languages:/var/www/html/wp-content/languages"
       - "./source/wp-content/plugins:/var/www/html/wp-content/plugins"
