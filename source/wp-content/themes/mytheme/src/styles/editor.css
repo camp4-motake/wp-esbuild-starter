@@ -3,11 +3,11 @@
  */
 @import "config/custom-media";
 @import "config/custom-property";
-@import "editor/adminFix";
-@import "components";
-@import "utils";
-@import "blocks";
-@import "global/typography";
+@import "editor/*.css";
+@import "components/*.css";
+@import "utils/*.css";
+@import "blocks/*.css";
+@import "global/typography.css";
 
 .editor-styles-wrapper {
   padding: 0 var(--spacer) var(--spacer-2xl) !important;
