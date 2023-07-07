@@ -6,6 +6,7 @@ export interface State extends Store {
   interval?: NodeJS.Timer;
   isRecaptcha: boolean;
   setScrollbarWidth: () => void;
+  scrollBarCheckInterval: () => void;
 }
 
 export const root = (): AlpineComponent<State> => ({
@@ -13,31 +14,19 @@ export const root = (): AlpineComponent<State> => ({
   isRecaptcha: false,
 
   init() {
-    this.interval = setInterval(() => {
-      this.setScrollbarWidth();
-    }, 1000);
-  },
-
-  setScrollbarWidth() {
-    this.scrollBarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
+    this.$nextTick(() => {
+      this.$store.siteStatus.isPageActive = true;
+      this.scrollBarCheckInterval();
+    });
   },
 
   root: {
-    [":x-init"]() {
-      this.$nextTick(() => {
-        this.$store.siteStatus.isPageActive = true;
-      });
-    },
-
     [":class"]() {
       return {
         isPageActive: this.$store.siteStatus.isPageActive,
         isScrollDown:
           this.$store.siteStatus.isScrollDown || this.$store.menuStatus.shown,
-        isHeroInView: this.$store.siteStatus.isHeroInView,
         isMenuOpen: this.$store.menuStatus.shown,
-        isLangSwitcherOpen: this.$store.langSwitcherStatus.shown,
       };
     },
 
@@ -48,16 +37,14 @@ export const root = (): AlpineComponent<State> => ({
     },
   },
 
-  reCaptchaTerm: {
-    ["x-init"]() {
-      this.$nextTick(() => {
-        const isRecaptcha = !!document.getElementById("google-recaptcha-js");
-        this.$store.siteStatus.isRecaptcha = isRecaptcha;
-      });
-    },
+  scrollBarCheckInterval() {
+    this.interval = setInterval(() => {
+      this.setScrollbarWidth();
+    }, 1000);
+  },
 
-    ["x-show"]() {
-      return this.$store.siteStatus.isRecaptcha;
-    },
+  setScrollbarWidth() {
+    this.scrollBarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
   },
 });

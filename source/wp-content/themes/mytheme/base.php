@@ -16,10 +16,8 @@ if (!defined('ABSPATH')) {
 <?php get_template_part("templates/partials/head"); ?>
 
 <body <?php body_class(); ?>>
+  <?php do_action('body_tag_before'); ?>
   <?php
-
-  do_action('body_tag_before');
-  get_template_part("templates/partials/svg-sprite");
 
   do_action("get_header");
   get_template_part("templates/partials/header");
@@ -33,9 +31,8 @@ if (!defined('ABSPATH')) {
   do_action("get_footer");
   get_template_part("templates/partials/footer");
 
-  wp_footer();
-
   ?>
+  <?php wp_footer(); ?>
 </body>
 
 </html>
