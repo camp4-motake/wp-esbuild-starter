@@ -3,10 +3,10 @@
 [Docker の初期設定](docker/README.md)
 
 ```sh
-# install deps
+# 初期化
 npm ci
 
-# watch（docker などで WP 環境を起動している場合のみ）
+# dev（docker などで WP 環境を起動している場合のみ）
 npm run dev
 
 # build
