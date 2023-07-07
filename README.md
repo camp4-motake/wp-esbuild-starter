@@ -3,6 +3,9 @@
 [Docker の初期設定](docker/README.md)
 
 ```sh
+# install deps
+npm ci
+
 # watch（docker などで WP 環境を起動している場合のみ）
 npm run dev
 
