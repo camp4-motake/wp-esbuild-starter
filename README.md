@@ -14,4 +14,4 @@ npm run build
 ```
 
 - `source/wp-content/themes` 以下のテーマディレクトリがデプロイ対象です。
-- テーマディレクトリは[workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) です。
+- テーマディレクトリは [workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) です。
