@@ -4,7 +4,9 @@
     "package-lock.json": true,
     "composer.lock": true,
     "source/wp-content/languages": true,
-    "source/wp-content/plugins": true
+    "source/wp-content/plugins": true,
+    "vendor": true,
+    "node_modules": false,
   },
   "alpine-intellisense.settings.languageScopes": "html,php",
   "css.validate": false,
