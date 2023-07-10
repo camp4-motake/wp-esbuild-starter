@@ -45,4 +45,4 @@ npm run setup:wp
 
 初期設定では<http://localhost:${WP_PORT}> (ユーザー名: admin、パスワード: admin)　で利用可
 
-> 下層ページが表示されない場合は `npm run wp-cli 'wp rewrite flush --hard'`コマンドで flush してみてください。
+> 下層ページが表示されない場合は `npm run wp-cli 'wp rewrite flush --hard'`コマンドで flush してください（または管理画面からパーマリンクを更新）。
