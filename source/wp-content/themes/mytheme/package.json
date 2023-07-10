@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "npm run reset && concurrently --raw npm:dev:*",
-    "dev:watch": "browser-sync start --config bs-config.cjs",
+    "dev:serve": "browser-sync start --config bs-config.cjs",
     "dev:scripts": "npm run esbuild -- --watch",
     "dev:styles": "npm run postcss -- --watch",
     "dev:images": "npm run images",
