@@ -6,7 +6,7 @@
 # 初期化
 npm ci
 
-# dev（docker などで WP 環境を起動している場合のみ）
+# dev （dockerなどでWP環境を起動している場合のみ）
 npm run dev
 
 # build
