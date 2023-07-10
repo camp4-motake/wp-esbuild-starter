@@ -11,26 +11,21 @@ const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 class ImgMin {
   constructor(data = {}) {
-    this.data = deepMerge(
-      {
-        option: {
-          base: undefined,
-          cacheDir: path.resolve(process.cwd(), "./node_modules/.cache/images"),
-          isWebp: true,
-          isAvif: false,
-          isModernFormatOnly: false,
-          webpExt: [".jpeg", ".jpg", ".png", ".gif"],
-          avifExt: [".jpeg", ".jpg", ".png", ".gif"],
-          png: { quality: 80 },
-          jpg: { quality: 80 },
-          webp: { quality: 80, smartSubsample: true },
-          avif: { quality: 80 },
-          svg: ["--config", path.resolve(__dirname, "svgo.config.cjs")],
-        },
-        custom: {},
+    const defaultData = {
+      option: {
+        base: undefined,
+        cacheDir: path.resolve(process.cwd(), "./node_modules/.cache/images"),
+        isOriginOutput: true,
+        formats: ["webp"],
+        png: { quality: 80 },
+        jpg: { quality: 80 },
+        webp: { quality: 80, smartSubsample: true },
+        avif: { quality: 80 },
+        svg: ["--config", path.resolve(__dirname, "svgo.config.cjs")],
       },
-      data
-    );
+      custom: {},
+    };
+    this.data = deepMerge(defaultData, data);
   }
 
   async run() {
@@ -43,93 +38,75 @@ class ImgMin {
     const from = file;
     const cacheTo = path.join(this.data.option.cacheDir, from);
     const copyTo = this._createDestinationFilePath(file);
-    const isWebp = this.data.option?.isWebp || this.default?.option?.isWebp;
-    const isAvif = this.data.option?.isAvif || this.default?.option?.isAvif;
+    const formats = this.data.option.formats;
+    const isOrigin = this.data.option.isOriginOutput;
 
     if (![".png", ".jpeg", ".jpg", ".svg", ".gif"].includes(extname)) {
       return this._copyFiles(from, copyTo);
     }
+
     return await fs.promises
       .mkdir(path.dirname(cacheTo), { recursive: true })
       .then(() => {
         if ([".svg"].includes(extname)) {
-          if (this._isCacheExits(from, cacheTo)) {
-            this._copyFiles(cacheTo, copyTo);
-            return;
-          }
-          console.log("COMPRESS:", copyTo);
-          this._optimizeSvg(from, cacheTo).then(() =>
-            this._copyFiles(cacheTo, copyTo)
-          );
+          this._optimizeCopy(extname, from, cacheTo, copyTo);
           return;
         }
-        if (!this.data.option.isModernFormatOnly) {
-          if (this._isCacheExits(from, cacheTo)) {
-            this._copyFiles(cacheTo, copyTo);
-          } else {
-            console.log("COMPRESS:", copyTo);
-            if ([".jpeg", ".jpg"].includes(extname)) {
-              this._optimizeJpg(from, cacheTo).then(() =>
-                this._copyFiles(cacheTo, copyTo)
-              );
-            }
-            if ([".png"].includes(extname)) {
-              this._optimizePng(from, cacheTo).then(() =>
-                this._copyFiles(cacheTo, copyTo)
-              );
-            }
+        if ([".jpeg", ".jpg", ".png"].includes(extname)) {
+          if (isOrigin) {
+            this._optimizeCopy(extname, from, cacheTo, copyTo);
           }
-        }
-        // webp
-        if (isWebp && this.data.option?.webpExt?.includes(extname)) {
-          const ext = ".webp";
-          const webpExit = this._replaceExt(copyTo, ext);
-          const webpCache = this._replaceExt(cacheTo, ext);
-          if (this._isCacheExits(from, webpCache)) {
-            this._copyFiles(webpCache, webpExit);
-          } else {
-            console.log("WEBP:", webpExit);
-            this._optimizeWebp(from, cacheTo).then(() =>
-              this._copyFiles(webpCache, webpExit)
+          formats.forEach(async (e) => {
+            const ext = `.${e}`;
+            await this._optimizeCopy(
+              ext,
+              from,
+              this._replaceExt(cacheTo, ext),
+              this._replaceExt(copyTo, ext)
             );
-          }
+          });
+          return;
         }
-        // avif
-        if (isAvif && this.data.option?.avifExt?.includes(extname)) {
-          const ext = ".avif";
-          const avifExit = this._replaceExt(copyTo, ext);
-          const avifCache = this._replaceExt(cacheTo, ext);
-          if (this._isCacheExits(from, avifCache)) {
-            this._copyFiles(avifCache, avifExit);
-          } else {
-            console.log("AVIF:", avifExit);
-            this._optimizeAvif(from, cacheTo).then(() =>
-              this._copyFiles(avifCache, avifExit)
-            );
-          }
-        }
+        this._copyFiles(from, copyTo);
       });
+  }
 
-    // cache copy
-    /*
-    if (['.svg'].includes(extname) || !this.data.option.isModernFormatOnly) {
-      this._copyFiles(cacheTo, copyTo);
+  async _optimizeCopy(ext, from, cacheTo, copyTo) {
+    if (this._isCacheExits(from, cacheTo)) {
+      return this._copyFiles(cacheTo, copyTo);
     }
-    // cache webp copy
-    if (isWebp && this.data.option?.webpExt?.includes(extname)) {
-      this._copyFiles(
-        this._replaceExt(cacheTo),
-        this._replaceExt(copyTo, '.webp')
-      );
+    console.log(`COMPRESS:`, copyTo);
+    return await this._optimizeSharp(ext, from, cacheTo).then(() =>
+      this._copyFiles(cacheTo, copyTo)
+    );
+  }
+
+  async _optimizeSharp(ext, from, to) {
+    const option = {
+      ...this.data.option[ext],
+      ...(this.data?.custom[from]?.[ext] || {}),
+    };
+    if (ext === ".svg") {
+      const base = ["-i", from, "-o", to];
+      const command = this.data.option.svg?.length
+        ? this.data.option.svg.concat(base)
+        : base;
+      return await execFilePromise("svgo", command);
     }
-    if (isAvif && this.data.option?.avifExt?.includes(extname)) {
-      console.log(cacheTo);
-      this._copyFiles(
-        this._replaceExt(cacheTo),
-        this._replaceExt(copyTo, '.avif')
-      );
+    if ([".jpg", ".jpeg"].includes(ext)) {
+      return await sharp(from).jpeg(option).toFile(to);
     }
-    */
+    if (ext === ".png") {
+      return await sharp(from).png(option).toFile(to);
+    }
+    if (ext === ".webp") {
+      const out = this._replaceExt(to, ".webp");
+      return await sharp(from).webp(option).toFile(out);
+    }
+    if (ext === ".avif") {
+      const out = this._replaceExt(to, ".avif");
+      return await sharp(from).avif(option).toFile(out);
+    }
   }
 
   _copyFiles(from, to) {
@@ -142,55 +119,9 @@ class ImgMin {
       const cacheStat = fs.statSync(cache);
       return fileStat && cacheStat ? fileStat.mtime <= cacheStat.mtime : false;
     } catch (error) {
-      // console.log(error);
+      // console.error(error);
       return false;
     }
-  }
-
-  async _optimizeJpg(from, to) {
-    const option = {
-      ...this.data.option.jpg,
-      ...(this.data?.custom[from]?.jpg || {}),
-    };
-    return await sharp(from).jpeg(option).toFile(to);
-  }
-
-  async _optimizePng(from, to) {
-    const option = {
-      ...this.data.option.png,
-      ...(this.data?.custom[from]?.png || {}),
-    };
-    return await sharp(from).png(option).toFile(to);
-  }
-
-  async _optimizeWebp(from, to) {
-    const extname = path.extname(from);
-    const out = this._replaceExt(to, ".webp");
-    const option = {
-      ...this.data.option.webp,
-      ...{ lossless: [".png"].includes(extname) },
-      ...(this.data?.custom[from]?.webp || {}),
-    };
-    return await sharp(from).webp(option).toFile(out);
-  }
-
-  async _optimizeAvif(from, to) {
-    const extname = path.extname(from);
-    const out = this._replaceExt(to, ".avif");
-    const option = {
-      ...this.data.option.avif,
-      ...{ lossless: [".png"].includes(extname) },
-      ...(this.data?.custom[from]?.avif || {}),
-    };
-    return await sharp(from).avif(option).toFile(out);
-  }
-
-  async _optimizeSvg(from, to) {
-    const base = ["-i", from, "-o", to];
-    const command = this.data.option.svg?.length
-      ? this.data.option.svg.concat(base)
-      : base;
-    return await execFilePromise("svgo", command);
   }
 
   _createDestinationFilePath(from) {
