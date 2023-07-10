@@ -62,33 +62,11 @@ function svg_sprite($xlink = "", $title = "", $class = "", $attr = [], $role = "
 }
 
 /**
- * Page titles
- */
-function title()
-{
-  if (is_home()) {
-    if (get_option("page_for_posts", true)) {
-      return get_the_title(get_option("page_for_posts", true));
-    } else {
-      return __("Latest Posts", "sage");
-    }
-  } elseif (is_archive()) {
-    return get_the_archive_title();
-  } elseif (is_search()) {
-    return sprintf(__("Search Results for %s", "sage"), get_search_query());
-  } elseif (is_404()) {
-    return __("Not Found", "sage");
-  } else {
-    return get_the_title();
-  }
-}
-
-/**
  * {theme_name}/dist/ 内の画像パスから webp 表示用の picture タグを生成
  *
  * ex)メディアクエリなし
  *
- *　<?php echo Helper\picture_webp($src = 'images/sample.png', $img_attrs = [], $picture_attrs = []); ?>
+ *　<?php echo Image\mq_picture($src = 'images/sample.png', $img_attrs = [], $picture_attrs = []); ?>
  *
  * ex)メディアクエリありの場合はソースパスとブレークポイントをを配列で指定
  *
@@ -100,7 +78,7 @@ function title()
  *     ['src' => 'images/sample-sm.jpg', 'media' => MQ_MD],
  *   ]
  * ];
- * echo Helper\picture_webp($src, $img_attrs = [], $picture_attrs = []);
+ * echo Image\mq_picture($src, $img_attrs = [], $picture_attrs = []);
  * ?>
  *
  * @param string|array $src_path - assets/ 以下の画像パスを指定
@@ -108,7 +86,7 @@ function title()
  * @param array $picture_attrs - picture に追加する属性。クラスやIDなど。
  * @return string
  */
-function picture_webp($src_path = "" || [], $img_attrs = [], $picture_attrs = []): string
+function mq_picture($src_path = "" || [], $img_attrs = [], $picture_attrs = []): string
 {
   $sources = false;
 
@@ -170,7 +148,7 @@ function picture_webp($src_path = "" || [], $img_attrs = [], $picture_attrs = []
  */
 function make_img_tag($path = "", $img_attrs = [])
 {
-  $file_path = ASSETS_DIR_PATH . $path;
+  $file_path = get_theme_file_path($path);
 
   if (!file_exists($file_path)) {
     return "";
@@ -178,15 +156,8 @@ function make_img_tag($path = "", $img_attrs = [])
 
   $file_size = getimagesize($file_path);
   $img_attrs = array_merge(["alt" => ""], $img_attrs);
-
-  if (
-    !array_key_exists("loading", $img_attrs) &&
-    !array_key_exists("decoding", $img_attrs)
-  ) {
-    $img_attrs = array_merge(["loading" => "lazy"], $img_attrs);
-  }
-
-  $img_tag = '<img src="' . esc_url(Path\assets_uri($path)) . '"' . array_to_attr_string($img_attrs) . " " . $file_size[3] . "/>" . "\n";
+  $img_attrs = array_merge(["decoding" => "async"], $img_attrs);
+  $img_tag = '<img src="' . esc_url(Path\cache_buster($path)) . '"' . array_to_attr_string($img_attrs) . " " . $file_size[3] . "/>" . "\n";
 
   return $img_tag;
 }
@@ -201,7 +172,7 @@ function make_img_tag($path = "", $img_attrs = [])
  */
 function make_source_tag($path = "", $file_type = null, $media = null)
 {
-  $file_path = ASSETS_DIR_PATH . $path;
+  $file_path = get_theme_file_path($path);
 
   if (!file_exists($file_path)) {
     return "";
@@ -209,14 +180,7 @@ function make_source_tag($path = "", $file_type = null, $media = null)
 
   $file_type = !empty($file_type) ? $file_type : mime_content_type($file_path);
   $media_attr = !empty($media) ? ' media="' . esc_attr($media) . '"' : "";
-  return "<source " .
-    get_srcset_attr($path) .
-    ' type="' .
-    esc_attr($file_type) .
-    '"' .
-    $media_attr .
-    ">" .
-    "\n";
+  return "<source " . get_srcset_attr($path) . ' type="' . esc_attr($file_type) . '"' . $media_attr . ">" . "\n";
 }
 
 /**
@@ -241,7 +205,7 @@ function get_srcset_attr($filename = "", $resolution = [], $non_1x = false): str
     if (!file_exists(ASSETS_DIR_PATH . $high_res_name)) {
       continue;
     }
-    $srcset[$key] = esc_url(Path\assets_uri($high_res_name));
+    $srcset[$key] = esc_url(Path\cache_buster($high_res_name));
   }
 
   $srcset_string_arr = [];
@@ -254,7 +218,6 @@ function get_srcset_attr($filename = "", $resolution = [], $non_1x = false): str
 
   return $srcset_string ? 'srcset="' . $srcset_string . '"' : "";
 }
-
 
 /**
  * 連想配列を HTML タグ属性文字列に変換
