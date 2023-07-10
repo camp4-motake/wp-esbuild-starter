@@ -24,7 +24,7 @@ const validateSlug = () => {
         .createNotice(
           "warning",
           "「パーマリンク」の「URLスラッグ」に無効な文字が含まれています。半角英数字のみで設定してください（空白・記号や、日本語などの全角文字は使用できません）",
-          { id: "slug-invalid", isDismissible: false }
+          { id: "slug-invalid", isDismissible: false },
         );
     }
   } else if (isLocked) {

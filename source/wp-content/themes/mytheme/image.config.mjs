@@ -33,6 +33,6 @@ const svgSprites = [
 ];
 svgSprites.forEach((svg) => {
   execSync(
-    `svg-sprite -s --symbol-dest ${svg.dest} --symbol-sprite ${svg.outFileName} ${svg.src} --svg-xmldecl=false --shape-transform=svgo`
+    `svg-sprite -s --symbol-dest ${svg.dest} --symbol-sprite ${svg.outFileName} ${svg.src} --svg-xmldecl=false --shape-transform=svgo`,
   );
 });

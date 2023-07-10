@@ -62,7 +62,7 @@ class ImgMin {
               ext,
               from,
               this._replaceExt(cacheTo, ext),
-              this._replaceExt(copyTo, ext)
+              this._replaceExt(copyTo, ext),
             );
           });
           return;
@@ -77,7 +77,7 @@ class ImgMin {
     }
     console.log(`COMPRESS:`, copyTo);
     return await this._optimizeSharp(ext, from, cacheTo).then(() =>
-      this._copyFiles(cacheTo, copyTo)
+      this._copyFiles(cacheTo, copyTo),
     );
   }
 
