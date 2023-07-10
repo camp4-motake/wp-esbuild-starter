@@ -1,12 +1,13 @@
 {
   "files.exclude": {
     ".cache": true,
+    ".npmrc": true,
     "package-lock.json": true,
     "composer.lock": true,
     "source/wp-content/languages": true,
     "source/wp-content/plugins": true,
     "vendor": true,
-    "node_modules": false,
+    "node_modules": false
   },
   "alpine-intellisense.settings.languageScopes": "html,php",
   "css.validate": false,
@@ -19,9 +20,7 @@
   "files.associations": {
     "*.css": "postcss"
   },
-  "intelephense.environment.includePaths": [
-    "wp/wp-content/plugins"
-  ],
+  "intelephense.environment.includePaths": ["wp/wp-content/plugins"],
   "[typescript]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
