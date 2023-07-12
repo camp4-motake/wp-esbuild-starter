@@ -28,5 +28,5 @@ function cache_buster($path = "")
  */
 function assets_uri($filepath = "")
 {
-  return ASSETS_DIR_URI . $filepath;
+  return get_theme_file_uri('dist/' . $filepath);
 }

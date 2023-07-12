@@ -10,12 +10,6 @@ define("THEME_DOMAIN", "mytheme");
 // テーマ名
 define("THEME_NAME", "mytheme");
 
-// テーマアセットのフルパスURL
-define("ASSETS_DIR_URI", get_theme_file_uri("/dist/"));
-
-// テーマアセットディレクトのリフルパス
-define("ASSETS_DIR_PATH", get_theme_file_path("/dist/"));
-
 // テストサーバードメイン
 define("TEST_SERVER_DOMAIN", "");
 

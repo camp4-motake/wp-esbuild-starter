@@ -6,13 +6,13 @@ namespace Lib\Login\Logo;
  *  ログインページのロゴ変更.
  */
 add_action("login_enqueue_scripts", function () {
-  $logo = "images/logo-brand-serif.svg";
+  $logo = "dist/images/logo-brand.svg";
 
-  if (!file_exists(ASSETS_DIR_PATH . $logo)) {
+  if (!file_exists(get_theme_file_path($logo))) {
     return;
   }
 
-  $logo = ASSETS_DIR_URI . $logo;
+  $logo = get_theme_file_uri($logo);
 
   echo <<<EOF
   <style type="text/css">
