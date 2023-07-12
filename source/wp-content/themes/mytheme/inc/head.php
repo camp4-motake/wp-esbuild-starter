@@ -10,7 +10,7 @@ use Lib\Helper\Path;
 add_action("wp_head", function () {
   $br = "\n";
 
-  // TODO favicon
+  // favicon
   echo '<link rel="apple-touch-icon" sizes="180x180" href="' . Path\cache_buster("/static/meta/apple-touch-icon.png") . '">' . $br;
   echo '<link rel="icon" type="image/svg+xml" href="' . Path\cache_buster("/static/meta/favicon.svg") . '">' . $br;
   echo '<link rel="icon" type="image/png" sizes="192x192" href="' . Path\cache_buster("/static/meta/favicon-192x192.png") . '">' . $br;
@@ -39,9 +39,10 @@ add_action("wp_enqueue_scripts", function () {
  */
 function remove_wp_block_library()
 {
-  if (!is_single() || !is_singular()) {
-    wp_dequeue_style("wp-block-library");
+  if (is_single() || is_singular()) {
+    return;
   }
+  wp_dequeue_style("wp-block-library");
 }
 
 /**
@@ -49,13 +50,12 @@ function remove_wp_block_library()
  */
 function enqueue_google_fonts()
 {
-  if (!IS_ENABLE_GOOGLE_FONTS) {
+  if (!GOOGLE_FONTS && !(count(GOOGLE_FONTS) > 0)) {
     return;
   }
-
-  // TODO
-  // $google_fonts = (get_locale() === 'ja') ? GOOGLE_FONTS : GOOGLE_FONTS_EN;
-  // wp_enqueue_style('google-fonts', $google_fonts, false, null);
+  foreach (GOOGLE_FONTS as $i => $fonts) {
+    wp_enqueue_style('google-fonts-' . $i + 1, $fonts, false, null);
+  }
 }
 
 
@@ -71,12 +71,12 @@ add_filter("wp_resource_hints", function ($hints, $relation_type) {
       return $val !== "fonts.googleapis.com" ? true : false;
     });
 
-    if (IS_ENABLE_GOOGLE_TAG_MANAGER) {
+    if (IS_ENABLE_GTM_TRACKING) {
       $hints[] = "https://www.googletagmanager.com";
     }
   }
   if ("preconnect" === $relation_type) {
-    if (IS_ENABLE_GOOGLE_FONTS) {
+    if (GOOGLE_FONTS && (count(GOOGLE_FONTS) > 0)) {
       $hints[] = "https://fonts.googleapis.com";
       $hints[] = "https://fonts.gstatic.com";
     }

@@ -4,7 +4,7 @@
  * テーマ定数
  */
 
-// テーマドメイン
+// テーマドメイン （注: 翻訳のテキストドメインには使用できません）
 define("THEME_DOMAIN", "mytheme");
 
 // テーマ名
@@ -28,11 +28,11 @@ define("MQ_2xl", "(min-width:100em)");
 define("MQ_LANDSCAPE", "(orientation: landscape)");
 define("MQ_PORTRAIT", "(orientation: portrait)");
 
-// Google Tag Manager テンプレートを有効化
-define("IS_ENABLE_GOOGLE_TAG_MANAGER", false);
+// Google Tag Manager の出力表示を有効化 -> tracking.php
+define("IS_ENABLE_GTM_TRACKING", false);
 
-// Google Webフォント読み込みを有効化
-define("IS_ENABLE_GOOGLE_FONTS", true);
-
-//　Google Webフォント URL
-define("GOOGLE_FONTS", []);
+//　Google Webフォント URL（配列）
+define("GOOGLE_FONTS", [
+  'https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap',
+  'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap'
+]);
