@@ -5,6 +5,20 @@ namespace Lib\Editor;
 use Lib\Helper\Path;
 
 /**
+ * allowed_block_types_all
+ * @see https://developer.wordpress.org/reference/hooks/allowed_block_types_all/
+ */
+// add_filter('allowed_block_types_all', function ($allowed_block_types, $block_editor_context) {
+//   return [
+//     'core/image',
+//     'core/paragraph',
+//     'core/heading',
+//     'core/list',
+//     'core/list-item'
+//   ];
+// }, 25, 2);
+
+/**
  * ブロックエディター用カスタム JS
  *
  * @return void
