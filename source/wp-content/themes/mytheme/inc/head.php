@@ -21,7 +21,7 @@ add_action("wp_head", function () {
   echo '<link rel="icon" type="image/png" sizes="32x32" href="' . Path\cache_buster("/static/meta/favicon-32x32.png") . '">' . $n;
 
   // Google fonts
-  $n . google_fonts_style_links();
+  google_fonts_style_links();
 
   // main assets
   echo '<link rel="stylesheet" href="' . Path\cache_buster('/dist/main.css') . '">' . $n;
