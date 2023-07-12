@@ -27,6 +27,5 @@ define("IS_ENABLE_GTM_TRACKING", false);
 
 //　Google Webフォント URL（配列）
 define("GOOGLE_FONTS", [
-  'https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap',
   'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap'
 ]);

@@ -2,6 +2,7 @@
 
 namespace Lib\Editor;
 
+use Lib\Head;
 use Lib\Helper\Path;
 
 /**
@@ -27,12 +28,8 @@ add_action("admin_print_scripts", function () {
   $n = "\n";
   echo $n;
 
-  if (GOOGLE_FONTS && (count(GOOGLE_FONTS) > 0)) {
-    foreach (GOOGLE_FONTS as $i => $fonts) {
-      $num = $i + 1;
-      echo "<link rel='stylesheet' id='google-fonts-{$num}' href='{$fonts}' media='all' />" . $n;
-    }
-  }
+  // Google fonts
+  Head\google_fonts_style_links();
 
   echo '<link rel="stylesheet" href="' . Path\cache_buster('/dist/editor.css') . '" />' . $n;
   echo '<script module src="' . Path\cache_buster('/dist/editor.js') . '"></script>' . $n;
