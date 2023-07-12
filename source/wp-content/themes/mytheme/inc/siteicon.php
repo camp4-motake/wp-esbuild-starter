@@ -13,7 +13,7 @@ add_filter("site_icon_meta_tags", function ($meta_tags) {
 });
 
 /**
- * WP サイトアイコンのリダイレクト先をテーマ内の Favicon にオーバーライド
+ * WP サイトアイコンのリダイレクト先をテーマ内の Favicon 画像にオーバーライド
  */
 add_filter('get_site_icon_url', function ($url) {
   return get_theme_file_uri('static/meta/favicon.ico');
