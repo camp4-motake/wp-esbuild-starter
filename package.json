@@ -13,6 +13,7 @@
     "build": "npm run build --workspaces --if-present",
     "composer": "docker run --rm --interactive --tty --volume $PWD:/app composer",
     "wp-cli": "docker compose run --rm cli bash -c",
+    "setup:init": "chmod +x ./bin/init.sh && ./bin/init.sh",
     "setup:tools": "npm ci && npm run composer install",
     "setup:wp": "npm run wp-cli './env/setup.sh'",
     "lintFix": "prettier --write --list-different . && npm run lintFix:scripts && npm run lintFix:styles",

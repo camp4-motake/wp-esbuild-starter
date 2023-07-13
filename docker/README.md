@@ -11,13 +11,15 @@
 
 以降の手順はワークスペースルートを想定しています。
 
-1, 作成していない場合は .env を作成します。
+1, 以下のコマンドでルートに`.env`と`auth.json`を作成します。
 
 ```sh
-cp ./docker/.env-sample ./.env
+npm run setup:init
 ```
 
-2, プロジェクトルートに、ACF Pro インストール用の [auth.json](https://www.advancedcustomfields.com/resources/installing-acf-pro-with-composer/) を作成し、`username` に ACF Pro のライセンスキーを指定します。
+> 注: 各ファイルが既に存在する場合は生成されません。既に .env ファイルが存在する場合は docker/.env-sample の内容を追記してください。
+
+2, [auth.json](https://www.advancedcustomfields.com/resources/installing-acf-pro-with-composer/) の `username` キーに ACF Pro のライセンスキーを指定します。
 
 ```json
 {
