@@ -1,6 +1,8 @@
 # WP theme starter
 
-[Docker の初期設定](docker/README.md)
+- Docker の初期設定 - <docker/README.md>
+- `source/wp-content/themes` 以下のテーマディレクトリがデプロイ対象です。
+- テーマディレクトリは npm の [workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) です。
 
 ```sh
 # 初期化
@@ -12,6 +14,3 @@ npm run dev
 # build
 npm run build
 ```
-
-- `source/wp-content/themes` 以下のテーマディレクトリがデプロイ対象です。
-- テーマディレクトリは [workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) です。
