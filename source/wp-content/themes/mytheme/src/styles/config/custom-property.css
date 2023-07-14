@@ -3,24 +3,24 @@
  */
 :root {
   /* color basic */
-  --color-base: var(--wp--preset--color--base, #fff);
-  --color-primary: var(--wp--preset--color--primary, #1285c5);
-  --color-secondary: var(--wp--preset--color--secondary, #cebda0);
-  --color-text: var(--wp--preset--color--text, #000);
-  --color-text-light: var(--wp--preset--color--text-light, #777);
-  --color-text-description: var(--wp--preset--color--text-description, #626264);
-  --color-text-placeholder: var(--wp--preset--color--text-placeholder, #757578);
-  --color-text-disable: var(--wp--preset--color--text-placeholder, #aaa);
+  --color-base: #fff;
+  --color-primary: #1285c5;
+  --color-secondary: #cebda0;
+  --color-text: #000;
+  --color-text-light: #777;
+  --color-text-description: #626264;
+  --color-text-placeholder: #757578;
+  --color-text-disable: #aaa;
 
   /* color util */
-  --color-warning: var(--wp--preset--color--warning, #ffc107);
-  --color-danger: var(--wp--preset--color--danger, #db4646);
-  --color-link: var(--wp--preset--color--link, #1b3c5f);
-  --color-link-hover: var(--wp--preset--color--link-hover, #0b63d6);
-  --color-link-visited: var(--wp--preset--color--link-visited, #0b63d6);
-  --color-border: var(--wp--preset--color--border, #707070);
-  --color-placeholder: var(--wp--preset--color--placeholder, #e1e4ea);
-  --color-fill: var(--wp--preset--color--fill, #edeff0);
+  --color-warning: #ffc107;
+  --color-danger: #db4646;
+  --color-link: #1b3c5f;
+  --color-link-hover: #0b63d6;
+  --color-link-visited: #0b63d6;
+  --color-border: #707070;
+  --color-placeholder: #e1e4ea;
+  --color-fill: #edeff0;
 
   /* font family */
   --font-sans-serif-ja: "Noto Sans JP", "Hiragino Sans",
