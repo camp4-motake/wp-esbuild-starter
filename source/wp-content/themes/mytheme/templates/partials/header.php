@@ -3,7 +3,7 @@
 ?>
 <header class="header">
   <div class="header__container">
-    <a href="<?= home_url(); ?>" class="header__brand" x-cloak>
+    <a href="<?= home_url(); ?>" class="header__brand"></a>
   </div>
 </header>
 <div data-header-trigger></div>
