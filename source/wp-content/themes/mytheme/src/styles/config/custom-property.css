@@ -158,7 +158,7 @@
     --header-height: calc(100 / var(--rem));
   }
   /* --header-body-max-width: var(--container-max-width-3xl); */
-  --header-body-max-width: var(--container-fluid-max-width);
+  --header-body-max-width: var(--container-max-width-fluid);
 
   /* menu toggle size */
   --toggle-size: calc(40 / var(--rem));
@@ -169,8 +169,8 @@
   /* container width */
   --container-max-width: auto;
   --container-max-width-entry: calc(768 / var(--rem));
-  --container-canvas-max-width: calc(2560 / var(--rem));
-  --container-fluid-max-width: calc(1980 / var(--rem));
+  --container-max-width-fluid: calc(1980 / var(--rem));
+  --container-max-width-canvas: calc(2560 / var(--rem));
   --container-max-width-sm: calc(540 / var(--rem));
   --container-max-width-md: calc(720 / var(--rem));
   --container-max-width-lg: calc(960 / var(--rem));
@@ -179,7 +179,7 @@
   --container-max-width-3xl: calc(1600 / var(--rem));
   --container-fluid-inside-width: min(
     calc(100% - var(--spacer-lg)),
-    calc(var(--container-fluid-max-width) - var(--spacer-lg))
+    calc(var(--container-max-width-fluid) - var(--spacer-lg))
   );
   @media (--viewport-sm) {
     --container-max-width: calc(540 / var(--rem));

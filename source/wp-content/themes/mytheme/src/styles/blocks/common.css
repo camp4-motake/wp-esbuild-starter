@@ -1,10 +1,10 @@
 .entry-content:not(.container, .isGutterLess) {
   width: 100%;
   /* max-width: min(
-    var(--container-fluid-max-width),
+    var(--container-max-width-fluid),
     calc(100% - calc(var(--spacer) * 2))
   ); */
-  max-width: min(var(--container-fluid-max-width), 100%);
+  max-width: min(var(--container-max-width-fluid), 100%);
   margin-inline: auto;
 }
 
@@ -29,7 +29,7 @@
       );
     }
     &.alignfull {
-      max-width: var(--container-fluid-max-width);
+      max-width: var(--container-max-width-fluid);
     }
   }
 
