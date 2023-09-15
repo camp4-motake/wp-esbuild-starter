@@ -1,11 +1,26 @@
 import type { AlpineComponent } from "alpinejs";
 import { Store } from "../stores";
 
-interface State extends Store {
+export type State = {
   isRunning: boolean;
   isOpen: boolean;
   isTriggerActive: boolean;
   dialog?: HTMLDialogElement;
+
+  modalDialog: {
+    ["x-init"]: () => void;
+    [":class"]: () => { "-is-active": boolean };
+    [":open"]: () => boolean;
+    ["@click"]: (event: Event) => void;
+  };
+  modalTrigger: {
+    [":class"]: () => { "-is-active": boolean };
+    ["@click"]: (event: Event) => void;
+  };
+  modalClose: {
+    ["@click"]: (event: Event) => void;
+  };
+
   open: () => void;
   close: () => void;
 
@@ -15,12 +30,12 @@ interface State extends Store {
   };
   closeKeyframes: (el: HTMLElement) => Keyframe[];
   openKeyframes: (el: HTMLElement) => Keyframe[];
-}
+};
 
 const rootStyle = getComputedStyle(document.documentElement);
 const closeIgnore = "[data-modal-content]";
 
-export const modal = (): AlpineComponent<State> => ({
+export const modal = (): AlpineComponent<State & Store> => ({
   isRunning: false,
   isOpen: false,
   isTriggerActive: false,
@@ -37,7 +52,7 @@ export const modal = (): AlpineComponent<State> => ({
     [":open"]() {
       return this.isOpen;
     },
-    ["@click"]({ target }: Event) {
+    ["@click"]({ target }) {
       if (!(target instanceof HTMLElement)) return;
       if (target?.closest(closeIgnore)) return;
       this.close();

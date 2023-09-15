@@ -8,7 +8,7 @@
 
 import Alpine from "alpinejs";
 
-export interface Store {
+export type Store = {
   $store?: {
     menuStatus: { shown?: boolean };
     siteStatus: {
@@ -17,7 +17,7 @@ export interface Store {
       isDialogOpen: boolean;
     };
   };
-}
+};
 
 export const stores = () => {
   Alpine.store("menuStatus", {

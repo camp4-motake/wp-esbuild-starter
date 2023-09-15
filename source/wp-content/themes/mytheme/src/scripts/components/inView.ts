@@ -8,12 +8,18 @@
  * @see https://alpinejs.dev/plugins/intersect
  *
  */
+
 import type { AlpineComponent } from "alpinejs";
 
-export interface State {
+export type State = {
   isRepeat: boolean;
+  trigger: {
+    ["x-init"]: () => void;
+    ["x-intersect:enter"]: () => void;
+    ["x-intersect:leave"]: () => void;
+  };
   isReverse: () => boolean;
-}
+};
 
 export const inView = (...args: unknown[]): AlpineComponent<State> => ({
   isRepeat: args[0] === true,

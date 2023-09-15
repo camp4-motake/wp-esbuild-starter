@@ -1,20 +1,32 @@
 import type { AlpineComponent } from "alpinejs";
 import type { Store } from "../stores";
 
-export interface State extends Store {
+export type State = {
   scrollBarWidth: number;
   interval?: NodeJS.Timer;
   isRecaptcha: boolean;
   wpAdminBar?: Element | undefined | null;
+
+  root: {
+    [":class"]: () => {
+      isDialogOpen: boolean | undefined;
+      isMenuOpen: boolean | undefined;
+      isPageActive: boolean | undefined;
+      isScrollDown: boolean | undefined;
+    };
+    [":style"]: () => { "--window-scroll-bar-width": string };
+    ["@resize.window"]: () => void;
+  };
+
   setScrollbarWidth: () => void;
   scrollBarCheckInterval: () => void;
   setWPMatchMediaEvent: () => void;
   setWPAdminBarSize: () => void;
-}
+};
 
 const mq = window.matchMedia("screen and (max-width: 782px)");
 
-export const root = (): AlpineComponent<State> => ({
+export const root = (): AlpineComponent<State & Store> => ({
   scrollBarWidth: 0,
   isRecaptcha: false,
 
@@ -30,7 +42,6 @@ export const root = (): AlpineComponent<State> => ({
     [":class"]() {
       return {
         isDialogOpen: this.$store.siteStatus.isDialogOpen,
-        isLangSwitcherOpen: this.$store.langSwitcherStatus.shown,
         isMenuOpen: this.$store.menuStatus.shown,
         isPageActive: this.$store.siteStatus.isPageActive,
         isScrollDown:

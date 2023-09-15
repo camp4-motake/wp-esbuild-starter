@@ -1,18 +1,29 @@
 import type { AlpineComponent } from "alpinejs";
 import { sleep } from "../util/sleep";
 
-interface State {
+export type State = {
   isRunning: boolean;
   isOpen: boolean;
   isTriggerActive: boolean;
+
+  accordion: {
+    [":class"]: () => { "-is-active": boolean };
+    [":open"]: () => boolean;
+  };
+
+  accordionTrigger: {
+    [":class"]: () => { "-is-active": boolean };
+    ["@click"]: (event: Event) => void;
+  };
+
   open: () => void;
   close: () => void;
-
   toggle: (open: boolean) => void;
+
   animationTiming?: { duration: number | string; easing: string };
   closeKeyframes: (el: HTMLElement) => Keyframe[];
   openKeyframes: (el: HTMLElement) => Keyframe[];
-}
+};
 
 const rootStyle = getComputedStyle(document.documentElement);
 
@@ -34,7 +45,7 @@ export const accordion = (): AlpineComponent<State> => ({
     [":class"]() {
       return { "-is-active": this.isTriggerActive };
     },
-    ["@click"](event: Event) {
+    ["@click"](event) {
       event.preventDefault();
       if (!this.isRunning) this.toggle(!this.isOpen);
     },

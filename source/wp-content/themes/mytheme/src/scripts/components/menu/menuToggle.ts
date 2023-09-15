@@ -1,12 +1,22 @@
 import type { AlpineComponent } from "alpinejs";
-import { MQ } from "../constants";
-import type { Store } from "../stores";
+import { MQ } from "../../constants";
+import type { Store } from "../../stores";
 
-export interface State extends Store {
+export type State = {
+  toggle: {
+    ["@click"]: () => void;
+    ["@menu:close.window"]: () => void;
+    [":title"]: () => string;
+    [":aria-expanded"]: () => boolean | undefined;
+    [":data-menu-toggle"]: () => string;
+  };
+  menuLabel: {
+    ["x-text"]: () => string;
+  };
   addMatchMediaEvent: () => void;
   addOuterClickEvent: () => void;
   close: () => void;
-}
+};
 
 const ignoreCloseSelector =
   ".nav-primary,.menu-toggle,[data-menu-close-ignore]";
@@ -16,7 +26,7 @@ const breakpoint = MQ.xxl;
 /**
  *  Component: Menu Toggle
  */
-export const menuToggle = (): AlpineComponent<State> => ({
+export const menuToggle = (): AlpineComponent<State & Store> => ({
   init(this: State) {
     this.addMatchMediaEvent();
     this.addOuterClickEvent();
@@ -67,16 +77,5 @@ export const menuToggle = (): AlpineComponent<State> => ({
 
   close() {
     this.$store.menuStatus.shown = false;
-  },
-});
-
-/**
- *  Component: Menu Close
- */
-export const menuClose = (): AlpineComponent<Store> => ({
-  menuClose: {
-    ["@click"]() {
-      this.$store.menuStatus.shown = false;
-    },
   },
 });
