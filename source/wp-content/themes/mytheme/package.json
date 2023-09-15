@@ -47,6 +47,7 @@
     "@alpinejs/intersect": "^3.13.0",
     "@wordpress/dom-ready": "^3.41.0",
     "alpinejs": "^3.13.0",
+    "budoux": "^0.5.2",
     "ress": "^5.0.2"
   },
   "browserslist": [
