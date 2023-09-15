@@ -1,29 +1,18 @@
-import type { AlpineComponent } from "alpinejs";
+import type { AlpineComponent, Bindings } from "alpinejs";
 import { Store } from "../stores";
+
+type MenuBinding = Bindings | { [key: string]: (event: Event) => void };
 
 export type State = {
   isRunning: boolean;
   isOpen: boolean;
   isTriggerActive: boolean;
   dialog?: HTMLDialogElement;
-
-  modalDialog: {
-    ["x-init"]: () => void;
-    [":class"]: () => { "-is-active": boolean };
-    [":open"]: () => boolean;
-    ["@click"]: (event: Event) => void;
-  };
-  modalTrigger: {
-    [":class"]: () => { "-is-active": boolean };
-    ["@click"]: (event: Event) => void;
-  };
-  modalClose: {
-    ["@click"]: (event: Event) => void;
-  };
-
+  modalDialog: MenuBinding;
+  modalTrigger: MenuBinding;
+  modalClose: MenuBinding;
   open: () => void;
   close: () => void;
-
   animationTiming?: {
     duration: number | string;
     easing: string;

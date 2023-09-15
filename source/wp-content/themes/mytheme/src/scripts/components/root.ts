@@ -1,4 +1,4 @@
-import type { AlpineComponent } from "alpinejs";
+import type { AlpineComponent, Bindings } from "alpinejs";
 import type { Store } from "../stores";
 
 export type State = {
@@ -6,18 +6,7 @@ export type State = {
   interval?: NodeJS.Timer;
   isRecaptcha: boolean;
   wpAdminBar?: Element | undefined | null;
-
-  root: {
-    [":class"]: () => {
-      isDialogOpen: boolean | undefined;
-      isMenuOpen: boolean | undefined;
-      isPageActive: boolean | undefined;
-      isScrollDown: boolean | undefined;
-    };
-    [":style"]: () => { "--window-scroll-bar-width": string };
-    ["@resize.window"]: () => void;
-  };
-
+  root: Bindings;
   setScrollbarWidth: () => void;
   scrollBarCheckInterval: () => void;
   setWPMatchMediaEvent: () => void;

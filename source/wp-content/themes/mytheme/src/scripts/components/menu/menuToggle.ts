@@ -1,18 +1,10 @@
-import type { AlpineComponent } from "alpinejs";
+import type { AlpineComponent, Bindings } from "alpinejs";
 import { MQ } from "../../constants";
 import type { Store } from "../../stores";
 
 export type State = {
-  toggle: {
-    ["@click"]: () => void;
-    ["@menu:close.window"]: () => void;
-    [":title"]: () => string;
-    [":aria-expanded"]: () => boolean | undefined;
-    [":data-menu-toggle"]: () => string;
-  };
-  menuLabel: {
-    ["x-text"]: () => string;
-  };
+  toggle: Bindings;
+  menuLabel: Bindings;
   addMatchMediaEvent: () => void;
   addOuterClickEvent: () => void;
   close: () => void;

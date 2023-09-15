@@ -1,14 +1,9 @@
-import type { AlpineComponent } from "alpinejs";
+import type { AlpineComponent, Bindings } from "alpinejs";
 import type { Store } from "../stores";
 
 export type State = {
-  navPrimary: {
-    ["x-init"]: () => void;
-    [":data-menu-status"]: () => string;
-  };
-  navPrimaryLink: {
-    ["@click"]: () => void;
-  };
+  navPrimary: Bindings;
+  navPrimaryLink: Bindings;
 };
 
 export const navPrimary = (): AlpineComponent<State & Store> => ({

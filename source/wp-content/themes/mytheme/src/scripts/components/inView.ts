@@ -9,15 +9,11 @@
  *
  */
 
-import type { AlpineComponent } from "alpinejs";
+import type { AlpineComponent, Bindings } from "alpinejs";
 
 export type State = {
   isRepeat: boolean;
-  trigger: {
-    ["x-init"]: () => void;
-    ["x-intersect:enter"]: () => void;
-    ["x-intersect:leave"]: () => void;
-  };
+  trigger: Bindings;
   isReverse: () => boolean;
 };
 

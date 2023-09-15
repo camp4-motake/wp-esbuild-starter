@@ -1,25 +1,15 @@
-import type { AlpineComponent } from "alpinejs";
+import type { AlpineComponent, Bindings } from "alpinejs";
 import { sleep } from "../util/sleep";
 
 export type State = {
   isRunning: boolean;
   isOpen: boolean;
   isTriggerActive: boolean;
-
-  accordion: {
-    [":class"]: () => { "-is-active": boolean };
-    [":open"]: () => boolean;
-  };
-
-  accordionTrigger: {
-    [":class"]: () => { "-is-active": boolean };
-    ["@click"]: (event: Event) => void;
-  };
-
+  accordion: Bindings;
+  accordionTrigger: Bindings | { [key: string]: (event: Event) => void };
   open: () => void;
   close: () => void;
   toggle: (open: boolean) => void;
-
   animationTiming?: { duration: number | string; easing: string };
   closeKeyframes: (el: HTMLElement) => Keyframe[];
   openKeyframes: (el: HTMLElement) => Keyframe[];
