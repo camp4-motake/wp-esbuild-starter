@@ -24,14 +24,14 @@
     "i18n:update": "npm run wp-cli \"wp i18n update-po wp-content/themes/mytheme/lang/mytheme.pot wp-content/themes/mytheme/lang\""
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.5.0",
-    "@typescript-eslint/parser": "^6.5.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
     "browser-sync": "^2.29.3",
     "concurrently": "^8.2.1",
     "dotenv": "^16.3.1",
-    "eslint": "8.48.0",
+    "eslint": "8.49.0",
     "eslint-config-prettier": "9.0.0",
-    "prettier": "^3.0.2",
+    "prettier": "^3.0.3",
     "stylelint": "15.10.3",
     "stylelint-config-recess-order": "4.3.0",
     "stylelint-config-recommended": "13.0.0"
