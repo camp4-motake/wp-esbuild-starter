@@ -95,14 +95,7 @@
     },
     "spacing": {
       "padding": true,
-      "units": [
-        "px",
-        "%",
-        "em",
-        "rem",
-        "vw",
-        "vh"
-      ],
+      "units": ["px", "%", "em", "rem", "vw", "vh"],
       "spacingSizes": [
         {
           "size": "0.25rem",
