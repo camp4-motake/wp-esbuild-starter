@@ -4,7 +4,6 @@
   width: calc(64 / var(--rem));
   height: var(--header-height);
   background-color: var(--color-primary);
-  border-bottom-left-radius: 1em;
 
   /*
   @media (--viewport-visible-nav) {

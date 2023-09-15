@@ -1,6 +1,6 @@
 <?php
 
-use Lib\Helper\Image;
+// use Lib\Helper\Image;
 use Lib\Helper\Path;
 
 $site_name = get_bloginfo('name');
@@ -29,10 +29,12 @@ $site_name = get_bloginfo('name');
 
         ?>
       </nav>
+      <?php /*
       <button type="button" class="menu-toggle" title="Menu Open" x-data="menuToggle" x-bind="toggle">
         <i class="menu-toggle-image -toggle" role="presentation"><?= Image\inline_svg('dist/images/menu-toggle.svg');  ?></i>
         <i class="menu-toggle-image -close" role="presentation"><?= Image\inline_svg('dist/images/menu-close.svg');  ?></i>
       </button>
+      */ ?>
     </div>
   </div>
 </header>
