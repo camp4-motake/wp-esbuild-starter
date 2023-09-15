@@ -2,9 +2,9 @@
   "files.exclude": {
     ".cache": true,
     ".npmrc": true,
-    // "composer.lock": true,
+    "composer.lock": true,
     "node_modules": false,
-    // "package-lock.json": true,
+    "package-lock.json": true,
     "source/wp-content/languages": true,
     "source/wp-content/mu-plugins": true,
     "source/wp-content/plugins": true,
