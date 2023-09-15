@@ -1,8 +1,8 @@
 import Alpine from "alpinejs";
 import { accordion } from "./accordion";
 import { inView } from "./inView";
-import { menuClose } from "./menu/menuClose";
-import { menuToggle } from "./menu/menuToggle";
+import { menuClose } from "./menu/close";
+import { menuToggle } from "./menu/toggle";
 import { modal } from "./modal";
 import { navPrimary } from "./navPrimary";
 import { root } from "./root";

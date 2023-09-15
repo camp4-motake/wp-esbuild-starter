@@ -20,9 +20,7 @@ export type Store = {
 };
 
 export const stores = () => {
-  Alpine.store("menuStatus", {
-    menu: false,
-  });
+  Alpine.store("menuStatus", { menu: false });
   Alpine.store("siteStatus", {
     isPageActive: false,
     isScrollDown: false,

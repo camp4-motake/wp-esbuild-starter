@@ -1,5 +1,7 @@
+type MqPresets = { [key: string]: string };
+
 // match media breakpoint: em
-export const MQ = {
+export const MQ: MqPresets = {
   sm: "(min-width:36em)", // 576px
   md: "(min-width:48em)", // 768px
   lg: "(min-width:62em)", // 992px
@@ -8,7 +10,7 @@ export const MQ = {
 };
 
 // exclude link
-export const EXCLUDE_LINK_SELECTOR = [
+export const EXCLUDE_LINK_SELECTOR: string = [
   '[href=""]',
   '[href="#0"]',
   '[href="#todo"]',
