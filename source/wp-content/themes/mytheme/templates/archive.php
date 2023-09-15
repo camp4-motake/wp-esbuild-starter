@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Archive
+ */
+
 global $post_type;
 
 if (!$post_type) {
@@ -21,13 +25,11 @@ get_template_part('templates/components/page-header', null, [
 ]);
 
 ?>
-<section class="section container container--max-lg">
+<section class="section container -max-lg">
   <?php while (have_posts()) : the_post(); ?>
     <?php get_template_part('templates/content', $post_type); ?>
   <?php endwhile; ?>
-  <?php if (!have_posts()) {
-    get_template_part('templates/components/no-posts');
-  } ?>
+  <?php if (!have_posts()) get_template_part('templates/components/no-posts'); ?>
 </section>
 
 <?php get_template_part('templates/components/pagination'); ?>

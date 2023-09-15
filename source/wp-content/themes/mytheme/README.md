@@ -2,8 +2,8 @@
 
 ## require
 
-- WordPress >= 6.2.2
-- PHP >= 8.0 (with php-mbstring enabled)
+- WordPress >= 6.3
+- PHP >= 8.1 (with php-mbstring enabled)
 - [ACF Pro](https://www.advancedcustomfields.com/pro/)
 
 **_注意_**

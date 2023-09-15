@@ -8,7 +8,10 @@ export interface State extends Store {
   close: () => void;
 }
 
-const ignoreCloseSelector = ".navPrimary,.menuToggle,[data-menu-close-ignore]";
+const ignoreCloseSelector =
+  ".nav-primary,.menu-toggle,[data-menu-close-ignore]";
+
+const breakpoint = MQ.xxl;
 
 /**
  *  Component: Menu Toggle
@@ -17,25 +20,6 @@ export const menuToggle = (): AlpineComponent<State> => ({
   init(this: State) {
     this.addMatchMediaEvent();
     this.addOuterClickEvent();
-  },
-
-  addMatchMediaEvent() {
-    window.matchMedia(MQ.lg).addEventListener("change", () => {
-      this.$dispatch("menu:close");
-    });
-  },
-
-  addOuterClickEvent() {
-    document.addEventListener("click", (event) => {
-      const { target } = event;
-      if (!(target instanceof Element)) return;
-      if (target?.closest(ignoreCloseSelector)) return;
-      this.close();
-    });
-  },
-
-  close() {
-    this.$store.menuStatus.shown = false;
   },
 
   toggle: {
@@ -64,6 +48,25 @@ export const menuToggle = (): AlpineComponent<State> => ({
     ["x-text"]() {
       return this.$store.menuStatus.shown ? "Close" : "Menu";
     },
+  },
+
+  addMatchMediaEvent() {
+    window.matchMedia(breakpoint).addEventListener("change", () => {
+      this.$dispatch("menu:close");
+    });
+  },
+
+  addOuterClickEvent() {
+    document.addEventListener("click", (event) => {
+      const { target } = event;
+      if (!(target instanceof Element)) return;
+      if (target?.closest(ignoreCloseSelector)) return;
+      this.close();
+    });
+  },
+
+  close() {
+    this.$store.menuStatus.shown = false;
   },
 });
 

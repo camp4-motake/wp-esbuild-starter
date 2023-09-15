@@ -1,3 +1,3 @@
-<div class="breadcrumbsWrapper container container--max-xl">
+<div class="breadcrumbsWrapper container -max-xl">
   <?php ?>
 </div>

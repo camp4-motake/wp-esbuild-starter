@@ -1,20 +1,12 @@
 export const blockStyles = () => {
-  const cfg = [
+  if (!wp?.blocks) return;
+
+  const addedStyles = [
     {
       block: "core/heading",
-      option: {
-        name: "fit-after-line",
-        label: "近接行",
-      },
-    },
-    {
-      block: "core/paragraph",
-      option: {
-        name: "fit-after-line",
-        label: "近接行",
-      },
+      option: { name: "sample", label: "サンプル" },
     },
   ];
 
-  cfg.forEach((c) => wp?.blocks?.registerBlockStyle(c.block, c.option));
+  addedStyles.forEach((s) => wp?.blocks?.registerBlockStyle(s.block, s.option));
 };

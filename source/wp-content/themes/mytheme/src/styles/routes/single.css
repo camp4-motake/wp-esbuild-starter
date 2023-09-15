@@ -1,0 +1,23 @@
+.content-single {
+  position: relative;
+}
+
+.content-single-meta {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: var(--spacer);
+  align-items: center;
+  padding-bottom: var(--spacer-md);
+}
+
+.content-single-meta-badges {
+  display: flex;
+  flex-wrap: wrap;
+
+  > .badge {
+    display: inline-block;
+    padding: 0.1em 1em;
+    font-size: var(--font-size-12);
+    text-decoration: none;
+  }
+}

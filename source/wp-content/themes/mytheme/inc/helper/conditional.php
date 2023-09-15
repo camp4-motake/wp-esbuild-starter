@@ -21,7 +21,7 @@ function is_dev()
  */
 function is_exist_page($slug)
 {
-  $post_id = get_page_by_path("/${slug}");
+  $post_id = get_page_by_path("/{$slug}");
   return !empty($post_id);
 }
 

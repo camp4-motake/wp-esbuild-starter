@@ -26,7 +26,10 @@ function cache_buster($path = "")
  * @param string $filepath アセットファイルパス
  * @return string パス
  */
-function assets_uri($filepath = "")
+function assets_uri($filepath = "", $cash_buster = true)
 {
+  if ($cash_buster) {
+    return  get_theme_file_uri(cache_buster('dist/' . $filepath));
+  }
   return get_theme_file_uri('dist/' . $filepath);
 }

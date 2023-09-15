@@ -120,11 +120,11 @@ function custom_pagination($echo = true, $custom_query = null)
         $link_class = " is-rwd";
       }
       $pagination .=
-        '<li class="pagination__item' . $link_class . '">' . $page . "</li>";
+        '<li class="pagination-item' . $link_class . '">' . $page . "</li>";
     }
 
     $pagination .= "</ul>" . "\n";
-    $pagination .= '<p class="pageNum"><small>' . $page_num . "/" . $max_page_num . "</small></p>";
+    $pagination .= '<p class="page-num"><small>' . $page_num . "/" . $max_page_num . "</small></p>";
 
     if ($echo) {
       echo $pagination;

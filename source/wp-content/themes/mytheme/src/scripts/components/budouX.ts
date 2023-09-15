@@ -1,14 +1,21 @@
-import type { AlpineComponent } from "alpinejs";
-import { loadDefaultJapaneseParser } from "budoux";
+// import type { AlpineComponent } from "alpinejs";
 
-// interface State {}
+// interface State {
+//   parseString: () => Promise<string>;
+// }
 
-const parser = loadDefaultJapaneseParser();
+// export const budouX = (): AlpineComponent<State> => ({
+//   budouX: {
+//     ["x-html"]() {
+//       return this.parseString();
+//     },
+//   },
 
-export const budouX = (): AlpineComponent => ({
-  budouX: {
-    ["x-html"]() {
-      return parser.translateHTMLString(this.$el.innerHTML);
-    },
-  },
-});
+//   async parseString() {
+//     if (!this.parser) {
+//       const { loadDefaultJapaneseParser } = await import("../plugins/budouX");
+//       this.parser = loadDefaultJapaneseParser();
+//     }
+//     return this.parser.translateHTMLString(this.$el.innerHTML);
+//   },
+// });

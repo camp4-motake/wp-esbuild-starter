@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\Helper;
+namespace Lib\Helper\Util;
 
 /**
  * Page titles
@@ -24,9 +24,8 @@ function title()
   }
 }
 
-
 /**
- * namespace 生成（barba.js、swup のようなPjaxライブラリで使用するなど）
+ * namespace 生成（barba.js や swup のような Pjax ライブラリで必要な場合などに）
  *
  * @param Object $post 投稿タイプ名
  * @return String barba.js 用の namespace 文字列
@@ -70,22 +69,10 @@ function get_share_links()
   $current_url = urlencode(get_the_permalink());
 
   return [
-    [
-      "prefix" => "twitter",
-      "link"   => "http://twitter.com/share?url={$current_url}&text={$title}",
-    ],
-    [
-      "prefix" => "facebook",
-      "link"   => "https://www.facebook.com/sharer/sharer.php?u={$current_url}",
-    ],
-    [
-      "prefix" => "hatena",
-      "link"   => "http://b.hatena.ne.jp/add?mode=confirm&url={$current_url}&title={$title}",
-    ],
-    [
-      "prefix" => "line",
-      "link"   => "http://line.me/R/msg/text/?{$current_url}",
-    ],
+    "twitter"  => "http://twitter.com/share?url={$current_url}&text={$title}",
+    "facebook" => "https://www.facebook.com/sharer/sharer.php?href={$current_url}",
+    "hatena"   => "http://b.hatena.ne.jp/add?mode=confirm&url={$current_url}&title={$title}",
+    "line"     => "http://line.me/R/msg/text/?{$current_url}",
   ];
 }
 
@@ -205,4 +192,15 @@ function random_text(string $string = "", int $min = 0, int $max = 10): string
   }
 
   return $text;
+}
+
+/**
+ * プラグインのアクティブ状態判定
+ *
+ * @param string $plugin_path
+ * @return boolean
+ */
+function plugin_exists($plugin_path = '')
+{
+  return (in_array($plugin_path, apply_filters('active_plugins', get_option('active_plugins'))));
 }

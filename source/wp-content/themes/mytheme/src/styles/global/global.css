@@ -19,8 +19,8 @@ html {
 body {
   overflow-y: scroll;
   font-family: var(--font-family-base);
-  font-weight: var(--font-weight-regular);
-  font-feature-settings: "palt";
+  font-weight: var(--font-weight-medium);
+  font-feature-settings: normal;
   line-height: var(--line-height-base);
   color: var(--color-text);
   letter-spacing: var(--letter-space-base);
@@ -32,34 +32,13 @@ body {
   line-break: strict;
 }
 
-a {
-  color: var(--color-text);
-
-  &:hover {
-    text-decoration: none;
-  }
-  &[target="_blank"] {
-    &::after {
-      display: inline-block;
-      width: 1.5em;
-      height: 1.25em;
-      margin-right: 0.125em;
-      content: "";
-      background-color: currentColor;
-      mask-image: var(--mask-icon-external);
-      mask-position: center;
-      mask-repeat: no-repeat no-repeat;
-      mask-size: contain;
-    }
-  }
-}
-
 img {
   max-width: 100%;
   height: auto;
 }
 
-hr {
+hr,
+.hr {
   --hr-max-width: calc(
     calc(100vw - var(--window-scroll-bar-width)) - calc(var(--spacer) * 2)
   );
@@ -67,19 +46,19 @@ hr {
   width: 100%;
   height: 1px;
   margin: var(--spacer) auto;
-  background-color: var(--color-text);
+  background-color: var(--color-border);
   border: none;
   border-color: transparent;
   border-bottom-color: var(--color-border);
   border-bottom-width: 1px;
 
-  &.isMax-lg {
+  &.-max-lg {
     max-width: min(
       calc(var(--container-max-width-lg) - calc(var(--spacer) * 2)),
       var(--hr-max-width)
     );
   }
-  &.isMax-xl {
+  &.-max-xl {
     max-width: min(
       calc(var(--container-max-width-xl) - calc(var(--spacer) * 2)),
       var(--hr-max-width)
@@ -90,10 +69,12 @@ hr {
 ul,
 ol {
   padding-left: var(--spacer-lg);
+
+  &:where(:not(li > ul)) {
+    margin-bottom: var(--spacer-lg);
+  }
 }
 
-ul,
-ol,
 dl {
   margin-bottom: var(--spacer-lg);
 }
@@ -155,7 +136,8 @@ svg {
 
 .updated {
   font-family: var(--font-sans-serif-en);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-light);
 }
 
 /**
@@ -167,9 +149,16 @@ svg {
 }
 
 /**
+* wp adminbar position fix
+*/
+@media screen and (max-width: 600px) {
+  #wpadminbar {
+    position: fixed;
+  }
+}
+
+/**
  * hide recaptcha badge
  * https://developers.google.com/recaptcha/docs/faq?hl=ja#id-like-to-hide-the-recaptcha-badge.-what-is-allowed
  */
-.grecaptcha-badge {
-  visibility: hidden !important;
-}
+/* .grecaptcha-badge { visibility: hidden !important; } */

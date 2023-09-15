@@ -1,4 +1,19 @@
 .footer {
   position: sticky;
   top: 100vh;
+  margin-inline: auto;
+}
+
+.copyright {
+  padding-top: var(--spacer);
+  padding-bottom: calc(var(--spacer) + var(--safe-bottom));
+  margin-bottom: 0;
+  font-family: var(--font-sans-serif-en);
+  font-size: var(--font-size-12);
+  color: var(--color-text-light);
+  text-align: center;
+
+  @media (--viewport-md) {
+    padding-top: 0;
+  }
 }

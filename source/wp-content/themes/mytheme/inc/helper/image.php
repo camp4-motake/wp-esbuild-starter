@@ -44,7 +44,7 @@ function svg_sprite($xlink = "", $title = "", $class = "", $attr = [], $role = "
   $attr = array_merge(
     [
       // 'xmlns:xlink' => 'http://www.w3.org/1999/xlink',
-      "xlink:href" => "#src--images--_sprite--" . esc_attr($xlink),
+      "xlink:href" => "#svg--" . esc_attr($xlink),
     ],
     $attr
   );
@@ -74,6 +74,7 @@ function auto_img($path = '', $attrs = [], $is_origin = true)
   if (!$path) {
     return '';
   }
+  // 画像探索パターン
   $order_patterns = [
     'png'  => ['avif', 'webp', 'png'],
     'jpg'  => ['avif', 'webp', 'jpg'],
@@ -82,11 +83,9 @@ function auto_img($path = '', $attrs = [], $is_origin = true)
   $info = pathinfo($path);
   $ext  = $info['extension'];
   $img_tag = make_img_tag($path, $attrs);
-
   if (empty($order_patterns[$ext])) {
     return $img_tag;
   }
-
   $src_items = array_map(function ($e) use ($path, $ext, $img_tag, $is_origin) {
     $target_path = str_replace(".{$ext}", ".{$e}", $path);
 
@@ -108,11 +107,9 @@ function auto_img($path = '', $attrs = [], $is_origin = true)
       $tag .= make_source_tag($item);
     }
   }
-
   if (count($src_items) <= 1) {
     return $tag;
   }
-
   return "<picture>\n" . $tag . "</picture>\n";
 }
 

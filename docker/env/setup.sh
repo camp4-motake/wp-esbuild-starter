@@ -22,7 +22,7 @@ wp plugin delete hello.php akismet
 wp plugin activate --all
 
 # update option
-# wp option update blogname $WP_SITE_TITLE
+wp option update blogname $WP_SITE_TITLE
 wp option update blogdescription ''
 wp option update timezone_string $(wp eval "echo _x( '0', 'default GMT offset or timezone string' );")
 wp option update date_format $(wp eval "echo __( 'Y-m-d' );")

@@ -1,7 +1,16 @@
 :where(.entry-content, .editor-styles-wrapper .wp-block-post-content) {
   & .wp-block-image {
-    & figcaption {
-      text-align: initial;
+    & a:active img {
+      opacity: 0.8;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    & .wp-element-caption {
+      color: var(--color-text-light);
+      /* text-align: initial; */
+      text-align: center;
     }
 
     &.is-style-rounded img {
@@ -9,11 +18,16 @@
     }
 
     &.aligncenter {
+      margin-inline: auto;
       /* width: max-content; */
       margin-bottom: var(--spacer-lg);
       text-align: center;
     }
 
+    &.alignleft,
+    &.alignright {
+      max-width: max-content;
+    }
     &.alignleft {
       float: left;
     }
@@ -24,6 +38,7 @@
 
     &.is-fullWidth,
     &.alignwide {
+      margin-inline: auto;
       & img {
         width: 100%;
         max-width: initial;
@@ -36,6 +51,7 @@
     }
 
     &.alignfull {
+      margin-inline: auto;
       & img {
         position: relative;
         display: block;
@@ -43,6 +59,12 @@
       }
       & .components-resizable-box__container {
         display: block !important;
+      }
+    }
+
+    &.size-full {
+      img {
+        width: 100%;
       }
     }
 
@@ -137,6 +159,10 @@
   }
   &.aligncenter > .components-resizable-box__container {
     margin-inline: auto;
+
+    & img {
+      margin-inline: auto;
+    }
   }
   &.alignleft > .components-resizable-box__container {
     margin-right: auto;
@@ -145,5 +171,17 @@
   &.alignright > .components-resizable-box__container {
     margin-right: 0;
     margin-left: auto;
+  }
+}
+
+.floor-map-figure {
+  position: relative;
+  display: block;
+
+  & img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-inline: auto;
   }
 }

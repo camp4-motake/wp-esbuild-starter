@@ -1,12 +1,18 @@
-/* eslint-disable no-var */
 import { Alpine as AlpineType } from "alpinejs";
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const wp: any;
+  // WORKAROUND
+  const wp: WPBlocks;
 
   interface Window {
     Alpine: AlpineType;
     CUSTOM_THEME_SLUG_STRING_CHECK: string | boolean;
+  }
+}
+
+declare module "alpinejs" {
+  interface Alpine {
+    // WORKAROUND
+    $persist: (key: string | number) => { as: (key: string) => never };
   }
 }

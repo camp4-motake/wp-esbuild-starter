@@ -1,5 +1,5 @@
 :where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) {
-  &:where(:not(#wpbody-content *)) {
+  &:where(:not(#wpbody-content .wrap *)) {
     margin-bottom: var(--spacer);
     font-weight: var(--font-weight-bold);
     font-feature-settings: "palt";
@@ -20,46 +20,46 @@
   }
 }
 
-h1:where(:not(#wpbody-content h1)),
+h1:where(:not(#wpbody-content .wrap h1)),
 .editor-styles-wrapper h1,
 .h1 {
   margin-bottom: var(--spacer-md);
   font-size: var(--font-size-h1);
 }
 
-h2:where(:not(#wpbody-content h2)),
+h2:where(:not(#wpbody-content .wrap h2)),
 .editor-styles-wrapper h2,
 .h2 {
   margin-bottom: var(--spacer-md);
-  /* font-size: var(--font-size-h2); */
+  font-size: var(--font-size-h2);
 }
 
-h3:where(:not(#wpbody-content h3)),
+h3:where(:not(#wpbody-content .wrap h3)),
 .editor-styles-wrapper h3,
 .h3 {
   margin-bottom: var(--spacer-md);
   font-size: var(--font-size-h3);
 }
 
-h4:where(:not(#wpbody-content h4)),
+h4:where(:not(#wpbody-content .wrap h4)),
 .editor-styles-wrapper h4,
 .h4 {
   font-size: var(--font-size-h4);
 }
 
-h5:where(:not(#wpbody-content h5)),
+h5:where(:not(#wpbody-content .wrap h5)),
 .editor-styles-wrapper h5,
 .h5 {
   font-size: var(--font-size-18);
 }
 
-h6:where(:not(#wpbody-content h6)),
+h6:where(:not(#wpbody-content .wrap h6)),
 .editor-styles-wrapper h6,
 .h6 {
   font-size: var(--font-size-16);
 }
 
-p:where(:not(#wpbody-content p)),
+p:where(:not(#wpbody-content .wrap p)),
 .editor-styles-wrapper p {
   margin-bottom: 1em;
 }
@@ -72,6 +72,10 @@ p:where(:not(#wpbody-content p)),
   & + & {
     margin-top: 2em;
   }
+}
+
+p {
+  font-size: var(--font-size-16);
 }
 
 .wbr {
@@ -101,8 +105,7 @@ p:where(:not(#wpbody-content p)),
   & * + p {
     margin-top: 1em;
   }
-  & .fit-after-line,
-  & .is-style-fit-after-line {
+  & .fit-after-line {
     margin-bottom: 0.125em;
 
     & + * {
@@ -113,4 +116,35 @@ p:where(:not(#wpbody-content p)),
 
 .wp-block-post-title {
   font-size: var(--font-size-h2);
+}
+
+a {
+  color: var(--color-link);
+
+  &:hover {
+    color: var(--color-link-hover);
+    text-decoration: none;
+  }
+
+  &[target="_blank"]::after {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.125em;
+    margin-left: 0.25em;
+    content: "";
+    background-color: currentColor;
+    mask-image: var(--mask-ico-external);
+    mask-position: center;
+    mask-repeat: no-repeat no-repeat;
+    mask-size: 82%;
+  }
+}
+
+.ellipsis-1 {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

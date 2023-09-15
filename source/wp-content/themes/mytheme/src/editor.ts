@@ -1,8 +1,8 @@
+import domReady from "@wordpress/dom-ready";
 import { allowedBlock } from "./scripts/editor/allowedBlock";
 import { blockStyles } from "./scripts/editor/blockStyles";
-// import "./styles/editor.css";
 
-window.addEventListener("load", () => {
+domReady(() => {
   allowedBlock();
   blockStyles();
 });

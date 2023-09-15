@@ -1,0 +1,7 @@
+.bg-base {
+  background-color: var(--color-base);
+}
+
+.bg-fill-primary {
+  background-color: var(--color-bg-fill-primary);
+}

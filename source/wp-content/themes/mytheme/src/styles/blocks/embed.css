@@ -47,4 +47,37 @@
       height: 100%;
     }
   }
+
+  & .embed {
+    position: relative;
+    display: block;
+    margin: auto auto var(--spacer-md);
+    & iframe,
+    & video {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3/2;
+    }
+    &.-1by1 {
+      & iframe,
+      & video {
+        aspect-ratio: 1/1;
+      }
+    }
+    &.-16by9 {
+      & iframe,
+      & video {
+        aspect-ratio: 16/9;
+      }
+    }
+    &.-21by9 {
+      & iframe,
+      & video {
+        aspect-ratio: 21/9;
+      }
+    }
+  }
+  > :where(*) + .embed {
+    margin-top: var(--spacer-md);
+  }
 }

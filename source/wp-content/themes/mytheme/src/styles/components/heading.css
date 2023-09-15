@@ -1,0 +1,31 @@
+.heading {
+  --hd-gutter: calc(1lh - 1ch);
+  position: relative;
+  margin-bottom: 1em;
+  word-break: break-all;
+
+  &.-display-1 {
+    font-size: var(--font-size-28);
+    @media (--viewport-lg) {
+      font-size: var(--font-size-38);
+    }
+  }
+  &.-display-2 {
+    font-size: var(--font-size-24);
+    @media (--viewport-lg) {
+      font-size: var(--font-size-30);
+    }
+  }
+  &.-display-3 {
+    font-size: var(--font-size-20);
+    @media (--viewport-lg) {
+      font-size: var(--font-size-24);
+    }
+  }
+  &.-display-4 {
+    font-size: var(--font-size-18);
+    @media (--viewport-lg) {
+      font-size: var(--font-size-20);
+    }
+  }
+}

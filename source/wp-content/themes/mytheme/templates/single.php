@@ -1,10 +1,10 @@
 <article class="content-single section">
-  <div class="container container--max-entry">
+  <div class="container -max-entry">
     <header class="content-single__header">
       <h1 class="content-single__heading">
         <?php the_title(); ?>
       </h1>
-      <div class="content-single__meta container container--max-entry">
+      <div class="content-single-meta container -max-entry">
         <?php get_template_part('templates/components/entry-meta'); ?>
       </div>
     </header>

@@ -1,19 +1,28 @@
-.error404__heading {
+.error404-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60svh;
   font-family: var(--font-sans-serif-en);
+  text-align: center;
+}
+
+.error404-heading {
   line-height: var(--leading-sm);
 }
 
-.error404__heading__status {
+.error404-heading-status {
   display: block;
   font-size: var(--font-size-70);
   font-weight: var(--font-weight-black);
+  color: var(--color-primary);
 }
 
-.error404__heading__label {
+.error404-heading-label {
   display: block;
   font-size: var(--font-size-24);
 }
 
-.error404__description {
-  font-size: var(--font-size-14);
+.error404-description {
+  font-size: var(--font-size-12);
 }

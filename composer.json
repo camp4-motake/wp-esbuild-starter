@@ -2,10 +2,12 @@
   "require-dev": {
     "koodimonni-language/core-ja": "*",
     "wpackagist-plugin/duplicate-post": "*",
+    "wpackagist-plugin/gtranslate": "*",
+    "wpackagist-plugin/post-types-order": "*",
     "wpackagist-plugin/safe-svg": "*",
+    "wpackagist-plugin/taxonomy-terms-order": "*",
     "wpackagist-plugin/wordpress-seo": "*",
     "wpackagist-plugin/wp-multibyte-patch": "*",
-    "wpackagist-plugin/yoast-test-helper": "*",
     "wpengine/advanced-custom-fields-pro": "*"
   },
   "repositories": [

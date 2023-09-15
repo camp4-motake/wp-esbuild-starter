@@ -148,12 +148,16 @@ Movefile
 /source/wp-content/languages
 /source/wp-content/plugins
 /source/wp-content/themes/*
-!/source/wp-content/themes/mytheme
+!/source/wp-content/themes/*
+*/dist
 .tmp/
 vendor/
 auth.json
 .zip/
 *.zip
+*.gzip
+*.sql
 
 # workaround
 __*.*
+*.csv

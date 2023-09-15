@@ -1,4 +1,4 @@
-# WP theme starter
+# mytheme
 
 Docker の初期設定 -> [docker/README.md](docker/README.md)
 

@@ -12,3 +12,11 @@
 .editor-styles-wrapper {
   padding: 0 var(--spacer) var(--spacer-2xl) !important;
 }
+
+.acf-flexible-content .layout .acf-fc-layout-handle {
+  background-color: #f4f4f4;
+}
+
+.acf-flexible-content .layout .acf-fc-layout-order {
+  background-color: #fff;
+}

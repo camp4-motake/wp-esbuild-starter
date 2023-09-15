@@ -10,17 +10,25 @@ if (!defined('ABSPATH')) {
   exit; // Exit if accessed directly.
 }
 
+if (!function_exists('get_field')) {
+  echo 'required: ACF Pro';
+  exit;
+}
+
+global $post_type;
+
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> x-data="root" x-bind="root">
 <?php get_template_part("templates/partials/head"); ?>
 
 <body <?php body_class(); ?>>
-  <?php do_action('body_tag_before'); ?>
   <?php
 
+  wp_body_open();
+
   do_action("get_header");
-  get_template_part("templates/partials/header");
+  get_template_part("templates/partials/header", $post_type);
 
   ?>
   <main class="contents">
@@ -29,10 +37,11 @@ if (!defined('ABSPATH')) {
   <?php
 
   do_action("get_footer");
-  get_template_part("templates/partials/footer");
+  get_template_part("templates/partials/footer", $post_type);
+
+  wp_footer();
 
   ?>
-  <?php wp_footer(); ?>
 </body>
 
 </html>

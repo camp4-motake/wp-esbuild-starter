@@ -2,12 +2,16 @@
   "files.exclude": {
     ".cache": true,
     ".npmrc": true,
-    "package-lock.json": true,
-    "composer.lock": true,
+    // "composer.lock": true,
+    "node_modules": false,
+    // "package-lock.json": true,
     "source/wp-content/languages": true,
+    "source/wp-content/mu-plugins": true,
     "source/wp-content/plugins": true,
-    "vendor": true,
-    "node_modules": false
+    "vendor": true
+  },
+  "files.watcherExclude": {
+    "source/wp-content/themes/mytheme/dist/*": true
   },
   "alpine-intellisense.settings.languageScopes": "html,php",
   "css.validate": false,
@@ -20,7 +24,10 @@
   "files.associations": {
     "*.css": "postcss"
   },
-  "intelephense.environment.includePaths": ["wp/wp-content/plugins"],
+  "intelephense.environment.includePaths": [
+    "source/wp-content/plugins/advanced-custom-fields-pro",
+    "source/wp-content/plugins/wordpress-seo"
+  ],
   "[typescript]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": true

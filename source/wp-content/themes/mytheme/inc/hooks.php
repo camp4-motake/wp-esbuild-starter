@@ -45,14 +45,14 @@ add_filter("get_the_archive_title", function ($title) {
 add_filter("previous_post_link", function ($output) {
   return str_replace(
     "<a href=",
-    '<a class="prev btn btn--border is-arrow-left" href=',
+    '<a class="prev btn -border is-arrow-left" href=',
     $output
   );
 });
 add_filter("next_post_link", function ($output) {
   return str_replace(
     "<a href=",
-    '<a class="next btn btn--border is-arrow-right" href=',
+    '<a class="next btn -border is-arrow-right" href=',
     $output
   );
 });

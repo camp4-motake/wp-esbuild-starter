@@ -1,12 +1,14 @@
 services:
   db:
-    image: mariadb:11.0.2
+    platform: linux/x86_64
+    image: mysql:5.7
     restart: always
     environment:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
       MYSQL_DATABASE: wordpress
       MYSQL_ROOT_PASSWORD: wordpress
+      TZ: Asia/Tokyo
     volumes:
       - db_data:/var/lib/mysql
 
@@ -21,6 +23,7 @@ services:
       - "wp_data:/var/www/html"
       - "./docker/wp/php-xdebug.ini:/usr/local/etc/php/conf.d/php-xdebug.ini:cached"
       - "./docker/env:/var/www/html/env"
+      - "./source/wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins:cached"
       - "./source/wp-content/languages:/var/www/html/wp-content/languages"
       - "./source/wp-content/plugins:/var/www/html/wp-content/plugins"
       - "./source/wp-content/themes/$WP_THEME_NAME:/var/www/html/wp-content/themes/$WP_THEME_NAME"
@@ -31,6 +34,9 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DEBUG: 1
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_ENVIRONMENT_TYPE', 'local');
+      TZ: Asia/Tokyo
     # working_dir: /var/www/html/wordpress
 
   cli:
@@ -39,6 +45,7 @@ services:
       - "wp_data:/var/www/html"
       - "./docker/env:/var/www/html/env"
       - "./docker/cli/wp-cli.local.yml:/var/www/html/wp-cli.local.yml:cached"
+      - "./source/wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins:cached"
       - "./source/wp-content/languages:/var/www/html/wp-content/languages"
       - "./source/wp-content/plugins:/var/www/html/wp-content/plugins"
       - "./source/wp-content/themes/$WP_THEME_NAME:/var/www/html/wp-content/themes/$WP_THEME_NAME"
@@ -53,6 +60,7 @@ services:
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
+      TZ: Asia/Tokyo
     # working_dir: /var/www/html/wordpress
 
 volumes:

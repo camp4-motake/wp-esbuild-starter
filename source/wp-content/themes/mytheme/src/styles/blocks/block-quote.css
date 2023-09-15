@@ -4,8 +4,7 @@
     padding: var(--spacer-md);
     margin-top: 2rem;
     margin-bottom: var(--spacer-lg);
-    background-color: var(--color-bg);
-    border-left: none;
+    border-left-color: var(--color-primary);
 
     @media (--viewport-lg) {
       padding: var(--spacer-lg) var(--spacer-xl);

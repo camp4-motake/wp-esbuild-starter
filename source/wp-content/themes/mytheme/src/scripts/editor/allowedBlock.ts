@@ -5,111 +5,125 @@
  * https://www.nxworld.net/wp-gutenberg-remove-default-block-using-blacklist.html
  */
 export const allowedBlock = () => {
-  // 非表示ブロックリスト
-  const disallowedBlock = [
-    // 'core/missing',
-    // 'core/block',
+  // 許可ブロックリスト
+  const allowedBlockList = [
+    // ---------------- plugins
+    // "safe-svg/svg-icon",
+    // "yoast-seo/breadcrumbs",
+    // "yoast/how-to-block",
+    // "yoast/faq-block",
 
-    // テキスト
-    // 'core/paragraph', // 段落
-    // 'core/heading', // 見出し
-    // 'core/list', // リスト
-    // 'core/quote', // 引用
-    // 'core/code', // コード
-    // 'core/html',
-    // 'core/freeform', // クラシック
-    // 'core/preformatted', // 整形済みテキスト
-    // 'core/pullquote', // プルクオート
-    // 'core/table', // テーブル
-    "core/verse", // 詩
-
-    // メディア
-    // 'core/embed',
-    // 'core/image', // 画像
-    "core/gallery", // ギャラリー
-    "core/audio", // 音声
-    // "core/cover", // カバー
-    "core/file", // ファイル
-    // 'core/media-text', // メディアと文章
-    "core/video", // 動画
-
-    // デザイン
-    // 'core/button',  // ボタン
-    // 'core/buttons', // ボタン
-    // 'core/column', // カラム
-    // 'core/columns', // カラム
-    // 'core/group', // グループ
-    "core/more", // 続きを読む
-    // 'core/nextpage', // ページ区切り
-    // 'core/separator', // 区切り
-    // 'core/spacer', // スペーサー
-
-    // ウィジェット
-    // 'core/shortcode', // ショートコード
-    "core/archives", // アーカイブ
-    "core/calendar", // カレンダー
-    "core/categories", // カテゴリー
-    // 'core/html', // カスタムHTML
-    "core/latest-comments", // 最新のコメント
-    "core/latest-posts", // 最新の投稿
-    "core/rss", // RSS
-    "core/social-links", // ソーシャルアイコン
-    "core/tag-cloud", // タグクラウド
-    "core/search", // 検索
-
-    // WP5.8~ テーマ/FSE系ブロック
-    "core/page-list",
+    // ---------------- core
+    "core/paragraph",
+    "core/image",
+    "core/heading",
+    // "core/gallery",
+    "core/list",
+    "core/list-item",
+    "core/quote",
+    // "core/archives",
+    // "core/audio",
+    "core/button",
+    "core/buttons",
+    // "core/calendar",
+    // "core/categories",
+    "core/freeform",
+    "core/code",
+    "core/column",
+    "core/columns",
+    "core/cover",
+    "core/details",
+    "core/embed",
+    "core/file",
+    "core/group",
+    "core/html",
+    // "core/latest-comments",
+    // "core/latest-posts",
+    "core/media-text",
+    "core/missing",
+    // "core/more",
+    // "core/nextpage",
+    // "core/page-list",
+    // "core/page-list-item",
+    // "core/pattern",
+    // "core/preformatted",
+    // "core/pullquote",
+    "core/block",
+    // "core/rss",
+    // "core/search",
+    "core/separator",
+    "core/shortcode",
+    // "core/social-link",
+    // "core/social-links",
+    "core/spacer",
+    "core/table",
+    // "core/tag-cloud",
     "core/text-columns",
-    "core/site-logo",
-    "core/site-tagline",
-    "core/site-title",
-    "core/query",
-    "core/post-template",
-    "core/query-title",
-    "core/query-pagination",
-    "core/query-pagination-next",
-    "core/query-pagination-numbers",
-    "core/query-pagination-previous",
-    "core/post-title",
-    "core/post-content",
-    "core/post-date",
-    "core/post-excerpt",
-    "core/post-featured-image",
-    "core/post-terms",
-    "core/navigation",
-    "core/post-author",
-    "core/post-navigation-link",
-    "core/post-comments",
-    "core/loginout",
-    "core/term-description",
-    "core/read-more",
-    "core/avatar",
-    "core/comments-query-loop",
-    "core/post-comments-form",
-    "core/post-author-biography",
-
-    // Yoast SEO
-    "yoast-seo/breadcrumbs",
-    "yoast/faq-block",
-    "yoast/how-to-block",
-
-    // contact form7
-    // "contact-form-7/contact-form-selector",
+    // "core/verse",
+    // "core/video",
+    // "core/footnotes",
+    // "core/navigation",
+    // "core/navigation-link",
+    // "core/navigation-submenu",
+    // "core/site-logo",
+    // "core/site-title",
+    // "core/site-tagline",
+    // "core/query",
+    // "core/template-part",
+    // "core/avatar",
+    // "core/post-title",
+    // "core/post-excerpt",
+    // "core/post-featured-image",
+    // "core/post-content",
+    // "core/post-author",
+    // "core/post-author-name",
+    // "core/post-date",
+    // "core/post-terms",
+    // "core/post-navigation-link",
+    // "core/post-template",
+    // "core/query-pagination",
+    // "core/query-pagination-next",
+    // "core/query-pagination-numbers",
+    // "core/query-pagination-previous",
+    // "core/query-no-results",
+    // "core/read-more",
+    // "core/comments",
+    // "core/comment-author-name",
+    // "core/comment-content",
+    // "core/comment-date",
+    // "core/comment-edit-link",
+    // "core/comment-reply-link",
+    // "core/comment-template",
+    // "core/comments-title",
+    // "core/comments-pagination",
+    // "core/comments-pagination-next",
+    // "core/comments-pagination-numbers",
+    // "core/comments-pagination-previous",
+    // "core/post-comments-form",
+    // "core/home-link",
+    // "core/loginout",
+    // "core/term-description",
+    // "core/query-title",
+    // "core/post-author-biography",
+    // "core/legacy-widget",
+    // "core/widget-group",
   ];
 
   // embedで許可するブロック
-  const allowedEmbedVariation = ["twitter", "youtube", "vimeo", "wordpress"];
+  const allowedEmbedVariation = ["twitter", "youtube"];
+
+  // console.log(wp.blocks.getBlockTypes());
 
   // 不許可デフォルトブロックを解除
-  disallowedBlock.forEach((block) => {
-    wp?.blocks?.unregisterBlockType(block);
+  wp.blocks.getBlockTypes().forEach((block: { name: string }) => {
+    if (block.name.includes("acf/")) return; // acfブロック
+    if (allowedBlockList.includes(block.name)) return;
+    wp?.blocks?.unregisterBlockType(block.name);
   });
 
   // embedの許可ブロック以外を解除
-  wp?.blocks
-    ?.getBlockVariations("core/embed")
-    ?.forEach((valiation: { name: string }) => {
-      if (allowedEmbedVariation.indexOf(valiation.name) !== -1) return;
-      wp?.blocks?.unregisterBlockVariation("core/embed", valiation.name);
-    });
+  wp.blocks.getBlockVariations("core/embed").forEach((v: { name: string }) => {
+    if (allowedEmbedVariation.includes(v.name)) return;
+    wp?.blocks?.unregisterBlockVariation("core/embed", v.name);
+  });
 };

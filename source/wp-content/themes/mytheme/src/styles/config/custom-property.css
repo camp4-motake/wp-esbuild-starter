@@ -4,39 +4,38 @@
 :root {
   /* color basic */
   --color-base: #fff;
-  --color-primary: #1285c5;
+  --color-primary: #2399ed;
   --color-secondary: #cebda0;
-  --color-text: #000;
-  --color-text-light: #777;
-  --color-text-description: #626264;
+  --color-text: #1c1d1f;
+  --color-text-light: #85888d;
+  --color-text-description: var(--color-text-light);
   --color-text-placeholder: #757578;
   --color-text-disable: #aaa;
+  --color-bg-fill: #ecf3f5;
+
+  /* color status */
+  --color-success: #14c9bf;
+  --color-warning: #f78b10;
+  --color-danger: #f85959;
 
   /* color util */
-  --color-warning: #ffc107;
-  --color-danger: #db4646;
-  --color-link: #1b3c5f;
+  --color-link: var(--color-primary-text);
   --color-link-hover: #0b63d6;
   --color-link-visited: #0b63d6;
-  --color-border: #707070;
+  --color-border: #d8e1e8;
   --color-placeholder: #e1e4ea;
-  --color-fill: #edeff0;
+  --color-overlay: rgba(0, 20, 50, 0.3);
 
   /* font family */
   --font-sans-serif-ja: "Noto Sans JP", "Hiragino Sans",
     "Hiragino Kaku Gothic ProN", "メイリオ", meiryo, sans-serif;
-  --font-sans-serif-ja-heading: "Noto Sans", "Noto Sans JP", "Hiragino Sans",
-    "Hiragino Kaku Gothic ProN", "Noto Sans JP", "メイリオ", meiryo, sans-serif;
-  --font-sans-serif-en: "Noto Sans", "SF Pro Text", "SF Pro Icons",
-    "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  --font-sans-serif-cn: "SF Pro SC", "SF Pro Text", "SF Pro Icons",
-    "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --font-sans-serif-en: "SF Pro Text", "Helvetica Neue", "Helvetica", "Arial",
+    sans-serif;
   --font-family-base: var(--font-sans-serif-ja);
   --font-tracking: 0.06em;
 
   /* root font size */
   --root-font-size: clamp(0.875rem, 0.813rem + 0.31vw, 1.125rem);
-  /* @media (--viewport-3xl) { --root-font-size: 0.96vw; } */
 
   /* font size: rem util */
   --rem: 16 * 1rem;
@@ -65,11 +64,6 @@
     --font-size-h6: 1.125rem;
   }
 
-  /* font size: module */
-  --font-size-button: 1rem;
-  --font-size-capture: 0.75rem;
-  --font-size-overline: 0.625rem;
-
   /* font size: px to rem sizes (ex: 24px / 16 = 1.5rem) */
   --font-size-8: 0.5rem;
   --font-size-10: 0.625rem;
@@ -87,6 +81,7 @@
   --font-size-32: 2rem;
   --font-size-34: 2.125rem;
   --font-size-36: 2.25rem;
+  --font-size-38: 2.375rem;
   --font-size-40: 2.5rem;
   --font-size-42: 2.625rem;
   --font-size-44: 2.75rem;
@@ -120,8 +115,8 @@
   --line-height-base-hd: 1.4;
 
   /* letter spacing */
-  --letter-space-base: 0.06em;
-  --letter-spacing-heading: var(--letter-space-base);
+  --letter-space-base: 0.04em;
+  --letter-spacing-heading: 0.04em;
 
   /* spacer */
   --spacer-xs: 0.25rem; /* 4 */
@@ -143,44 +138,41 @@
 
   /* z order */
   --z-header: 600;
-  --z-modal: 5000;
+  --z-modal: 400;
   --z-nav-menu: 500;
   --z-lang-switcher: 450;
   --z-sticky: 400;
   --z-screen: 2000;
+
+  --shadow-base: 0 0 calc(1.5 / var(--rem)) rgba(0, 5, 26, 0.06),
+    0 0 calc(20 / var(--rem)) rgba(0, 5, 26, 0.12);
 
   /* scrollbar width */
   --window-scroll-bar-width: 0;
 
   /* header size */
   --header-height: calc(60 / var(--rem));
-  @media (--viewport-lg) {
-    --header-height: calc(100 / var(--rem));
-  }
-  /* --header-body-max-width: var(--container-max-width-3xl); */
-  --header-body-max-width: var(--container-max-width-fluid);
 
   /* menu toggle size */
-  --toggle-size: calc(40 / var(--rem));
-  @media (--viewport-lg) {
-    --toggle-size: calc(60 / var(--rem));
-  }
+  --toggle-size: calc(60 / var(--rem));
+
+  /* wordpress admin bar (overide js) */
+  --wp-adminbar-height: 0px;
+  --header-and-adminbar-height: calc(
+    var(--header-height) + var(--wp-adminbar-height)
+  );
 
   /* container width */
   --container-max-width: auto;
-  --container-max-width-entry: calc(768 / var(--rem));
-  --container-max-width-fluid: calc(1980 / var(--rem));
-  --container-max-width-canvas: calc(2560 / var(--rem));
   --container-max-width-sm: calc(540 / var(--rem));
   --container-max-width-md: calc(720 / var(--rem));
   --container-max-width-lg: calc(960 / var(--rem));
   --container-max-width-xl: calc(1140 / var(--rem));
   --container-max-width-2xl: calc(1400 / var(--rem));
   --container-max-width-3xl: calc(1600 / var(--rem));
-  --container-fluid-inside-width: min(
-    calc(100% - var(--spacer-lg)),
-    calc(var(--container-max-width-fluid) - var(--spacer-lg))
-  );
+  --container-max-width-entry: var(--container-max-width-md);
+  --container-max-width-fluid: calc(1980 / var(--rem));
+  --container-max-width-view: calc(2560 / var(--rem));
   @media (--viewport-sm) {
     --container-max-width: calc(540 / var(--rem));
   }
@@ -201,9 +193,11 @@
   }
 
   /* ease: cubic */
+  /*
   --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
   --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
   --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  */
 
   /* ease: circ */
   --ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.335);
@@ -211,24 +205,32 @@
   --ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 
   /* ease: expo */
+  /*
   --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+  */
 
   /* ease: quad */
+  /*
   --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
   --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  */
 
   /* ease: quart */
+  /*
   --ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
   --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
   --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+  */
 
   /* ease: quint */
+  /*
   --ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
   --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+  */
 
   /* ease: sine */
   --ease-in-sine: cubic-bezier(0.47, 0, 0.745, 0.715);
@@ -241,8 +243,10 @@
   --ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   /* swiper theme variable */
+  /*
   --swiper-theme-color: var(--color-primary);
   --swiper-pagination-color: var(--color-primary);
+  */
 
   /* Golden ratio */
   --golden-ratio: 1.618;
@@ -252,4 +256,14 @@
   --safe-right: env(safe-area-inset-right, 0);
   --safe-bottom: env(safe-area-inset-bottom, 0);
   --safe-left: env(safe-area-inset-left, 0);
+
+  /* image */
+  /*
+  --mask-ico-arrow-left: url("../../images/_inline/ico-arrow-left.svg");
+  --mask-ico-arrow-right: url("../../images/_inline/ico-arrow-right.svg");
+  */
+}
+
+:root[lang="en-US"] {
+  --font-family-base: var(--font-sans-serif-en);
 }

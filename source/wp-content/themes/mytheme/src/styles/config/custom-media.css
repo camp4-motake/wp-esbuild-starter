@@ -4,6 +4,7 @@
  * @link https://www.w3.org/TR/mediaqueries-5/#at-ruledef-custom-media
  * @link https://preset-env.cssdb.org/features/#custom-media-queries
  */
+@custom-media --viewport-xs (width >= 23.4375em);
 @custom-media --viewport-sm (width >= 36em);
 @custom-media --viewport-md (width >= 48em);
 @custom-media --viewport-lg (width >= 62em);
@@ -13,11 +14,15 @@
 @custom-media --viewport-fluid-max (width >= 123.75em);
 @custom-media --viewport-until-sm (width < 36em);
 @custom-media --viewport-until-md (width < 48em);
-@custom-media --viewport-until-lg (width < 75em);
+@custom-media --viewport-until-lg (width < 62em);
 @custom-media --viewport-landscape (orientation: landscape);
 @custom-media --viewport-portrait (orientation: portrait);
 @custom-media --viewport-4by3 (min-aspect-ratio: 4/3);
 @custom-media --viewport-16by9 (min-aspect-ratio: 16/9);
 @custom-media --viewport-21by9 (min-aspect-ratio: 21/9);
+@custom-media --viewport-wide-sm (--viewport-sm) and (--viewport-landscape),
+  (--viewport-md);
 @custom-media --viewport-wide (--viewport-md) and (--viewport-landscape),
   (--viewport-lg);
+@custom-media --viewport-visible-nav (--viewport-lg);
+@custom-media --viewport-pointer (hover: hover) and (pointer: fine);

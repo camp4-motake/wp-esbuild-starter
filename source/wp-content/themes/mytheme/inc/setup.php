@@ -30,8 +30,8 @@ function add_supports()
 function add_theme_custom_menu()
 {
   register_nav_menus([
-    "primary_navigation" => __("Primary Navigation", 'mytheme'),
-    "footer_navigation"  => __("Footer Navigation", 'mytheme'),
+    "nav_primary" => __("nav primary", 'mytheme'),
+    "nav_footer"  => __("nav footer", 'mytheme'),
   ]);
 }
 

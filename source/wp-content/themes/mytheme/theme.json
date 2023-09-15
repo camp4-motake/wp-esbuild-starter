@@ -12,62 +12,67 @@
         {
           "name": "base",
           "slug": "base",
-          "color": "#fff"
+          "color": "var(--color-base)"
         },
         {
-          "name": "text",
-          "slug": "text",
-          "color": "#000"
-        },
-        {
-          "name": "text-light",
-          "slug": "text-light",
-          "color": "#777"
+          "name": "tex-base",
+          "slug": "text-base",
+          "color": "var(--color-text)"
         },
         {
           "name": "text-description",
           "slug": "text-description",
-          "color": "#626264"
+          "color": "var(--color-text-description)"
         },
         {
           "name": "text-placeholder",
           "slug": "text-placeholder",
-          "color": "#757578"
+          "color": "var(--color-text-placeholder)"
         },
         {
           "name": "primary",
           "slug": "primary",
-          "color": "#1285c5"
+          "color": "var(--color-primary)"
         },
         {
           "name": "secondary",
           "slug": "secondary",
-          "color": "#cebda0"
+          "color": "var(--color-secondary)"
         },
         {
-          "name": "fill",
-          "slug": "fill",
-          "color": "#edeff0"
+          "name": "bg-fill",
+          "slug": "bg-fill",
+          "color": "var(--color-bg-fill)"
+        },
+        {
+          "name": "success",
+          "slug": "success",
+          "color": "var(--color-success)"
         },
         {
           "name": "warning",
           "slug": "warning",
-          "color": "#ffc107"
+          "color": "var(--color-warning)"
         },
         {
           "name": "danger",
           "slug": "danger",
-          "color": "#db4646"
+          "color": "var(--color-danger)"
+        },
+        {
+          "name": "link",
+          "slug": "link",
+          "color": "var(--color-link)"
         },
         {
           "name": "border",
           "slug": "border",
-          "color": "#707070"
+          "color": "var(--color-border)"
         },
         {
           "name": "placeholder",
           "slug": "placeholder",
-          "color": "#e1e4ea"
+          "color": "var(--color-placeholder)"
         }
       ],
       "custom": true,
@@ -90,7 +95,14 @@
     },
     "spacing": {
       "padding": true,
-      "units": ["px", "%", "em", "rem", "vw", "vh"],
+      "units": [
+        "px",
+        "%",
+        "em",
+        "rem",
+        "vw",
+        "vh"
+      ],
       "spacingSizes": [
         {
           "size": "0.25rem",
@@ -138,14 +150,14 @@
       "customFontSize": false,
       "fontFamilies": [
         {
-          "fontFamily": "\"Noto Sans JP\", \"Hiragino Sans\", \"Hiragino Kaku Gothic ProN\", \"メイリオ\", meiryo, sans-serif",
+          "fontFamily": "var(--font-family-base)",
           "slug": "sans-serif-ja",
-          "name": "sans serif JA"
+          "name": "sans serif ja"
         },
         {
-          "fontFamily": "\"Noto Sans\", \"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", \"Helvetica\", \"Arial\", sans-serif",
+          "fontFamily": "var(--font-sans-serif-en)",
           "slug": "sans-serif-en",
-          "name": "sans serif EN"
+          "name": "sans serif en"
         }
       ],
       "fontStyle": false,
@@ -218,17 +230,17 @@
       ]
     },
     "layout": {
-      "contentSize": "calc(960 / var(--rem))",
-      "wideSize": "calc(1400 / var(--rem))"
+      "contentSize": "var(--container-max-width-entry)",
+      "wideSize": "var(--container-max-width-xl)"
     }
   },
   "styles": {
     "color": {
-      "background": "var(--wp--preset--color--base)",
-      "text": "var(--wp--preset--color--text)"
+      "background": "var(--color--base)",
+      "text": "var(--color--text)"
     },
     "typography": {
-      "fontFamily": "var(--wp--preset--font-family--sans-serif-ja)",
+      "fontFamily": "var(--font-family-base)",
       "lineHeight": "var(--line-height-base)"
     }
   }
