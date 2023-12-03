@@ -1,6 +1,5 @@
 {
   "require-dev": {
-    "koodimonni-language/core-ja": "*",
     "wpackagist-plugin/duplicate-post": "*",
     "wpackagist-plugin/wordpress-seo": "*",
     "wpackagist-plugin/wp-multibyte-patch": "*",
