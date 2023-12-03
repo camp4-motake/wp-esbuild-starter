@@ -24,9 +24,7 @@
   "files.associations": {
     "*.css": "postcss"
   },
-  "intelephense.environment.includePaths": [
-    "source/wp-content/plugins"
-  ],
+  "intelephense.environment.includePaths": ["source/wp-content/plugins"],
   "[typescript]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
