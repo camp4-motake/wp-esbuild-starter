@@ -4,18 +4,18 @@
 
 // タッチデバイス簡易判定
 export const isTouchDevice = () =>
-  "ontouchstart" in document && "orientation" in window;
+  "ontouchstart" in document && "orientation" in window
 
 // WordPress: 管理バーの有無判定 （兼、簡易ログイン状態判定）
-export const isWPAdminBar = () => !!document.getElementById("wpadminbar");
+export const isWPAdminBar = () => !!document.getElementById("wpadminbar")
 
 // URL 一致判定
 export const isMatchURL = (href: string) => {
-  const loc = new URL(window.location.href);
-  const tgt = new URL(href);
+  const loc = new URL(window.location.href)
+  const tgt = new URL(href)
 
   return (
     `${loc.origin}${loc.pathname}${loc.search}` ===
     `${tgt.origin}${tgt.pathname}${tgt.search}`
-  );
-};
+  )
+}

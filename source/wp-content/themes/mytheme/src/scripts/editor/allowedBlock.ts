@@ -107,23 +107,23 @@ export const allowedBlock = () => {
     // "core/post-author-biography",
     // "core/legacy-widget",
     // "core/widget-group",
-  ];
+  ]
 
   // embedで許可するブロック
-  const allowedEmbedVariation = ["twitter", "youtube"];
+  const allowedEmbedVariation = ["twitter", "youtube"]
 
   // console.log(wp.blocks.getBlockTypes());
 
   // 不許可デフォルトブロックを解除
   wp.blocks.getBlockTypes().forEach((block: { name: string }) => {
-    if (block.name.includes("acf/")) return; // acfブロック
-    if (allowedBlockList.includes(block.name)) return;
-    wp?.blocks?.unregisterBlockType(block.name);
-  });
+    if (block.name.includes("acf/")) return // acfブロック
+    if (allowedBlockList.includes(block.name)) return
+    wp?.blocks?.unregisterBlockType(block.name)
+  })
 
   // embedの許可ブロック以外を解除
   wp.blocks.getBlockVariations("core/embed").forEach((v: { name: string }) => {
-    if (allowedEmbedVariation.includes(v.name)) return;
-    wp?.blocks?.unregisterBlockVariation("core/embed", v.name);
-  });
-};
+    if (allowedEmbedVariation.includes(v.name)) return
+    wp?.blocks?.unregisterBlockVariation("core/embed", v.name)
+  })
+}

@@ -1,19 +1,19 @@
-import type { AlpineComponent, Bindings } from "alpinejs";
-import type { Store } from "../stores";
+import type { AlpineComponent, Bindings } from "alpinejs"
+import type { Store } from "../stores"
 
 export type State = {
-  scrollBarWidth: number;
-  interval?: NodeJS.Timer;
-  isRecaptcha: boolean;
-  wpAdminBar?: Element | undefined | null;
-  root: Bindings;
-  setScrollbarWidth: () => void;
-  scrollBarCheckInterval: () => void;
-  setWPMatchMediaEvent: () => void;
-  setWPAdminBarSize: () => void;
-};
+  scrollBarWidth: number
+  interval?: NodeJS.Timer
+  isRecaptcha: boolean
+  wpAdminBar?: Element | undefined | null
+  root: Bindings
+  setScrollbarWidth: () => void
+  scrollBarCheckInterval: () => void
+  setWPMatchMediaEvent: () => void
+  setWPAdminBarSize: () => void
+}
 
-const mq = window.matchMedia("screen and (max-width: 782px)");
+const mq = window.matchMedia("screen and (max-width: 782px)")
 
 export const root = (): AlpineComponent<State & Store> => ({
   scrollBarWidth: 0,
@@ -21,10 +21,10 @@ export const root = (): AlpineComponent<State & Store> => ({
 
   init() {
     this.$nextTick(() => {
-      this.$store.siteStatus.isPageActive = true;
-      this.scrollBarCheckInterval();
-      this.setWPMatchMediaEvent();
-    });
+      this.$store.siteStatus.isPageActive = true
+      this.scrollBarCheckInterval()
+      this.setWPMatchMediaEvent()
+    })
   },
 
   root: {
@@ -35,43 +35,43 @@ export const root = (): AlpineComponent<State & Store> => ({
         isPageActive: this.$store.siteStatus.isPageActive,
         isScrollDown:
           this.$store.siteStatus.isScrollDown || this.$store.menuStatus.shown,
-      };
+      }
     },
 
     [":style"]() {
       return {
         "--window-scroll-bar-width": `${this.scrollBarWidth}px`,
-      };
+      }
     },
 
     ["@resize.window"]() {
-      this.setWPAdminBarSize();
+      this.setWPAdminBarSize()
     },
   },
 
   scrollBarCheckInterval() {
     this.interval = setInterval(() => {
-      this.setScrollbarWidth();
-    }, 1000);
+      this.setScrollbarWidth()
+    }, 1000)
   },
 
   setScrollbarWidth() {
     this.scrollBarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
+      window.innerWidth - document.documentElement.clientWidth
   },
 
   setWPMatchMediaEvent() {
     if (!this.wpAdminBar) {
-      this.wpAdminBar = document.getElementById("wpadminbar");
-      if (!this.wpAdminBar) return;
+      this.wpAdminBar = document.getElementById("wpadminbar")
+      if (!this.wpAdminBar) return
     }
-    this.setWPAdminBarSize();
-    mq.addEventListener("change", () => this.setWPAdminBarSize());
+    this.setWPAdminBarSize()
+    mq.addEventListener("change", () => this.setWPAdminBarSize())
   },
 
   setWPAdminBarSize() {
-    if (!this.wpAdminBar) return;
-    const size = this.wpAdminBar.getBoundingClientRect();
-    this.$el.style.setProperty("--wp-adminbar-height", `${size.height}px`);
+    if (!this.wpAdminBar) return
+    const size = this.wpAdminBar.getBoundingClientRect()
+    this.$el.style.setProperty("--wp-adminbar-height", `${size.height}px`)
   },
-});
+})

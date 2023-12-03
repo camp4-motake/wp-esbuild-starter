@@ -1,21 +1,21 @@
-import type { AlpineComponent, Bindings } from "alpinejs";
-import { sleep } from "../util/sleep";
+import type { AlpineComponent, Bindings } from "alpinejs"
+import { sleep } from "../util/sleep"
 
 export type State = {
-  isRunning: boolean;
-  isOpen: boolean;
-  isTriggerActive: boolean;
-  accordion: Bindings;
-  accordionTrigger: Bindings | { [key: string]: (event: Event) => void };
-  open: () => void;
-  close: () => void;
-  toggle: (open: boolean) => void;
-  animationTiming?: { duration: number | string; easing: string };
-  closeKeyframes: (el: HTMLElement) => Keyframe[];
-  openKeyframes: (el: HTMLElement) => Keyframe[];
-};
+  isRunning: boolean
+  isOpen: boolean
+  isTriggerActive: boolean
+  accordion: Bindings
+  accordionTrigger: Bindings | { [key: string]: (event: Event) => void }
+  open: () => void
+  close: () => void
+  toggle: (open: boolean) => void
+  animationTiming?: { duration: number | string; easing: string }
+  closeKeyframes: (el: HTMLElement) => Keyframe[]
+  openKeyframes: (el: HTMLElement) => Keyframe[]
+}
 
-const rootStyle = getComputedStyle(document.documentElement);
+const rootStyle = getComputedStyle(document.documentElement)
 
 export const accordion = (): AlpineComponent<State> => ({
   isRunning: false,
@@ -24,54 +24,54 @@ export const accordion = (): AlpineComponent<State> => ({
 
   accordion: {
     [":class"]() {
-      return { "-is-active": this.isOpen };
+      return { "-is-active": this.isOpen }
     },
     [":open"]() {
-      return this.isOpen;
+      return this.isOpen
     },
   },
 
   accordionTrigger: {
     [":class"]() {
-      return { "-is-active": this.isTriggerActive };
+      return { "-is-active": this.isTriggerActive }
     },
     ["@click"](event) {
-      event.preventDefault();
-      if (!this.isRunning) this.toggle(!this.isOpen);
+      event.preventDefault()
+      if (!this.isRunning) this.toggle(!this.isOpen)
     },
   },
 
   toggle(open) {
-    if (open) this.open();
-    else this.close();
+    if (open) this.open()
+    else this.close()
   },
 
   close() {
     const animation = this.$refs.accordionContent.animate(
       this.closeKeyframes(this.$refs.accordionContent),
       this.animationTiming,
-    );
-    this.isRunning = true;
-    this.isTriggerActive = false;
+    )
+    this.isRunning = true
+    this.isTriggerActive = false
     animation.onfinish = () => {
-      this.isOpen = false;
-      this.isRunning = false;
-    };
+      this.isOpen = false
+      this.isRunning = false
+    }
   },
 
   open() {
-    this.isOpen = true;
-    this.isTriggerActive = true;
-    this.isRunning = true;
-    this.$refs.accordionContent.style.height = "0";
+    this.isOpen = true
+    this.isTriggerActive = true
+    this.isRunning = true
+    this.$refs.accordionContent.style.height = "0"
     sleep(1).then(() => {
-      this.$refs.accordionContent.style.height = "";
+      this.$refs.accordionContent.style.height = ""
       const animation = this.$refs.accordionContent.animate(
         this.openKeyframes(this.$refs.accordionContent),
         this.animationTiming,
-      );
-      animation.onfinish = () => (this.isRunning = false);
-    });
+      )
+      animation.onfinish = () => (this.isRunning = false)
+    })
   },
 
   /**
@@ -82,9 +82,9 @@ export const accordion = (): AlpineComponent<State> => ({
     easing: rootStyle.getPropertyValue("--ease-out-circ"),
   },
   closeKeyframes(el) {
-    return [{ height: el.offsetHeight + "px" }, { height: 0 }];
+    return [{ height: el.offsetHeight + "px" }, { height: 0 }]
   },
   openKeyframes(el) {
-    return [{ height: 0 }, { height: el.offsetHeight + "px" }];
+    return [{ height: 0 }, { height: el.offsetHeight + "px" }]
   },
-});
+})

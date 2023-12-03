@@ -13,8 +13,8 @@
       content: "";
       background-color: currentcolor;
       mask-image: var(--mask-ico-arrow-right);
-      mask-position: center;
       mask-repeat: no-repeat;
+      mask-position: center;
       mask-size: 0.45em;
     }
   }
@@ -46,8 +46,8 @@
     content: "";
     background-color: currentcolor;
     mask-image: var(--mask-ico-external);
-    mask-position: center;
     mask-repeat: no-repeat;
+    mask-position: center;
     mask-size: 1em;
   }
 }
@@ -67,11 +67,11 @@
     height: 1.25em;
     content: "";
     background-color: currentColor;
-    transition: transform 0.2s ease;
     mask-image: var(--mask-ico-arrow-right);
-    mask-position: center;
     mask-repeat: no-repeat no-repeat;
+    mask-position: center;
     mask-size: contain;
+    transition: transform 0.2s ease;
   }
 
   &:hover {

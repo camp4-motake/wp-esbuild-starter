@@ -11,11 +11,11 @@ p.is-style-status-caution,
     margin-right: 0.25em;
     content: "";
     background-color: currentColor;
-    transform: translateY(0.1em);
     mask-image: var(--mask-ico-caution);
-    mask-position: center;
     mask-repeat: no-repeat;
+    mask-position: center;
     mask-size: contain;
+    transform: translateY(0.1em);
   }
 }
 

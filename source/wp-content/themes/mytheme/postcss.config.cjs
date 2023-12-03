@@ -1,5 +1,5 @@
 module.exports = (ctx) => {
-  const inProduction = process.env.NODE_ENV === "production";
+  const inProduction = process.env.NODE_ENV === "production"
 
   return {
     map: ctx.options.map,
@@ -16,5 +16,5 @@ module.exports = (ctx) => {
         ? { cssnano: { preset: ["default", { calc: false }] } }
         : null),
     },
-  };
-};
+  }
+}

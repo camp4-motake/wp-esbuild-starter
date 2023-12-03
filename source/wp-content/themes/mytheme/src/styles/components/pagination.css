@@ -104,8 +104,8 @@
       margin: auto;
       content: "";
       background-color: var(--color-base);
-      mask-position: center;
       mask-repeat: no-repeat no-repeat;
+      mask-position: center;
       mask-size: 0.45em;
     }
 

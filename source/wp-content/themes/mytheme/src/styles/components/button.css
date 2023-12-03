@@ -199,8 +199,8 @@
 .wp-block-button .wp-block-button__link[target="_blank"]::after {
   background-color: currentcolor;
   mask-image: var(--icon-bg-external);
-  mask-size: 0.75em;
   mask-position: left center;
+  mask-size: 0.75em;
 }
 
 .btn.-block {

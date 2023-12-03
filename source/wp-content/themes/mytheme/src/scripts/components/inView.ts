@@ -9,34 +9,34 @@
  *
  */
 
-import type { AlpineComponent, Bindings } from "alpinejs";
+import type { AlpineComponent, Bindings } from "alpinejs"
 
 export type State = {
-  isRepeat: boolean;
-  trigger: Bindings;
-  isReverse: () => boolean;
-};
+  isRepeat: boolean
+  trigger: Bindings
+  isReverse: () => boolean
+}
 
 export const inView = (...args: unknown[]): AlpineComponent<State> => ({
   isRepeat: args[0] === true,
 
   trigger: {
     ["x-init"](): void {
-      this.$el.dataset.scroll = "out";
+      this.$el.dataset.scroll = "out"
     },
 
     ["x-intersect:enter"](): void {
-      this.$el.dataset.scroll = "in";
+      this.$el.dataset.scroll = "in"
     },
 
     ["x-intersect:leave"](): void {
-      if (!this.isRepeat) return;
-      if (!this.isReverse()) return;
-      this.$el.dataset.scroll = "out";
+      if (!this.isRepeat) return
+      if (!this.isReverse()) return
+      this.$el.dataset.scroll = "out"
     },
   },
 
   isReverse() {
-    return Math.sign(this.$el.getBoundingClientRect().top) === 1;
+    return Math.sign(this.$el.getBoundingClientRect().top) === 1
   },
-});
+})
