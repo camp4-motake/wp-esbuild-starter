@@ -16,6 +16,7 @@
     "setup:init": "chmod +x ./bin/init.sh && ./bin/init.sh",
     "setup:tools": "npm run composer install",
     "setup:wp": "npm run wp-cli './env/setup.sh'",
+    "setup:all": "docker compose up -d && npm run setup:tools && npm run setup:wp",
     "lintFix": "prettier --write --list-different . && npm run lintFix:scripts && npm run lintFix:styles",
     "lintFix:styles": "stylelint \"source/wp-content/themes/mytheme/src/**/*.css\" --fix",
     "lintFix:scripts": "eslint --ignore-path .prettierignore --ext .js,.jsx,.cjs,.mjs,.ts,.tsx . --fix",
