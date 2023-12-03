@@ -1,14 +1,14 @@
 {
   "files.exclude": {
-    ".cache": true,
-    ".npmrc": true,
-    "composer.lock": true,
-    "node_modules": false,
-    "package-lock.json": true,
-    "source/wp-content/languages": true,
-    "source/wp-content/mu-plugins": true,
-    "source/wp-content/plugins": true,
-    "vendor": true
+    // ".cache": true,
+    // ".npmrc": true,
+    // "composer.lock": true,
+    // "node_modules": false,
+    // "package-lock.json": true,
+    // "source/wp-content/languages": true,
+    // "source/wp-content/mu-plugins": true,
+    // "source/wp-content/plugins": true,
+    // "vendor": true
   },
   "files.watcherExclude": {
     "source/wp-content/themes/mytheme/dist/*": true
