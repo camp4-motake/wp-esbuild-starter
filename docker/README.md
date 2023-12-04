@@ -17,6 +17,8 @@
 npm run setup:init
 ```
 
+必要に応じ、`.env`の `WP_PORT` を他プロジェクトと重複しない設値に変更してください。
+
 > 注: `.env`と`auth.json`がすでに存在している場合は生成されません。
 > .env ファイルが先に存在してる場合は docker/.env-sample の内容を参考に追記してください。
 
@@ -46,6 +48,7 @@ npm run setup:plugins
 npm run setup:wp
 ```
 
+以上の手順で dockerが起動します。
 初期設定では<http://localhost:${WP_PORT}> (ユーザー名: admin、パスワード: admin)　で利用可
 
 > 下層ページが表示されない場合は `npm run wp-cli 'wp rewrite flush --hard'`コマンドで flush、または管理画面でパーマリンクを更新
