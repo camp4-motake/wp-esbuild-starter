@@ -1,6 +1,6 @@
-module.exports = (ctx) => {
-  const inProduction = process.env.NODE_ENV === "production"
+const inProduction = process.env.NODE_ENV === "production"
 
+export default (ctx) => {
   return {
     map: ctx.options.map,
     plugins: {
