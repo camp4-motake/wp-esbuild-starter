@@ -11,13 +11,14 @@
 
 以降の手順はワークスペースルートを想定しています。
 
-1, 以下のコマンドでルートに`.env`と`auth.json`を作成します。
+1, 以下のコマンドを実行します。プロジェクトルートに`.env`と`auth.json`が作成されます。
 
 ```sh
 npm run setup:init
 ```
 
-> 注: `.env`と`auth.json`がすでに存在している場合は生成されません。.env ファイルが存在してる場合は docker/.env-sample の内容を参考に追記してください。
+> 注: `.env`と`auth.json`がすでに存在している場合は生成されません。
+> .env ファイルが先に存在してる場合は docker/.env-sample の内容を参考に追記してください。
 
 2, [auth.json](https://www.advancedcustomfields.com/resources/installing-acf-pro-with-composer/) の `username` キーに ACF Pro のライセンスキーを指定します。
 
@@ -54,13 +55,13 @@ npm run setup:wp
 ## その他
 
 ```sh
-# サーバーを再起動
+# コンテナを再起動
 docker compose restart
 
 # docker compose を停止
 docker compose down
 
-# docker compose を停止、環境内のボリュームをすべて削除（注： -v ではデータベースやアップロード画像などがすべて削除されます）
+# docker compose を停止し環境内のボリュームをすべて削除（注： -v ではデータベースやアップロード画像などがすべて削除されます）
 docker compose down -v
 
 # [利用時注意] 完全に削除 - docker compose で作られた、コンテナ、イメージ、ボリューム、ネットワークそして未定義コンテナ、全てを一括消去
