@@ -1,5 +1,5 @@
 import type { AlpineComponent, Bindings } from "alpinejs"
-import { sleep } from "../util/sleep"
+import { sleep } from "../utils/sleep"
 
 export type State = {
   isRunning: boolean
