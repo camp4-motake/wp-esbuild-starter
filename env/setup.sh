@@ -6,6 +6,7 @@ wp core install --url='http://localhost:'$WP_PORT \
                 --admin_password=$WP_ADMIN_PASSWORD \
                 --admin_email=$WP_ADMIN_MAIL
 
+wp language core install ja
 wp site switch-language ja
 
 wp rewrite structure /%post_id%/
