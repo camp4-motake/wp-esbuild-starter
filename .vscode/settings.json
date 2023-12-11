@@ -27,7 +27,7 @@
   "intelephense.environment.includePaths": ["source/wp-content/plugins"],
   "[typescript]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     }
   },
   "[handlebars]": {
