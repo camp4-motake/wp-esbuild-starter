@@ -38,10 +38,10 @@ npm run setup:init
 3, 以下の手順でセットアップを実行します。
 
 ```sh
-# 1, docker を起動
+# docker を起動
 docker compose up -d
 
-# 2, [任意]WordPress の簡易設定を実行（管理画面で手動設定、または他のデータベースをインポートする場合は不要です）
+# [任意] WordPress の簡易設定を実行（管理画面で手動設定、または他のデータベースをインポートする場合は不要です）
 npm run setup:wp
 ```
 
