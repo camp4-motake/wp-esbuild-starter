@@ -6,10 +6,7 @@ export default (ctx) => {
     plugins: {
       "postcss-easy-import": {},
       "postcss-url": { filter: "**/_inline/*", url: "inline" },
-      "postcss-preset-env": {
-        stage: 2,
-        features: { "nesting-rules": true, "custom-properties": false },
-      },
+      "postcss-preset-env": { stage: 2, features: { "nesting-rules": true } },
       "postcss-sort-media-queries": {},
       ...(inProduction
         ? { cssnano: { preset: ["default", { calc: false }] } }
