@@ -41,10 +41,7 @@ npm run setup:init
 # 1, docker を起動
 docker compose up -d
 
-# 2, composer で依存モジュールやプラグインをインストール
-npm run setup:plugins
-
-# 3, [任意]WordPress の簡易設定を実行（管理画面で手動設定、または他のデータベースをインポートする場合は不要です）
+# 2, [任意]WordPress の簡易設定を実行（管理画面で手動設定、または他のデータベースをインポートする場合は不要です）
 npm run setup:wp
 ```
 
@@ -52,6 +49,7 @@ npm run setup:wp
 初期設定では<http://localhost:${WP_PORT}> (ユーザー名: admin、パスワード: admin)　で利用可
 
 > 下層ページが表示されない場合は `npm run wp-cli 'wp rewrite flush --hard'`コマンドで flush、または管理画面でパーマリンクを更新
+> `npm run setup:wp` でエラーが出る場合は、10秒ほどおいてから実行してください。
 
 ---
 

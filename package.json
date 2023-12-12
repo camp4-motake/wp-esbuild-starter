@@ -14,13 +14,11 @@
     "dev:serve": "browser-sync start --config bs-config.cjs",
     "build": "dotenv -- npm run build --workspaces --if-present --silent",
     "--- tools ---": "",
-    "composer": "docker run --rm --interactive --tty --volume $PWD:/app composer",
+    "composer": "docker compose run --rm composer",
     "wp-cli": "docker compose run --rm cli bash -c",
     "--- setup ---": "",
     "setup:init": "chmod +x ./env/*.sh && chmod +x ./bin/init.sh && ./bin/init.sh",
-    "setup:plugins": "npm run composer install",
-    "setup:plugins-update": "npm run composer update",
-    "setup:wp": "docker compose run cli bash './env/setup.sh'",
+    "setup:wp": "docker compose run --rm cli bash './env/setup.sh'",
     "--- lint ---": "",
     "lintFix": "dotenv --silent -- run-s lintFix:**",
     "lintFix:format": "prettier --write --list-different .",
@@ -51,6 +49,6 @@
     "source/wp-content/themes/mytheme"
   ],
   "volta": {
-    "node": "18.17.1"
+    "node": "20.10.0"
   }
 }

@@ -61,6 +61,13 @@ services:
       TZ: Asia/Tokyo
     # working_dir: /var/www/html/wordpress
 
+  composer:
+    image: composer
+    env_file: .env
+    command: sh -c "composer install"
+    volumes:
+      - ./:/app
+
 volumes:
   wp_data:
   db_data:
