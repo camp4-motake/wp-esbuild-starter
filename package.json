@@ -33,17 +33,17 @@
     "wp-import": "docker compose run cli bash env/import.sh"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.13.1",
-    "@typescript-eslint/parser": "^6.13.1",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
     "browser-sync": "^2.29.3",
     "dotenv-cli": "^7.3.0",
     "eslint": "8.55.0",
     "eslint-config-prettier": "9.1.0",
     "npm-run-all2": "^6.1.1",
-    "prettier": "^3.1.0",
-    "stylelint": "15.11.0",
+    "prettier": "^3.1.1",
+    "stylelint": "16.0.2",
     "stylelint-config-recess-order": "4.4.0",
-    "stylelint-config-recommended": "13.0.0"
+    "stylelint-config-recommended": "14.0.0"
   },
   "workspaces": [
     "source/wp-content/themes/mytheme"
