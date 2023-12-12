@@ -55,7 +55,25 @@ npm run setup:wp
 
 ## その他
 
+### tools
+
 ```sh
+# wp cli
+docker compose run --rm cli bash -c wp plugin list
+
+# composer (plugin)
+docker compose run --rm composer update
+
+# composer (theme module)
+docker compose run --rm composer bash -c 'composer update -d source/wp-content/themes/$WP_THEME_NAME'
+```
+
+### docker compose
+
+```sh
+# docker を起動
+docker compose up -d
+
 # コンテナを再起動
 docker compose restart
 
@@ -68,3 +86,5 @@ docker compose down -v
 # [利用時注意] 完全に削除 - docker compose で作られた、コンテナ、イメージ、ボリューム、ネットワークそして未定義コンテナ、全てを一括消去
 docker compose down --rmi all --volumes --remove-orphans
 ```
+
+> その他のコマンドは公式ドキュメントなど参照
