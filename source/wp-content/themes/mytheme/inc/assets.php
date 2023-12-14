@@ -10,8 +10,8 @@ add_action('wp_enqueue_scripts', function () {
 
   // dev
   if (wp_get_environment_type() === 'local' && file_exists(get_theme_file_path('dist/.dev'))) {
-    wp_enqueue_script('vite', 'http://localhost:5173/@vite/client', array(), null);
-    wp_enqueue_script(THEME_DOMAIN, 'http://localhost:5173/src/main.ts', array(), null);
+    wp_enqueue_script('vite', 'http://localhost:5173/@vite/client', [], null);
+    wp_enqueue_script(THEME_DOMAIN, 'http://localhost:5173/src/main.ts', [], null);
     return;
   }
 
@@ -22,7 +22,7 @@ add_action('wp_enqueue_scripts', function () {
 
     $styles = $manifest['src/main.ts']['css'];
     foreach ($styles as $i => $css) {
-      wp_enqueue_style(str_replace('.css', '', $css), get_theme_file_uri('dist/' . $css), array(), null);
+      wp_enqueue_style(str_replace('.css', '', $css), get_theme_file_uri('dist/' . $css), [], null);
     }
   }
 }, 100);
