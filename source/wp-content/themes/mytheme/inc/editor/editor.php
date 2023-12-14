@@ -11,7 +11,6 @@ use Lib\Helper\Path;
  * @return void
  */
 add_action("admin_enqueue_scripts", function () {
-  Head\enqueue_google_fonts(); // Google fonts
   wp_enqueue_script(THEME_DOMAIN . '-editor', Path\cache_buster('dist/editor.js'), [], null);
   wp_enqueue_style(THEME_DOMAIN . '-editor', Path\cache_buster('dist/editor.css'), [], null);
 }, 100);

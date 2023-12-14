@@ -57,7 +57,7 @@ function preload_scripts()
 
   // preload as script
   foreach ($wp_scripts->queue as $handle) {
-    if (in_array($handle, [THEME_DOMAIN])) {
+    if (in_array($handle, ['vite', THEME_DOMAIN])) {
       continue;
     }
 

@@ -144,6 +144,7 @@ Movefile
 .php-cs-fixer.cache
 
 # workspace
+.DS_Store
 # /source/wp-content/*
 /source/wp-content/languages
 /source/wp-content/plugins

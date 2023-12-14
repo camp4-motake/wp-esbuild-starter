@@ -3,7 +3,6 @@ import path from "path"
 import util from "util"
 import * as url from "url"
 import { execFile } from "node:child_process"
-import { globbySync } from "globby"
 import sharp from "sharp"
 
 const execFilePromise = util.promisify(execFile)

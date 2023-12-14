@@ -1,6 +1,10 @@
 @import "config/custom-media";
 @import "config/custom-property";
-@import "ress"; /* https://github.com/filipelinhares/ress */
+
+/* https://github.com/filipelinhares/ress */
+@import "ress";
+
+/*
 @import "global/*.css";
 @import "plugins/*.css";
 @import "blocks/*.css";
@@ -8,3 +12,4 @@
 @import "partials/*.css";
 @import "utils/*.css";
 @import "routes/*.css";
+*/

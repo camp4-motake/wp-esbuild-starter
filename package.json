@@ -9,9 +9,7 @@
     "node": "^18 || ^20"
   },
   "scripts": {
-    "dev": "dotenv -- run-p dev:*",
-    "dev:packages": "npm run dev --silent --workspaces --if-present",
-    "dev:serve": "browser-sync start --config bs-config.cjs",
+    "dev": "dotenv -- npm run dev --workspaces --if-present --silent",
     "build": "dotenv -- npm run build --workspaces --if-present --silent",
     "--- tools ---": "",
     "composer": "docker compose run --rm composer",
@@ -35,7 +33,6 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
-    "browser-sync": "^2.29.3",
     "dotenv-cli": "^7.3.0",
     "eslint": "8.55.0",
     "eslint-config-prettier": "9.1.0",
