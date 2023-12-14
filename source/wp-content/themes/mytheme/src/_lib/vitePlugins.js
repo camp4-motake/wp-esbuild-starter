@@ -10,7 +10,7 @@ import ImgMin from "./ImgMin.js"
  * @param {string[]} images target glob array
  * @returns
  */
-export function pluginImage(images = []) {
+export function pluginImage(images = [], imgOptions = {}) {
   const dirname = path.dirname(fileURLToPath(import.meta.url))
   const root = findWorkspaceRoot(dirname) || "./"
 
@@ -22,6 +22,7 @@ export function pluginImage(images = []) {
         base: "./src",
         cacheDir: path.resolve(root, `node_modules/.cache/images`),
       },
+      ...imgOptions,
     })
     return await img.run()
   }
@@ -29,21 +30,17 @@ export function pluginImage(images = []) {
   return {
     name: "image",
     async buildStart() {
-      if (process.env.NODE_ENV === "development") {
-        await imgTask(images)
-      }
+      if (process.env.NODE_ENV === "development") await imgTask(images)
     },
     async buildEnd() {
-      if (process.env.NODE_ENV === "production") {
-        await imgTask(images)
-      }
+      if (process.env.NODE_ENV === "production") await imgTask(images)
     },
     async watchChange(id, change) {
       if (change.event === "delete") return
+      const src = path.relative(process.env.PWD, id)
       const watchPaths = await globby(images)
-      const src = `.${id.replace(dirname, "")}`
-      if (watchPaths.some((ext) => src.endsWith(ext))) {
-        await imgTask(src)
+      if (watchPaths.some((ext) => `./${src}`.endsWith(ext))) {
+        await imgTask(`./${src}`)
       }
     },
   }
