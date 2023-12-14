@@ -3,6 +3,7 @@ import path from "path"
 import util from "util"
 import * as url from "url"
 import { execFile } from "node:child_process"
+import { globby } from "globby"
 import sharp from "sharp"
 
 const execFilePromise = util.promisify(execFile)
@@ -28,7 +29,7 @@ class ImgMin {
   }
 
   async run() {
-    const files = globbySync(this.data.src)
+    const files = await globby(this.data.src)
     return await Promise.all([files.map((file) => this._optimize(file))])
   }
 
