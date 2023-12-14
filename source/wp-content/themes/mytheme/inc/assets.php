@@ -18,12 +18,11 @@ add_action('wp_enqueue_scripts', function () {
   // prod
   if (file_exists($manifestPath)) {
     $manifest = json_decode(file_get_contents($manifestPath), true);
-    wp_enqueue_script(THEME_DOMAIN, get_theme_file_uri('dist/' . $manifest['src/main.ts']['file']));
-
-    $styles = $manifest['src/main.ts']['css'];
+    $styles   = $manifest['src/main.ts']['css'];
     foreach ($styles as $i => $css) {
       wp_enqueue_style(str_replace('.css', '', $css), get_theme_file_uri('dist/' . $css), [], null);
     }
+    wp_enqueue_script(THEME_DOMAIN, get_theme_file_uri('dist/' . $manifest['src/main.ts']['file']));
   }
 }, 100);
 
