@@ -2,17 +2,22 @@
 
 namespace Lib\Editor;
 
-use Lib\Head;
-use Lib\Helper\Path;
-
 /**
  * ブロックエディター用アセットをロード
  *
  * @return void
  */
 add_action("admin_enqueue_scripts", function () {
-  wp_enqueue_script(THEME_DOMAIN . '-editor', Path\cache_buster('dist/editor.js'), [], null);
-  wp_enqueue_style(THEME_DOMAIN . '-editor', Path\cache_buster('dist/editor.css'), [], null);
+  $manifestPath = get_theme_file_path('dist/.vite/manifest.json');
+  if (!file_exists($manifestPath)) return;
+
+  $manifest = json_decode(file_get_contents($manifestPath), true);
+  wp_enqueue_script(THEME_DOMAIN, get_theme_file_uri('dist/' . $manifest['src/editor.ts']['file']));
+
+  $styles = $manifest['src/editor.ts']['css'];
+  foreach ($styles as $i => $css) {
+    wp_enqueue_style(str_replace('.css', '', $css), get_theme_file_uri('dist/' . $css));
+  }
 }, 100);
 
 /**
