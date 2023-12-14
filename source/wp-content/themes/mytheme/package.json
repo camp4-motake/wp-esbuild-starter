@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "predev": "npm run clean && mkdir -p dist && touch dist/dev",
+    "predev": "npm run clean && mkdir -p dist && touch dist/.dev",
     "prebuild": "npm run clean",
     "clean": "rimraf dist/*"
   },

@@ -8,7 +8,7 @@ namespace Lib\Assets;
 add_action('wp_enqueue_scripts', function () {
   $manifestPath = get_theme_file_path('dist/.vite/manifest.json');
 
-  if (wp_get_environment_type() === 'local' && file_exists(get_theme_file_path('dist/dev'))) {
+  if (wp_get_environment_type() === 'local' && file_exists(get_theme_file_path('dist/.dev'))) {
     wp_enqueue_script('vite', 'http://localhost:5173/@vite/client', array(), null);
     wp_enqueue_script(THEME_DOMAIN, 'http://localhost:5173/src/main.ts', array(), null);
   } elseif (file_exists($manifestPath)) {
