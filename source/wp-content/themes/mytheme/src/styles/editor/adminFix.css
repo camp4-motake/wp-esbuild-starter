@@ -1,3 +1,7 @@
+.editor-styles-wrapper {
+  padding: 0 var(--spacer) var(--spacer-2xl) !important;
+}
+
 /* サイドバーの「カテゴリーを追加」ボタンを非表示 */
 .components-button.editor-post-taxonomies__hierarchical-terms-add {
   display: none !important;
@@ -5,4 +9,12 @@
 
 .acf-input textarea:not(:focus) {
   border: 1px solid #8c8f94;
+}
+
+.acf-flexible-content .layout .acf-fc-layout-handle {
+  background-color: #f4f4f4;
+}
+
+.acf-flexible-content .layout .acf-fc-layout-order {
+  background-color: #fff;
 }

@@ -38,7 +38,6 @@ require_once "inc/googlefonts.php";
 require_once "inc/hooks.php";
 require_once "inc/lib/wrapper.php";
 require_once "inc/pre-get-posts.php";
-require_once "inc/preload.php";
 require_once "inc/setup.php";
 require_once "inc/shortcode.php";
 require_once "inc/siteicon.php";
