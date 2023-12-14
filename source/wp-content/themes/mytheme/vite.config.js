@@ -1,6 +1,7 @@
 import { defineConfig } from "vite"
 import { pluginImage, pluginReload } from "./src/_lib/vitePlugins.js"
-import postcssConfig from "./postcss.config.js"
+
+const { VITE_SERVER_OPEN, WP_PORT } = process.env
 
 // https://ja.vitejs.dev/config/
 export default defineConfig({
@@ -17,15 +18,10 @@ export default defineConfig({
     },
   },
 
-  server: {
-    open:
-      process.env.VITE_SERVER_OPEN || `http://localhost:${process.env.WP_PORT}`,
-  },
-
-  css: { postcss: postcssConfig },
+  server: { open: VITE_SERVER_OPEN || `http://localhost:${WP_PORT}` },
 
   plugins: [
-    pluginReload(["**/*.php", "dist/images/**/*"]),
     pluginImage(["./src/images/**/*.{jpg,jpeg,png,svg}", "!./src/**/_*/**"]),
+    pluginReload(["**/*.php", "dist/images/**/*"]),
   ],
 })
