@@ -22,7 +22,7 @@ add_action('wp_enqueue_scripts', function () {
 
     $styles = $manifest['src/main.ts']['css'];
     foreach ($styles as $i => $css) {
-      wp_enqueue_style(str_replace('.css', '', $css), get_theme_file_uri('dist/' . $css));
+      wp_enqueue_style(str_replace('.css', '', $css), get_theme_file_uri('dist/' . $css), array(), null);
     }
   }
 }, 100);
