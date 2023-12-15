@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => {
    */
   if (mode === "production" && WP_ENTRY === "editor") {
     return {
+      publicDir: "src/static",
       build: {
         outDir: "dist",
         assetsDir: "",
@@ -26,6 +27,7 @@ export default defineConfig(({ mode }) => {
    * "main" assets config
    */
   return {
+    publicDir: "src/static",
     build: {
       outDir: "dist",
       assetsDir: "",
@@ -33,9 +35,9 @@ export default defineConfig(({ mode }) => {
       manifest: ".vite/manifest.main.json",
       rollupOptions: { input: { main: "src/main.ts" } },
     },
-    server: {
-      open: VITE_SERVER_OPEN || `http://localhost:${WP_PORT}`,
-    },
+
+    server: { open: VITE_SERVER_OPEN || `http://localhost:${WP_PORT}` },
+
     plugins: [
       pluginImage(["./src/images/**/*.{jpg,jpeg,png,svg}", "!./src/**/_*/**"]),
       pluginReload(["**/*.php", "dist/images/**/*"]),
