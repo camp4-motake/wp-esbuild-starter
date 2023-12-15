@@ -1,14 +1,9 @@
-import type { AlpineComponent, Bindings } from "alpinejs"
+import Alpine from "alpinejs"
 import { loadDefaultJapaneseParser, type HTMLProcessingParser } from "budoux"
-
-export type State = {
-  budouX: Bindings
-  parseString: () => Promise<string>
-}
 
 const parser: HTMLProcessingParser = loadDefaultJapaneseParser()
 
-export const budouX = (): AlpineComponent<State> => ({
+Alpine.data("budouX", () => ({
   budouX: {
     ["x-html"]() {
       return this.parseString()
@@ -18,4 +13,4 @@ export const budouX = (): AlpineComponent<State> => ({
   async parseString() {
     return parser.translateHTMLString(this.$el.innerHTML)
   },
-})
+}))

@@ -1,23 +1,18 @@
-import type { AlpineComponent, Bindings } from "alpinejs"
-import type { Store } from "../stores"
-
-export type State = {
-  scrollBarWidth: number
-  interval?: NodeJS.Timer
-  isRecaptcha: boolean
-  wpAdminBar?: Element | undefined | null
-  root: Bindings
-  setScrollbarWidth: () => void
-  scrollBarCheckInterval: () => void
-  setWPMatchMediaEvent: () => void
-  setWPAdminBarSize: () => void
-}
+import Alpine from "alpinejs"
+import type { MenuStatus } from "../stores/menuStatus"
+import type { SiteStatus } from "../stores/siteStatus"
 
 const mq = window.matchMedia("screen and (max-width: 782px)")
 
-export const root = (): AlpineComponent<State & Store> => ({
-  scrollBarWidth: 0,
+Alpine.data("app", () => ({
+  get $store(): SiteStatus & MenuStatus {
+    return this.$store
+  },
+
+  interval: 0,
   isRecaptcha: false,
+  scrollBarWidth: 0,
+  wpAdminBar: null as null | HTMLElement,
 
   init() {
     this.$nextTick(() => {
@@ -37,20 +32,16 @@ export const root = (): AlpineComponent<State & Store> => ({
           this.$store.siteStatus.isScrollDown || this.$store.menuStatus.shown,
       }
     },
-
     [":style"]() {
-      return {
-        "--window-scroll-bar-width": `${this.scrollBarWidth}px`,
-      }
+      return { "--window-scroll-bar-width": `${this.scrollBarWidth}px` }
     },
-
     ["@resize.window"]() {
       this.setWPAdminBarSize()
     },
   },
 
   scrollBarCheckInterval() {
-    this.interval = setInterval(() => {
+    this.interval = window.setInterval(() => {
       this.setScrollbarWidth()
     }, 1000)
   },
@@ -61,10 +52,9 @@ export const root = (): AlpineComponent<State & Store> => ({
   },
 
   setWPMatchMediaEvent() {
-    if (!this.wpAdminBar) {
-      this.wpAdminBar = document.getElementById("wpadminbar")
-      if (!this.wpAdminBar) return
-    }
+    this.wpAdminBar = document.getElementById("wpadminbar")
+    if (!this.wpAdminBar) return
+
     this.setWPAdminBarSize()
     mq.addEventListener("change", () => this.setWPAdminBarSize())
   },
@@ -74,4 +64,4 @@ export const root = (): AlpineComponent<State & Store> => ({
     const size = this.wpAdminBar.getBoundingClientRect()
     this.$el.style.setProperty("--wp-adminbar-height", `${size.height}px`)
   },
-})
+}))

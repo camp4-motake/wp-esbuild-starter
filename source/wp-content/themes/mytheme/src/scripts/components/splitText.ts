@@ -2,23 +2,18 @@
  * split text
  */
 
-import type { AlpineComponent, Bindings } from "alpinejs"
-import Splitting from "splitting"
+// import Alpine from "alpinejs"
+// import Splitting from "splitting"
 
-export type State = {
-  isRepeat: boolean
-  splitText: Bindings
-}
+// Alpine.data("splitText", () => ({
+//   isRepeat: false,
 
-export const splitText = (): AlpineComponent<State> => ({
-  isRepeat: false,
-
-  splitText: {
-    ["x-init"](): void {
-      this.$el.dataset.scroll = "out"
-    },
-    ["x-html"]() {
-      return Splitting.html({ content: this.$el.innerText, by: "chars" })
-    },
-  },
-})
+//   splitText: {
+//     ["x-init"](): void {
+//       this.$el.dataset.scroll = "out"
+//     },
+//     ["x-html"]() {
+//       return Splitting.html({ content: this.$el.innerText, by: "chars" })
+//     },
+//   },
+// }))
