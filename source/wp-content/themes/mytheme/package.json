@@ -15,6 +15,7 @@
     "clean": "rimraf dist/*"
   },
   "devDependencies": {
+    "@csstools/postcss-global-data": "^2.1.0",
     "@types/alpinejs": "^3.13.5",
     "@types/node": "^20.10.4",
     "find-yarn-workspace-root": "^2.0.0",
