@@ -1,18 +1,10 @@
 /**
- * 不要なデフォルトブロックを解除
- *
- * ex)
- * https://www.nxworld.net/wp-gutenberg-remove-default-block-using-blacklist.html
+ * 利用可能ブロックを制限
  */
 export const allowedBlock = () => {
   // 許可ブロックリスト
+  // console.log(wp.blocks.getBlockTypes());
   const allowedBlockList = [
-    // ---------------- plugins
-    // "safe-svg/svg-icon",
-    // "yoast-seo/breadcrumbs",
-    // "yoast/how-to-block",
-    // "yoast/faq-block",
-
     // ---------------- core
     "core/paragraph",
     "core/image",
@@ -107,12 +99,16 @@ export const allowedBlock = () => {
     // "core/post-author-biography",
     // "core/legacy-widget",
     // "core/widget-group",
+
+    // ---------------- plugins
+    // "safe-svg/svg-icon",
+    // "yoast-seo/breadcrumbs",
+    // "yoast/how-to-block",
+    // "yoast/faq-block",
   ]
 
   // embedで許可するブロック
-  const allowedEmbedVariation = ["twitter", "youtube"]
-
-  // console.log(wp.blocks.getBlockTypes());
+  const allowedEmbedVariation = ["twitter", "youtube", "spotify"]
 
   // 不許可デフォルトブロックを解除
   wp.blocks.getBlockTypes().forEach((block: { name: string }) => {
