@@ -1,23 +1,9 @@
-import type { AlpineComponent, Bindings } from "alpinejs"
+import Alpine from "alpinejs"
 import { sleep } from "../utils/sleep"
 
-export type State = {
-  isRunning: boolean
-  isOpen: boolean
-  isTriggerActive: boolean
-  accordion: Bindings
-  accordionTrigger: Bindings | { [key: string]: (event: Event) => void }
-  open: () => void
-  close: () => void
-  toggle: (open: boolean) => void
-  animationTiming?: { duration: number | string; easing: string }
-  closeKeyframes: (el: HTMLElement) => Keyframe[]
-  openKeyframes: (el: HTMLElement) => Keyframe[]
-}
+const rootStyle = () => getComputedStyle(document.documentElement)
 
-const rootStyle = getComputedStyle(document.documentElement)
-
-export const accordion = (): AlpineComponent<State> => ({
+Alpine.data("accordion", () => ({
   isRunning: false,
   isOpen: false,
   isTriggerActive: false,
@@ -35,13 +21,13 @@ export const accordion = (): AlpineComponent<State> => ({
     [":class"]() {
       return { "-is-active": this.isTriggerActive }
     },
-    ["@click"](event) {
-      event.preventDefault()
+    ["@click"]({ preventDefault }: Event) {
+      preventDefault()
       if (!this.isRunning) this.toggle(!this.isOpen)
     },
   },
 
-  toggle(open) {
+  toggle(open: boolean) {
     if (open) this.open()
     else this.close()
   },
@@ -79,12 +65,12 @@ export const accordion = (): AlpineComponent<State> => ({
    */
   animationTiming: {
     duration: 400,
-    easing: rootStyle.getPropertyValue("--ease-out-circ"),
+    easing: rootStyle().getPropertyValue("--ease-out-circ"),
   },
-  closeKeyframes(el) {
+  closeKeyframes(el: HTMLElement) {
     return [{ height: el.offsetHeight + "px" }, { height: 0 }]
   },
-  openKeyframes(el) {
+  openKeyframes(el: HTMLElement) {
     return [{ height: 0 }, { height: el.offsetHeight + "px" }]
   },
-})
+}))

@@ -6,7 +6,7 @@ Docker の初期設定 -> [docker/README.md](docker/README.md)
 # 初期化
 npm ci
 
-# dev （dockerでWP環境を起動している場合のみ）
+# dev （docker の WordPress 起動時）
 npm run dev
 
 # build

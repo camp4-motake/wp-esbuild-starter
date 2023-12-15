@@ -1,16 +1,11 @@
 <?php
 
-// use Lib\Helper\Image;
-use Lib\Helper\Path;
-
 $site_name = get_bloginfo('name');
 
 ?>
 <header class="header">
   <div class="header-container">
-    <a href="<?= home_url(); ?>" class="header-brand" title="<?= esc_html($site_name); ?>">
-      <img src="<?= Path\cache_buster('dist/images/logo-brand.svg') ?>" width="246" height="32" alt=" <?= esc_html($site_name); ?>" decoding="async">
-    </a>
+    <a href="<?= home_url(); ?>" class="header-brand" title="<?= esc_html($site_name); ?>"><?= esc_html($site_name); ?></a>
     <div class="header-body">
       <nav>
         <?php
@@ -29,12 +24,14 @@ $site_name = get_bloginfo('name');
 
         ?>
       </nav>
-      <?php /*
+      <?php
+      /*
       <button type="button" class="menu-toggle" title="Menu Open" x-data="menuToggle" x-bind="toggle">
         <i class="menu-toggle-image -toggle" role="presentation"><?= Image\inline_svg('dist/images/menu-toggle.svg');  ?></i>
         <i class="menu-toggle-image -close" role="presentation"><?= Image\inline_svg('dist/images/menu-close.svg');  ?></i>
       </button>
-      */ ?>
+      */
+      ?>
     </div>
   </div>
 </header>

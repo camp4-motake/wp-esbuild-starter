@@ -9,9 +9,7 @@
     "node": "^18 || ^20"
   },
   "scripts": {
-    "dev": "dotenv -- run-p dev:*",
-    "dev:packages": "npm run dev --silent --workspaces --if-present",
-    "dev:serve": "browser-sync start --config bs-config.cjs",
+    "dev": "dotenv -- npm run dev --workspaces --if-present --silent",
     "build": "dotenv -- npm run build --workspaces --if-present --silent",
     "--- tools ---": "",
     "composer": "docker compose run --rm composer",
@@ -20,7 +18,7 @@
     "setup:init": "chmod +x ./env/*.sh && chmod +x ./bin/init.sh && ./bin/init.sh",
     "setup:wp": "docker compose run --rm cli bash './env/setup.sh'",
     "--- lint ---": "",
-    "lintFix": "dotenv --silent -- run-s lintFix:**",
+    "lintFix": "dotenv -- run-s lintFix:**",
     "lintFix:format": "prettier --write --list-different .",
     "lintFix:styles": "stylelint source/wp-content/themes/$WP_THEME_NAME/src/**/*.css --fix",
     "lintFix:scripts": "eslint --ignore-path .prettierignore . --fix",
@@ -35,7 +33,6 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
-    "browser-sync": "^2.29.3",
     "dotenv-cli": "^7.3.0",
     "eslint": "8.55.0",
     "eslint-config-prettier": "9.1.0",

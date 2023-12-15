@@ -1,9 +1,8 @@
 {
   "files.exclude": {
     ".cache": true,
-    ".npmrc": true,
     "composer.lock": true,
-    "node_modules": false,
+    "node_modules": true,
     "package-lock.json": true,
     "source/wp-content/languages": true,
     "source/wp-content/mu-plugins": true,
@@ -13,9 +12,6 @@
   "files.watcherExclude": {
     "source/wp-content/themes/mytheme/dist/*": true
   },
-  "alpine-intellisense.settings.languageScopes": "html,php",
-  "css.validate": false,
-  "postcss.validate": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "emmet.includeLanguages": {
@@ -24,6 +20,9 @@
   "files.associations": {
     "*.css": "postcss"
   },
+  "css.validate": false,
+  "postcss.validate": false,
+  "alpine-intellisense.settings.languageScopes": "html,php",
   "intelephense.environment.includePaths": ["source/wp-content/plugins"],
   "[typescript]": {
     "editor.codeActionsOnSave": {

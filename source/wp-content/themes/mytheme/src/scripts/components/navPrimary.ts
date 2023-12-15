@@ -1,12 +1,11 @@
-import type { AlpineComponent, Bindings } from "alpinejs"
-import type { Store } from "../stores"
+import Alpine from "alpinejs"
+import { MenuStatus } from "../stores/menuStatus"
 
-export type State = {
-  navPrimary: Bindings
-  navPrimaryLink: Bindings
-}
+Alpine.data("navPrimary", () => ({
+  get $store(): MenuStatus {
+    return this.$store
+  },
 
-export const navPrimary = (): AlpineComponent<State & Store> => ({
   navPrimary: {
     ["x-init"]() {
       this.$watch("$store.menuStatus.shown", (isShown) => {
@@ -23,4 +22,4 @@ export const navPrimary = (): AlpineComponent<State & Store> => ({
       this.$store.menuStatus.shown = false
     },
   },
-})
+}))

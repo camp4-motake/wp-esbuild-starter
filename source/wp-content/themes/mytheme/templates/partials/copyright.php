@@ -5,13 +5,16 @@ $ctx = wp_parse_args($args, [
 ]);
 
 $class_name = 'copyright';
+
 if ($ctx['class']) {
   $class_name .= ' ' . esc_attr($ctx['class']);
 }
 
+$start_year = 2024;
 $year = (int) date('Y');
-if ($year > 2023) {
-  $year = '2023-' . $year;
+
+if ($year > $start_year) {
+  $year = $start_year . '-' . $year;
 }
 
 ?>

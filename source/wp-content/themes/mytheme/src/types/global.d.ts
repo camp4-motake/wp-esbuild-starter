@@ -1,7 +1,6 @@
 import { Alpine as AlpineType } from "alpinejs"
 
 declare global {
-  // WORKAROUND
   const wp: WPBlocks
 
   interface Window {

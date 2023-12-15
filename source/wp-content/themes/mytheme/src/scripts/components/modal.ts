@@ -1,34 +1,18 @@
-import type { AlpineComponent, Bindings } from "alpinejs"
-import { Store } from "../stores"
-
-type MenuBinding = Bindings | { [key: string]: (event: Event) => void }
-
-export type State = {
-  isRunning: boolean
-  isOpen: boolean
-  isTriggerActive: boolean
-  dialog?: HTMLDialogElement
-  modalDialog: MenuBinding
-  modalTrigger: MenuBinding
-  modalClose: MenuBinding
-  open: () => void
-  close: () => void
-  animationTiming?: {
-    duration: number | string
-    easing: string
-  }
-  closeKeyframes: (el: HTMLElement) => Keyframe[]
-  openKeyframes: (el: HTMLElement) => Keyframe[]
-}
+import Alpine from "alpinejs"
+import { SiteStatus } from "../stores/siteStatus"
 
 const rootStyle = getComputedStyle(document.documentElement)
 const closeIgnore = "[data-modal-content]"
 
-export const modal = (): AlpineComponent<State & Store> => ({
-  isRunning: false,
+Alpine.data("modal", () => ({
+  get $store(): SiteStatus {
+    return this.$store
+  },
+
+  dialog: null as null | HTMLDialogElement,
   isOpen: false,
+  isRunning: false,
   isTriggerActive: false,
-  dialog: undefined,
 
   modalDialog: {
     ["x-init"]() {
@@ -41,7 +25,7 @@ export const modal = (): AlpineComponent<State & Store> => ({
     [":open"]() {
       return this.isOpen
     },
-    ["@click"]({ target }) {
+    ["@click"]({ target }: Event) {
       if (!(target instanceof HTMLElement)) return
       if (target?.closest(closeIgnore)) return
       this.close()
@@ -71,7 +55,7 @@ export const modal = (): AlpineComponent<State & Store> => ({
   close() {
     if (!this.dialog) return
     const animation = this.dialog?.animate(
-      this.closeKeyframes(this.dialog),
+      this.closeKeyframes(),
       this.animationTiming,
     )
     this.isRunning = true
@@ -87,7 +71,7 @@ export const modal = (): AlpineComponent<State & Store> => ({
   open() {
     if (!this.dialog) return
     const animation = this.dialog.animate(
-      this.openKeyframes(this.dialog),
+      this.openKeyframes(),
       this.animationTiming,
     )
     this.isOpen = true
@@ -111,4 +95,4 @@ export const modal = (): AlpineComponent<State & Store> => ({
   openKeyframes() {
     return [{ opacity: 0 }, { opacity: 1 }]
   },
-})
+}))

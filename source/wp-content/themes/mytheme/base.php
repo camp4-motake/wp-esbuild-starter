@@ -19,7 +19,7 @@ global $post_type;
 
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> x-data="root" x-bind="root">
+<html <?php language_attributes(); ?> x-data="app" x-bind="root">
 <?php get_template_part("templates/partials/head"); ?>
 
 <body <?php body_class(); ?>>
