@@ -4,13 +4,10 @@ import { pluginImage, pluginReload } from "./src/_lib/vitePlugins.js"
 /**
  * @see https://ja.vitejs.dev/config/
  */
-export default defineConfig(({ mode }) => {
+export default defineConfig(() => {
   const { VITE_SERVER_OPEN, WP_PORT, TARGET } = process.env
-  const prefix = TARGET || "main"
+  const prefix = TARGET || "main" // editor | main
 
-  /**
-   * "main" assets config
-   */
   return {
     publicDir: "src/static",
     build: {
