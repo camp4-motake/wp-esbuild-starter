@@ -8,7 +8,7 @@ namespace Lib\Editor;
  * @return void
  */
 add_action("admin_enqueue_scripts", function () {
-  $manifestPath = get_theme_file_path('dist/.vite/manifest.json');
+  $manifestPath = get_theme_file_path('dist/.vite/manifest.editor.json');
   if (!file_exists($manifestPath)) return;
 
   $manifest = json_decode(file_get_contents($manifestPath), true);

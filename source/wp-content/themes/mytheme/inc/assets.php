@@ -6,8 +6,8 @@ namespace Lib\Assets;
  * main アセット
  */
 add_action('wp_enqueue_scripts', function () {
-  $manifestPath = get_theme_file_path('dist/.vite/manifest.json');
-  $is_dev       = wp_get_environment_type() === 'local' && file_exists(get_theme_file_path('dist/.dev'));
+  $manifestPath = get_theme_file_path('dist/.vite/manifest.main.json');
+  $is_dev = wp_get_environment_type() === 'local' && file_exists(get_theme_file_path('dist/.dev'));
 
   if ($is_dev) :
 
@@ -24,7 +24,7 @@ add_action('wp_enqueue_scripts', function () {
     foreach ($styles as $i => $css) {
       wp_enqueue_style(str_replace('.css', '', $css), get_theme_file_uri('dist/' . $css), [], null);
     }
-    wp_enqueue_script(THEME_DOMAIN, get_theme_file_uri('dist/' . $manifest['src/main.ts']['file']));
+    wp_enqueue_script(THEME_DOMAIN, get_theme_file_uri('dist/' . $manifest['src/main.ts']['file']), [], null);
 
   endif;
 }, 100);

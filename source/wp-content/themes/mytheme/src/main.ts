@@ -18,10 +18,12 @@ import.meta.glob(
  */
 const components = import.meta.glob("./scripts/components/**/*.{js,ts,jsx,tsx}")
 const stores = import.meta.glob("./scripts/stores/**/*.{js,ts,jsx,tsx}")
+const modules = [...Object.values(components), ...Object.values(stores)]
 
-window.Alpine = Alpine
-Alpine.plugin(intersect)
-await Promise.all(
-  [...Object.values(components), ...Object.values(stores)].map((mod) => mod()),
-)
-Alpine.start()
+const main = async () => {
+  window.Alpine = Alpine
+  Alpine.plugin(intersect)
+  await Promise.all(modules.map((mod) => mod()))
+  Alpine.start()
+}
+main()

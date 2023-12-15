@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && WP_ENTRY=editor vite build",
     "predev": "npm run clean && mkdir -p dist && touch dist/.dev",
     "prebuild": "npm run clean",
     "clean": "rimraf dist/*"
