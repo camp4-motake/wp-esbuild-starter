@@ -1,6 +1,5 @@
 export default () => ({
   plugins: {
-    // WORKAROUND https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-global-data#readme
     "@csstools/postcss-global-data": {
       files: ["./src/styles/config/custom-media.css"],
     },
