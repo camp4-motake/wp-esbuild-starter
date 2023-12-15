@@ -29,6 +29,13 @@ add_action('wp_enqueue_scripts', function () {
   endif;
 }, 100);
 
+/**
+ * ブロックライブラリスタイルを削除
+ */
+add_action('wp_enqueue_scripts', function () {
+  wp_dequeue_style('wp-block-library');
+  wp_dequeue_style('wp-block-library-theme');
+}, 100);
 
 /**
  * wp_enqueue_script の出力を modules の script タグに置換
