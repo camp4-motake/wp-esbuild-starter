@@ -1,8 +1,5 @@
-import intersect from "@alpinejs/intersect"
-import Alpine from "alpinejs"
-
 /**
- * WORKAROUND: main css glob import
+ * WORKAROUND: main css
  * @see https://github.com/vitejs/vite/discussions/6688#discussioncomment-3649999
  */
 import.meta.glob("./styles/config/**/*.css", { eager: true })
@@ -13,9 +10,12 @@ import.meta.glob(
 )
 
 /**
- * init alpine.js assets
+ * init alpine.js
  * @see https://alpinejs.dev/start-here
  */
+import intersect from "@alpinejs/intersect"
+import Alpine from "alpinejs"
+
 const components = import.meta.glob("./scripts/components/**/*.{js,ts,jsx,tsx}")
 const stores = import.meta.glob("./scripts/stores/**/*.{js,ts,jsx,tsx}")
 const modules = [...Object.values(components), ...Object.values(stores)]
