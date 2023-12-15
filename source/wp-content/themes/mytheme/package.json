@@ -9,10 +9,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build && WP_ENTRY=editor vite build",
+    "build": "tsc --noEmit && vite build && TARGET=editor vite build",
     "predev": "npm run clean && mkdir -p dist && touch dist/.dev",
     "prebuild": "npm run clean",
-    "clean": "rimraf dist/*"
+    "clean": "rimraf dist"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^2.1.0",
