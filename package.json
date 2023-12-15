@@ -18,7 +18,7 @@
     "setup:init": "chmod +x ./env/*.sh && chmod +x ./bin/init.sh && ./bin/init.sh",
     "setup:wp": "docker compose run --rm cli bash './env/setup.sh'",
     "--- lint ---": "",
-    "lintFix": "dotenv --silent -- run-s lintFix:**",
+    "lintFix": "dotenv -- run-s lintFix:**",
     "lintFix:format": "prettier --write --list-different .",
     "lintFix:styles": "stylelint source/wp-content/themes/$WP_THEME_NAME/src/**/*.css --fix",
     "lintFix:scripts": "eslint --ignore-path .prettierignore . --fix",
