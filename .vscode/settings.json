@@ -22,7 +22,6 @@
   },
   "css.validate": false,
   "postcss.validate": false,
-  "alpine-intellisense.settings.languageScopes": "html,php",
   "intelephense.environment.includePaths": ["source/wp-content/plugins"],
   "[typescript]": {
     "editor.codeActionsOnSave": {
@@ -31,5 +30,8 @@
   },
   "[handlebars]": {
     "editor.formatOnSave": false
-  }
+  },
+  "alpine-intellisense.settings.languageScopes": "html,php",
+  "wordpressThemeJsonCssAutosuggest.enable": true,
+  "wordpressThemeJsonCssAutosuggest.themeJsonPath": "source/wp-content/themes/mytheme"
 }
