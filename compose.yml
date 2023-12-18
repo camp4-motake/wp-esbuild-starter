@@ -5,6 +5,7 @@ x-wordpress: &wordpress
     - "wp_data:/var/www/html"
     - "./docker/wp/php-xdebug.ini:/usr/local/etc/php/conf.d/php-xdebug.ini:cached"
     - "./env:/var/www/html/env"
+    - "./docker/cli/wp-cli.local.yml:/var/www/html/wp-cli.local.yml:cached"
     - "./source/wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins:cached"
     - "./source/wp-content/plugins:/var/www/html/wp-content/plugins"
     - "./source/wp-content/themes/$WP_THEME_NAME:/var/www/html/wp-content/themes/$WP_THEME_NAME"
