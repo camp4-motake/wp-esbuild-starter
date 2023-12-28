@@ -1,5 +1,5 @@
 /**
- * WORKAROUND: main css
+ * main css glob import
  * @see https://github.com/vitejs/vite/discussions/6688#discussioncomment-3649999
  */
 import.meta.glob("./styles/config/**/*.css", { eager: true })
