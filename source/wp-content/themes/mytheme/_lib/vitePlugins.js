@@ -12,7 +12,7 @@ import ImgMin from "./ImgMin.js"
  */
 export function pluginImage(images = [], imgOptions = {}) {
   const dirname = path.dirname(fileURLToPath(import.meta.url))
-  const root = findWorkspaceRoot(dirname) || "./"
+  const root = findWorkspaceRoot(`${dirname}/../`) || "./"
   const imgTask = async (src) => {
     const img = new ImgMin({
       src,
