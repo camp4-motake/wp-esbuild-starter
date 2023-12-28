@@ -16,8 +16,8 @@ import.meta.glob(
 import intersect from "@alpinejs/intersect"
 import Alpine from "alpinejs"
 
-const components = import.meta.glob("./scripts/components/**/*.{js,ts,jsx,tsx}")
-const stores = import.meta.glob("./scripts/stores/**/*.{js,ts,jsx,tsx}")
+const components = import.meta.glob("./components/**/*.{js,ts,jsx,tsx}")
+const stores = import.meta.glob("./stores/**/*.{js,ts,jsx,tsx}")
 const modules = [...Object.values(components), ...Object.values(stores)]
 
 const main = async () => {
