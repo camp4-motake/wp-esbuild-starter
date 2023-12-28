@@ -1,5 +1,5 @@
 import { defineConfig } from "vite"
-import { pluginImage, pluginReload } from "./src/_lib/vitePlugins.js"
+import { pluginImage, pluginReload } from "./_lib/vitePlugins.js"
 
 /**
  * @see https://ja.vitejs.dev/config/

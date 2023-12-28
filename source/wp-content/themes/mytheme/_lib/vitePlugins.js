@@ -13,7 +13,6 @@ import ImgMin from "./ImgMin.js"
 export function pluginImage(images = [], imgOptions = {}) {
   const dirname = path.dirname(fileURLToPath(import.meta.url))
   const root = findWorkspaceRoot(dirname) || "./"
-
   const imgTask = async (src) => {
     const img = new ImgMin({
       src,
@@ -30,10 +29,12 @@ export function pluginImage(images = [], imgOptions = {}) {
   return {
     name: "image",
     async buildStart() {
-      if (process.env.NODE_ENV === "development") await imgTask(images)
+      if (process.env.NODE_ENV !== "development") return
+      await imgTask(images)
     },
     async buildEnd() {
-      if (process.env.NODE_ENV === "production") await imgTask(images)
+      if (process.env.NODE_ENV !== "production") return
+      await imgTask(images)
     },
     async watchChange(id, change) {
       if (change.event === "delete") return
