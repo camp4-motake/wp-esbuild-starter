@@ -84,7 +84,7 @@ add_filter('block_editor_settings_all', function ($settings) {
 }, 10);
 
 /**
- * 投稿保存字に親タームを強制チェック
+ * 投稿保存時に親タームを強制チェック
  */
 /*
 add_action('save_post', function ($post_id) {

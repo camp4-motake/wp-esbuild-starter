@@ -33,7 +33,7 @@ require_once "inc/post-type/news.php";
 require_once "inc/assets.php";
 require_once "inc/cleanup.php";
 require_once "inc/constants.php";
-require_once "inc/editor/editor.php";
+require_once "inc/editor.php";
 require_once "inc/googlefonts.php";
 require_once "inc/hooks.php";
 require_once "inc/lib/wrapper.php";
