@@ -143,21 +143,23 @@ Movefile
 # php-cs-fixer
 .php-cs-fixer.cache
 
-# workspace
+# os
 .DS_Store
-# /source/wp-content/*
+
+# workspace
+*.gzip
+*.sql
+*.zip
+*/dist
+.tmp/
+.zip/
 /source/wp-content/languages
 /source/wp-content/plugins
 /source/wp-content/themes/*
 !/source/wp-content/themes/*
-*/dist
-.tmp/
+**/auth.json
+env/_bkp/
 vendor/
-auth.json
-.zip/
-*.zip
-*.gzip
-*.sql
 
 # workaround
 __*.*
