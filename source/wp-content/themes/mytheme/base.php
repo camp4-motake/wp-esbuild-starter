@@ -16,8 +16,6 @@ if ( ! function_exists( 'get_field' ) ) {
 	exit;
 }
 
-global $post_type;
-
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> x-data="app" x-bind="root">
@@ -29,7 +27,7 @@ global $post_type;
 	wp_body_open();
 
 	do_action( 'get_header' );
-	get_template_part( 'templates/partials/header', $post_type );
+	get_template_part( 'templates/partials/header', get_post_type() );
 
 	?>
 	<main class="contents">
@@ -38,7 +36,7 @@ global $post_type;
 	<?php
 
 	do_action( 'get_footer' );
-	get_template_part( 'templates/partials/footer', $post_type );
+	get_template_part( 'templates/partials/footer', get_post_type() );
 
 	wp_footer();
 
