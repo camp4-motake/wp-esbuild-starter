@@ -96,3 +96,4 @@ source/wp-content/languages/
 source/wp-content/plugins/
 source/wp-content/themes/twenty*/
 vendor/
+*.md
