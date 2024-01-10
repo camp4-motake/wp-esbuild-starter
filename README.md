@@ -3,10 +3,13 @@
 Docker の初期設定 -> [docker/README.md](docker/README.md)
 
 ```sh
-# 初期化
+# install deps
 npm ci
 
-# dev （docker の WordPress 起動時）
+# start wp-env  (or "npx wp-env start")
+npm start
+
+# dev
 npm run dev
 
 # build
@@ -14,4 +17,5 @@ npm run build
 ```
 
 - `source/wp-content/themes` 以下のテーマディレクトリがデプロイ対象です。
-- テーマディレクトリは npm の [workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) です。
+- テーマディレクトリは npm [workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) です。
+  - テーマへのモジュールの追加などは個別に workspaces を指定してください。

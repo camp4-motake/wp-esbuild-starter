@@ -2,7 +2,7 @@
 /**
  * Search Template
  *
- * @package mysite
+ * @package mytheme
  */
 
 get_template_part( 'archive' ); // WORKAROUND .

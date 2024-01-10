@@ -15,19 +15,19 @@
 		"clean": "rimraf dist"
 	},
 	"devDependencies": {
-		"@csstools/postcss-global-data": "^2.1.0",
-		"@types/alpinejs": "^3.13.5",
-		"@types/node": "^20.10.4",
+		"@csstools/postcss-global-data": "^2.1.1",
+		"@types/alpinejs": "^3.13.6",
+		"@types/node": "^20.10.8",
 		"find-yarn-workspace-root": "^2.0.0",
 		"globby": "^14.0.0",
-		"postcss": "^8.4.32",
+		"postcss": "^8.4.33",
 		"postcss-preset-env": "^9.3.0",
 		"postcss-sort-media-queries": "^5.2.0",
 		"rimraf": "^5.0.5",
-		"sharp": "^0.33.0",
-		"svgo": "3.1.0",
+		"sharp": "^0.33.1",
+		"svgo": "3.2.0",
 		"typescript": "^5.3.3",
-		"vite": "^5.0.9"
+		"vite": "^5.0.11"
 	},
 	"dependencies": {
 		"@alpinejs/intersect": "^3.13.3",

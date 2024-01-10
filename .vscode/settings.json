@@ -2,7 +2,7 @@
 	"files.exclude": {
 		".cache": true,
 		"composer.lock": true,
-		"node_modules": true,
+		"node_modules": false,
 		"package-lock.json": true,
 		"source/wp-content/languages": true,
 		"source/wp-content/mu-plugins": true,
@@ -29,7 +29,9 @@
 	"phpCodeSniffer.autoExecutable": true,
 	"phpCodeSniffer.standard": "Automatic",
 	"phpCodeSniffer.lintAction": "Save",
-	"intelephense.environment.includePaths": ["source/wp-content/plugins"],
+	"intelephense.environment.includePaths": [
+		"source/wp-content/plugins"
+	],
 	"[typescript]": {
 		"editor.codeActionsOnSave": {
 			"source.organizeImports": "explicit"

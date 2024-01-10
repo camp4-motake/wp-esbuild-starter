@@ -5,7 +5,7 @@ import { pluginImage, pluginReload } from "./_lib/vitePlugins.js"
  * @see https://ja.vitejs.dev/config/
  */
 export default defineConfig(() => {
-	const { VITE_SERVER_OPEN, WP_PORT, TARGET } = process.env
+	const { VITE_SERVER_OPEN, TARGET } = process.env
 	const prefix = TARGET || "main" // editor | main
 
 	return {
@@ -21,11 +21,11 @@ export default defineConfig(() => {
 			},
 		},
 
-		server: { open: VITE_SERVER_OPEN || `http://localhost:${WP_PORT}` },
-
 		plugins: [
 			pluginImage(["./src/images/**/*.{jpg,jpeg,png,svg}", "!./src/**/_*/**"]),
 			pluginReload(["**/*.php", "dist/images/**/*"]),
 		],
+
+		...(VITE_SERVER_OPEN ? { server: { open: VITE_SERVER_OPEN } } : {}),
 	}
 })

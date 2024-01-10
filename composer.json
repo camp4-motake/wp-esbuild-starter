@@ -2,9 +2,6 @@
 	"require-dev": {
 		"wp-coding-standards/wpcs": "*",
 		"squizlabs/php_codesniffer": "*",
-		"wpackagist-plugin/duplicate-post": "*",
-		"wpackagist-plugin/wordpress-seo": "*",
-		"wpackagist-plugin/wp-multibyte-patch": "*",
 		"wpengine/advanced-custom-fields-pro": "*"
 	},
 	"repositories": [

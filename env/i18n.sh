@@ -3,6 +3,8 @@
 # wp-cli - wp i18n
 # https://developer.wordpress.org/cli/commands/i18n/
 
+WP_THEME_NAME=mytheme
+
 set -e
 
 if [ $# -eq 0 ]; then
