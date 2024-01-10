@@ -1,8 +1,8 @@
 #! /bin/bash
 
-if [ ! -e .env ]; then
-  cp ./docker/.env-sample ./.env
-fi
+# if [ ! -e .env ]; then
+#   cp ./docker/.env-sample ./.env
+# fi
 
 if [ ! -e auth.json ]; then
   echo '{
@@ -13,4 +13,8 @@ if [ ! -e auth.json ]; then
     }
   }
 }' > auth.json
+fi
+
+if [ ! -e .wp-env.override.json ]; then
+  echo '{}' > .wp-env.override.json
 fi
