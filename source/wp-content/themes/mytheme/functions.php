@@ -1,4 +1,9 @@
 <?php
+/**
+ * Theme Functions
+ *
+ * @package mytheme
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -43,6 +48,3 @@ require_once 'inc/setup.php';
 require_once 'inc/shortcode.php';
 require_once 'inc/siteicon.php';
 require_once 'inc/tracking.php';
-
-// require_once "inc/cron/post-expiration.php";
-// require_once "inc/cron/wp-cron.php";

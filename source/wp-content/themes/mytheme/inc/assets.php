@@ -3,59 +3,55 @@
 namespace Lib\Assets;
 
 /**
- * main アセット
+ * テーマアセットキュー
+ *
+ * @return void
  */
-add_action(
-	'wp_enqueue_scripts',
-	function () {
-		$manifestPath = get_theme_file_path( 'dist/.vite/manifest.main.json' );
-		$is_dev       = wp_get_environment_type() === 'local' && file_exists( get_theme_file_path( 'dist/.dev' ) );
+function enqueue_vite_assets() {
+	$manifest_path = get_theme_file_path( 'dist/.vite/manifest.main.json' );
+	$is_dev        = wp_get_environment_type() === 'local' && file_exists( get_theme_file_path( 'dist/.dev' ) );
 
-		if ( $is_dev ) :
+	if ( $is_dev ) :
+		wp_enqueue_script( 'vite', 'http://localhost:5173/@vite/client', array(), null, false );
+		wp_enqueue_script( THEME_DOMAIN, 'http://localhost:5173/src/main.ts', array(), null, false );
 
-			// dev: vite client
-			wp_enqueue_script( 'vite', 'http://localhost:5173/@vite/client', array(), null );
-			wp_enqueue_script( THEME_DOMAIN, 'http://localhost:5173/src/main.ts', array(), null );
+	elseif ( file_exists( $manifest_path ) ) :
 
-	elseif ( file_exists( $manifestPath ) ) :
-
-		// prod:
-		$manifest = json_decode( file_get_contents( $manifestPath ), true );
+		$manifest = json_decode( wp_remote_get( esc_url_raw( $manifest_path ), array() ), true );
 		$styles   = $manifest['src/main.ts']['css'];
 
 		foreach ( $styles as $i => $css ) {
-			wp_enqueue_style( str_replace( '.css', '', $css ), get_theme_file_uri( 'dist/' . $css ), array(), null );
+			wp_enqueue_style( str_replace( '.css', '', $css ), get_theme_file_uri( 'dist/' . $css ), array(), null, false );
 		}
-		wp_enqueue_script( THEME_DOMAIN, get_theme_file_uri( 'dist/' . $manifest['src/main.ts']['file'] ), array(), null );
+		wp_enqueue_script( THEME_DOMAIN, get_theme_file_uri( 'dist/' . $manifest['src/main.ts']['file'] ), array(), null, false );
 
 	endif;
-	},
-	100
-);
+}
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_vite_assets', 100 );
+
 
 /**
  * ブロックライブラリスタイルを削除
  */
-add_action(
-	'wp_enqueue_scripts',
-	function () {
-		wp_dequeue_style( 'wp-block-library' );
-		wp_dequeue_style( 'wp-block-library-theme' );
-	},
-	100
-);
+function dequeue_block_style() {
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'wp-block-library-theme' );
+}
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\dequeue_block_style', 100 );
+
 
 /**
- * wp_enqueue_script の出力を modules の script タグに置換
+ * Script タグ置換
+ *
+ * @param string $tag HTML tag.
+ * @param string $handle handle.
+ * @param string $src src.
+ * @return string HTML tag.
  */
-add_filter(
-	'script_loader_tag',
-	function ( string $tag, string $handle, string $src ) {
-		if ( in_array( $handle, array( 'vite', THEME_DOMAIN ) ) ) {
-			return '<script type="module" src="' . esc_url( $src ) . '" defer></script>' . "\n";
-		}
-		return $tag;
-	},
-	10,
-	3
-);
+function replace_script_module( string $tag, string $handle, string $src ) {
+	if ( in_array( $handle, array( 'vite', THEME_DOMAIN ), true ) ) {
+		return '<script type="module" src="' . esc_url( $src ) . '" defer></script>' . "\n"; // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript
+	}
+	return $tag;
+}
+add_filter( 'script_loader_tag', __NAMESPACE__ . '\replace_script_module', 10, 3 );
