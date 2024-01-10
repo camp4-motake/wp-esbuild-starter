@@ -1,13 +1,44 @@
 # mytheme
 
-Docker の初期設定 -> [docker/README.md](docker/README.md)
+## 必要要件
+
+- Node.js ^18 || >=20
+- [docker クライアント](https://www.docker.com/get-started)
+
+## wp-env の初期設定
+
+1, node_modules をインストール。同時にプロジェクトルートに`auth.json`、`.wp-env.override.json`が作成されます。
 
 ```sh
-# install deps
 npm ci
+```
 
-# start wp-env  (or "npx wp-env start")
-npm start
+[必要に応じ] `.wp-env.override.json` に設定を追加（例：[ポート番号変更](https://github.com/WordPress/gutenberg/tree/HEAD/packages/env#custom-port-numbers), [etc](https://github.com/WordPress/gutenberg/tree/HEAD/packages/env#examples)など）
+
+2, [auth.json](https://www.advancedcustomfields.com/resources/installing-acf-pro-with-composer/) に ACF Pro ライセンスキーを指定
+
+```json
+{
+ "http-basic": {
+  "connect.advancedcustomfields.com": {
++  "username": "{ACF_PRO_KEY}",
+   "password": "https://camp4.jp/"
+  }
+ }
+}
+```
+
+3, WordPress の自動セットアップを実行
+
+```sh
+npm run setup
+```
+
+## 作業タスク
+
+```sh
+# start wp-env
+npx wp-env start -- --xdebug
 
 # dev
 npm run dev
@@ -16,7 +47,6 @@ npm run dev
 npm run build
 ```
 
-- `source/wp-content/themes` 以下のテーマディレクトリがデプロイ対象です。
 - テーマディレクトリは npm [workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) です。
-  - テーマへのモジュールの追加などは個別に workspaces を指定してください。
-- `npm run dev`で表示されるViteのURLは関係ないので無視してください。
+- `source/wp-content/themes` 以下のテーマディレクトリが開発/デプロイ対象です。
+- `npm run dev`時に表示される Vite の URL は使用しないので無視してください。
