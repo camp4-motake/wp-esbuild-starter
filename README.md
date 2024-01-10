@@ -5,7 +5,7 @@
 
 ## 初期設定
 
-1, node_modules をインストール（同時にプロジェクトルートに`auth.json`、`.wp-env.override.json`が作成されます）
+1, node_modules をインストール（同時に`auth.json`、`.wp-env.override.json`が作成されます）
 
 ```sh
 npm ci
