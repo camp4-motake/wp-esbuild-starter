@@ -7,15 +7,15 @@
 
 ## wp-env の初期設定
 
-1, node_modules をインストール。同時にプロジェクトルートに`auth.json`、`.wp-env.override.json`が作成されます。
+1 - node_modules をインストール（同時にプロジェクトルートに`auth.json`、`.wp-env.override.json`が作成されます）
 
 ```sh
 npm ci
 ```
 
-[必要に応じ] `.wp-env.override.json` に設定を追加（例：[ポート番号変更](https://github.com/WordPress/gutenberg/tree/HEAD/packages/env#custom-port-numbers), [etc](https://github.com/WordPress/gutenberg/tree/HEAD/packages/env#examples)など）
+[必要に応じ] `.wp-env.override.json` に設定を追加（例:[ポート番号変更](https://github.com/WordPress/gutenberg/tree/HEAD/packages/env#custom-port-numbers), [etc](https://github.com/WordPress/gutenberg/tree/HEAD/packages/env#examples)）
 
-2, [auth.json](https://www.advancedcustomfields.com/resources/installing-acf-pro-with-composer/) に ACF Pro ライセンスキーを指定
+2 - [auth.json](https://www.advancedcustomfields.com/resources/installing-acf-pro-with-composer/) に ACF Pro ライセンスキーを指定
 
 ```json
 {
@@ -28,7 +28,7 @@ npm ci
 }
 ```
 
-3, WordPress の自動セットアップを実行
+3 - WordPress の自動セットアップを実行
 
 ```sh
 npm run setup
