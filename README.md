@@ -3,7 +3,7 @@
 - Node.js ^18 || >=20
 - [docker クライアント](https://www.docker.com/get-started)
 
-## wp-env の初期設定
+## 初期設定
 
 1 node_modules をインストール（同時にプロジェクトルートに`auth.json`、`.wp-env.override.json`が作成されます）
 
@@ -48,3 +48,9 @@ npm run build
 - テーマディレクトリは npm [workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) です。
 - `source/wp-content/themes` 以下のテーマディレクトリが開発/デプロイ対象です。
 - `npm run dev`時に表示される Vite の URL は使用しないので無視してください。
+
+### resources
+
+- [wp-env](https://github.com/WordPress/gutenberg/tree/HEAD/packages/env#readme) | [wp-scripts](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/)
+- [WordPress Developer Resources](https://developer.wordpress.org/)
+- [npm workspaces](https://docs.npmjs.com/cli/v10/using-npm/workspaces)
