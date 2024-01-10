@@ -19,3 +19,4 @@ npm run build
 - `source/wp-content/themes` 以下のテーマディレクトリがデプロイ対象です。
 - テーマディレクトリは npm [workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) です。
   - テーマへのモジュールの追加などは個別に workspaces を指定してください。
+- `npm run dev`で表示されるViteのURLは関係ないので無視してください。
