@@ -1,6 +1,6 @@
 {
-  "extends": ["stylelint-config-recommended", "stylelint-config-recess-order"],
-  "rules": {
-    "no-descending-specificity": null
-  }
+	"extends": ["stylelint-config-recommended", "stylelint-config-recess-order"],
+	"rules": {
+		"no-descending-specificity": null
+	}
 }

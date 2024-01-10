@@ -1,5 +1,5 @@
 .well {
-  padding: var(--spacer);
-  background-color: var(--color-bg-fill-primary);
-  border-radius: 0.25rem;
+	padding: var(--spacer);
+	background-color: var(--color-bg-fill-primary);
+	border-radius: 0.25rem;
 }

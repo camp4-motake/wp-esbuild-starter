@@ -4,16 +4,16 @@
  */
 
 type Variation = {
-  block: string
-  variations: unknown[]
+	block: string
+	variations: unknown[]
 }
 
 export const blockVariations = () => {
-  if (!wp?.blocks) return
+	if (!wp?.blocks) return
 
-  // ブロックバリエーションを配列で登録
-  const addVariations: Variation[] = [
-    /*
+	// ブロックバリエーションを配列で登録
+	const addVariations: Variation[] = [
+		/*
     // ex
     {
       block: "core/embed",
@@ -25,10 +25,10 @@ export const blockVariations = () => {
       ],
     },
     */
-  ]
+	]
 
-  if (!addVariations.length) return
-  addVariations.forEach(
-    (s) => wp?.blocks?.registerBlockVariation(s.block, s.variations),
-  )
+	if (!addVariations.length) return
+	addVariations.forEach(
+		(s) => wp?.blocks?.registerBlockVariation(s.block, s.variations),
+	)
 }

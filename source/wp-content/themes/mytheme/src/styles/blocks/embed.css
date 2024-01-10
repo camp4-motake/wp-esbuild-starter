@@ -1,83 +1,83 @@
 :where(.entry-content, .editor-styles-wrapper) {
-  & .wp-block-embed {
-    position: relative;
-    display: block;
-    margin-right: auto;
-    margin-bottom: var(--spacer-lg);
-    margin-left: auto;
+	& .wp-block-embed {
+		position: relative;
+		display: block;
+		margin-right: auto;
+		margin-bottom: var(--spacer-lg);
+		margin-left: auto;
 
-    &.aligncenter {
-      margin-right: auto;
-      margin-left: auto;
-    }
-    &.alignright {
-      margin-right: 0;
-      margin-left: auto;
-    }
-    &.alignleft {
-      margin-right: auto;
-      margin-left: 0;
-    }
+		&.aligncenter {
+			margin-right: auto;
+			margin-left: auto;
+		}
+		&.alignright {
+			margin-right: 0;
+			margin-left: auto;
+		}
+		&.alignleft {
+			margin-right: auto;
+			margin-left: 0;
+		}
 
-    &.alignright .twitter-tweet {
-      margin-right: 0;
-      margin-left: auto;
-    }
-    &.alignleft .twitter-tweet {
-      margin-right: auto;
-      margin-left: 0;
-    }
-    &.aligncenter .twitter-tweet {
-      margin-inline: auto;
-    }
-  }
+		&.alignright .twitter-tweet {
+			margin-right: 0;
+			margin-left: auto;
+		}
+		&.alignleft .twitter-tweet {
+			margin-right: auto;
+			margin-left: 0;
+		}
+		&.aligncenter .twitter-tweet {
+			margin-inline: auto;
+		}
+	}
 
-  & .wp-embed-aspect-16-9 .wp-block-embed__wrapper {
-    &::before {
-      display: block;
-      padding-top: calc(100% * calc(9 / 16));
-      content: "";
-    }
+	& .wp-embed-aspect-16-9 .wp-block-embed__wrapper {
+		&::before {
+			display: block;
+			padding-top: calc(100% * calc(9 / 16));
+			content: "";
+		}
 
-    & > iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
+		& > iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
 
-  & .embed {
-    position: relative;
-    display: block;
-    margin: auto auto var(--spacer-md);
-    & iframe,
-    & video {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 3/2;
-    }
-    &.is-1by1 {
-      & iframe,
-      & video {
-        aspect-ratio: 1/1;
-      }
-    }
-    &.is-16by9 {
-      & iframe,
-      & video {
-        aspect-ratio: 16/9;
-      }
-    }
-    &.is-21by9 {
-      & iframe,
-      & video {
-        aspect-ratio: 21/9;
-      }
-    }
-  }
-  > :where(*) + .embed {
-    margin-top: var(--spacer-md);
-  }
+	& .embed {
+		position: relative;
+		display: block;
+		margin: auto auto var(--spacer-md);
+		& iframe,
+		& video {
+			width: 100%;
+			height: auto;
+			aspect-ratio: 3/2;
+		}
+		&.is-1by1 {
+			& iframe,
+			& video {
+				aspect-ratio: 1/1;
+			}
+		}
+		&.is-16by9 {
+			& iframe,
+			& video {
+				aspect-ratio: 16/9;
+			}
+		}
+		&.is-21by9 {
+			& iframe,
+			& video {
+				aspect-ratio: 21/9;
+			}
+		}
+	}
+	> :where(*) + .embed {
+		margin-top: var(--spacer-md);
+	}
 }

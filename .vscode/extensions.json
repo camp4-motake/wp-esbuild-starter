@@ -1,10 +1,10 @@
 {
-  "recommendations": [
-    "bmewburn.vscode-intelephense-client",
-    "dbaeumer.vscode-eslint",
-    "editorconfig.editorconfig",
-    "esbenp.prettier-vscode",
-    "stylelint.vscode-stylelint",
-    "vunguyentuan.vscode-postcss"
-  ]
+	"recommendations": [
+		"bmewburn.vscode-intelephense-client",
+		"dbaeumer.vscode-eslint",
+		"editorconfig.editorconfig",
+		"esbenp.prettier-vscode",
+		"stylelint.vscode-stylelint",
+		"vunguyentuan.vscode-postcss"
+	]
 }

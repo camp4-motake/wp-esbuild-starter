@@ -12,39 +12,51 @@ namespace Lib\Plugins\YoastSeo;
 /**
  * yoast SEO ユーザーを削除
  */
-add_action("after_setup_theme", function () {
-  remove_role('wpseo_manager');
-  remove_role('wpseo_editor');
-});
+add_action(
+	'after_setup_theme',
+	function () {
+		remove_role( 'wpseo_manager' );
+		remove_role( 'wpseo_editor' );
+	}
+);
 
 /**
  * 管理画面: Yoast SEO のメタボックスを最下部に移動
  */
-add_filter("wpseo_metabox_prio", function () {
-  return "low";
-});
+add_filter(
+	'wpseo_metabox_prio',
+	function () {
+		return 'low';
+	}
+);
 
 /**
  * Yoast SEO のソースコメント出力を削除
  */
-add_filter("wpseo_debug_markers", "__return_false");
+add_filter( 'wpseo_debug_markers', '__return_false' );
 
 /**
  * Yoast SEO の言語上書き
  */
-add_filter("wpseo_locale", function ($locale) {
-  return get_locale();
-});
+add_filter(
+	'wpseo_locale',
+	function ( $locale ) {
+		return get_locale();
+	}
+);
 
 /**
  *  Yoast SEO の右サイド広告を非表示
  */
-add_action("admin_print_styles", function () {
-  echo ''
-    . "<style>"
-    . ' #sidebar.yoast-sidebar,.yoast-notification.notice.notice-warning.is-dismissible,.yoast_premium_upsell { display: none !important;'
-    . "</style>";
-});
+add_action(
+	'admin_print_styles',
+	function () {
+		echo ''
+		. '<style>'
+		. ' #sidebar.yoast-sidebar,.yoast-notification.notice.notice-warning.is-dismissible,.yoast_premium_upsell { display: none !important;'
+		. '</style>';
+	}
+);
 
 
 /**
@@ -53,20 +65,19 @@ add_action("admin_print_styles", function () {
  *
  * https://yoast.com/help/implement-wordpress-seo-breadcrumbs/
  */
-function get_yoast_seo_breadcrumb()
-{
-  if (!function_exists("yoast_breadcrumb")) {
-    return "";
-  }
+function get_yoast_seo_breadcrumb() {
+	if ( ! function_exists( 'yoast_breadcrumb' ) ) {
+		return '';
+	}
 
-  $arrow_html = ">";
+	$arrow_html = '>';
 
-  ob_start();
-  yoast_breadcrumb('<div class="breadcrumb">', "</div>" . "\n");
-  $breadcrumb = ob_get_contents();
-  ob_end_clean();
+	ob_start();
+	yoast_breadcrumb( '<div class="breadcrumb">', '</div>' . "\n" );
+	$breadcrumb = ob_get_contents();
+	ob_end_clean();
 
-  $breadcrumb = str_replace("%arrow", $arrow_html, $breadcrumb);
+	$breadcrumb = str_replace( '%arrow', $arrow_html, $breadcrumb );
 
-  return $breadcrumb;
+	return $breadcrumb;
 }

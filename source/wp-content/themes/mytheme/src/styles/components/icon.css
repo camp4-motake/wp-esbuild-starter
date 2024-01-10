@@ -1,13 +1,13 @@
 .icon {
-  position: relative;
-  top: 0.125em;
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  margin-inline: 0.25em;
-  content: "";
-  background-color: var(--color-primary);
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
+	position: relative;
+	top: 0.125em;
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	margin-inline: 0.25em;
+	content: "";
+	background-color: var(--color-primary);
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: contain;
 }

@@ -15,7 +15,7 @@ import { blockStyles } from "./editor/blockStyles"
 import { blockVariations } from "./editor/blockVariations"
 
 window.addEventListener("load", () => {
-  allowedBlock()
-  blockStyles()
-  blockVariations()
+	allowedBlock()
+	blockStyles()
+	blockVariations()
 })

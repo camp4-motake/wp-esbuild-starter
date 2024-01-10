@@ -1,140 +1,140 @@
 .wp-block-table {
-  margin-bottom: var(--spacer-lg);
-  overflow: auto;
-  border-collapse: collapse;
-  -webkit-overflow-scrolling: touch;
+	margin-bottom: var(--spacer-lg);
+	overflow: auto;
+	border-collapse: collapse;
+	-webkit-overflow-scrolling: touch;
 
-  & table {
-    margin-bottom: 0;
-    border-bottom: 1px solid var(--color-border);
+	& table {
+		margin-bottom: 0;
+		border-bottom: 1px solid var(--color-border);
 
-    & th,
-    & td {
-      font-size: var(--font-size-14);
-      border-top: 1px solid var(--color-border);
-    }
-  }
+		& th,
+		& td {
+			font-size: var(--font-size-14);
+			border-top: 1px solid var(--color-border);
+		}
+	}
 
-  & table + figcaption {
-    margin-top: var(--spacer-sm);
-  }
+	& table + figcaption {
+		margin-top: var(--spacer-sm);
+	}
 
-  & thead {
-    border-bottom: 2px solid var(--color-border-primary-light);
-  }
+	& thead {
+		border-bottom: 2px solid var(--color-border-primary-light);
+	}
 
-  & tfoot {
-    border-top: 2px solid var(--color-border-primary-light);
-  }
+	& tfoot {
+		border-top: 2px solid var(--color-border-primary-light);
+	}
 
-  & td,
-  & th {
-    min-width: 10em;
-    padding: 0.5em;
-    word-break: normal;
-    vertical-align: middle;
-    border: 1px solid var(--color-border-primary-light);
+	& td,
+	& th {
+		min-width: 10em;
+		padding: 0.5em;
+		word-break: normal;
+		vertical-align: middle;
+		border: 1px solid var(--color-border-primary-light);
 
-    &:where([class*="has-text-align-"]) {
-      width: initial;
-    }
-  }
+		&:where([class*="has-text-align-"]) {
+			width: initial;
+		}
+	}
 
-  & th {
-    white-space: nowrap;
-  }
+	& th {
+		white-space: nowrap;
+	}
 
-  & figcaption {
-    font-size: var(--font-size-12);
-    color: var(--color-text-light);
-  }
+	& figcaption {
+		font-size: var(--font-size-12);
+		color: var(--color-text-light);
+	}
 }
 
 .wp-block-table table:not(.has-background) {
-  & thead,
-  & tfoot {
-    background-color: var(--color-bg-fill-light);
-  }
+	& thead,
+	& tfoot {
+		background-color: var(--color-bg-fill-light);
+	}
 }
 
 .wp-block-table:not(.is-style-stripes) {
-  & thead,
-  & tfoot {
-    & th,
-    & td {
-      background-color: var(--color-link-bg);
-    }
-  }
+	& thead,
+	& tfoot {
+		& th,
+		& td {
+			background-color: var(--color-link-bg);
+		}
+	}
 
-  & thead th {
-    color: currentcolor;
-  }
+	& thead th {
+		color: currentcolor;
+	}
 }
 
 .wp-block-table.is-style-stripes {
-  border-bottom: 0;
+	border-bottom: 0;
 
-  & table:not(.has-background) {
-    border: 1px solid var(--color-border);
+	& table:not(.has-background) {
+		border: 1px solid var(--color-border);
 
-    & thead {
-      font-weight: var(--font-weight-bold);
-      background-color: var(--color-bg-fill-primary);
-      border-bottom: 2px solid var(--color-border-primary-light);
-    }
+		& thead {
+			font-weight: var(--font-weight-bold);
+			background-color: var(--color-bg-fill-primary);
+			border-bottom: 2px solid var(--color-border-primary-light);
+		}
 
-    & tfoot {
-      background-color: var(--color-bg-fill-primary);
-      border-top: 2px solid var(--color-border-primary-light);
-    }
+		& tfoot {
+			background-color: var(--color-bg-fill-primary);
+			border-top: 2px solid var(--color-border-primary-light);
+		}
 
-    & tbody tr:nth-child(odd) {
-      background-color: var(--color-bg-fill-light);
-    }
+		& tbody tr:nth-child(odd) {
+			background-color: var(--color-bg-fill-light);
+		}
 
-    & td,
-    & th {
-      border: 0;
-      border-right: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
-    }
-  }
+		& td,
+		& th {
+			border: 0;
+			border-right: 1px solid var(--color-border);
+			border-bottom: 1px solid var(--color-border);
+		}
+	}
 }
 
 * + .wp-block-table {
-  margin-top: var(--spacer-lg);
+	margin-top: var(--spacer-lg);
 }
 
 .wp-block-table.is-style-definition {
-  tbody tr > td:first-child {
-    width: 4em;
-    font-weight: var(--font-weight-bold);
+	tbody tr > td:first-child {
+		width: 4em;
+		font-weight: var(--font-weight-bold);
 
-    @media (--viewport-md) {
-      width: 6em;
-    }
-  }
+		@media (--viewport-md) {
+			width: 6em;
+		}
+	}
 }
 
 .wp-block-table.is-style-all-border {
-  table {
-    border-right: 1px solid var(--color-border);
-    border-left: 1px solid var(--color-border);
-  }
-  & :where(th, td):not(:last-child) {
-    border-right: 1px solid var(--color-border);
-  }
+	table {
+		border-right: 1px solid var(--color-border);
+		border-left: 1px solid var(--color-border);
+	}
+	& :where(th, td):not(:last-child) {
+		border-right: 1px solid var(--color-border);
+	}
 }
 
 .wp-block-table.is-style-bg-transparent table {
-  thead,
-  tfoot {
-    background-color: transparent;
+	thead,
+	tfoot {
+		background-color: transparent;
 
-    & tr,
-    & th,
-    & td {
-      background-color: transparent;
-    }
-  }
+		& tr,
+		& th,
+		& td {
+			background-color: transparent;
+		}
+	}
 }

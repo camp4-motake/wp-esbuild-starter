@@ -21,8 +21,8 @@
 @custom-media --viewport-16by9 (min-aspect-ratio: 16/9);
 @custom-media --viewport-21by9 (min-aspect-ratio: 21/9);
 @custom-media --viewport-wide-sm (--viewport-sm) and (--viewport-landscape),
-  (--viewport-md);
+	(--viewport-md);
 @custom-media --viewport-wide (--viewport-md) and (--viewport-landscape),
-  (--viewport-lg);
+	(--viewport-lg);
 @custom-media --viewport-visible-nav (--viewport-lg);
 @custom-media --viewport-pointer (hover: hover) and (pointer: fine);

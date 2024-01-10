@@ -1,32 +1,32 @@
 .grid {
-  --col-2: repeat(auto-fit, calc(50% - calc(var(--spacer) * 0.5)));
-  --col-3: repeat(auto-fit, calc(33.33% - calc(var(--spacer) * 0.6667)));
-  --col-4: repeat(auto-fit, calc(25% - calc(var(--spacer) * 0.75)));
+	--col-2: repeat(auto-fit, calc(50% - calc(var(--spacer) * 0.5)));
+	--col-3: repeat(auto-fit, calc(33.33% - calc(var(--spacer) * 0.6667)));
+	--col-4: repeat(auto-fit, calc(25% - calc(var(--spacer) * 0.75)));
 
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacer-md) var(--spacer);
-  justify-content: center;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--spacer-md) var(--spacer);
+	justify-content: center;
 
-  &.-col-2 {
-    grid-template-columns: var(--col-2);
-  }
-  &.-col-2by4 {
-    grid-template-columns: var(--col-2);
+	&.-col-2 {
+		grid-template-columns: var(--col-2);
+	}
+	&.-col-2by4 {
+		grid-template-columns: var(--col-2);
 
-    @media (--viewport-md) {
-      grid-template-columns: var(--col-3);
-    }
-    @media (--viewport-lg) {
-      grid-template-columns: var(--col-4);
-    }
-  }
-  &.-col-1by2 {
-    @media (--viewport-md) {
-      grid-template-columns: var(--col-2);
-    }
-  }
-  &.-left {
-    justify-content: flex-start;
-  }
+		@media (--viewport-md) {
+			grid-template-columns: var(--col-3);
+		}
+		@media (--viewport-lg) {
+			grid-template-columns: var(--col-4);
+		}
+	}
+	&.-col-1by2 {
+		@media (--viewport-md) {
+			grid-template-columns: var(--col-2);
+		}
+	}
+	&.-left {
+		justify-content: flex-start;
+	}
 }

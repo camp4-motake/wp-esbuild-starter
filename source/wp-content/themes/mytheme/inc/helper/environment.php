@@ -7,9 +7,8 @@ namespace Lib\Helper\Env;
  *
  * @return boolean
  */
-function in_production()
-{
-  return wp_get_environment_type() === 'production';
+function in_production() {
+	return wp_get_environment_type() === 'production';
 }
 
 /**
@@ -17,9 +16,8 @@ function in_production()
  *
  * @return boolean
  */
-function in_staging()
-{
-  return wp_get_environment_type() === 'staging';
+function in_staging() {
+	return wp_get_environment_type() === 'staging';
 }
 
 /**
@@ -27,7 +25,6 @@ function in_staging()
  *
  * @return boolean
  */
-function in_local()
-{
-  return strpos($_SERVER["HTTP_HOST"], "localhost") !== false || wp_get_environment_type() === 'local';
+function in_local() {
+	return strpos( $_SERVER['HTTP_HOST'], 'localhost' ) !== false || wp_get_environment_type() === 'local';
 }

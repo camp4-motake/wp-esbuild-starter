@@ -7,39 +7,49 @@ use Lib\Helper\Path;
 /**
  * サイトアイコン無効化
  */
-add_filter("site_icon_meta_tags", function ($meta_tags) {
-  $meta_tags = [];
+add_filter(
+	'site_icon_meta_tags',
+	function ( $meta_tags ) {
+		$meta_tags = array();
 
-  return $meta_tags;
-});
+		return $meta_tags;
+	}
+);
 
 /**
  * WP サイトアイコンのリダイレクト先をテーマ内の Favicon 画像にオーバーライド
  */
-add_filter('get_site_icon_url', function ($url) {
-  $ico_file = 'static/meta/favicon.svg';
+add_filter(
+	'get_site_icon_url',
+	function ( $url ) {
+		$ico_file = 'static/meta/favicon.svg';
 
-  if (file_exists(get_theme_file_path($ico_file))) {
-    return get_theme_file_uri($ico_file);
-  }
+		if ( file_exists( get_theme_file_path( $ico_file ) ) ) {
+			return get_theme_file_uri( $ico_file );
+		}
 
-  return $url;
-});
+		return $url;
+	}
+);
 
 /**
  * wp_head 追加アセット
  */
-add_action("wp_head", function () {
-  $n = "\n";
-  // favicon
-  echo '<link rel="apple-touch-icon" sizes="180x180" href="' . Path\cache_buster("/static/meta/apple-touch-icon.png") . '">' . $n;
-  echo '<link rel="icon" type="image/svg+xml" href="' . Path\cache_buster("/static/meta/favicon.svg") . '">' . $n;
-  echo '<link rel="icon" type="image/png" sizes="144x144" href="' . Path\cache_buster("/static/meta/favicon-144x144.png") . '">' . $n;
-  echo '<link rel="icon" type="image/png" sizes="48x48" href="' . Path\cache_buster("/static/meta/favicon-48x48.png") . '">' . $n;
-  // theme color
-  // echo '<meta name="theme-color" content="#2399ed">' . $n;
+add_action(
+	'wp_head',
+	function () {
+		$n = "\n";
+		// favicon
+		echo '<link rel="apple-touch-icon" sizes="180x180" href="' . Path\cache_buster( '/static/meta/apple-touch-icon.png' ) . '">' . $n;
+		echo '<link rel="icon" type="image/svg+xml" href="' . Path\cache_buster( '/static/meta/favicon.svg' ) . '">' . $n;
+		echo '<link rel="icon" type="image/png" sizes="144x144" href="' . Path\cache_buster( '/static/meta/favicon-144x144.png' ) . '">' . $n;
+		echo '<link rel="icon" type="image/png" sizes="48x48" href="' . Path\cache_buster( '/static/meta/favicon-48x48.png' ) . '">' . $n;
+		// theme color
+		// echo '<meta name="theme-color" content="#2399ed">' . $n;
 
-  // theme color (dark mode support)
-  // echo '<meta name="theme-color" media="(prefers-color-scheme: light)" content="#efefef">' . $n;
-  // echo '<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#323232">' . $n;
-}, 3);
+		// theme color (dark mode support)
+		// echo '<meta name="theme-color" media="(prefers-color-scheme: light)" content="#efefef">' . $n;
+		// echo '<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#323232">' . $n;
+	},
+	3
+);

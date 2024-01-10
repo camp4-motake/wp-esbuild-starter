@@ -1,15 +1,15 @@
 import Alpine from "alpinejs"
 
 export type MenuStatus = {
-  menuStatus: {
-    shown: boolean
-    toggle: () => void
-  }
+	menuStatus: {
+		shown: boolean
+		toggle: () => void
+	}
 }
 
 Alpine.store("menuStatus", () => ({
-  shown: false,
-  toggle() {
-    this.shown = !this.shown
-  },
+	shown: false,
+	toggle() {
+		this.shown = !this.shown
+	},
 }))

@@ -1,24 +1,24 @@
 .page-header {
-  display: block;
-  padding: var(--spacer-lg) var(--spacer);
+	display: block;
+	padding: var(--spacer-lg) var(--spacer);
 }
 
 .page-header-heading {
-  margin-bottom: 0;
-  font-size: var(--font-size-28);
-  font-weight: var(--font-weight-bold);
-  text-align: center;
-  @media (--viewport-lg) {
-    font-size: var(--font-size-36);
-  }
+	margin-bottom: 0;
+	font-size: var(--font-size-28);
+	font-weight: var(--font-weight-bold);
+	text-align: center;
+	@media (--viewport-lg) {
+		font-size: var(--font-size-36);
+	}
 }
 
 .page-header-subtitle {
-  display: block;
-  margin-top: 0.25em;
-  font-size: var(--font-size-18);
+	display: block;
+	margin-top: 0.25em;
+	font-size: var(--font-size-18);
 }
 
 :where(.post-type-archive-events) .page-header-subtitle {
-  font-family: var(--font-sans-serif-en);
+	font-family: var(--font-sans-serif-en);
 }

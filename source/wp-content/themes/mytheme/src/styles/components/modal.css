@@ -1,81 +1,81 @@
 [data-modal-content] {
-  display: block;
-  padding: var(--spacer) var(--spacer-sm) var(--spacer-sm);
-  background-color: var(--color-base);
+	display: block;
+	padding: var(--spacer) var(--spacer-sm) var(--spacer-sm);
+	background-color: var(--color-base);
 
-  @media (--viewport-md) {
-    padding: var(--spacer-md);
-    padding-bottom: var(--spacer-sm);
-  }
+	@media (--viewport-md) {
+		padding: var(--spacer-md);
+		padding-bottom: var(--spacer-sm);
+	}
 
-  &:has(> .modal-btn-sticky) {
-    padding-bottom: 0;
-  }
+	&:has(> .modal-btn-sticky) {
+		padding-bottom: 0;
+	}
 }
 
 dialog {
-  appearance: none;
+	appearance: none;
 }
 
 ::backdrop {
-  --color-backdrop-alpha: rgba(0, 20, 50, 0);
+	--color-backdrop-alpha: rgba(0, 20, 50, 0);
 }
 
 .isDialogOpen ::backdrop {
-  --color-backdrop-alpha: rgba(0, 20, 50, 0.3);
+	--color-backdrop-alpha: rgba(0, 20, 50, 0.3);
 }
 
 dialog.modal {
-  overscroll-behavior-y: contain;
-  &:modal {
-    width: min(var(--container-max-width-lg), 100vw);
-    /* height: min(calc(768 / var(--rem)), 100vh); */
-    margin: auto;
-    overscroll-behavior-y: contain;
-    text-align: initial;
-    border: 0;
-  }
-  &::backdrop {
-    overscroll-behavior-y: contain;
-    background-color: var(--color-backdrop-alpha);
-    transition: background-color 0.4s ease;
-  }
+	overscroll-behavior-y: contain;
+	&:modal {
+		width: min(var(--container-max-width-lg), 100vw);
+		/* height: min(calc(768 / var(--rem)), 100vh); */
+		margin: auto;
+		overscroll-behavior-y: contain;
+		text-align: initial;
+		border: 0;
+	}
+	&::backdrop {
+		overscroll-behavior-y: contain;
+		background-color: var(--color-backdrop-alpha);
+		transition: background-color 0.4s ease;
+	}
 }
 
 .modal-map-figure {
-  display: block;
-  margin: 0 auto;
+	display: block;
+	margin: 0 auto;
 
-  & img {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin: auto;
-  }
+	& img {
+		display: block;
+		width: 100%;
+		height: auto;
+		margin: auto;
+	}
 }
 
 .modal-btn-sticky {
-  position: sticky;
-  bottom: 0;
-  padding: var(--spacer-sm);
-  text-align: right;
-  background-color: var(--color-base);
+	position: sticky;
+	bottom: 0;
+	padding: var(--spacer-sm);
+	text-align: right;
+	background-color: var(--color-base);
 }
 
 .modal-close {
-  display: inline-block;
-  font-size: var(--font-size-14);
+	display: inline-block;
+	font-size: var(--font-size-14);
 
-  &:hover {
-    color: var(--color-link);
-  }
+	&:hover {
+		color: var(--color-link);
+	}
 }
 
 .modal-btn-trigger {
-  color: var(--color-link);
-  text-decoration: underline;
+	color: var(--color-link);
+	text-decoration: underline;
 
-  &:hover {
-    text-decoration: none;
-  }
+	&:hover {
+		text-decoration: none;
+	}
 }

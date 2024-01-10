@@ -1,17 +1,19 @@
 <footer class="footer">
-  <?php
+	<?php
 
-  if (has_nav_menu('nav_footer')) {
-    wp_nav_menu([
-      'theme_location' => 'nav_footer',
-      'menu_class'     => 'nav-footer',
-      'container'      => false,
-      'link_before'    => '',
-      'link_after'     => '',
-      'depth'          => 1,
-    ]);
-  }
+	if ( has_nav_menu( 'nav_footer' ) ) {
+		wp_nav_menu(
+			array(
+				'theme_location' => 'nav_footer',
+				'menu_class'     => 'nav-footer',
+				'container'      => false,
+				'link_before'    => '',
+				'link_after'     => '',
+				'depth'          => 1,
+			)
+		);
+	}
 
-  ?>
-  <?php get_template_part('templates/partials/copyright', null, ['class' => 'container -max-lg']); ?>
+	?>
+	<?php get_template_part( 'templates/partials/copyright', null, array( 'class' => 'container -max-lg' ) ); ?>
 </footer>

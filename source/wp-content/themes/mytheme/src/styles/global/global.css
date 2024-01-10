@@ -1,143 +1,143 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html,
 body {
-  min-height: 100vh;
+	min-height: 100vh;
 }
 
 html {
-  font-size: var(--root-font-size);
-  scroll-padding-top: var(--header-height);
+	font-size: var(--root-font-size);
+	scroll-padding-top: var(--header-height);
 
-  &:not(.is-animating) {
-    scroll-behavior: smooth;
-  }
+	&:not(.is-animating) {
+		scroll-behavior: smooth;
+	}
 }
 
 body {
-  overflow-y: scroll;
-  font-family: var(--font-family-base);
-  font-weight: var(--font-weight-medium);
-  font-feature-settings: normal;
-  line-height: var(--line-height-base);
-  color: var(--color-text);
-  letter-spacing: var(--letter-space-base);
-  overflow-wrap: break-word;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-size-adjust: 100%;
-  font-synthesis: none;
-  line-break: strict;
+	overflow-y: scroll;
+	font-family: var(--font-family-base);
+	font-weight: var(--font-weight-medium);
+	font-feature-settings: normal;
+	line-height: var(--line-height-base);
+	color: var(--color-text);
+	letter-spacing: var(--letter-space-base);
+	overflow-wrap: break-word;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-size-adjust: 100%;
+	font-synthesis: none;
+	line-break: strict;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
 hr,
 .hr {
-  --hr-max-width: calc(
-    calc(100vw - var(--window-scroll-bar-width)) - calc(var(--spacer) * 2)
-  );
+	--hr-max-width: calc(
+		calc(100vw - var(--window-scroll-bar-width)) - calc(var(--spacer) * 2)
+	);
 
-  width: 100%;
-  height: 1px;
-  margin: var(--spacer) auto;
-  background-color: var(--color-border);
-  border: none;
-  border-color: transparent;
-  border-bottom-color: var(--color-border);
-  border-bottom-width: 1px;
+	width: 100%;
+	height: 1px;
+	margin: var(--spacer) auto;
+	background-color: var(--color-border);
+	border: none;
+	border-color: transparent;
+	border-bottom-color: var(--color-border);
+	border-bottom-width: 1px;
 
-  &.-max-lg {
-    max-width: min(
-      calc(var(--container-max-width-lg) - calc(var(--spacer) * 2)),
-      var(--hr-max-width)
-    );
-  }
-  &.-max-xl {
-    max-width: min(
-      calc(var(--container-max-width-xl) - calc(var(--spacer) * 2)),
-      var(--hr-max-width)
-    );
-  }
+	&.-max-lg {
+		max-width: min(
+			calc(var(--container-max-width-lg) - calc(var(--spacer) * 2)),
+			var(--hr-max-width)
+		);
+	}
+	&.-max-xl {
+		max-width: min(
+			calc(var(--container-max-width-xl) - calc(var(--spacer) * 2)),
+			var(--hr-max-width)
+		);
+	}
 }
 
 ul,
 ol {
-  padding-left: var(--spacer-lg);
+	padding-left: var(--spacer-lg);
 
-  &:where(:not(li > ul)) {
-    margin-bottom: var(--spacer-lg);
-  }
+	&:where(:not(li > ul)) {
+		margin-bottom: var(--spacer-lg);
+	}
 }
 
 dl {
-  margin-bottom: var(--spacer-lg);
+	margin-bottom: var(--spacer-lg);
 }
 
 ul {
-  &.list-iroha {
-    list-style-type: katakana-iroha;
-  }
-  &.list-circled-decimal {
-    list-style-type: circled-decimal;
-  }
-  &.list-parenthesized-decimal {
-    list-style-type: parenthesized-decimal;
-  }
+	&.list-iroha {
+		list-style-type: katakana-iroha;
+	}
+	&.list-circled-decimal {
+		list-style-type: circled-decimal;
+	}
+	&.list-parenthesized-decimal {
+		list-style-type: parenthesized-decimal;
+	}
 }
 
 input,
 select,
 textarea,
 button {
-  appearance: none;
+	appearance: none;
 
-  &::placeholder {
-    font-weight: var(--font-weight-regular);
-    color: var(--color-text-light);
-  }
-  &:focus::placeholder {
-    color: transparent;
-  }
+	&::placeholder {
+		font-weight: var(--font-weight-regular);
+		color: var(--color-text-light);
+	}
+	&:focus::placeholder {
+		color: transparent;
+	}
 }
 
 input,
 textarea {
-  position: relative;
-  padding: 0.5em;
-  font-size: max(16px, 1rem);
-  color: var(--color-text);
-  background-color: var(--color-base);
+	position: relative;
+	padding: 0.5em;
+	font-size: max(16px, 1rem);
+	color: var(--color-text);
+	background-color: var(--color-base);
 }
 
 fieldset,
 legend {
-  appearance: none;
+	appearance: none;
 }
 
 fieldset {
-  display: block;
-  min-width: 0;
-  padding: 0;
-  margin: 0;
-  border: 0;
+	display: block;
+	min-width: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
 }
 
 svg {
-  width: 100%;
-  height: auto;
-  overflow: visible;
+	width: 100%;
+	height: auto;
+	overflow: visible;
 }
 
 .updated {
-  font-family: var(--font-sans-serif-en);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-light);
+	font-family: var(--font-sans-serif-en);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-text-light);
 }
 
 /**
@@ -145,16 +145,16 @@ svg {
  * https://alpinejs.dev/directives/cloak
  */
 [x-cloak] {
-  display: none !important;
+	display: none !important;
 }
 
 /**
 * wp adminbar position fix
 */
 @media screen and (max-width: 600px) {
-  #wpadminbar {
-    position: fixed;
-  }
+	#wpadminbar {
+		position: fixed;
+	}
 }
 
 /**

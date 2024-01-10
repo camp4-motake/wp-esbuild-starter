@@ -1,46 +1,48 @@
 {
-  "name": "mytheme",
-  "version": "0.1.0",
-  "author": "CAMP4 inc.",
-  "license": "UNLICENSED",
-  "private": true,
-  "type": "module",
-  "engines": {
-    "node": "^18 || ^20"
-  },
-  "scripts": {
-    "build": "dotenv -- npm run build --workspaces --if-present --silent",
-    "dev": "dotenv -- npm run dev --workspaces --if-present --silent",
-    "i18n:compile": "docker compose run cli bash env/i18n.sh --make-mo",
-    "i18n:pot": "docker compose run cli bash env/i18n.sh --make-pot",
-    "i18n:update": "docker compose run cli bash env/i18n.sh --update-po",
-    "lintFix": "dotenv -- run-s lintFix:**",
-    "lintFix:format": "prettier --write --list-different .",
-    "lintFix:scripts": "eslint --ignore-path .prettierignore . --fix",
-    "lintFix:styles": "stylelint source/wp-content/themes/$WP_THEME_NAME/src/**/*.css --fix",
-    "setup:init": "chmod +x ./env/*.sh && chmod +x ./bin/init.sh && ./bin/init.sh",
-    "setup:wp": "docker compose run --rm cli bash './env/setup.sh'",
-    "composer": "docker compose run --rm composer",
-    "wp-cli": "docker compose run --rm cli bash -c",
-    "wp-export": "docker compose run cli bash env/export.sh",
-    "wp-import": "docker compose run cli bash env/import.sh"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0",
-    "dotenv-cli": "^7.3.0",
-    "eslint": "8.55.0",
-    "eslint-config-prettier": "9.1.0",
-    "npm-run-all2": "^6.1.1",
-    "prettier": "^3.1.1",
-    "stylelint": "16.0.2",
-    "stylelint-config-recess-order": "4.4.0",
-    "stylelint-config-recommended": "14.0.0"
-  },
-  "workspaces": [
-    "source/wp-content/themes/mytheme"
-  ],
-  "volta": {
-    "node": "20.10.0"
-  }
+	"name": "mytheme",
+	"version": "0.1.0",
+	"author": "CAMP4 inc.",
+	"license": "UNLICENSED",
+	"private": true,
+	"type": "module",
+	"engines": {
+		"node": "^18 || ^20"
+	},
+	"scripts": {
+		"postinstall": "npm run init --silent",
+		"build": "dotenv -- npm run build --workspaces --if-present --silent",
+		"dev": "dotenv -- npm run dev --workspaces --if-present --silent",
+		"i18n:compile": "docker compose run cli bash env/i18n.sh --make-mo",
+		"i18n:pot": "docker compose run cli bash env/i18n.sh --make-pot",
+		"i18n:update": "docker compose run cli bash env/i18n.sh --update-po",
+		"format": "dotenv -- run-s format:**",
+		"format:prettier": "prettier --write --list-different .",
+		"format:scripts": "eslint --ignore-path .prettierignore . --fix",
+		"format:styles": "stylelint source/wp-content/themes/$WP_THEME_NAME/src/**/*.css --fix",
+		"format:php": "npm run composer format source/wp-content/themes/$WP_THEME_NAME",
+		"init": "chmod +x ./env/*.sh && chmod +x ./bin/init.sh && ./bin/init.sh",
+		"setup:wp": "docker compose run --rm cli bash './env/setup.sh'",
+		"composer": "docker compose run --rm composer",
+		"wp-cli": "docker compose run --rm cli bash -c",
+		"wp-export": "docker compose run cli bash env/export.sh",
+		"wp-import": "docker compose run cli bash env/import.sh"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^6.14.0",
+		"@typescript-eslint/parser": "^6.14.0",
+		"dotenv-cli": "^7.3.0",
+		"eslint": "8.55.0",
+		"eslint-config-prettier": "9.1.0",
+		"npm-run-all2": "^6.1.1",
+		"prettier": "^3.1.1",
+		"stylelint": "16.0.2",
+		"stylelint-config-recess-order": "4.4.0",
+		"stylelint-config-recommended": "14.0.0"
+	},
+	"workspaces": [
+		"source/wp-content/themes/mytheme"
+	],
+	"volta": {
+		"node": "20.10.0"
+	}
 }

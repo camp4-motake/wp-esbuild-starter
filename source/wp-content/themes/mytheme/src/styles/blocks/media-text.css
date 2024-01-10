@@ -1,9 +1,9 @@
 :where(.entry-content, .editor-styles-wrapper) {
-  & .wp-block-media-text__media {
-    @media (--viewport-until-md) {
-      & img {
-        margin-bottom: var(--spacer);
-      }
-    }
-  }
+	& .wp-block-media-text__media {
+		@media (--viewport-until-md) {
+			& img {
+				margin-bottom: var(--spacer);
+			}
+		}
+	}
 }

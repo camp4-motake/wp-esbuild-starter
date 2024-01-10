@@ -1,150 +1,150 @@
 :where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) {
-  &:where(:not(#wpbody-content .wrap *)) {
-    margin-bottom: var(--spacer);
-    font-weight: var(--font-weight-bold);
-    font-feature-settings: "palt";
-    line-height: var(--line-height-base-hd);
-    letter-spacing: var(--letter-spacing-heading);
-    word-break: keep-all;
-    overflow-wrap: break-word;
+	&:where(:not(#wpbody-content .wrap *)) {
+		margin-bottom: var(--spacer);
+		font-weight: var(--font-weight-bold);
+		font-feature-settings: "palt";
+		line-height: var(--line-height-base-hd);
+		letter-spacing: var(--letter-spacing-heading);
+		word-break: keep-all;
+		overflow-wrap: break-word;
 
-    & ruby > rt {
-      display: block;
-      font-size: 42%;
-      text-align: start;
-    }
+		& ruby > rt {
+			display: block;
+			font-size: 42%;
+			text-align: start;
+		}
 
-    & + .hr {
-      margin-top: -0.5em;
-    }
-  }
+		& + .hr {
+			margin-top: -0.5em;
+		}
+	}
 }
 
 h1:where(:not(#wpbody-content .wrap h1)),
 .editor-styles-wrapper h1,
 .h1 {
-  margin-bottom: var(--spacer-md);
-  font-size: var(--font-size-h1);
+	margin-bottom: var(--spacer-md);
+	font-size: var(--font-size-h1);
 }
 
 h2:where(:not(#wpbody-content .wrap h2)),
 .editor-styles-wrapper h2,
 .h2 {
-  margin-bottom: var(--spacer-md);
-  font-size: var(--font-size-h2);
+	margin-bottom: var(--spacer-md);
+	font-size: var(--font-size-h2);
 }
 
 h3:where(:not(#wpbody-content .wrap h3)),
 .editor-styles-wrapper h3,
 .h3 {
-  margin-bottom: var(--spacer-md);
-  font-size: var(--font-size-h3);
+	margin-bottom: var(--spacer-md);
+	font-size: var(--font-size-h3);
 }
 
 h4:where(:not(#wpbody-content .wrap h4)),
 .editor-styles-wrapper h4,
 .h4 {
-  font-size: var(--font-size-h4);
+	font-size: var(--font-size-h4);
 }
 
 h5:where(:not(#wpbody-content .wrap h5)),
 .editor-styles-wrapper h5,
 .h5 {
-  font-size: var(--font-size-18);
+	font-size: var(--font-size-18);
 }
 
 h6:where(:not(#wpbody-content .wrap h6)),
 .editor-styles-wrapper h6,
 .h6 {
-  font-size: var(--font-size-16);
+	font-size: var(--font-size-16);
 }
 
 p:where(:not(#wpbody-content .wrap p)),
 .editor-styles-wrapper p {
-  margin-bottom: 1em;
+	margin-bottom: 1em;
 }
 
 .featuredLine {
-  font-size: var(--font-size-18);
-  line-height: var(--leading-2xl);
-  letter-spacing: 0.3em;
+	font-size: var(--font-size-18);
+	line-height: var(--leading-2xl);
+	letter-spacing: 0.3em;
 
-  & + & {
-    margin-top: 2em;
-  }
+	& + & {
+		margin-top: 2em;
+	}
 }
 
 p {
-  font-size: var(--font-size-16);
+	font-size: var(--font-size-16);
 }
 
 .wbr {
-  word-break: keep-all;
-  overflow-wrap: break-word;
+	word-break: keep-all;
+	overflow-wrap: break-word;
 }
 
 :where(.entry-content, .editor-styles-wrapper) {
-  & * + :where(h1, .h1):not(:first-child) {
-    margin-top: var(--spacer-xl);
-  }
-  & * + :where(h2, .h2):not(:first-child) {
-    margin-top: var(--spacer-xl);
-  }
-  & * + :where(h3, .h3):not(:first-child) {
-    margin-top: var(--spacer-lg);
-  }
-  & * + :where(h4, .h4):not(:first-child) {
-    margin-top: var(--spacer-lg);
-  }
-  & * + :where(h5, .h5):not(:first-child) {
-    margin-top: var(--spacer-lg);
-  }
-  & * + :where(h6, .h6):not(:first-child) {
-    margin-top: var(--spacer-md);
-  }
-  & * + p {
-    margin-top: 1em;
-  }
-  & .fit-after-line {
-    margin-bottom: 0.125em;
+	& * + :where(h1, .h1):not(:first-child) {
+		margin-top: var(--spacer-xl);
+	}
+	& * + :where(h2, .h2):not(:first-child) {
+		margin-top: var(--spacer-xl);
+	}
+	& * + :where(h3, .h3):not(:first-child) {
+		margin-top: var(--spacer-lg);
+	}
+	& * + :where(h4, .h4):not(:first-child) {
+		margin-top: var(--spacer-lg);
+	}
+	& * + :where(h5, .h5):not(:first-child) {
+		margin-top: var(--spacer-lg);
+	}
+	& * + :where(h6, .h6):not(:first-child) {
+		margin-top: var(--spacer-md);
+	}
+	& * + p {
+		margin-top: 1em;
+	}
+	& .fit-after-line {
+		margin-bottom: 0.125em;
 
-    & + * {
-      margin-top: 0;
-    }
-  }
+		& + * {
+			margin-top: 0;
+		}
+	}
 }
 
 .wp-block-post-title {
-  font-size: var(--font-size-h2);
+	font-size: var(--font-size-h2);
 }
 
 a {
-  color: var(--color-link);
+	color: var(--color-link);
 
-  &:hover {
-    color: var(--color-link-hover);
-    text-decoration: none;
-  }
+	&:hover {
+		color: var(--color-link-hover);
+		text-decoration: none;
+	}
 
-  &[target="_blank"]::after {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    margin-right: 0.125em;
-    margin-left: 0.25em;
-    content: "";
-    background-color: currentColor;
-    mask-image: var(--mask-ico-external);
-    mask-repeat: no-repeat no-repeat;
-    mask-position: center;
-    mask-size: 82%;
-  }
+	&[target="_blank"]::after {
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		margin-right: 0.125em;
+		margin-left: 0.25em;
+		content: "";
+		background-color: currentColor;
+		mask-image: var(--mask-ico-external);
+		mask-repeat: no-repeat no-repeat;
+		mask-position: center;
+		mask-size: 82%;
+	}
 }
 
 .ellipsis-1 {
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }

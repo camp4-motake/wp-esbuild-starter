@@ -1,41 +1,41 @@
 .share-links {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	justify-content: center;
 
-  &.-right {
-    justify-content: flex-end;
-  }
+	&.-right {
+		justify-content: flex-end;
+	}
 }
 
 .share-links-label {
-  display: block;
-  font-family: var(--font-sans-serif-en);
-  font-size: var(--font-size-14);
-  font-weight: var(--font-weight-bold);
+	display: block;
+	font-family: var(--font-sans-serif-en);
+	font-size: var(--font-size-14);
+	font-weight: var(--font-weight-bold);
 }
 
 .share-link {
-  position: relative;
-  display: block;
-  width: calc(36 / var(--rem));
-  height: calc(36 / var(--rem));
-  aspect-ratio: 1/1;
-  transition: opacity 0.2s ease;
+	position: relative;
+	display: block;
+	width: calc(36 / var(--rem));
+	height: calc(36 / var(--rem));
+	aspect-ratio: 1/1;
+	transition: opacity 0.2s ease;
 
-  &:hover {
-    opacity: 0.6;
-  }
-  &::after {
-    display: none !important;
-    content: none !important;
-  }
+	&:hover {
+		opacity: 0.6;
+	}
+	&::after {
+		display: none !important;
+		content: none !important;
+	}
 
-  > img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
+	> img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
 }

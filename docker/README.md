@@ -11,13 +11,13 @@
 
 以降の手順はワークスペースルートを想定しています。
 
-1, 以下のコマンドを実行します。プロジェクトルートに`.env`と`auth.json`が作成されます。
+1, node_modules をインストールします。同時にプロジェクトルートに`.env`と`auth.json`が作成されます。
 
 ```sh
-npm run setup:init
+npm ci
 ```
 
-必要に応じ、`.env`の `WP_PORT` を他プロジェクトと重複しない設値に変更してください。
+必要に応じ、`.env`の `WP_PORT` を他プロジェクトのポート番号と重複しない値に変更してください。
 
 > 注: `.env`と`auth.json`がすでに存在している場合は生成されません。
 > .env ファイルが先に存在してる場合は docker/.env-sample の内容を参考に追記してください。
@@ -26,12 +26,12 @@ npm run setup:init
 
 ```json
 {
-  "http-basic": {
-    "connect.advancedcustomfields.com": {
-      "username": "{ACF_PRO_KEY}",
-      "password": "https://camp4.jp/"
-    }
-  }
+	"http-basic": {
+		"connect.advancedcustomfields.com": {
+			"username": "{ACF_PRO_KEY}",
+			"password": "https://camp4.jp/"
+		}
+	}
 }
 ```
 

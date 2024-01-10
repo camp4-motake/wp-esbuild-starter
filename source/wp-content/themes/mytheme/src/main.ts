@@ -5,8 +5,8 @@
 import.meta.glob("./styles/config/**/*.css", { eager: true })
 import.meta.glob("ress", { eager: true })
 import.meta.glob(
-  "./styles/{global,plugins,blocks,components,partials,utils,routes}/**/*.css",
-  { eager: true },
+	"./styles/{global,plugins,blocks,components,partials,utils,routes}/**/*.css",
+	{ eager: true },
 )
 
 /**
@@ -21,9 +21,9 @@ const stores = import.meta.glob("./stores/**/*.{js,ts,jsx,tsx}")
 const modules = [...Object.values(components), ...Object.values(stores)]
 
 const main = async () => {
-  window.Alpine = Alpine
-  Alpine.plugin(intersect)
-  await Promise.all(modules.map((mod) => mod()))
-  Alpine.start()
+	window.Alpine = Alpine
+	Alpine.plugin(intersect)
+	await Promise.all(modules.map((mod) => mod()))
+	Alpine.start()
 }
 main()

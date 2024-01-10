@@ -1,54 +1,54 @@
 :where(.entry-content, .editor-styles-wrapper) {
-  & * + :where(h1, .h1):not(:first-child) {
-    margin-top: var(--spacer-xl);
-  }
-  & * + :where(h2, .h2):not(:first-child) {
-    margin-top: var(--spacer-xl);
-  }
-  & * + :where(h3, .h3):not(:first-child) {
-    margin-top: var(--spacer-lg);
-  }
-  & * + :where(h4, .h4):not(:first-child) {
-    margin-top: var(--spacer-lg);
-  }
-  & * + :where(h5, .h5):not(:first-child) {
-    margin-top: var(--spacer-lg);
-  }
-  & * + :where(h6, .h6):not(:first-child) {
-    margin-top: var(--spacer-md);
-  }
-  & .wp-block-heading[class*="has-"][class*="-font-size"] {
-    margin-bottom: 1em;
-  }
-  &
-    *
-    + .wp-block-heading[class*="has-"][class*="-font-size"]:not(:first-child) {
-    margin-top: 1.5em;
-  }
-  & * + p {
-    margin-top: 1em;
-  }
-  > p + p {
-    margin-top: 0;
-  }
+	& * + :where(h1, .h1):not(:first-child) {
+		margin-top: var(--spacer-xl);
+	}
+	& * + :where(h2, .h2):not(:first-child) {
+		margin-top: var(--spacer-xl);
+	}
+	& * + :where(h3, .h3):not(:first-child) {
+		margin-top: var(--spacer-lg);
+	}
+	& * + :where(h4, .h4):not(:first-child) {
+		margin-top: var(--spacer-lg);
+	}
+	& * + :where(h5, .h5):not(:first-child) {
+		margin-top: var(--spacer-lg);
+	}
+	& * + :where(h6, .h6):not(:first-child) {
+		margin-top: var(--spacer-md);
+	}
+	& .wp-block-heading[class*="has-"][class*="-font-size"] {
+		margin-bottom: 1em;
+	}
+	&
+		*
+		+ .wp-block-heading[class*="has-"][class*="-font-size"]:not(:first-child) {
+		margin-top: 1.5em;
+	}
+	& * + p {
+		margin-top: 1em;
+	}
+	> p + p {
+		margin-top: 0;
+	}
 
-  & p:first-child {
-    margin-top: 0;
-  }
+	& p:first-child {
+		margin-top: 0;
+	}
 
-  & :where(p.has-text-align-center) {
-    text-align: center;
-  }
+	& :where(p.has-text-align-center) {
+		text-align: center;
+	}
 
-  & :where(p.has-text-align-right) {
-    text-align: right;
-  }
+	& :where(p.has-text-align-right) {
+		text-align: right;
+	}
 
-  & .fit-after-line {
-    margin-bottom: 0.125em;
+	& .fit-after-line {
+		margin-bottom: 0.125em;
 
-    & + * {
-      margin-top: 0;
-    }
-  }
+		& + * {
+			margin-top: 0;
+		}
+	}
 }
