@@ -24,16 +24,18 @@ npm run setup
 ## 作業タスク
 
 ```sh
-# start wp-env
-npx wp-env start -- --xdebug
-# or
+# start wp-env (same "npx wp-env start -- --xdebug")
 npm start
 
 # dev
 npm run dev
-
 # build
 npm run build
+
+# lint
+npm run lint
+# format
+npm run format
 ```
 
 - テーマディレクトリは npm [workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) です。
