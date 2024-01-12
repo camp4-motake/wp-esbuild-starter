@@ -17,7 +17,7 @@
 	"devDependencies": {
 		"@csstools/postcss-global-data": "^2.1.1",
 		"@types/alpinejs": "^3.13.6",
-		"@types/node": "^20.10.8",
+		"@types/node": "^20.11.0",
 		"find-yarn-workspace-root": "^2.0.0",
 		"globby": "^14.0.0",
 		"postcss": "^8.4.33",
@@ -32,7 +32,7 @@
 	"dependencies": {
 		"@alpinejs/intersect": "^3.13.3",
 		"alpinejs": "^3.13.3",
-		"budoux": "^0.6.1",
+		"budoux": "^0.6.2",
 		"ress": "^5.0.2"
 	},
 	"browserslist": [
